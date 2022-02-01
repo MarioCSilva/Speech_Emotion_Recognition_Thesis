@@ -1,3 +1,4 @@
 {
-    "n_mels": 127
+    "n_mels": 127,
+    "scale_range": [-1, 1]
 }
