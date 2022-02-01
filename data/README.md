@@ -17,3 +17,6 @@ When activated the virtual environment, install the dependencies.
 
     pip install -r requirements.txt
 
+Create a kernel for the virtual environment for the jupyter notebook.
+
+    sudo python3 -m ipykernel install --name=vader_venv
