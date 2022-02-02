@@ -59,18 +59,16 @@ def extract_features(signal, sr):
 
 def process_data(emotion_data):
     for emotion, data in emotion_data.items():
-        first = True
         for audio_file in tqdm(data['files']):
             signal, sr = librosa.load(audio_file, res_type='kaiser_fast')
 
             data['features'].append(extract_features(signal, sr))
 
-            if first:
-                first = False
-                print("Emotion: ", emotion)
-                print("Total number of samples: ", signal.shape[0])
-                print("Sample rate: ", sr)
-                print("Audio Duration (s): ", librosa.get_duration(signal))
+        # just for one file
+        print("Emotion: ", emotion)
+        print("Total number of samples: ", signal.shape[0])
+        print("Sample rate: ", sr)
+        print("Audio Duration (s): ", librosa.get_duration(signal))
     
     return emotion_data
 
