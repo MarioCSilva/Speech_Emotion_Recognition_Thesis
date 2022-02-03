@@ -42,9 +42,10 @@ def get_emotion_files(audio_dir) -> defaultdict:
     return emotion_data
 
 
-def display_melspecgram(mel_fig, axs, i, melspecgram):
+def display_melspecgram(mel_fig, axs, i, emotion, melspecgram):
     ax = axs[0 if i < 3 else 1, i if i < 3 else i - 3]
     im = ax.pcolormesh(melspecgram, cmap="magma")
+    ax.set_title(emotion)
     mel_fig.colorbar(im, ax=ax)
 
 
@@ -89,7 +90,7 @@ def analyse_features(emotion_data):
 
         # using only mel_spectogram of the first audio file for testing
         spec = features[0, 2]
-        display_melspecgram(mel_fig, mel_axs, fig_pos, spec)
+        display_melspecgram(mel_fig, mel_axs, fig_pos, emotion, spec)
 
         # scaling features between 0 and 1
         cross_rate_values = minmax_scale(features[:,0], config.scale_range)
