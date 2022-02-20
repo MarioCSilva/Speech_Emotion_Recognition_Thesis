@@ -7,6 +7,7 @@ import glob
 import librosa
 from tqdm import tqdm
 import numpy as np
+import librosa.display
 import moviepy.editor as mp
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -14,107 +15,66 @@ import seaborn as sns
 import sklearn as sk
 from Audio_Sentiment_Analysis.utils.Configuration import Configuration
 from sklearn.preprocessing import minmax_scale
+import csv
 
 AUDIO_DIR = f"{os.path.abspath('./../../')}/eNTERFACE05_Dataset/*/*/*/*.avi"
+EXTRACTED_FEATURES_FILE = 'extracted_features_ent05.csv'
 CONFIG_FILE = f"{os.path.abspath('./../../')}/Audio_Sentiment_Analysis/data/config.json"
 
+def extract_features(audio_file, subject, emotion):
+    y, sr = librosa.load(audio_file, res_type='kaiser_fast')
 
-def get_emotion_files(audio_dir) -> defaultdict:
-    emotion_data = defaultdict(lambda: defaultdict(list))
+    rms = librosa.feature.rms(y)
+    chroma_stft = librosa.feature.chroma_stft(y, sr=sr)
+    spec_cent = librosa.feature.spectral_centroid(y, sr=sr)
+    spec_bw = librosa.feature.spectral_bandwidth(y, sr=sr)
+    rolloff = librosa.feature.spectral_rolloff(y, sr=sr)
+    zcr = librosa.feature.zero_crossing_rate(y)
+    mfcc = librosa.feature.mfcc(y, sr=sr)
+    mel_spect = librosa.feature.melspectrogram(y, sr=sr, n_mels=config.n_mels)
 
-    for file_path in glob.glob(audio_dir):
-        emotion = file_path.split('/')[-3]
+    features_str = f'{subject} {emotion} {np.mean(mel_spect)} {np.min(mel_spect)} {np.max(mel_spect)} {np.var(mel_spect)} {np.std(mel_spect)}\
+        {np.mean(chroma_stft)} {np.mean(rms)} {np.mean(spec_cent)} {np.mean(spec_bw)} {np.mean(rolloff)} {np.mean(zcr)}'
 
-        file_type = file_path.split('.')[-1]
+    for e in mfcc:
+        features_str += f' {np.mean(e)}'
+
+    return features_str.split()
+
+
+def process_data(audio_dir, proc_feat_dataset):
+    # Create a CSV for storing all processed features and write the header
+    header = 'subject emotion mel_mean mel_min mel_max mel_var mel_std chroma_stft rmse spectral_centroid spectral_bandwidth rolloff zero_crossing_rate'
+    for i in range(1, 21):
+        header += f' mfcc{i}'
+    header = header.split()
+    file = open(proc_feat_dataset, 'w', newline='')
+    writer = csv.writer(file)
+    writer.writerow(header)
+
+    print("Processing audio files from all subjects:")
+    for file_path in tqdm(glob.glob(audio_dir)):
+        labels =  file_path.split('\\')
+        # labels =  file_path.split('/')
+        subject = labels[-4].split()[1]
+        emotion = labels[-3]
+        file_type = labels[-1].split('.')[-1]
 
         if file_type == 'avi':
             audio_file_path = file_path[:-3] + 'wav'
-
             # convert file type to wav
             if not os.path.isfile(audio_file_path):
                 audio_clip = mp.VideoFileClip(file_path)
                 audio_clip.audio.write_audiofile(audio_file_path)
-
             file_path = audio_file_path
 
-        emotion_data[emotion]['files'].append(file_path)
-
-    return emotion_data
-
-
-def display_melspecgram(mel_fig, axs, i, emotion, melspecgram):
-    ax = axs[0 if i < 3 else 1, i if i < 3 else i - 3]
-    im = ax.pcolormesh(melspecgram, cmap="magma")
-    ax.set_title(emotion)
-    mel_fig.colorbar(im, ax=ax)
-
-
-def extract_features(signal, sr):
-    return [
-        librosa.feature.zero_crossing_rate(signal)[0, 0],
-        librosa.feature.spectral_centroid(signal)[0, 0],
-        librosa.feature.melspectrogram(signal, sr=sr, n_mels=config.n_mels),
-        librosa.feature.mfcc(y=signal, sr=sr)
-    ]
-
-
-def process_data(emotion_data):
-    for emotion, data in emotion_data.items():
-        for audio_file in tqdm(data['files']):
-            signal, sr = librosa.load(audio_file, res_type='kaiser_fast')
-
-            data['features'].append(extract_features(signal, sr))
-
-        # just for one file
-        print("Emotion: ", emotion)
-        print("Total number of samples: ", signal.shape[0])
-        print("Sample rate: ", sr)
-        print("Audio Duration (s): ", librosa.get_duration(signal))
-    
-    return emotion_data
-
-
-def analyse_features(emotion_data):
-    mel_fig, mel_axs = plt.subplots(2, 3, figsize=(16,8))
-    mel_fig.suptitle("Log-Mel Magnitude Spectrogram")
-    for ax in mel_axs.flat:
-        ax.set(xlabel="Time (sample)", ylabel="Log-Mel Bins (mel)")
-    for ax in mel_axs.flat:
-        ax.label_outer()
-
-    zero_cr_means, spect_cent_means = [], []
-
-    for fig_pos, emotion in enumerate(emotion_data):
-        data = emotion_data[emotion]
-        features = np.array(data['features'])
-
-        # using only mel_spectogram of the first audio file for testing
-        spec = features[0, 2]
-        display_melspecgram(mel_fig, mel_axs, fig_pos, emotion, spec)
-
-        # scaling features between 0 and 1
-        cross_rate_values = minmax_scale(features[:,0], config.scale_range)
-        spec_cent_values = minmax_scale(features[:,1], config.scale_range)
-        # avering features
-        zero_cr_means.append(np.mean(cross_rate_values))
-        spect_cent_means.append(np.mean(spec_cent_values))
-
-    df = pd.DataFrame(zip(list(emotion_data.keys())*6, ["Mean Zero Crossing Rate"]*6+["Mean Spectral Centroid"]*6,\
-        zero_cr_means+spect_cent_means), columns=["Emotion", "Mean Values", 'Value'])
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x="Emotion", hue="Mean Values", y="Value", data=df)
-    plt.show()
+        processed_data = extract_features(file_path, subject, emotion)
+        writer.writerow(processed_data)
 
 
 if __name__ == "__main__":
     global config
     config = Configuration.load_json(CONFIG_FILE)
 
-    # get the files corresponding to each emotion
-    emotion_data = get_emotion_files(AUDIO_DIR)
-
-    # extract features from audio files
-    process_data(emotion_data)
-
-    # analyse the extracted features
-    analyse_features(emotion_data)
+    # extract features from audio files and store them in a dataset
+    process_data(AUDIO_DIR, EXTRACTED_FEATURES_FILE)
