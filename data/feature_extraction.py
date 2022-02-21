@@ -9,10 +9,6 @@ from tqdm import tqdm
 import numpy as np
 import librosa.display
 import moviepy.editor as mp
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import sklearn as sk
 from Audio_Sentiment_Analysis.utils.Configuration import Configuration
 from sklearn.preprocessing import minmax_scale
 import csv
