@@ -2,7 +2,6 @@ import sys
 import os
 # go to upper diretory
 sys.path.append(os.path.abspath('./../../'))
-from collections import defaultdict
 import glob
 import librosa
 from tqdm import tqdm
@@ -10,7 +9,6 @@ import numpy as np
 import librosa.display
 import moviepy.editor as mp
 from Audio_Sentiment_Analysis.utils.Configuration import Configuration
-from sklearn.preprocessing import minmax_scale
 import csv
 
 AUDIO_DIR = f"{os.path.abspath('./../../')}/eNTERFACE05_Dataset/*/*/*/*.avi"
@@ -20,17 +18,19 @@ CONFIG_FILE = f"{os.path.abspath('./../../')}/Audio_Sentiment_Analysis/data/conf
 def extract_features(audio_file, subject, emotion):
     y, sr = librosa.load(audio_file, res_type='kaiser_fast')
 
+    file = audio_file.split(".")[-2].split("\\")[-1]
     rms = librosa.feature.rms(y)
     chroma_stft = librosa.feature.chroma_stft(y, sr=sr)
     spec_cent = librosa.feature.spectral_centroid(y, sr=sr)
+    spec_cont = librosa.feature.spectral_contrast(y, sr=sr)
     spec_bw = librosa.feature.spectral_bandwidth(y, sr=sr)
     rolloff = librosa.feature.spectral_rolloff(y, sr=sr)
     zcr = librosa.feature.zero_crossing_rate(y)
     mfcc = librosa.feature.mfcc(y, sr=sr)
     mel_spect = librosa.feature.melspectrogram(y, sr=sr, n_mels=config.n_mels)
 
-    features_str = f'{subject} {emotion} {np.mean(mel_spect)} {np.min(mel_spect)} {np.max(mel_spect)} {np.var(mel_spect)} {np.std(mel_spect)}\
-        {np.mean(chroma_stft)} {np.mean(rms)} {np.mean(spec_cent)} {np.mean(spec_bw)} {np.mean(rolloff)} {np.mean(zcr)}'
+    features_str = f'{file} {subject} {emotion} {np.mean(mel_spect)} {np.min(mel_spect)} {np.max(mel_spect)} {np.var(mel_spect)} {np.std(mel_spect)}\
+        {np.mean(chroma_stft)} {np.mean(rms)} {np.mean(spec_cent)} {np.mean(spec_cont)} {np.mean(spec_bw)} {np.mean(rolloff)} {np.mean(zcr)}'
 
     for e in mfcc:
         features_str += f' {np.mean(e)}'
@@ -40,7 +40,7 @@ def extract_features(audio_file, subject, emotion):
 
 def process_data(audio_dir, proc_feat_dataset):
     # Create a CSV for storing all processed features and write the header
-    header = 'subject emotion mel_mean mel_min mel_max mel_var mel_std chroma_stft rmse spectral_centroid spectral_bandwidth rolloff zero_crossing_rate'
+    header = 'File Subject Emotion mel_mean mel_min mel_max mel_var mel_std chroma_stft rmse spectral_centroid spectral_contrast spectral_bandwidth rolloff zero_crossing_rate'
     for i in range(1, 21):
         header += f' mfcc{i}'
     header = header.split()
