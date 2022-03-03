@@ -1,5 +1,4 @@
 {
     "n_mels": 127,
-    "scale_range": [0, 1],
-    "lineplot_threshold": 0.1
+    "scale_range": [0, 1]
 }
