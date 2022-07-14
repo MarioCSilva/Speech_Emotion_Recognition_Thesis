@@ -24,4 +24,5 @@ To collect the data, the sessions were organized with emotion elicitation techni
 ## Organization
 
 The folder `/data` contains notebooks for feature extraction and study of the data.
+
 The `/model` folder has two notebooks, one for categorical, and the other, for regression algorithms.
