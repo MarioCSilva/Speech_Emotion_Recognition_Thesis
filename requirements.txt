@@ -1,0 +1,16 @@
+wheel
+librosa
+matplotlib
+seaborn
+numpy
+pandas
+tqdm
+moviepy
+sklearn
+tabulate
+imblearn
+tensorflow
+keras
+xgboost
+mlxtend
+autokeras

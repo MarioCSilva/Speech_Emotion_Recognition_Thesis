@@ -1,3 +1,10 @@
+iemocap/data/spectrograms/*
+iemocap/data/mfccs/*
+iemocap/data/mel_spectrogram_images/*
+iemocap/data/mel_spectrogram_images_2/*
+iemocap/data/mel_spectrograms/*
+iemocap/model/spectrogram_cat_autokeras/*
+
 # MAC OS Files
 .DS_Store
 
