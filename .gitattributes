@@ -1,1 +1,1 @@
-audio_classifier_model.pkl filter=lfs diff=lfs merge=lfs -text
+audio_classifier/audio_classifier_model.pkl filter=lfs diff=lfs merge=lfs -text
