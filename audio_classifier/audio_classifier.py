@@ -53,5 +53,5 @@ class AudioClassifier:
 if __name__ == "__main__":
     AUDIO_CLASSIFIER_MODEL = 'audio_classifier_model.pkl'
     model = AudioClassifier(AUDIO_CLASSIFIER_MODEL)
-    audio_file_test = "../IEMOCAP_Dataset/Session1/sentences/wav/Ses01F_impro01/Ses01F_impro01_F000.wav"
+    audio_file_test = "../../IEMOCAP_Dataset/Session1/sentences/wav/Ses01F_impro01/Ses01F_impro01_F000.wav"
     print(model.predict(audio_file_test))
