@@ -5,7 +5,7 @@ import librosa
 
 
 class AudioClassifier:
-    def __init__(self, AUDIO_CLASSIFIER_MODEL) -> None:
+    def __init__(self, AUDIO_CLASSIFIER_MODEL='audio_classifier_model.pkl') -> None:
         self.model = load(AUDIO_CLASSIFIER_MODEL)
         self.labels = {"neutral": 0, "anger": 0, "happiness": 0, "sadness": 0}
         self.labels_id = {0: "anger", 1: "happiness",
@@ -24,8 +24,11 @@ class AudioClassifier:
 
         return num_spikes
 
-    def extract_features(self, audio_file) -> List:
-        y, sr = librosa.load(audio_file, res_type='kaiser_fast')
+    def extract_features(self, data, is_file_name=True, sr=16000) -> List:
+        if is_file_name:
+            y, sr = librosa.load(data, res_type='kaiser_fast')
+        else:
+            y = data
         zcr = librosa.feature.zero_crossing_rate(y=y)
         spec_cent = librosa.feature.spectral_centroid(y=y, sr=sr)
         mfcc = librosa.feature.mfcc(y=y, sr=sr)
@@ -45,9 +48,20 @@ class AudioClassifier:
 
     def predict(self, audio_file):
         classified_labels = self.labels.copy()
-        classified_labels[self.labels_id[self.model.predict(
-            self.extract_features(audio_file))[0]]] = 1
+        classified_labels[
+            self.labels_id[
+                self.model.predict(self.extract_features(audio_file))[0]
+            ]
+        ] = 1
         return classified_labels
+    
+    def predict_segment(self, segment, numeric_output=False):
+        prediction_numeric = self.model.predict(self.extract_features(segment, is_file_name=False))[0]
+
+        if numeric_output:
+            return prediction_numeric
+        else:
+            return self.labels_id[prediction_numeric]
 
 
 if __name__ == "__main__":
