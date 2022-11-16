@@ -15,20 +15,24 @@ def Audio(audio: np.ndarray, sr: int):
 
     return IPython.display.HTML("""
         <script>
-            if (!window.audioContext) {
-                window.audioContext = new AudioContext();
-                window.playAudio = function(audioChannels, sr) {
-                    const buffer = audioContext.createBuffer(audioChannels.length, audioChannels[0].length, sr);
-                    for (let [channel, data] of audioChannels.entries()) {
-                        buffer.copyToChannel(Float32Array.from(data), channel);
-                    }
-            
-                    const source = audioContext.createBufferSource();
-                    source.buffer = buffer;
-                    source.connect(audioContext.destination);
-                    source.start();
+            function stopAudio() {
+                if (window.audioContext)
+                    window.audioContext.close();
+            }
+            function playAudio(audioChannels, sr) {
+                if (window.audioContext)
+                    stopAudio()
+                const buffer = audioContext.createBuffer(audioChannels.length, audioChannels[0].length, sr);
+                for (let [channel, data] of audioChannels.entries()) {
+                    buffer.copyToChannel(Float32Array.from(data), channel);
                 }
+                window.audioContext = new AudioContext();
+                const source = audioContext.createBufferSource();
+                source.buffer = buffer;
+                source.connect(audioContext.destination);
+                source.start();
             }
         </script>
         <button onclick="playAudio(%s, %s)">Play</button>
+        <button onclick="stopAudio()">Stop</button>
     """ % (json.dumps(channels), sr))
