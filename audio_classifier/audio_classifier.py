@@ -26,9 +26,10 @@ class AudioClassifier:
 
     def extract_features(self, data, is_file_name=True, sr=16000) -> List:
         if is_file_name:
-            y, sr = librosa.load(data, res_type='kaiser_fast')
+            y, sr = librosa.load(data, sr=16000)
         else:
             y = data
+
         zcr = librosa.feature.zero_crossing_rate(y=y)
         spec_cent = librosa.feature.spectral_centroid(y=y, sr=sr)
         mfcc = librosa.feature.mfcc(y=y, sr=sr)
@@ -62,6 +63,10 @@ class AudioClassifier:
             return prediction_numeric
         else:
             return self.labels_id[prediction_numeric]
+    
+
+    def predict_features(self, features):
+        return self.model.predict(features)
 
 
 if __name__ == "__main__":
