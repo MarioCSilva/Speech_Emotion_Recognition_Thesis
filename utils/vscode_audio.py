@@ -19,14 +19,15 @@ def Audio(audio: np.ndarray, sr: int):
                 if (window.audioContext)
                     window.audioContext.close();
             }
-            function playAudio(audioChannels, sr) {
-                if (window.audioContext)
-                    stopAudio()
+            window.playAudio = function(audioChannels, sr) {
+                stopAudio()
+                window.audioContext = new AudioContext();
+
                 const buffer = audioContext.createBuffer(audioChannels.length, audioChannels[0].length, sr);
                 for (let [channel, data] of audioChannels.entries()) {
                     buffer.copyToChannel(Float32Array.from(data), channel);
                 }
-                window.audioContext = new AudioContext();
+        
                 const source = audioContext.createBufferSource();
                 source.buffer = buffer;
                 source.connect(audioContext.destination);
