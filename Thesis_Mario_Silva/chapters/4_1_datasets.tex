@@ -1,0 +1,71 @@
+\chapter{\ac{ser} Development}
+\label{chapter:strat}
+
+
+TODO: mention recorded sample rates, display some data visualization graphics maybe
+
+
+
+\section{Datasets}
+
+In this section, we will detail the two utilized datasets that were used for the development of our \ac{ser} system.
+By utilizing two distinct datasets for our analysis, we are able to make the models more robust and effective, making the results less prone to overfitting.
+
+The first dataset was used as a development set, which allowed us to explore and select the best features for our model.
+
+The second dataset was used as a training and test set for evaluating the performance of our predictive models and determining the most effective strategies.
+
+\subsection{eNTERFACE'05}
+
+The eNTERFACE’05 emotion database \cite{Martin2006} was designed and collected during the eNTERFACE’05 workshop in \citeyear{Martin2006}. The dataset contains audio and visual data from 42 subjects, coming from 14 different nationalities. Among the subjects, a percentage of 35 are men, while the remaining 7 are women, and, all the experiments were driven in English.
+
+\begin{table}[H]
+	\centering
+	\caption{eNTERFACE'05 subjects nationalities}
+	\label{tab:enterfaceDiversity}
+	\begin{tabular}{lc|lc}
+		\toprule
+		Country &Number of Subjects &Country &Number of Subjects\\
+		\midrule
+		Belgium & 9 & Cuba     & 1\\
+		Turkey  & 7 & Slovakia & 1\\
+		France  & 7 & Brazil   & 1\\
+		Spain   & 6 & U.S.A.   & 1\\
+		Greece  & 4 & Croatia  & 1\\
+		Italy   & 1 & Canada   & 1\\
+		Austria & 1 & Russia   & 1\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+This dataset contains six discrete annotated emotions: \begin{enumerate*}\item anger \item fear \item surprise \item happiness \item sadness \item disgust. \end{enumerate*} Each subject was asked to listen to six successive short stories, each eliciting a particular emotion. If two human experts judged the reaction expressing the emotion unambiguously, then the sample was added to the database. Afterward, they were recorded saying five different sentences for each emotion, and, in total, there are 212 video and audio sequences per annotated emotion.
+
+The selection of this dataset for feature analysis and selection was based on several factors. Firstly, the controlled environment of the dataset ensured that the data was collected under controlled conditions, which minimized the impact of external factors that could have influenced our analysis. Moreover, the diversity of the subjects included in this dataset made it possible to identify and select features that are representative of several groups of people.
+
+Another key factor in choosing this data was its size. Due to the limited size of this dataset, we are able to utilize computationally expensive methods, such as feature selection algorithms, that would have been prohibitively expensive with larger datasets.
+
+Finally, the elicited nature of the data in this dataset was considered an essential aspect of our selection process. Elicited obtained data tends to be more genuine than acted, therefore, it provides a more accurate representation of video conferences' natural contexts.
+
+\subsection{\ac{iemo}}
+
+The \ac{iemo} database \cite{Busso2008}, created in \citeyear{Busso2008}, is an acted and elicited multimodal and multi-speaker database. It consists of 12 hours of audiovisual data, including video, speech, motion capture of face, and text transcriptions.
+
+Sessions were manually segmented into utterances, spoken by 10 (5 female and 5 male) professional actors in fluent English. Each utterance was annotated by at least 3 human annotators in 9 categorical attributes:\\
+\begin{enumerate*}[label=$\cdotp$]
+	\item Anger
+	\item Happiness
+	\item Excitement
+	\item Sadness
+	\item Frustration
+	\item Fear
+	\item Surprise
+	\item Other
+	\item Neutral
+\end{enumerate*}
+
+In addition to the discrete emotions, it was also annotated with 3-dimensional attributes using the \ac{vad} emotion model.
+
+Similar to the development dataset, this data was collected using emotion elicitation techniques such as improvisations and scripts. The multimodal data, annotated using both discrete and dimensional models, allows us to perform a wide range of investigation. Researchers have also noted the high quality of the audiovisual data in this dataset, and it is frequently used in the literature for evaluating emotion recognition models. This enables us to make well-founded comparisons of our own developed models.
+
+Overall, this second dataset is a well-suited resource for our study, as it allowed for a broad range of analysis, a comprehensive evaluation of our models' performance and facilitated benchmarking against existing models in the field.

@@ -1,0 +1,13 @@
+\babel@toc {portuguese}{}\relax
+\babel@toc {english}{}\relax
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Zero crossing rate wave plot annotated with spikes.\relax }}{5}{figure.caption.13}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Bar plots mean for metrics used on the mel-scaled spectrogram feature\relax }}{5}{figure.caption.15}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Zero crossing rate wave plot with a surrounding area of five male subjects for the same utterance with the anger emotion.\relax }}{6}{figure.caption.17}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Zero crossing rate wave plots with a surrounding area of a single male subject and sentence for all different emotions.\relax }}{6}{figure.caption.18}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Zero crossing rate mean values variation plot along 50 audios of speech utterances for all emotions\relax }}{7}{figure.caption.20}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Zero crossing rate mean values box plot for all emotions and different subjects\relax }}{7}{figure.caption.22}%
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Audio Features' Pearson Correlation Matrices Before and After High Correlation Elimination.\relax }}{8}{figure.caption.24}%
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Sequential Feature Selection with Backward Propagation using the Mean Accuracy as the Selection Method.\relax }}{10}{figure.caption.28}%
+\addvspace {10pt}

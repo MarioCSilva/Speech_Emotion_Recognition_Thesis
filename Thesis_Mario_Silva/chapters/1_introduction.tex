@@ -1,0 +1,65 @@
+\chapter{Introduction}
+\label{chapter:introduction}
+
+\begin{introduction}
+“By humanizing technology, we have this golden opportunity to reimagine how we connect with machines, and therefore, how we, as human beings, connect with one another.”\\- Rana el Kaliouby \cite{ranaTedTalk}
+\end{introduction}
+
+\section{Motivation}
+
+Affective computing also referred to as emotion artificial intelligence, is a branch of artificial intelligence that is focused on the measurement, understanding, simulation, and response to human emotions. It is a continuously growing multidisciplinary field that explores how technology can inform an understanding of human affect, how interactions between humans and technologies can be impacted by affect, how systems can be designed to utilize affect to enhance capabilities, and how sensing and affective strategies can transform human and computer interaction \cite{Daily2017}. 
+
+Recently, emotion recognition and sentiment analysis gained interest in the para-linguistic processing world and became an expanding research topic. Emotion recognition and sentiment analysis focus on developing techniques for automatically recognizing emotional states. Both can be treated as two affective computing subtasks on different levels \cite{PORIA201798}. Sentiment analysis allows the understanding of the general feelings and emotions experienced by a person, typically associated with sentiment polarity, which determines data as positive, negative, and neutral. In contrast, emotion recognition uses a more objective and precise system, it focuses on identifying a broad spectrum of distinct human emotions such as anger, joy, or fear.
+
+A quote by MIT Sloan professor Erik Brynjolfsson highlights the importance of emotional awareness for genuine and satisfying human-computer communication: “Just like we can understand speech and machines can communicate in speech, we also understand and communicate with humor and other kinds of emotions. And machines that can speak the language of emotions are going to have better, more effective interactions with us”. By comprehending emotional states expressed by human beings, a machine can give appropriate responses to each situation.
+
+For example, in several contexts of a video conversation, detecting emotions could affect the dialog strategies:
+\begin{itemize}
+    \item In teaching lectures, whether the teacher is a human or an intelligent spoken tutoring system, extracting and analyzing information about student's emotional state is a very important part of teaching because it allows the teacher to adapt \cite{teachexample};
+    \item In call centers, it helps to detect potential problems that arise from an unsatisfactory course of interaction \cite{ccexample1, ccexample2, ccexample3}. Calls can be evaluated regarding customer satisfaction and the evolution of states throughout the call;
+    \item In interviews, for example, it can serve as an aid to analyze suspects' behavior during police questioning;
+    \item For product reviews it can be used to evaluate the customer's level of satisfaction while using or reviewing the product;
+    \item In Human-Robotic interfaces, such as a robotic pet, it allows it to detect and manage tension in human interactions by reading the emotional state of its human commander, for example, \citeauthor{Kanda2005} constructed a robot that focused more on detecting tensions \cite{Kanda2005};
+\end{itemize}
+
+For these reasons, multimodal affective computing in which a variety of data sources, including voice, facial expression, gestures, and linguistic content are employed \cite{BALAZS201695}, is a very challenging and promising research area.
+
+
+\section{Objectives}
+
+The main objective of this dissertation is to research and develop a \ac{ser} system that can accurately identify emotions from audio streams of natural and unstructured conversations in a video conference setting.
+
+To achieve this, we will conduct a thorough examination of speech features and evaluate various machine-learning models to determine the most suitable approach. The goal is to develop a unique set of audio features and achieve accuracy levels of emotion recognition that are comparable to or exceed current \ac{sota} methods.
+
+An additional objective is to create a system that can perform emotional analysis both offline and in real-time, which may involve designing separate audio stream processing pipelines for each mode.
+
+Finally, we will also investigate the potential benefits of combining the speech model with a given facial emotion recognition model. The goal is to explore how multimodality fusion techniques can improve the overall performance of the system.
+
+
+\section{Challenges}
+
+The ability to detect emotions is a difficult task for computers and even humans. One of the main challenges in the field of emotional analysis is the lack of datasets with authentic interactions that include information from various channels. Many existing data sets rely on subjects being asked to “act” or “simulate” emotions while being recorded, which can provide a controlled and simplified data collection process, but may not accurately represent real-life emotions. As a result, the performance of emotion recognition can suffer when models developed from these datasets are used in real-world situations where a mix of emotions is present. Another issue with existing data is that they often consist of isolated utterances or short dialogues, which do not consider the role of context in emotion perception and expression. Additionally, current emotional datasets are typically limited in size and in the number of subjects. The labeling of these datasets is prone to errors due to subjectivity in the evaluation, which implies the need for several evaluators, and the decision being made by majority vote.
+
+The most natural form of human communication is considered to be speech \cite{Deng2006}, consequently, recognizing emotions from speech is extremely useful, as the way we speak can convey a lot of information about our emotional state. A lot of research has been conducted in order to understand and extract low-level audio features that are good descriptors of the actual affective state, also known as feature engineering. It demands a deep understanding of the data, as it can cause loss of information from the original audio signal due to the fact it selects the most representative of the data.
+
+Although speech is a valuable input signal for emotion recognition, it is generally considered to be more effective to use multiple modalities. This is because distinct emotions can be expressed differently depending on the modality. For example, while happiness and excitement may be expressed through smiling, laughing, and high-pitched speech, sadness may be expressed through crying, a low-pitched voice, and a slumped posture. It can also make the system more robust to noisy information from some modalities, e.g., background noises, light, blur, etc. Consequently, building multimodal systems introduces additional complexities, such as fusing different modalities and understanding how each source affects the output, including dealing with noisy or even faulty data. In addition, each input source, brings its own biases and covariates, for example, the speech modality has biases toward gender, age, and language. Previous studies have also shown that facial emotion recognition programs fail the racial bias test and have trouble reading faces with darker skin tones \cite{hagerty2021}.
+
+More challenges arise when building an emotion recognizer to be used on a video conference system. It requires sophisticated algorithms that can deal with spontaneous and dynamic interactions, as well as potential privacy concerns. Analyzing these systems at different times, in real-time or offline, can provide useful insights. Real-time analysis can be useful in specific contexts, but achieving high accuracy is more demanding. Another option is to process data in specific timed intervals.
+
+\section{Organization}
+
+This document is composed of three chapters.
+
+The introduction chapter \ref{chapter:introduction} begins by briefly presenting the emotion recognition area and explaining the main objectives and challenges of this dissertation.
+
+The \ac{sota} chapter \ref{chapter:soa} describes previous work in the area of emotion recognition and speech analysis, providing background information and discusses related concepts, including emotion, emotional datasets, speech, and its audio features, \ac{ser} strategies and applications, software tools, etc.
+
+The proposal chapter \ref{chapter:prop} outlines the workflow, schedule, and methodology that will be followed during the development of the research.
+
+%Chapter \ref{chapter:strat} presents the developed emotion recognition strategies and describes their process. This chapter also evaluates different models and compares their performance.
+
+%Based on the previously settled models, in chapter \ref{chapter:data_study} we will analyze potential data biases, such as gender, and explore the quality of the used data.
+
+%The sixth chapter presents a \ac{ser} model applied in a video conference system, detailing its implementation and results. The next chapter \ref{chapter:fusion} details the fusion model using the audio and visual modalities, studying the significance of prioritizing one over the other in different contexts.
+
+%The discussion chapter, discusses the accomplishment of the objectives, with remarks regarding the development process, obtained results, and suggestions for the utilized dataset(s).

@@ -1,0 +1,20 @@
+[0] Config.pm:306> INFO - This is Biber 2.18
+[0] Config.pm:309> INFO - Logfile is 'matter.blg'
+[100] biber-MSWIN32:340> INFO - === 
+[135] Biber.pm:418> INFO - Reading 'matter.bcf'
+[269] Biber.pm:978> INFO - Found 105 citekeys in bib section 0
+[282] Biber.pm:4401> INFO - Processing section 0
+[292] Biber.pm:4592> INFO - Looking for bibtex file 'bib/references.bib' for section 0
+[336] bibtex.pm:1713> INFO - LaTeX decoding ...
+[440] bibtex.pm:1518> INFO - Found BibTeX data source 'bib/references.bib'
+[870] Biber.pm:4592> INFO - Looking for bibtex file 'bib/rfc.bib' for section 0
+[1039] bibtex.pm:1713> INFO - LaTeX decoding ...
+[9317] bibtex.pm:1518> INFO - Found BibTeX data source 'bib/rfc.bib'
+[9766] UCollate.pm:68> INFO - Overriding locale 'pt-PT' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[9766] UCollate.pm:68> INFO - Overriding locale 'pt-PT' defaults 'variable = shifted' with 'variable = non-ignorable'
+[9766] Biber.pm:4221> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'pt-PT'
+[9766] Biber.pm:4227> INFO - No sort tailoring available for locale 'pt-PT'
+[9833] bbl.pm:654> INFO - Writing 'matter.bbl' with encoding 'UTF-8'
+[9899] bbl.pm:757> INFO - Output to matter.bbl
+[9899] Biber.pm:130> WARN - I didn't find a database entry for 'scikit-learn' (section 0)
+[9899] Biber.pm:132> INFO - WARNINGS: 1

@@ -1,0 +1,29 @@
+\section{Audio Preprocessing}
+
+To prepare the collected audio data for use in machine learning models, audio preprocessing techniques are required. In this section, we will explore important aspects of audio preprocessing: noise reduction, feature extraction, analysis, and selection.
+
+\subsection{Noise Reduction}
+
+Spectral Gating: Common strategy for denoising music by gating the signal only on high level sounds.
+
+Noisereduce is a noise reduction algorithm in python that reduces noise in time-domain signals like speech, bioacoustics, and physiological signals. It relies on a method called "spectral gating" which is a form of Noise Gate. It works by computing a spectrogram of a signal (and optionally a noise signal) and estimating a noise threshold (or gate) for each frequency band of that signal/noise. That threshold is used to compute a mask, which gates noise below the frequency-varying threshold.
+
+Non-stationary Noise Reduction
+The non-stationary noise reduction algorithm is an extension of the stationary noise reduction algorithm, but allowing the noise gate to change over time.
+When you know the timescale that your signal occurs on (e.g. a bird call can be a few hundred milliseconds), you can set your noise threshold based on the assumption that events occuring on longer timescales are noise.
+This algorithm was motivated by a recent method in bioacoustics called Per-Channel Energy Normalization.
+Steps of the Non-stationary Noise Reduction algorithm
+A spectrogram is calculated over the signal
+A time-smoothed version of the spectrogram is computed using an IIR filter aplied forward and backward on each frequency channel.
+A mask is computed based on that time-smoothed spectrogram
+The mask is smoothed with a filter over frequency and time
+The mask is appled to the spectrogram of the signal, and is inverted
+
+$nr_x = nr.reduce_noise(y=x, sr=sr, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1)$
+
+
+\subsection{Audio Trim}
+
+3. Trim silence in the beginning and end.
+30 decibels and lower are considered as silence
+

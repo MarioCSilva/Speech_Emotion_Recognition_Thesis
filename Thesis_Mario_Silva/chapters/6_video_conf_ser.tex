@@ -1,0 +1,53 @@
+\chapter{\acl{ser} on a video conference system}
+\label{chapter:ser_conf}
+
+\section{Audio Pipeline}
+
+
+
+\subsection{Noise reduction}
+
+TODO: TESTAR DIFERENTES RESULTADOS DE PARAMETROS QUE MANTENHAM O SOM MINIMANTE ALTO SO PARA TER A CERTEZA QUE N VALE A PENA
+
+https://pypi.org/project/noisereduce/
+
+In real life, the noise present in the environment is captured along with the speech signal. This affects the recognition rate, hence some noise reduction techniques must be used to eliminate or reduce the noise. Minimum mean square error and log-spectral amplitude MMSE (LogMMSE) estimators are the most successfully applied methods for noise reduction.
+
+
+\subsection{\acl{vad*}}
+
+https://thegradient.pub/one-voice-detector-to-rule-them-all/
+
+https://github.com/snakers4/silero-vad
+
+https://github.com/wiseman/py-webrtcvad
+
+The detection of the presence of voiced speech among various unvoiced speech and silence is called endpoint detection, speech detection, or voice activity detection.
+
+The performance of the detection algorithm could affect the accuracy of the system. The goal is to detect silent and noisy frames that are potentially irrelevant in terms of \ac{ser}, this will also decrease the complexity and increase the accuracy of the model. The most widely used methods for voice activity detection are zero-crossing rate, short-time energy, and auto-correlation method.
+
+Zero crossing rate is the rate at which a signal changes its sign from positive to negative or vice versa within a given time frame.
+
+The voiced speech has high energy due to its periodicity, while low energy is observed in the unvoiced speech.
+
+The auto-correlation method provides a measure of similarity between a signal and itself as a function of delay. It is used to find repeating patterns. Because of its periodic nature, voiced signals can be detected using the auto-correlation method.
+
+\subsection{Speech Segmentation}
+
+Speech segmentation, also known as framing, is the process in which continuous speech signals are partitioned into segments.
+
+As mentioned previously, emotions are usually short-lived, and the speech remains invariant for a brief period. By segmenting this data, it is possible to obtain local features of emotions, hence, frames with a short range of length are suitable for classifiers while maintaining the emotional information in a continuous speech.
+
+%\subsection{Windowing}
+%Windowing is a classical method in signal processing, and it refers to splitting the input signal into temporal segments. 
+%After framing the speech signal, a window function is generally applied to the segments, to reduce the effects of leakages that occur during the Fast Fourier Transform (FFT) of data caused by discontinuities at the edge of the signals.
+%Windowing functions are smooth functions that go to zero at the borders. By multiplying the input signal with a window function, the windowing function also goes to zero at the border such that the discontinuity at the edge becomes invisible. Windowing does thus change the signal, but the change is designed such that its effect on signal statistics is minimized \cite{backstrom2019}.
+%\subsection{Normalization}
+%Feature normalization is an important step used to reduce speaker and recording variability without losing the discriminative strength of the features. By using feature normalization, the generalization ability of features is increased. The most widely used normalization method is z-normalization (standard score).
+
+
+\section{Results and Discussion}
+
+
+
+
