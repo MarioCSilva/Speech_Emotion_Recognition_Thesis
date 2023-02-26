@@ -6,7 +6,7 @@
 
 Feature extraction is an essential component in audio analysis tasks, as it allows the transformation of raw audio data into a set of informative features that can capture key characteristics of the signal.
 
-In this regard, the widely-used Librosa toolkit was employed to extract various audio features, which were subsequently processed using statistical metrics. The extracted features and associated metrics are summarized in Table \ref{table:extractedFeat}, having in total, extracted 327 features.
+In this regard, the widely-used Librosa toolkit was employed to extract various audio features, from the audio files of the eNTERFACE'05 dataset, which were subsequently processed using statistical metrics. The extracted features and associated metrics are summarized in Table \ref{table:extractedFeat}, having in total, extracted 327 features.
 
 \begin{table}[h]
 	\centering
@@ -92,7 +92,7 @@ Figure \ref{fig:zcrAreaSameSubj} displays six zero crossing rates of one subject
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{figs/4_1_traditional/zcr_male_same_subject.png}
+	\includegraphics[width=.8\linewidth]{figs/4_1_traditional/zcr_male_same_subject.png}
 	\caption{Zero crossing rate wave plots with a surrounding area of a single male subject and sentence for all different emotions.}
 	\label{fig:zcrAreaSameSubj}
 \end{figure}
@@ -160,13 +160,13 @@ A high correlation elimination was performed by selecting every pair features wi
 
 Along this process, it became necessary to choose a model to be used in computanioally expensive feature selection methods. Consequently, several estimators were tested for their performance in classifying emotions.
 
-To this end, we conducted 5-fold cross-validation and compared the mean and standard deviation accuracies of all folds, as well as the total execution time for various classifiers from the scikit-learn library \cite{scikit-learn}, using the features obtained after the previous process, as shown in Table \ref{tab:modelsPerformance}.
+To this end, we conducted 5-fold cross-validation and compared the mean and standard deviation accuracies of all folds, as well as the total execution time for various classifiers from the scikit-learn library \cite{pedregosa2011scikit}, using the features obtained after the previous process, as shown in Table \ref{tab:modelsPerformance}.
 
 \begin{table}[H]
 	\caption{Performance of various classifiers in 5-fold cross-validation using the 97 features obtained after high correlation elimination.}
 	\centering
 	\label{tab:modelsPerformance}
-	\begin{tabular}{lccc}
+	\begin{tabular}{lrrr}
 		\toprule
 		Classifiers &   Mean Accuracies &   Standard Deviation Accuracies & Total Time (s)\\
 		\midrule
@@ -186,7 +186,7 @@ To this end, we conducted 5-fold cross-validation and compared the mean and stan
 Based on the evaluation results, the Ridge classifier was chosen for further analysis. This model exhibited the best prediction metrics and was also the fastest among all the evaluated classifiers. Therefore, it was deemed suitable for performing computationally expensive feature selection methods.
 
 
-\subsubsection{Feature Elimination with Backwards Propagation}
+\subsubsection{Backwards Selection}
 
 In the pursuit of completing the feature selection process, a sequential feature selection with backward propagation was employed. This method involves performing a 5-fold cross-validation with the previously selected Ridge classifier, using all features except one, and then removes one feature based on the lowest mean accuracy of the 5 folds. This iterative process continues until only one feature remains.
 
@@ -225,52 +225,120 @@ This process led to the elimination of 62 features from the initial set of 97 ob
 \end{table}
 
 
+\subsubsection{Feature Selection Evaluation}
 
-\subsubsection{Testing Classifiers}\label{metrics}
-
-Finally, we intended to corroborate the quality of the feature selection. To do so, several evaluation metrics were calculated from the estimations: \begin{enumerate*}
-	\item Accuracy
-	\item Macro F1
-	\item Precision
-	\item Recall
-	\item Hamming
-	\item Matthews Correlation Coefficient (MCC)
-\end{enumerate*}
-
-A series of predictions were performed and plotted the confusion matrix of the predictions \ref{confusionMatrices}, furthermore, evaluation metrics were also calculated, as the table \ref{tab:acc} shows. 
-
-In the first situation, a Random Forest model was trained with 194 of all the initial features (case 1), secondly, trained with the 50 features after the high correlation elimination (case 2), then, with the remaining 24 features after both the high correlation elimination, and, the feature elimination with backward propagation (case 3).
-
-Moreover, one vs rest, also known as one vs all classifier, was implemented. This strategy consisted in fitting one Random Forest classifier per label. For each classifier, the label is fitted against all the other labels. For this strategy, it used all 194 initial features (case 4), and, the same of case 3, as input for each classifier (case 5).
-
+To assess the feature selection quality on the development dataset, we trained and evaluated the predictions of a Ridge Classifier model with different sets of features, using accuracy and macro f1-score as the evaluation metrics. The results are presented in Table \ref{tab:acc}. Additionally, we plotted the confusion matrix of the predictions, which can be found in Appendix \ref{confusionMatrices}.
 
 \begin{table}[H]
-	\caption{Predictions' Evaluations Metrics with Different Strategies and Input Data}
+	\caption{Evaluation Metrics of a Ridge Classifer Predictions Using Different Sets of Features}
 	\centering
 	\label{tab:acc}
-	\begin{tabular}{ccccccccc}
+	\begin{tabular}{lrrr}
 		\toprule
-		Case & N.º of Features & Accuracy & Macro F1 & Precision & Recall & MCC. \\
+		Feature Selection Method & N.º of Features & Accuracy & Macro F1 \\
 		\midrule
-		(1) & 194 & 0.461 & 0.453 & 0.456 & 0.461 & 0.354\\
-		(2) &  50 & 0.417 & 0.408 & 0.411 & 0.417 & 0.302\\
-		(3) &  24 & 0.417 & 0.411 & 0.413 & 0.417 & 0.302\\
-		(4) & 194 & 0.450 & 0.440 & 0.443 & 0.450 & 0.342\\
-		(5) &  24 & 0.433 & 0.424 & 0.426 & 0.433 & 0.321\\
+		None & 327 & 0.640 & 0.639 \\
+		High Correlation Elimination & 97 & 0.652 & 0.649 \\
+		\begin{tabular}{@{}l@{}}High Correlation Elimination \&\\Backward selection\end{tabular} & 35 & 0.713 & 0.710 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+The results indicate that there is not a significant change in the metrics between the initial set of extracted features and the 97 features obtained after the high feature correlation elimination, despite the elimination of 70\% of the initial set. Moreover, applying a backward selection technique to these 97 features yielded optimal results, slightly improving both metrics and reducing the original set by approximately 90\%.
+
+
+
+
+\subsection{Classifiers Evaluation and Selection}
+
+\subsubsection{Evaluation Strategy}
+TODO: explain each metric maybe
+
+Evaluating a model is an essential step, since a wrongful evaluation may lead to deception in terms of the results obtained. It should be uniform for every model, and, it should be as meaningful as possible to the classification objective.
+
+As mentioned previously, for this part and the subsequent parts of the \ac{ser} development, the second dataset \ac{iemo} is the one under use.
+
+For the reasons above, it was decided to utilize 5-fold cross-validation, and, in terms of metrics, we decided to calculate 5 folds averages accuracy, macro-f1 score, precision, recall, and \ac{mcc}. A confusion matrix of the predicted and real labels was also plotted, since it provides helpful insights, not only into the errors being made by the classifier but also, the types of errors occurring.
+
+These were also the most recurred methods in state-of-the-art research, which provides more fairness to model comparisons.
+
+\subsubsection{Classifier Selection}
+
+An Automatic Machine Learning technique, namely Auto-SKLearn ensemble model \cite{feurerneurips15a}, was employed to search for the best models and ensembles by exploring a vast space of possible algorithms and hyperparameters using a meta-learning approach.
+
+After training the Auto-SKLearn model, the most influential classifiers of the ensemble were identified, resulting in an ensemble with 9 classifiers, including Random Forests with different hyperparameters, Linear Discriminant Analysis, Histogram-Based Gradient Boosting, Multilayer Perceptron, and Linear Passive Aggressive. Each model present in the ensemble was then tested and explored.
+
+Next, a simple Convolutional Neural Network was tested, and another AutoML technique, AutoKeras \cite{jin2019auto}, was applied to create an optimized deep learning model.
+
+The results obtained from the tested models were compiled in Table \ref{tab:models}. The highest ranked Random Forest from the Auto-SKLearn ensemble model achieved the best results, leading to its selection as the base estimator of an AdaBoost classifier, improving slightly the overall Random Forest results.
+
+\begin{table}[H]
+	\centering
+	\caption{Tested Classification Models Performance on IEMOCAP.}
+	\label{tab:models}
+	\begin{tabular}{lccccc}
+		\toprule
+		Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} \\
+		\midrule
+		
+		AdaBoost & 56.92+-1.56 & 57.4 & 58.66 & 56.98 & 0.416 \\
+		
+		Random Forest & 56.54+-1.69 & 57.01 & 58.25 & 56.60 & 0.41 \\
+		
+		Histogram Gradient Boosting & 55.58+-0.83 & 56.38 & 57.08 & 56.0 &  0.397 \\
+		
+		Balanced Random Forest & 54.64+-0.74 & 54.97 & 54.65 & 57.59 & 0.402 \\
+		
+		\ac{lstm} & 49.92+-0.48 & 50.32 & 51.16 & 50.58 & 0.324 \\
+		
+		\ac{cnn} & 48.87+-1.99 & 49.28  & 51.71 & 48.36 & 0.302 \\
+		
+		Linear Discriminant Analysis & 47.55+-0.9 & 48.24 & 48.79& 47.94 & 0.288 \\
+		
+		Ridge & 47.01+-0.82 & 47.43 & 47.93 & 47.28 & 0.281 \\
+		
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 
-It is possible to observe from the table \ref{tab:acc}, that, there is some loss of accuracy from the first situation to the rest, and, the second and third situations have almost the same results. From this, if the short loss in prediction performance could be an acceptable price to pay. the third situation is optimal since there are 170 fewer features used as input data, therefore, speeding up the prediction calculation time.
 
-In addition, the 4th case and 5th cases show similar results to the 1st case and 3rth cases respectively, so, it was concluded that using a one vs rest wasn't a good strategy, since the prediction performance wasn't improved a lot, and it increased the computational cost by using more classifiers.
+\begin{table}[H]
+	\centering
+	\caption{\ac{sota} Traditional Classification Models Performance on \ac{iemo}.}
+	\label{tab:modelssoa}
+	\begin{tabular}{lcr}
+		\toprule
+		Model                        &   Input &   Accuracy \\
+		\midrule
+		
+		Dilated Residual Network \cite{Li_2019}	& Audio Features & 67.4 \\
+		
+		\ac{rnn} W/ Attention \cite{Lu_2020} & Audio and Text Features & 72.6 \\
+		
+		Deep \ac{cnn} \cite{Issa_2020} & 193 Audio Features & 64.30 \\
+		
+		\bottomrule
+	\end{tabular}
+\end{table}
 
 
-\subsection{Conclusion}
+The application of data preprocessing techniques to clean the audio data was performed to handle different technical settings. However, this process can potentially worsen the predictions by removing necessary information from the audio signal that might be required for accurate classification. In some cases, noise may be part of the signal of interest, and removing it may cause the algorithm to misinterpret the remaining signal.
 
-During the feature analysis, most of the displayed graphs represent univariate studies of the features, therefore, if, visually, a feature is perceived as a bad descriptor, it doesn't invalidate its usage for the emotion classification problem, and it is essential to employ some other multivariate studies.
+The state-of-the-art results presented in Table \ref{tab:modelssoa} are not directly comparable, as authors use different data and evaluation methodologies. Additionally, some authors do not consider the emotion of excitement as happiness or perform different validation methods compared to the chosen strategies.
 
-The data were also analyzed in terms of gender bias, by comparing the data of male and female subjects' audios, and, reasoned that the dataset does not contain sufficient data to take any well-founded conclusion.
+\subsubsection{Conclusion}
 
-\section{Classifiers Evaluation and Selection}
+Upon analyzing the results of the tested models, AdaBoost with Random Forest as the base estimator is the best candidate thus far in the research, reaching an average accuracy of 56.92\%, while utilizing only 35 audio features which makes it a model that is relatively simple, fast to train and make predictions, while also being generalized to different datasets due to the preprocessing techniques applied. The Python code for the model was implemented using the SK-Learn library and is presented on the following  Code Snippet \ref{tra:code}.
+
+\begin{listing}[H]
+	\begin{minted}{python}
+AdaBoostClassifier(
+  estimator=RandomForestClassifier(
+    bootstrap=False, max_features=6, min_samples_leaf=2, min_samples_split=3, n_estimators=512
+  )
+)
+	\end{minted}
+	\caption{Python code for the selected AdaBoost classifier using the traditional-based \ac{ser} approach.}
+	\label{tra:code}
+\end{listing}

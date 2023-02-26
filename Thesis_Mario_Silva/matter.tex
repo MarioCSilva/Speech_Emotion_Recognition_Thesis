@@ -82,11 +82,11 @@
 
 % Redefine code boxes
 \ifthenelse{\equal{\useoverleaf}{0}}
-{\usepackage[outputdir=build]{minted}}
-{\usepackage{minted}}%
+{\usepackage[cache=false]{minted}}
+{\usepackage[cache=false]{minted}}%
 
 \addto\captionsportuguese{%
-  \renewcommand\listingscaption{Código}
+  \renewcommand\listingscaption{Code Snippet}
 }
 \fvset{fontsize=\footnotesize} % Make Code blocks smaller than text
 \usepackage{csquotes}
@@ -332,9 +332,9 @@
 %\include{chapters/1_introduction.tex}
 %\include{chapters/2_state_of_the_art.tex}
 %\include{chapters/3_methodology.tex}
-\include{chapters/4_1_datasets.tex}
-\include{chapters/4_2_preprocessing.tex}
-\include{chapters/4_3_traditional.tex}
+%\include{chapters/4_1_datasets.tex}
+%\include{chapters/4_2_preprocessing.tex}
+%\include{chapters/4_3_traditional.tex}
 \include{chapters/4_4_deep_learning.tex}
 %\include{chapters/5_data_stratification.tex}
 %\include{chapters/6_video_conf_ser.tex}

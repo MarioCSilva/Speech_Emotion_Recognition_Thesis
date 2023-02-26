@@ -1,29 +1,27 @@
 \section{Audio Preprocessing}
+TODO: rewrite this with more details.
 
-To prepare the collected audio data for use in machine learning models, audio preprocessing techniques are required. In this section, we will explore important aspects of audio preprocessing: noise reduction, feature extraction, analysis, and selection.
+Audio preprocessing is an essential step in preparing collected audio data for use in machine learning models. The preprocessing techniques involve noise reduction, feature extraction, analysis, and selection. This section discusses important aspects of audio preprocessing, including noise reduction and audio trimming.
 
 \subsection{Noise Reduction}
 
-Spectral Gating: Common strategy for denoising music by gating the signal only on high level sounds.
+One common strategy for denoising music is spectral gating, which involves gating the signal only on high level sounds. Non-stationary noise reduction is an extension of stationary noise reduction that allows the noise gate to change over time. In this method, a spectrogram is calculated over the signal, and a time-smoothed version of the spectrogram is computed using an IIR filter applied forward and backward on each frequency channel. A mask is computed based on the time-smoothed spectrogram, which is then smoothed with a filter over frequency and time. The mask is applied to the spectrogram of the signal and then inverted.
 
-Noisereduce is a noise reduction algorithm in python that reduces noise in time-domain signals like speech, bioacoustics, and physiological signals. It relies on a method called "spectral gating" which is a form of Noise Gate. It works by computing a spectrogram of a signal (and optionally a noise signal) and estimating a noise threshold (or gate) for each frequency band of that signal/noise. That threshold is used to compute a mask, which gates noise below the frequency-varying threshold.
+To implement these noise reduction techniques, we recurred to the "noisereduce" library. This algorithm relies on the spectral gating method and estimates a noise threshold for each frequency band of the signal/noise. This threshold is used to compute a mask, which gates noise below the frequency-varying threshold. The Code Snippet \ref{nr:code} shows how we implemented the noise reduction technique.
 
-Non-stationary Noise Reduction
-The non-stationary noise reduction algorithm is an extension of the stationary noise reduction algorithm, but allowing the noise gate to change over time.
-When you know the timescale that your signal occurs on (e.g. a bird call can be a few hundred milliseconds), you can set your noise threshold based on the assumption that events occuring on longer timescales are noise.
-This algorithm was motivated by a recent method in bioacoustics called Per-Channel Energy Normalization.
-Steps of the Non-stationary Noise Reduction algorithm
-A spectrogram is calculated over the signal
-A time-smoothed version of the spectrogram is computed using an IIR filter aplied forward and backward on each frequency channel.
-A mask is computed based on that time-smoothed spectrogram
-The mask is smoothed with a filter over frequency and time
-The mask is appled to the spectrogram of the signal, and is inverted
-
-$nr_x = nr.reduce_noise(y=x, sr=sr, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1)$
+\begin{listing}[H]
+	\begin{minted}{python}
+noisereduce.reduce_noise(
+	y=y, sr=16000, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1
+)
+	\end{minted}
+	\caption{Python code for applying noise reduction using the noisereduce library}
+	\label{nr:code}
+\end{listing}
 
 
 \subsection{Audio Trim}
 
-3. Trim silence in the beginning and end.
-30 decibels and lower are considered as silence
+Trimming silence at the beginning and end of audio files is another important preprocessing step. By removing the silence from audio files, the resulting audio data will be more focused on the relevant audio content and will be easier to process by machine learning algorithms.
 
+Upon visually observing several waveplots we ended up considering 30 decibels or lower as silence and trimmed every audio file at the begining and end of each audio.

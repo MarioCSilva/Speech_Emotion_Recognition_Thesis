@@ -2,9 +2,20 @@
 \babel@toc {english}{}\relax
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {table}{\numberline {1.1}{\ignorespaces eNTERFACE'05 subjects nationalities\relax }}{1}{table.caption.7}%
-\contentsline {table}{\numberline {1.2}{\ignorespaces Extracted Audio Features and Statistical Functions Applied to Them\relax }}{4}{table.caption.9}%
-\contentsline {table}{\numberline {1.3}{\ignorespaces Performance of various classifiers in 5-fold cross-validation using the 97 features obtained after high correlation elimination.\relax }}{9}{table.caption.26}%
-\contentsline {table}{\numberline {1.4}{\ignorespaces Selected features.\relax }}{10}{table.caption.29}%
-\contentsline {table}{\numberline {1.5}{\ignorespaces Predictions' Evaluations Metrics with Different Strategies and Input Data\relax }}{11}{table.caption.31}%
+\addvspace {10pt}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Summary and description of emotion recognition datasets.\relax }}{7}{table.caption.10}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Overview on features commonly used for acoustic emotion recognition \blx@tocontentsinit {0}\cite {Schuller2011}.\relax }}{9}{table.caption.12}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Overview of audio classification articles with strategies.\relax }}{15}{table.caption.31}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Emotion recognition services for facial, textural, and speech contents \blx@tocontentsinit {0}\cite {Buitelaar2018}.\relax }}{17}{table.caption.33}%
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {4.1}{\ignorespaces eNTERFACE'05 subjects nationalities\relax }}{23}{table.caption.50}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Number of Audio Files Used per Emotion from the IEMOCAP dataset.\relax }}{24}{table.caption.52}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Extracted Audio Features and Statistical Functions Applied to Them\relax }}{27}{table.caption.53}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Performance of various classifiers in 5-fold cross-validation using the 97 features obtained after high correlation elimination.\relax }}{32}{table.caption.69}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Selected features.\relax }}{33}{table.caption.72}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Evaluation Metrics of a Ridge Classifer Predictions Using Different Sets of Features\relax }}{33}{table.caption.74}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Tested Classification Models Performance on IEMOCAP.\relax }}{34}{table.caption.78}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces \ac {sota} Traditional Classification Models Performance on \ac {iemo}.\relax }}{35}{table.caption.79}%
+\addvspace {10pt}
 \addvspace {10pt}
