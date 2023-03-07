@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_US
-\section{Traditional Feature-Based Classifier}
+\section{Traditional Feature-Based \ac{ser}}
 
 
 \subsection{Feature Extraction}
@@ -75,7 +75,7 @@ For example, figure \ref{fig:melBarPlot} shows clear differences in the mean val
 
 During the feature study process, it was observed the wave plots of some features surrounded by a small area above and below the original wave (defined through a selected threshold). This was done to corroborate how well the feature describes different emotions. A high degree of overlap between surrounding areas of a feature on a given emotion for different subjects could indicate that the feature is relevant for representing that emotion.
 
-The figure \ref{fig:zcrAreaOnly1} is an excerpt of the figure \ref{fig:zcrArea} in the appendix, and it demonstrates an example of this analysis for the zero crossing rate with 5 different subjects on the same sentence for the anger emotions.
+Figure \ref{fig:zcrAreaOnly1} is an excerpt of the figure \ref{fig:zcrArea} in the appendix, and it demonstrates an example of this analysis for the zero crossing rate with 5 different subjects on the same sentence for the anger emotions.
 
 From this graphic, it was observed that there is a sufficient amount of overlap between the surrounding areas for each emotion to conclude that the feature has some utility for describing each emotion. However, due to the different lengths of each audio segment, it is ambitious to guarantee this conclusion.
 
@@ -133,9 +133,9 @@ The objective is to choose a smaller set of features that retain enough informat
 
 \subsubsection{High Correlation Elimination}
 
-Correlation among our extracted features is common since many of them use the same audio descriptor but with a different metric applied to them. Therefore, a correlation matrix for all 327 extracted features was calculated using the Pearson method, presented in the figure \ref{allAudioFeat}.
+Correlation among our extracted features is common since many of them use the same audio descriptor but with a different metric applied to them. Therefore, a correlation matrix for all 327 extracted features was calculated using the Pearson method, presented in figure \ref{allAudioFeat}.
 
-A high correlation elimination was performed by selecting every pair features with a Pearson correlation coefficient absolute value of 0.6 or above, then it was removed the feature with the highest average correlation value with all the other features. This process resulted in the elimination of 230 features, leaving 97 features for subsequent analysis. The correlation matrix after the feature selection process is presented in the figure \ref{fig:highAudioFeat}.
+A high correlation elimination was performed by selecting every pair of features with a Pearson correlation coefficient absolute value of 0.6 or above, then it was removed the feature with the highest average correlation value with all the other features. This process resulted in the elimination of 230 features, leaving 97 features for subsequent analysis. The correlation matrix after the feature selection process is presented in figure \ref{fig:highAudioFeat}.
 
 \begin{figure}
 	\centering
@@ -158,7 +158,7 @@ A high correlation elimination was performed by selecting every pair features wi
 
 \subsubsection{Selecting an Initial Classifier}
 
-Along this process, it became necessary to choose a model to be used in computanioally expensive feature selection methods. Consequently, several estimators were tested for their performance in classifying emotions.
+Along this process, it became necessary to choose a model to be used in computationally expensive feature selection methods. Consequently, several estimators were tested for their performance in classifying emotions.
 
 To this end, we conducted 5-fold cross-validation and compared the mean and standard deviation accuracies of all folds, as well as the total execution time for various classifiers from the scikit-learn library \cite{pedregosa2011scikit}, using the features obtained after the previous process, as shown in Table \ref{tab:modelsPerformance}.
 
@@ -188,9 +188,9 @@ Based on the evaluation results, the Ridge classifier was chosen for further ana
 
 \subsubsection{Backwards Selection}
 
-In the pursuit of completing the feature selection process, a sequential feature selection with backward propagation was employed. This method involves performing a 5-fold cross-validation with the previously selected Ridge classifier, using all features except one, and then removes one feature based on the lowest mean accuracy of the 5 folds. This iterative process continues until only one feature remains.
+In the pursuit of completing the feature selection process, a sequential feature selection with backward propagation was employed. This method involves performing a 5-fold cross-validation with the previously selected Ridge classifier, using all features except one, and then removing one feature based on the lowest mean accuracy of the 5 folds. This iterative process continues until only one feature remains.
 
-A method was then developed to select the furthest highest accuracy. This method involves finding a maximum and multiplying it by a threshold value of $0.99$ to balance accuracy with the number of removed features. Figure \ref{fig:backProp1} displays the mean accuracies obtained at each step and the chosen furthest highest accuracy.
+A method was then developed to select the furthest and highest accuracy. This method involves finding a maximum and multiplying it by a threshold value of $0.99$ to balance accuracy with the number of removed features. Figure \ref{fig:backProp1} displays the mean accuracies obtained at each step and the chosen furthest highest accuracy.
 
 \begin{figure}[H]
 	\centering
@@ -206,21 +206,21 @@ This process led to the elimination of 62 features from the initial set of 97 ob
 	\centering
 	\label{tab:selectedFeat}
 	\resizebox{\textwidth}{!}{%
-	\begin{tabular}{ll}
-		\toprule
-		Metric & Audio Features \\
-		\midrule
-		75th Percentile & MFCC-2, MFCC-4, MFCC-13, MFCC-18, Spectral Bandwidth, Spectral Roll-Off\\
-		Variance & MFCC-3, MFCC-4, MFCC-10, MFCC-12, Spectral Bandwidth, Mel-Spectrogram\\
-		Maximum & MFCC-4, MFCC-6, MFCC-7, MFCC-9, MFCC-14, Tonnetz\\
-		Skew & MFCC-7, MFCC-9, MFCC-11, MFCC-13, MFCC-20\\
-		Kurtosis & MFCC-1, MFCC-2, MFCC-3, MFCC-4, MFCC-9\\
-		Median & MFCC-4, MFCC-5, MFCC-20\\
-		Standard Deviation & MFCC-1, MFCC-6\\
-		Mean & Spectral Contrast\\
-		Spikes & Zero-Crossing-Rate\\
-		\bottomrule
-	\end{tabular}
+		\begin{tabular}{ll}
+			\toprule
+			Metric & Audio Features \\
+			\midrule
+			75th Percentile & MFCC-2, MFCC-4, MFCC-13, MFCC-18, Spectral Bandwidth, Spectral Roll-Off\\
+			Variance & MFCC-3, MFCC-4, MFCC-10, MFCC-12, Spectral Bandwidth, Mel-Spectrogram\\
+			Maximum & MFCC-4, MFCC-6, MFCC-7, MFCC-9, MFCC-14, Tonnetz\\
+			Skew & MFCC-7, MFCC-9, MFCC-11, MFCC-13, MFCC-20\\
+			Kurtosis & MFCC-1, MFCC-2, MFCC-3, MFCC-4, MFCC-9\\
+			Median & MFCC-4, MFCC-5, MFCC-20\\
+			Standard Deviation & MFCC-1, MFCC-6\\
+			Mean & Spectral Contrast\\
+			Spikes & Zero-Crossing-Rate\\
+			\bottomrule
+		\end{tabular}
 	}
 \end{table}
 
@@ -230,7 +230,7 @@ This process led to the elimination of 62 features from the initial set of 97 ob
 To assess the feature selection quality on the development dataset, we trained and evaluated the predictions of a Ridge Classifier model with different sets of features, using accuracy and macro f1-score as the evaluation metrics. The results are presented in Table \ref{tab:acc}. Additionally, we plotted the confusion matrix of the predictions, which can be found in Appendix \ref{confusionMatrices}.
 
 \begin{table}[H]
-	\caption{Evaluation Metrics of a Ridge Classifer Predictions Using Different Sets of Features}
+	\caption{Evaluation Metrics of a Ridge Classifier Predictions Using Different Sets of Features}
 	\centering
 	\label{tab:acc}
 	\begin{tabular}{lrrr}
@@ -268,9 +268,9 @@ An Automatic Machine Learning technique, namely Auto-SKLearn ensemble model \cit
 
 After training the Auto-SKLearn model, the most influential classifiers of the ensemble were identified, resulting in an ensemble with 9 classifiers, including Random Forests with different hyperparameters, Linear Discriminant Analysis, Histogram-Based Gradient Boosting, Multilayer Perceptron, and Linear Passive Aggressive. Each model present in the ensemble was then tested and explored.
 
-Next, a simple Convolutional Neural Network was tested, and another AutoML technique, AutoKeras \cite{jin2019auto}, was applied to create an optimized deep learning model.
+Next, a simple Convolutional Neural Network was tested, and another AutoML technique, AutoKeras \cite{jin2019auto}, was applied to create an optimized deep-learning model.
 
-The results obtained from the tested models were compiled in Table \ref{tab:models}. The highest ranked Random Forest from the Auto-SKLearn ensemble model achieved the best results, leading to its selection as the base estimator of an AdaBoost classifier, improving slightly the overall Random Forest results.
+The results obtained from the tested models were compiled and exhibited in Table \ref{tab:models}. The highest-ranked Random Forest from the Auto-SKLearn ensemble model achieved the best results, leading to its selection as the base estimator of an AdaBoost classifier, improving slightly the overall Random Forest results.
 
 \begin{table}[H]
 	\centering
@@ -281,21 +281,21 @@ The results obtained from the tested models were compiled in Table \ref{tab:mode
 		Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} \\
 		\midrule
 		
-		AdaBoost & 56.92+-1.56 & 57.4 & 58.66 & 56.98 & 0.416 \\
+		AdaBoost & 56.92$\pm$1.56 & 57.4 & 58.66 & 56.98 & 0.416 \\
 		
-		Random Forest & 56.54+-1.69 & 57.01 & 58.25 & 56.60 & 0.41 \\
+		Random Forest & 56.54$\pm$1.69 & 57.01 & 58.25 & 56.60 & 0.41 \\
 		
-		Histogram Gradient Boosting & 55.58+-0.83 & 56.38 & 57.08 & 56.0 &  0.397 \\
+		Histogram Gradient Boosting & 55.58$\pm$0.83 & 56.38 & 57.08 & 56.0 &  0.397 \\
 		
-		Balanced Random Forest & 54.64+-0.74 & 54.97 & 54.65 & 57.59 & 0.402 \\
+		Balanced Random Forest & 54.64$\pm$0.74 & 54.97 & 54.65 & 57.59 & 0.402 \\
 		
-		\ac{lstm} & 49.92+-0.48 & 50.32 & 51.16 & 50.58 & 0.324 \\
+		\ac{lstm} & 49.92$\pm$0.48 & 50.32 & 51.16 & 50.58 & 0.324 \\
 		
-		\ac{cnn} & 48.87+-1.99 & 49.28  & 51.71 & 48.36 & 0.302 \\
+		\ac{cnn} & 48.87$\pm$1.99 & 49.28  & 51.71 & 48.36 & 0.302 \\
 		
-		Linear Discriminant Analysis & 47.55+-0.9 & 48.24 & 48.79& 47.94 & 0.288 \\
+		Linear Discriminant Analysis & 47.55$\pm$0.9 & 48.24 & 48.79& 47.94 & 0.288 \\
 		
-		Ridge & 47.01+-0.82 & 47.43 & 47.93 & 47.28 & 0.281 \\
+		Ridge & 47.01$\pm$0.82 & 47.43 & 47.93 & 47.28 & 0.281 \\
 		
 		\bottomrule
 	\end{tabular}
@@ -329,15 +329,15 @@ The state-of-the-art results presented in Table \ref{tab:modelssoa} are not dire
 
 \subsubsection{Conclusion}
 
-Upon analyzing the results of the tested models, AdaBoost with Random Forest as the base estimator is the best candidate thus far in the research, reaching an average accuracy of 56.92\%, while utilizing only 35 audio features which makes it a model that is relatively simple, fast to train and make predictions, while also being generalized to different datasets due to the preprocessing techniques applied. The Python code for the model was implemented using the SK-Learn library and is presented on the following  Code Snippet \ref{tra:code}.
+Upon analyzing the results of the tested models, AdaBoost with Random Forest as the base estimator is the best candidate thus far in the research, reaching an average accuracy of 56.92\% while utilizing only 35 audio features which makes it a model that is relatively simple, fast to train and make predictions, while also being generalized to different datasets due to the preprocessing techniques applied. The Python code for the model was implemented using the SK-Learn library and is presented on the following  Code Snippet \ref{tra:code}.
 
 \begin{listing}[H]
 	\begin{minted}{python}
-AdaBoostClassifier(
-  estimator=RandomForestClassifier(
-    bootstrap=False, max_features=6, min_samples_leaf=2, min_samples_split=3, n_estimators=512
-  )
-)
+		AdaBoostClassifier(
+		estimator=RandomForestClassifier(
+		bootstrap=False, max_features=6, min_samples_leaf=2, min_samples_split=3, n_estimators=512
+		)
+		)
 	\end{minted}
 	\caption{Python code for the selected AdaBoost classifier using the traditional-based \ac{ser} approach.}
 	\label{tra:code}

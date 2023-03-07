@@ -2,9 +2,9 @@
 \babel@toc {portuguese}{}\relax
 \babel@toc {english}{}\relax
 \contentsline {chapter}{Contents}{i}{section*.1}%
-\contentsline {chapter}{List of Figures}{iii}{section*.4}%
-\contentsline {chapter}{List of Tables}{v}{section*.5}%
-\contentsline {chapter}{Glossary}{vii}{chapter*.7}%
+\contentsline {chapter}{List of Figures}{iii}{section*.5}%
+\contentsline {chapter}{List of Tables}{v}{section*.10}%
+\contentsline {chapter}{Glossary}{vii}{chapter*.11}%
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Objectives}{2}{section.1.2}%
@@ -17,9 +17,9 @@
 \contentsline {section}{\numberline {2.2}Emotion Recognition Datasets}{6}{section.2.2}%
 \contentsline {section}{\numberline {2.3}\acl {ser}}{8}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Speech Features}{8}{subsection.2.3.1}%
-\contentsline {subsubsection}{Prosodic Features}{9}{section*.13}%
-\contentsline {subsubsection}{Spectral Features}{9}{section*.15}%
-\contentsline {subsubsection}{Voice Quality Features}{10}{section*.18}%
+\contentsline {subsubsection}{Prosodic Features}{9}{section*.17}%
+\contentsline {subsubsection}{Spectral Features}{9}{section*.19}%
+\contentsline {subsubsection}{Voice Quality Features}{10}{section*.21}%
 \contentsline {subsection}{\numberline {2.3.2}Strategies}{10}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Traditional Feature-Based \ac {ser}}{11}{subsection.2.3.3}%
 \contentsline {subsection}{\numberline {2.3.4}\acl {dl}-Based \ac {ser}}{13}{subsection.2.3.4}%
@@ -59,34 +59,37 @@
 \contentsline {section}{\numberline {4.2}Audio Preprocessing}{26}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Noise Reduction}{26}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Audio Trim}{26}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Traditional Feature-Based Classifier}{27}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Feature Extraction}{27}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Feature Analysis}{27}{subsection.4.3.2}%
-\contentsline {subsubsection}{Audio Signal Study}{27}{section*.54}%
-\contentsline {subsubsection}{Spikes Metric}{27}{section*.55}%
-\contentsline {subsubsection}{Bar Plots}{28}{section*.57}%
-\contentsline {subsubsection}{Wave Plots with Surrounding Areas}{28}{section*.59}%
-\contentsline {subsubsection}{Variation Plots}{29}{section*.62}%
-\contentsline {subsubsection}{Box Plots}{30}{section*.64}%
-\contentsline {subsection}{\numberline {4.3.3}Feature Selection}{30}{subsection.4.3.3}%
-\contentsline {subsubsection}{High Correlation Elimination}{31}{section*.66}%
-\contentsline {subsubsection}{Selecting an Initial Classifier}{32}{section*.68}%
-\contentsline {subsubsection}{Backwards Selection}{32}{section*.70}%
-\contentsline {subsubsection}{Feature Selection Evaluation}{33}{section*.73}%
-\contentsline {subsection}{\numberline {4.3.4}Classifiers Evaluation and Selection}{34}{subsection.4.3.4}%
-\contentsline {subsubsection}{Evaluation Strategy}{34}{section*.75}%
-\contentsline {subsubsection}{Classifier Selection}{34}{section*.77}%
-\contentsline {subsubsection}{Conclusion}{35}{section*.80}%
-\contentsline {section}{\numberline {4.4}Deep Learning Classifiers}{36}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Raw Audio as a Feature}{36}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}MFCC as a Feature}{36}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Mel-Spectrogram as a Feature}{36}{subsection.4.4.3}%
-\contentsline {section}{\numberline {4.5}Classifiers Discussion (pros \& cons)}{36}{section.4.5}%
-\contentsline {chapter}{\chapternumberline {5}Appendix}{37}{chapter.5}%
-\contentsline {section}{\numberline {.1}Audio and Descriptive Features Study}{37}{section.Alph0.1}%
-\contentsline {section}{\numberline {.2}Features Mean Values Overview}{39}{section.Alph0.2}%
-\contentsline {section}{\numberline {.3}Feature Interception Study}{41}{section.Alph0.3}%
-\contentsline {section}{\numberline {.4}Feature Variation Plots}{42}{section.Alph0.4}%
-\contentsline {section}{\numberline {.5}Confusion Matrices}{43}{section.Alph0.5}%
-\contentsline {section}{\numberline {.6}Something else}{44}{section.Alph0.6}%
-\contentsline {chapter}{Bibliography}{49}{appendix*.102}%
+\contentsline {section}{\numberline {4.3}Traditional Feature-Based \ac {ser}}{28}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Feature Extraction}{28}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Feature Analysis}{28}{subsection.4.3.2}%
+\contentsline {subsubsection}{Audio Signal Study}{28}{section*.55}%
+\contentsline {subsubsection}{Spikes Metric}{28}{section*.56}%
+\contentsline {subsubsection}{Bar Plots}{29}{section*.58}%
+\contentsline {subsubsection}{Wave Plots with Surrounding Areas}{29}{section*.60}%
+\contentsline {subsubsection}{Variation Plots}{30}{section*.63}%
+\contentsline {subsubsection}{Box Plots}{31}{section*.65}%
+\contentsline {subsection}{\numberline {4.3.3}Feature Selection}{31}{subsection.4.3.3}%
+\contentsline {subsubsection}{High Correlation Elimination}{32}{section*.67}%
+\contentsline {subsubsection}{Selecting an Initial Classifier}{33}{section*.69}%
+\contentsline {subsubsection}{Backwards Selection}{33}{section*.71}%
+\contentsline {subsubsection}{Feature Selection Evaluation}{34}{section*.74}%
+\contentsline {subsection}{\numberline {4.3.4}Classifiers Evaluation and Selection}{35}{subsection.4.3.4}%
+\contentsline {subsubsection}{Evaluation Strategy}{35}{section*.76}%
+\contentsline {subsubsection}{Classifier Selection}{35}{section*.78}%
+\contentsline {subsubsection}{Conclusion}{36}{section*.81}%
+\contentsline {section}{\numberline {4.4}\acl {dl}-Based \ac {ser}}{37}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Spectrogram as a Feature}{37}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Mel Spectrogram as a Feature}{37}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}\ac {mfccs} as a Feature}{37}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Classifiers}{37}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Numeric Data Classification}{37}{subsection.4.4.5}%
+\contentsline {subsection}{\numberline {4.4.6}Image Classification}{37}{subsection.4.4.6}%
+\contentsline {section}{\numberline {4.5}Classifiers Results and Discussion}{38}{section.4.5}%
+\contentsline {chapter}{\chapternumberline {5}Appendix}{41}{chapter.5}%
+\contentsline {section}{\numberline {.1}Audio and Descriptive Features Study}{41}{section.Alph0.1}%
+\contentsline {section}{\numberline {.2}Features Mean Values Overview}{43}{section.Alph0.2}%
+\contentsline {section}{\numberline {.3}Feature Interception Study}{45}{section.Alph0.3}%
+\contentsline {section}{\numberline {.4}Feature Variation Plots}{46}{section.Alph0.4}%
+\contentsline {section}{\numberline {.5}Confusion Matrices}{47}{section.Alph0.5}%
+\contentsline {section}{\numberline {.6}Something else}{52}{section.Alph0.6}%
+\contentsline {chapter}{Bibliography}{57}{appendix*.113}%
