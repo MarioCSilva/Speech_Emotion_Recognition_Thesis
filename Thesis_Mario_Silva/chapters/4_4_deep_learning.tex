@@ -3,9 +3,17 @@
 
 This section presents the exploration of using deep learning classifiers for audio-based emotion recognition, focusing on the use of various features for the classification task.
 
+\subsection{\acl{dl} Features}
+
 Initially, three different features were extracted from the raw audio signals, using the Librosa library. The numeric values of the extracted features were saved into a Pickle file, while the visual representation of the feature was saved as a Portable Network Graphic (PNG) file. The PNG file was generated using a Matplotlib figure with 100 dots per inch, without the axis and the frame. The color map used was \textit{viridis\_r}.
 
 The 2D deep learning models employed in this study required the input data to possess consistent dimensions. To this end, the numeric data of every feature used only the first 6 seconds of every audio file, with shorter audio signals padded with trailing zeros to achieve the required length.
+
+The first feature explored was the spectrogram. The Short-time Fourier transform (STFT) was used to calculate the spectrogram, using a windowed signal length of 2048, after padding with zeros. This resulted in matrices with a dimension of $1025x188$. The amplitude spectrogram was converted to a dB-scaled spectrogram, which was then used for the PNG file.
+
+Another feature explored was the Mel Spectrogram. For this, the previously calculated spectrogram was mapped onto the mel scale, using 256 Mel bands. This resulted in matrices with a dimension of $256x188$. The dB-scaled Mel Spectrogram was also used for the PNG file.
+
+The third feature explored was the \ac{mfccs} as they are commonly used for audio signal processing tasks due to their ability to capture the spectral characteristics of audio signals. 40 \ac{mfccs} were extracted from the previously calculated Mel Spectrogram, resulting in matrices with a dimension of $40x188$.
 
 These three used features are displayed in figure \ref{fig:dl_features}.
 
@@ -16,27 +24,20 @@ These three used features are displayed in figure \ref{fig:dl_features}.
 	\label{fig:dl_features}
 \end{figure}
 
-\subsection{Spectrogram as a Feature}
-
-The first feature explored was the spectrogram. The Short-time Fourier transform (STFT) was used to calculate the spectrogram, using a windowed signal length of 2048, after padding with zeros. This resulted in matrices with a dimension of $1025x188$. The amplitude spectrogram was converted to a dB-scaled spectrogram, which was then used for the PNG file.
-
-\subsection{Mel Spectrogram as a Feature}
-
-Another feature explored was the Mel Spectrogram. For this, the previously calculated spectrogram was mapped onto the mel scale, using 256 Mel bands. This resulted in matrices with a dimension of $256x188$. The dB-scaled Mel Spectrogram was also used for the PNG file.
-
-\subsection{\ac{mfccs} as a Feature}
-
-The third feature explored was the \ac{mfccs} as they are commonly used for audio signal processing tasks due to their ability to capture the spectral characteristics of audio signals. 40 \ac{mfccs} were extracted from the previously calculated Mel Spectrogram, resulting in matrices with a dimension of $40x188$.
 
 
+\subsection{Classifiers Evaluation and Selection}
+
+\subsubsection{Evaluation Strategy}
+
+The classifiers were trained using a Tesla P4 GPU on the Google Colab service. In order to evaluate the performance of the classifiers, 5-fold cross-validation was performed using the stratified K-fold strategy to preserve the percentage of samples for each class. The models were trained for 80 epochs, with a batch size of 128 and a learning rate decay of 10\% every 10 epochs. The Adam optimizer was used for all models with a learning rate of 0.001.
+
+The evaluation of the classifiers was done based on various metrics including accuracy, precision, recall, and macro F1-score. The training time was also annotated and the corresponding confusion matrices were also plotted, present in the appendix \ref{METER DPS}. These metrics were computed using the average across the 5 folds, without using class weights, to give an overall performance overview of the classifier.
+
+\subsubsection{Numeric Data Classification}
 
 
-\subsection{Classifiers}
-
-\subsection{Numeric Data Classification}
-
-
-\subsection{Image Classification}
+\subsubsection{Image Classification}
 
 In our study of deep learning-based \ac{ser} using images, we utilized transfer learning techniques with three different pre-trained models: ResNet50, VGG16, and Xception.
 
@@ -49,13 +50,9 @@ In the transfer learning technique, all layers of the chosen classifier were fro
 Through the implementation of these pre-trained models with transfer learning, we aim to harness their robust feature extraction abilities and significantly reduce the training duration required for the inherently computationally intensive 3D classification task at hand.
 
 
-\section{Classifiers Results and Discussion}
+\subsubsection{Results and Conclusions}
 
-The classifiers were trained using a Tesla P4 GPU on the Google Colab service. In order to evaluate the performance of the classifiers, 5-fold cross-validation was performed using the stratified K-fold strategy to preserve the percentage of samples for each class. The models were trained for 80 epochs, with a batch size of 128 and a learning rate decay of 10\% every 10 epochs. The Adam optimizer was used for all models with a learning rate of 0.001.
-
-The evaluation of the classifiers was done based on various metrics including accuracy, precision, recall, and macro F1-score. The training time was also annotated and the corresponding confusion matrices were also plotted, present in the appendix \ref{METER DPS}. These metrics were computed using the average across the 5 folds, without using class weights, to give an overall performance overview of the classifier. Table \ref{tab:dl_models} displays the results obtained.
-
-The outcomes of the experiments illustrate the efficacy of employing transfer learning with pre-trained models for the task of \ac{ser}. While the spectrogram image feature attained the highest average accuracy when utilizing the Resnet50 model, the mel spectrogram feature achieved the best overall performance across all models. Furthermore, the image of the mel spectrogram obtained the second-highest accuracy with the Resnet50 model and displayed a smaller standard deviation, indicating that it performed comparably well in all cross-validation folds.
+Table \ref{tab:dl_models} displays the results obtained. The outcomes of the experiments illustrate the efficacy of employing transfer learning with pre-trained models for the task of \ac{ser}. While the spectrogram image feature attained the highest average accuracy when utilizing the Resnet50 model, the mel spectrogram feature achieved the best overall performance across all models. Furthermore, the image of the mel spectrogram obtained the second-highest accuracy with the Resnet50 model and displayed a smaller standard deviation, indicating that it performed comparably well in all cross-validation folds.
 
 \begin{table}[H]
 	\centering

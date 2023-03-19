@@ -2,55 +2,22 @@
 \babel@toc {english}{}\relax
 \addvspace {10pt}
 \addvspace {10pt}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Distribution of the emotional content of the IEMOCAP corpus in terms of (a) valence, (b) activation, and (c) dominance. The results are separately displayed for scripted (black) and spontaneous (gray) sessions.\relax }}{2}{figure.caption.11}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Visual representations of audio features before and after preprocessing.\relax }}{5}{figure.caption.13}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Zero crossing rate wave plot annotated with spikes.\relax }}{7}{figure.caption.18}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Bar plots mean for metrics used on the mel-scaled spectrogram feature\relax }}{7}{figure.caption.20}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Zero crossing rate wave plot with a surrounding area of five male subjects for the same utterance with the anger emotion.\relax }}{8}{figure.caption.22}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Zero crossing rate wave plots with a surrounding area of a single male subject and sentence for all different emotions.\relax }}{8}{figure.caption.23}%
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Zero crossing rate mean values variation plot along 50 audios of speech utterances for all emotions\relax }}{9}{figure.caption.25}%
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Zero crossing rate mean values box plot for all emotions and different subjects\relax }}{9}{figure.caption.27}%
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Audio Features' Pearson Correlation Matrices Before and After High Correlation Elimination.\relax }}{10}{figure.caption.29}%
+\contentsline {figure}{\numberline {1.10}{\ignorespaces Sequential Feature Selection with Backward Propagation using the Mean Accuracy as the Selection Method.\relax }}{12}{figure.caption.33}%
+\contentsline {figure}{\numberline {1.11}{\ignorespaces Graphical representations of the features used as input for the \ac {dl} classifiers.\relax }}{15}{figure.caption.46}%
+\contentsline {figure}{\numberline {1.12}{\ignorespaces Final Models Confusion Matrices on the eNTERFACE'05, EMO-DB and CREMA-D Datasets.\relax }}{19}{figure.caption.53}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Basic emotions spanned across different emotional models.\relax }}{6}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Frequency distribution of databases on reviewed articles from a \ac {sota} study \blx@tocontentsinit {0}\cite {Jahangir2021}.\relax }}{8}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Average pitch comparison of male and female speakers’ \blx@tocontentsinit {0}\cite {ArputhaRathina2012}.\relax }}{9}{figure.caption.18}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Traditional machine learning flow vs. automatic feature extraction with \ac {dl} flow \blx@tocontentsinit {0}\cite {Khalil2019}.\relax }}{11}{figure.caption.25}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Multimodal emotion recognition illustration.\relax }}{16}{figure.caption.32}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Juries dimensional emotion classifications 3D visualization\relax }}{25}{figure.caption.60}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Juries dimensional emotion classifications 2D visualization\relax }}{26}{figure.caption.61}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Data with and without conflicts between emotion's categories and primitives emotion centroids' 3D visualization\relax }}{27}{figure.caption.63}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Data with and without conflicts between emotion's categories and primitives emotion centroids' 2D visualization\relax }}{27}{figure.caption.64}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Gantt chart with the proposed work plan for this research.\relax }}{19}{figure.caption.35}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces \acl {vad*} employment on an audio signal \blx@tocontentsinit {0}\cite {Milling2022}.\relax }}{21}{figure.caption.43}%
-\addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Distribution of the emotional content of the IEMOCAP corpus in terms of (a) valence, (b) activation, and (c) dominance. The results are separately displayed for scripted (black) and spontaneous (gray) sessions.\relax }}{24}{figure.caption.51}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Visual representations of audio features before and after preprocessing.\relax }}{27}{figure.caption.53}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Zero crossing rate wave plot annotated with spikes.\relax }}{29}{figure.caption.57}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Bar plots mean for metrics used on the mel-scaled spectrogram feature\relax }}{29}{figure.caption.59}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Zero crossing rate wave plot with a surrounding area of five male subjects for the same utterance with the anger emotion.\relax }}{30}{figure.caption.61}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Zero crossing rate wave plots with a surrounding area of a single male subject and sentence for all different emotions.\relax }}{30}{figure.caption.62}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Zero crossing rate mean values variation plot along 50 audios of speech utterances for all emotions\relax }}{31}{figure.caption.64}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Zero crossing rate mean values box plot for all emotions and different subjects\relax }}{31}{figure.caption.66}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Audio Features' Pearson Correlation Matrices Before and After High Correlation Elimination.\relax }}{32}{figure.caption.68}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Sequential Feature Selection with Backward Propagation using the Mean Accuracy as the Selection Method.\relax }}{34}{figure.caption.72}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Graphical representations of the features used as input for the \ac {dl} classifiers.\relax }}{37}{figure.caption.82}%
-\addvspace {10pt}
-\contentsline {figure}{\numberline {.1}{\ignorespaces Audio Signal Wave Plots of one Audio Segment for All Emotions\relax }}{41}{figure.caption.84}%
-\contentsline {figure}{\numberline {.2}{\ignorespaces Log Mel Magnitude Spectrograms of one Audio Segment for All Emotions\relax }}{41}{figure.caption.85}%
-\contentsline {figure}{\numberline {.3}{\ignorespaces Mel-Frequency Cepstral Coefficients Spectrogram of one Audio Segment for All Emotions\relax }}{42}{figure.caption.86}%
-\contentsline {figure}{\numberline {.4}{\ignorespaces Chromogram Spectrograms of one Audio Segment for All Emotions\relax }}{42}{figure.caption.87}%
-\contentsline {figure}{\numberline {.5}{\ignorespaces Spectral Wave Plots of one Audio Segment for All Emotions\relax }}{42}{figure.caption.88}%
-\contentsline {figure}{\numberline {.6}{\ignorespaces Root-Mean-Square Energy Wave Plots of one Audio Segment for All Emotions\relax }}{43}{figure.caption.89}%
-\contentsline {figure}{\numberline {.7}{\ignorespaces Zero Crossing Rate Wave Plots of one Audio Segment for All Emotions\relax }}{43}{figure.caption.90}%
-\contentsline {figure}{\numberline {.8}{\ignorespaces Bar plot with the mean values of the mean spectral centroid, bandwidth, roll-off, and contrast features.\relax }}{43}{figure.caption.91}%
-\contentsline {figure}{\numberline {.9}{\ignorespaces Bar plot with the mean values of the mean chromogram, root-mean-square and zero-crossing rate features\relax }}{44}{figure.caption.92}%
-\contentsline {figure}{\numberline {.10}{\ignorespaces Zero Crossing Rate Wave Plots with a Surrounding Area of Five Male Subjects and the same Sentence for All Emotions\relax }}{45}{figure.caption.93}%
-\contentsline {figure}{\numberline {.11}{\ignorespaces Zero crossing rate standard deviation values variation plot along 50 audios of speech utterances for all emotions\relax }}{46}{figure.caption.94}%
-\contentsline {figure}{\numberline {.12}{\ignorespaces Zero crossing rate spikes values variation plot along 50 audios of speech utterances for all emotions\relax }}{46}{figure.caption.95}%
-\contentsline {figure}{\numberline {.13}{\ignorespaces Zero crossing rate sum values variation plot along 50 audios of speech utterances for all emotions\relax }}{46}{figure.caption.96}%
-\contentsline {figure}{\numberline {.14}{\ignorespaces Confusion Matrix of a Ridge Classifier Trained using all 327 Extracted Features\relax }}{47}{figure.caption.97}%
-\contentsline {figure}{\numberline {.15}{\ignorespaces Confusion Matrix of a Ridge Classifier Trained using 97 Features After High Correlation Feature Elimination\relax }}{47}{figure.caption.98}%
-\contentsline {figure}{\numberline {.16}{\ignorespaces Confusion Matrix of a Ridge Classifier Trained using 35 Features After High Correlation and Backward Selection\relax }}{48}{figure.caption.99}%
-\contentsline {figure}{\numberline {.17}{\ignorespaces Confusion Matrix of an AdaBoost Classifier.\relax }}{48}{figure.caption.100}%
-\contentsline {figure}{\numberline {.18}{\ignorespaces Confusion Matrix of a Random Forest Classifier.\relax }}{49}{figure.caption.101}%
-\contentsline {figure}{\numberline {.19}{\ignorespaces Confusion Matrix of a Histogram Gradient Boosting Classifier.\relax }}{49}{figure.caption.102}%
-\contentsline {figure}{\numberline {.20}{\ignorespaces Confusion Matrix of a Balanced Random Forest Classifier.\relax }}{50}{figure.caption.103}%
-\contentsline {figure}{\numberline {.21}{\ignorespaces Confusion Matrix of a \ac {lstm} Classifier.\relax }}{50}{figure.caption.104}%
-\contentsline {figure}{\numberline {.22}{\ignorespaces Confusion Matrix of a \ac {cnn} Classifier.\relax }}{51}{figure.caption.105}%
-\contentsline {figure}{\numberline {.23}{\ignorespaces Confusion Matrix of a Linear Discriminant Analysis Classifier.\relax }}{51}{figure.caption.106}%
-\contentsline {figure}{\numberline {.24}{\ignorespaces Confusion Matrix of a Ridge Classifier.\relax }}{52}{figure.caption.107}%
-\contentsline {figure}{\numberline {.25}{\ignorespaces Scatter Plot of the Annotated Emotions in the Activation Dimension\relax }}{52}{figure.caption.108}%
-\contentsline {figure}{\numberline {.26}{\ignorespaces Scatter Plot of the Annotated Emotions in the Dominance Dimension\relax }}{52}{figure.caption.109}%
-\contentsline {figure}{\numberline {.27}{\ignorespaces Scatter and violin plots of the emotional content of the IEMOCAP corpus in terms of valence, activation, and dominance relative to the neutral emotion\relax }}{53}{figure.caption.110}%
-\contentsline {figure}{\numberline {.28}{\ignorespaces Scatter and violin plots of the emotional content of the IEMOCAP corpus in terms of valence, activation, and dominance relative to the sad emotion\relax }}{54}{figure.caption.111}%
-\contentsline {figure}{\numberline {.29}{\ignorespaces Scatter and violin plots of the emotional content of the IEMOCAP corpus in terms of valence, activation, and dominance relative to the happiness emotion\relax }}{55}{figure.caption.112}%
 \addvspace {10pt}
