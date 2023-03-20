@@ -5,3 +5,7 @@ iemocap/data/denoised_extracted_features_iemocap.csv filter=lfs diff=lfs merge=l
 iemocap/data/2_feature_analysis.ipynb filter=lfs diff=lfs merge=lfs -text
 iemocap/final_models/dl_model.h5 filter=lfs diff=lfs merge=lfs -text
 iemocap/final_models/traditional_model.pkl filter=lfs diff=lfs merge=lfs -text
+*.cv filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.pkl filter=lfs diff=lfs merge=lfs -text
