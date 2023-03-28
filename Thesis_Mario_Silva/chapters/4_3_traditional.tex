@@ -271,13 +271,15 @@ By using these feature selection techniques, we managed to remove redundant and 
 \subsection{Classifiers Evaluation and Selection}
 
 \subsubsection{Evaluation Strategy}
-TODO: explain each metric maybe
 
 Evaluating a model is an essential step, since a wrongful evaluation may lead to deception in terms of the results obtained. It should be uniform for every model, and, it should be as meaningful as possible to the classification objective.
 
-As mentioned previously, for this part and the subsequent parts of the \ac{ser} development, the second dataset \ac{iemo} is the one under use.
+For the reasons above, it was decided to utilize 5-fold cross-validation, and, in terms of metrics, we decided to calculate 5 folds averages accuracy, macro-f1 score, precision, recall, and \ac{mcc}.
 
-For the reasons above, it was decided to utilize 5-fold cross-validation, and, in terms of metrics, we decided to calculate 5 folds averages accuracy, macro-f1 score, precision, recall, and \ac{mcc}. A confusion matrix of the predicted and real labels was also plotted, since it provides helpful insights, not only into the errors being made by the classifier but also, the types of errors occurring.
+Accuracy is a basic metric to evaluate the model's performance that measures the proportion of correctly classified samples. Precision measures the proportion of true positives among all samples predicted as positive by the model. Recall indicates how many of the actual positive samples are correctly identified by the model. Macro-f1 score takes into account both precision and recall to provide a more balanced measure of performance for imbalanced datasets. It calculates the harmonic mean of precision and recall. \ac{mcc} is a correlation coefficient between the true labels and the predicted labels, taking into account all four classes in the confusion matrix. It provides a measure of how well the model's predictions match the true labels, and ranges from -1 (perfect disagreement) to +1 (perfect agreement), 0 being no agreement at all, which means the predictions were random.
+
+
+A confusion matrix of the predicted and real labels was also plotted, since it provides helpful insights, not only into the errors being made by the classifier but also, the types of errors occurring.
 
 These were also the most recurred methods in state-of-the-art research, which provides more fairness to model comparisons.
 
@@ -297,6 +299,7 @@ The results obtained from the tested models were compiled and exhibited in Table
 	\centering
 	\caption{Tested Classification Models 5-Fold Cross-Validation Performance on \ac{iemo}.}
 	\label{tab:models}
+	\resizebox{\textwidth}{!}{%
 	\begin{tabular}{lrrrrrr}
 		\toprule
 		Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} & Training Time \\
@@ -321,7 +324,8 @@ The results obtained from the tested models were compiled and exhibited in Table
 		\ac{cnn} & 50.41$\pm$0.95 & 51.25 & 51.61 & 52.69 & 0.340 & 340.74  \\
 		
 		\bottomrule
-	\end{tabular}
+	\end{tabular}%
+	}
 \end{table}
 
 
@@ -345,8 +349,6 @@ The results obtained from the tested models were compiled and exhibited in Table
 	\end{tabular}
 \end{table}
 
-
-The application of data preprocessing techniques to clean the audio data was performed to handle different technical settings. However, in some cases, noise may be part of the signal of interest, and removing it may cause the algorithm to misinterpret the signal.
 
 The state-of-the-art results presented in Table \ref{tab:modelssoa} are not directly comparable, as authors use different data and evaluation methodologies. Additionally, some authors do not consider the emotion of excitement as happiness or perform different validation methods such as 10-fold cross-validation.
 

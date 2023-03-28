@@ -3,46 +3,101 @@
 \babel@toc {english}{}\relax
 \contentsline {chapter}{Contents}{i}{section*.1}%
 \contentsline {chapter}{List of Figures}{iii}{section*.4}%
-\contentsline {chapter}{List of Tables}{v}{section*.6}%
+\contentsline {chapter}{List of Tables}{v}{section*.7}%
 \contentsline {chapter}{Glossary}{vii}{chapter*.8}%
-\contentsline {chapter}{\chapternumberline {1}\ac {ser} Development}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Datasets}{1}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}eNTERFACE'05}{1}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}\ac {iemo}}{2}{subsection.1.1.2}%
-\contentsline {section}{\numberline {1.2}Audio Preprocessing}{4}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Noise Reduction}{4}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Audio Trim}{4}{subsection.1.2.2}%
-\contentsline {section}{\numberline {1.3}Traditional Feature-Based \ac {ser}}{6}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Feature Extraction}{6}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Feature Analysis}{6}{subsection.1.3.2}%
-\contentsline {subsubsection}{Audio Signal Study}{6}{section*.16}%
-\contentsline {subsubsection}{Spikes Metric}{6}{section*.17}%
-\contentsline {subsubsection}{Bar Plots}{7}{section*.19}%
-\contentsline {subsubsection}{Wave Plots with Surrounding Areas}{8}{section*.21}%
-\contentsline {subsubsection}{Variation Plots}{9}{section*.24}%
-\contentsline {subsubsection}{Box Plots}{9}{section*.26}%
-\contentsline {subsection}{\numberline {1.3.3}Feature Selection}{10}{subsection.1.3.3}%
-\contentsline {subsubsection}{High Correlation Elimination}{10}{section*.28}%
-\contentsline {subsubsection}{Selecting an Initial Classifier}{11}{section*.30}%
-\contentsline {subsubsection}{Backwards Selection}{11}{section*.32}%
-\contentsline {subsubsection}{Feature Selection Evaluation}{12}{section*.35}%
-\contentsline {subsection}{\numberline {1.3.4}Classifiers Evaluation and Selection}{13}{subsection.1.3.4}%
-\contentsline {subsubsection}{Evaluation Strategy}{13}{section*.37}%
-\contentsline {subsubsection}{Classifiers Exploration}{13}{section*.39}%
-\contentsline {subsubsection}{Results and Conclusions}{13}{section*.40}%
-\contentsline {section}{\numberline {1.4}\acl {dl}-Based \ac {ser}}{15}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}\acl {dl} Features}{15}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Classifiers Evaluation and Selection}{15}{subsection.1.4.2}%
-\contentsline {subsubsection}{Evaluation Strategy}{15}{section*.47}%
-\contentsline {subsubsection}{Numeric Data Classification}{16}{section*.48}%
-\contentsline {subsubsection}{Image Classification}{16}{section*.49}%
-\contentsline {subsubsection}{Results and Conclusions}{16}{section*.50}%
-\contentsline {section}{\numberline {1.5}Classifiers Results and Discussion}{18}{section.1.5}%
-\contentsline {chapter}{\chapternumberline {2}Data Visualization and Quality Analysis}{22}{chapter.2}%
-\contentsline {chapter}{\chapternumberline {3}\acl {ser} on a video conference system}{29}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Audio Pipeline}{29}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Noise reduction}{29}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}\acl {vad*}}{29}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Speech Segmentation}{30}{subsection.3.1.3}%
-\contentsline {section}{\numberline {3.2}Results and Discussion}{30}{section.3.2}%
-\contentsline {chapter}{Bibliography}{31}{chapter*.66}%
+\contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objectives}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Challenges}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Organization}{3}{section.1.4}%
+\contentsline {chapter}{\chapternumberline {2}\acl {sota} Research}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Emotion}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Discrete Emotion}{5}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Dimensional Emotion}{5}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Emotion Recognition Datasets}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}\acl {ser}}{8}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Speech Features}{8}{subsection.2.3.1}%
+\contentsline {subsubsection}{Prosodic Features}{9}{section*.14}%
+\contentsline {subsubsection}{Spectral Features}{9}{section*.16}%
+\contentsline {subsubsection}{Voice Quality Features}{10}{section*.19}%
+\contentsline {subsection}{\numberline {2.3.2}Strategies}{10}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Traditional Feature-Based \ac {ser}}{11}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}\acl {dl}-Based \ac {ser}}{13}{subsection.2.3.4}%
+\contentsline {subsubsection}{Transfer Learning}{14}{section*.30}%
+\contentsline {section}{\numberline {2.4}Multimodal Emotion Recognition}{15}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Emotion Recognition Services}{17}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Software Tools}{17}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Summary}{18}{section.2.7}%
+\contentsline {chapter}{\chapternumberline {3}Methodology}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Proposal}{19}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Requirements Gathering}{19}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Dataset}{19}{subsection.3.1.2}%
+\contentsline {subsubsection}{Dataset(s) Selection \& Gathering}{19}{section*.36}%
+\contentsline {subsubsection}{Data Analysis \& Visualization}{20}{section*.37}%
+\contentsline {subsection}{\numberline {3.1.3}Audio Feature Engineering}{20}{subsection.3.1.3}%
+\contentsline {subsubsection}{Preprocessing}{20}{section*.38}%
+\contentsline {paragraph}{Framing}{20}{section*.39}%
+\contentsline {paragraph}{Noise reduction}{20}{section*.40}%
+\contentsline {paragraph}{Normalization}{20}{section*.41}%
+\contentsline {paragraph}{\acl {vad*}}{20}{section*.42}%
+\contentsline {subsubsection}{Feature Extraction}{21}{section*.44}%
+\contentsline {subsubsection}{Feature Selection}{21}{section*.45}%
+\contentsline {subsection}{\numberline {3.1.4}Models Implementation}{21}{subsection.3.1.4}%
+\contentsline {subsubsection}{Deep Learning Pipeline}{21}{section*.46}%
+\contentsline {subsection}{\numberline {3.1.5}Speech Models Evaluation}{21}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Data Stratification}{22}{subsection.3.1.6}%
+\contentsline {subsubsection}{Multimodal Classifier}{22}{section*.47}%
+\contentsline {subsection}{\numberline {3.1.7}Deployment}{22}{subsection.3.1.7}%
+\contentsline {subsubsection}{Real-Time Processing Pipeline Creation}{22}{section*.48}%
+\contentsline {subsubsection}{System and Strategy Evaluation}{22}{section*.49}%
+\contentsline {subsection}{\numberline {3.1.8}Dissertation Writing}{22}{subsection.3.1.8}%
+\contentsline {section}{\numberline {3.2}Ethical Procedures and Concerns}{22}{section.3.2}%
+\contentsline {chapter}{\chapternumberline {4}\ac {ser} Development}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Datasets}{23}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}\ac {iemo}}{23}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Testing Datasets}{24}{subsection.4.1.2}%
+\contentsline {subsubsection}{eNTERFACE'05}{24}{section*.52}%
+\contentsline {subsubsection}{CREMA-D}{25}{section*.55}%
+\contentsline {subsubsection}{EMO-DB}{25}{section*.57}%
+\contentsline {section}{\numberline {4.2}Audio Preprocessing}{26}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Noise Reduction}{26}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Audio Trim}{26}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Conclusion}{27}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Traditional Feature-Based \ac {ser}}{28}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Feature Extraction}{28}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Feature Analysis}{28}{subsection.4.3.2}%
+\contentsline {subsubsection}{Audio Signal Study}{28}{section*.62}%
+\contentsline {subsubsection}{Spikes Metric}{28}{section*.63}%
+\contentsline {subsubsection}{Bar Plots}{29}{section*.65}%
+\contentsline {subsubsection}{Wave Plots with Surrounding Areas}{30}{section*.67}%
+\contentsline {subsubsection}{Variation Plots}{31}{section*.70}%
+\contentsline {subsubsection}{Box Plots}{31}{section*.72}%
+\contentsline {subsection}{\numberline {4.3.3}Feature Selection}{32}{subsection.4.3.3}%
+\contentsline {subsubsection}{High Correlation Elimination}{32}{section*.74}%
+\contentsline {subsubsection}{Selecting an Initial Classifier}{33}{section*.76}%
+\contentsline {subsubsection}{Backwards Selection}{33}{section*.78}%
+\contentsline {subsubsection}{Feature Selection Evaluation}{34}{section*.81}%
+\contentsline {subsection}{\numberline {4.3.4}Classifiers Evaluation and Selection}{35}{subsection.4.3.4}%
+\contentsline {subsubsection}{Evaluation Strategy}{35}{section*.83}%
+\contentsline {subsubsection}{Classifiers Exploration}{35}{section*.85}%
+\contentsline {subsubsection}{Results and Conclusions}{35}{section*.86}%
+\contentsline {section}{\numberline {4.4}\acl {dl}-Based \ac {ser}}{37}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}\acl {dl} Features}{37}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Classifiers Evaluation and Selection}{37}{subsection.4.4.2}%
+\contentsline {subsubsection}{Evaluation Strategy}{37}{section*.90}%
+\contentsline {subsubsection}{Numeric Data Classification}{38}{section*.91}%
+\contentsline {subsubsection}{Image Classification}{38}{section*.92}%
+\contentsline {subsubsection}{Results and Conclusions}{38}{section*.93}%
+\contentsline {section}{\numberline {4.5}Classifiers Results and Discussion}{40}{section.4.5}%
+\contentsline {chapter}{\chapternumberline {5}Data Stratification}{43}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Recordings Durations}{43}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Speaker Gender}{43}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Discrete Emotions}{44}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Dimensional Emotions}{45}{section.5.4}%
+\contentsline {chapter}{\chapternumberline {6}\acl {ser} on a video conference system}{49}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Audio Pipeline}{49}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Noise reduction}{49}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}\acl {vad*}}{49}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Speech Segmentation}{50}{subsection.6.1.3}%
+\contentsline {section}{\numberline {6.2}Results and Discussion}{50}{section.6.2}%
+\contentsline {chapter}{Bibliography}{51}{chapter*.107}%

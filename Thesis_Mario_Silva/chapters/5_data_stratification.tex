@@ -1,184 +1,143 @@
-\chapter{Data Visualization and Quality Analysis}
-\label{chapter:data_study}
+\chapter{Data Stratification}
+\label{chapter:data_stratification}
+
+
+In order to better understand the properties of the data in the \ac{iemo} dataset, we performed stratification based on several attributes of the dataset. The aim of this stratification was to group similar data together and investigate their common properties, and, discover limitations that these properties pose to the machine learning model in the \ac{ser} area.
+
+\section{Recordings Durations}
+
+The duration of an audio recording can significantly impact the analysis and modeling of the data. Shorter recordings may not capture enough information to adequately represent the signal of interest, while longer recordings may contain irrelevant or redundant information.
+
+We stratified the dataset based on the duration of the recordings. The dataset contains recordings ranging from approximately 0.25 to 33 seconds in duration, and we divided the recordings into three groups: short, less than or equal to 2.5 seconds, medium, greater than 2.5 and less than or equal to 4.5 seconds, and long, greater than 4.5 seconds.
+
+Table \ref{5:durations} presents the impact of the duration of the recordings on the performance of the chosen traditional AdaBoost model. The longest recordings have the highest performance, with an accuracy of 63.4\%, despite having more recordings than the medium duration data. 
+
+\begin{table}[H]
+	\centering
+	\caption{Traditional Model 5-Fold Cross-Validation Results Based on the Recordings Duration.}
+	\label{5:durations}
+	\begin{tabular}{lrlrrrr}
+		\toprule
+		Recordings Duration &   Total Data & Accuracy    &   Macro F1 &   Precision &   Recall &   MCC. \\
+		\midrule
+		Short ($]0, 2.5]$ s)	&         2103 & 56.54+-1.5  &      54.85 &       58.49 &    53.47 &   0.39 \\
+		Medium ($]2.5, 4.5]$ s)	& 		  1674 & 56.87+-0.82 &      57.17 &       57.79 &    57.09 &   0.42 \\
+		Long ($]4.5, 34]$ s)	&         1754 & 63.4+-2.28  &      63.77 &       64.25 &    63.67 &   0.51 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+These results suggest that longer recordings provide more information and are easier for the model to classify accurately, which allows us to conclude that recordings' duration has a significant performance impact on the \ac{ser} task.
+
+\section{Speaker Gender}
+
+Another attribute we used for stratification was the gender of the speaker. The dataset contains a similar amount of recordings from both male and female speakers, having 2649 recordings with female speakers and 2882 with male speakers.
+
+To evaluate the performance of the model on different genders, we trained and tested the model on recordings from female speakers, male speakers, and mixed-gender recordings. Table \ref{5:gender} shows the 5-fold cross-validation results of the model on each category.
+
+\begin{table}[H]
+	\centering
+	\caption{Traditional Model 5-Fold Cross-Validation Results Based on Speaker Gender Recordings.}
+	\label{5:gender}
+	\begin{tabular}{llrrrrr}
+		\toprule
+		Training Gender & Testing Gender & Accuracy    &   Macro F1 &   Precision &   Recall &   MCC. \\
+		\midrule
+		Female	& Female & 59.87+-1.03 & 60.45 & 60.55 & 60.77 & 0.46 \\
+		Male 	& Male	 & 59.92+-1.33 & 60.43 & 61.66 & 59.72 & 0.45 \\
+		Female  & Male	 & 51.49+-1.38 & 51.55 & 53.67 & 51.52 & 0.33 \\
+		Male    & Female & 51.45+-1.76 & 52.01 & 55.35 & 51.23 & 0.35 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+From the table, it can be observed that the model performed similarly on both genders, when the testing data for the model is of the training data, with accuracies close to 60\%. However, when testing with different speaker gender, the model's accuracy dropped significantly to 51.49\% and 51.45\% for female and male training data, respectively. The other metrics showed equivalent behavior, indicating difficulty in correctly identifying the emotion in mixed-gender contexts.
+
+These results suggest that the model's performance is affected by the gender of the speakers in the training data and that the model is biased toward it.
+
+
+\section{Discrete Emotions}
+
+The \ac{iemo} dataset contains four emotional categories: anger, happiness, sadness, and neutral. We stratified the data based on these labels and obtained 15 groups of data. In this section, we discuss the differences in classification performance between these emotional categories, as well as differences in valence and emotional plane.
+
+
+Table \ref{tab:emo_cat} shows the traditional model 5-fold cross-validation results based on the discrete emotions. In the four-label case, which includes all four emotional categories, the model achieved an accuracy of 60.04\% with a macro F1 score of 60.76. The best performance was achieved when classifying between anger, happiness, and sadness, with an accuracy of 70.36\% and a macro F1 score of 70.73. The worst performance was achieved when classifying between angry, neutral, and happy, with an accuracy of 64.4\% and a macro F1 score of 63.8.
 
 
 \begin{table}[H]
 \small
 \centering
-\caption{Random forest 5-fold cross-validation results with different classification labels}
-\label{tab:models}
+\caption{Traditional Model 5-Fold Cross-Validation Results Based on the Discrete Emotions.}
+\label{tab:emo_cat}
     \centering
-    \begin{tabular}{lcccccc}
-        \toprule
-        
-        Classification Labels                      &   Total Data & Accuracy    & Macro F1    & Precision   & Recall      & MCC.        \\
-        
-        \addlinespace
-        \hline
-        \multicolumn{7}{c}{\cellcolor{gray!15}{\textbf{Two Labels}}} \\
-        \hline
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Angry, \\ Sad \end{tabular} &         2187 & 92.04$\pm$1.18 & 92.04$\pm$1.18 & 92.05$\pm$1.12 & 92.04$\pm$1.18 & 0.84$\pm$0.02 \\
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Angry, \\ Neutral  \end{tabular} &         2811 & 85.63$\pm$1.18 & 84.42$\pm$1.35 & 86.18$\pm$1.15 & 83.5$\pm$1.4   & 0.7$\pm$0.03 \\
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Sad, \\ Neutral \end{tabular} &         2792 & 78.08$\pm$0.86 & 76.34$\pm$1.08 & 77.3$\pm$0.87  & 75.8$\pm$1.16  & 0.53$\pm$0.02 \\
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Angry$+$Sad, \\ Happy$+$Excited                   \end{tabular} &         2739 & 76.78$\pm$1.89 & 75.32$\pm$2.1  & 76.17$\pm$2.02 & 74.88$\pm$2.12 & 0.51$\pm$0.04  \\
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Sad, \\ Happy$+$Excited \end{tabular} &         2720 & 83.93$\pm$1.66 & 83.27$\pm$1.73 & 83.22$\pm$1.76 & 83.33$\pm$1.72 & 0.67$\pm$0.03 \\
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Neutral, \\ Happy$+$Excited                     \end{tabular} &         3344 & 72.52$\pm$0.75 & 72.32$\pm$0.83 & 72.85$\pm$0.65 & 72.37$\pm$0.79 & 0.45$\pm$0.01 \\
-        \addlinespace
-
-        \begin{tabular}[l]{@{}l@{}}Angry$+$Sad, \\ Happy$+$Excited                   \end{tabular} &         3823 & 75.23$\pm$0.77 & 74.22$\pm$0.92 & 75.0$\pm$0.71  & 73.91$\pm$0.94 & 0.49$\pm$0.02 \\
-        \addlinespace
-
-        \begin{tabular}[l]{@{}l@{}}Angry$+$Sad,\\Neutral$+$Happy$+$Excited\end{tabular} &         5531 & 73.93$\pm$1.0  & 71.34$\pm$1.13 & 73.43$\pm$1.18 & 70.73$\pm$1.09 & 0.44$\pm$0.02 \\
-
-        \addlinespace
-        \hline
-        \multicolumn{7}{c}{\cellcolor{gray!15}{\textbf{Three Labels}}} \\
-        \hline
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Angry, \\ Happy$+$Excited, \\ Sad                  \end{tabular} &         3823 & 71.96$\pm$1.63 & 72.22$\pm$1.62 & 72.81$\pm$1.56 & 71.95$\pm$1.64 & 0.57$\pm$0.03 \\
-        \addlinespace
-
-        \begin{tabular}[l]{@{}l@{}}Angry, \\ Happy$+$Excited, \\ Neutral              \end{tabular} &         4447 & 65.1$\pm$1.56  & 64.77$\pm$1.55 & 66.03$\pm$1.39 & 64.52$\pm$1.65 & 0.48$\pm$0.02 \\
-        \addlinespace
-
-        \begin{tabular}[l]{@{}l@{}}Sad, \\ Happy$+$Excited, \\ Neutral                \end{tabular} &         4428 & 64.39$\pm$2.13 & 64.39$\pm$2.11 & 64.91$\pm$2.07 & 64.17$\pm$2.11 & 0.46$\pm$0.03 \\
-
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Angry, \\ Sad, \\ Neutral                        \end{tabular} &         3895 & 73.81$\pm$1.24 & 73.87$\pm$1.41 & 75.81$\pm$0.83 & 72.7$\pm$1.77  & 0.6$\pm$0.02 \\
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}High Arousal, \\ Neutral Arousal, \\ Low Arousal \end{tabular} &         5531 & 68.27$\pm$1.48 & 65.43$\pm$1.89 & 65.73$\pm$1.93 & 65.19$\pm$1.91 & 0.49$\pm$0.02 \\
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}High Valence, \\ Neutral Valence, \\ Low Valence \end{tabular} &         5531 & 61.0$\pm$1.11  & 60.1$\pm$1.25  & 60.53$\pm$1.06 & 60.12$\pm$1.22 & 0.41$\pm$0.02 \\
-
-        \addlinespace
-        \hline
-        \multicolumn{7}{c}{\cellcolor{gray!15}{\textbf{Four Labels}}} \\
-        \hline
-        \addlinespace
-        
-        \begin{tabular}[l]{@{}l@{}}Angry, \\ Sad, \\ Neutral, \\ Happy$+$Excited         \end{tabular} &         5531 & 60.26$\pm$0.46 & 60.93$\pm$0.56 & 61.93$\pm$0.62 & 60.49$\pm$0.63 & 0.46$\pm$0.01 \\
-        \bottomrule
+    \begin{tabular}{lrrrrrr}
+    	\toprule
+    	Labels                      &   Total Data & Accuracy    & Macro F1    & Precision   & Recall      & MCC.       \\
+    	\midrule
+ 	    \multicolumn{7}{c}{Four Labels} \\
+    	Angry, Happy, Sad, Neutral             &         5531 &  60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 \\
+    	\midrule
+    	\multicolumn{7}{c}{Three Labels} \\
+    	
+		Angry, Happy, Sad                   &         3823 & 70.36$\pm$1.09 &      70.73 &       71.36 &    70.35 &   0.54 \\
+		Angry, Neutral, Happy               &         4447 & 64.4$\pm$0.95  &      63.8  &       64.48 &    63.84 &   0.46 \\
+		Angry, Neutral, Sad                 &         3895 & 74.02$\pm$1.14 &      74.16 &       75.61 &    73.2  &   0.6  \\
+		Sad, Neutral, Happy                 &         4428 & 65.4$\pm$1.12  &      65.59 &       65.75 &    65.54 &   0.47 \\
+		
+		Sad, Neutral, Happy+Angry (Arousal) &         5531 & 68.54$\pm$1.03 &      66    &       66.31 &    65.89 &   0.49 \\
+		Angry+Sad, Neutral, Happy (Valence) &         5531 & 60.15$\pm$0.86 &      58.94 &       59.53 &    58.99 &   0.39 \\
+    	\midrule
+    	\multicolumn{7}{c}{Two Labels} \\
+    	    	
+    	Angry, Sad                          &         2187 & 91.4$\pm$1.46  &      91.4  &       91.46 &    91.39 &   0.83 \\
+    	Angry, Neutral                      &         2811 & 84.13$\pm$0.88 &      82.98 &       84.03 &    82.34 &   0.66 \\
+    	Angry, Happy                    &         2739 & 74.66$\pm$2.01 &      73.1  &       73.84 &    72.72 &   0.47 \\
+    	Sad, Neutral                        &         2792 & 79.51$\pm$1.57 &      77.98 &       78.77 &    77.49 &   0.56 \\
+    	Sad, Happy                          &         2720 & 83.6$\pm$1.41  &      82.87 &       82.93 &    82.82 &   0.66 \\
+    	Neutral, Happy                      &         3344 & 72.58$\pm$2.38 &      72.43 &       72.81 &    72.45 &   0.45 \\
+    	Sad+Neutral, Happy+Angry (Arousal)  &         5531 & 77.2$\pm$1.29  &      77.18 &       77.25 &    77.18 &   0.54 \\
+    	Angry+Sad, Neutral+Happy (Valence)  &         5531 & 72.86$\pm$0.94 &      69.84 &       72.47 &    69.27 &   0.42 \\
+    	\bottomrule
     \end{tabular}
 \end{table}
 
+In the two-label case, where the emotional categories were paired, the best performance was achieved when classifying between angry and sad, with an accuracy of 91.4\% and a macro F1 score of 91.4. The worst performance was achieved when classifying between angry+sad and neutral+happy based on valence, with an accuracy of 72.86\% and a macro F1 score of 69.84.
 
-\begin{table}[H]
-\small
-\caption{Data duration analysis}
-\label{tab:duration}
-\centering
-    \begin{tabular}{lrrrrrrrr}
-        \toprule
-        {} & \multicolumn{8}{c}{\textbf{Duration}} \\ \cmidrule{2-9}
-        Emotion &    Count &      Mean &       Std &     min &       25\% &      50\% &       75\% &      max \\
-        \midrule
-        angry   &   1103 &  4.51 & 3.00 &  0.76 &  2.43 &  3.61 &  5.66 &  26.77 \\
-        \addlinespace
-        excited &   1041 &  4.78 & 3.46 &  0.58 &  2.34 &  3.82 &  6.21 &  34.13 \\
-        \addlinespace
-        happy   &    595 &  4.34 & 2.71 &  0.89 &  2.39 &  3.56 &  5.80 &  17.22 \\
-        \addlinespace
-        neutral &   1708 &  3.90 & 2.58 &  0.73 &  2.10 &  3.13 &  4.91 &  20.29 \\
-        \addlinespace
-        sad     &   1084 &  5.49 & 4.04 &  0.76 &  2.68 &  4.14 &  7.01 &  31.91 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+In terms of valence and emotional plane, the model achieved its highest accuracy (68.54\%) when classifying between sad, neutral, and happy+angry based on arousal, and its lowest accuracy (60.15\%) when classifying between angry+sad, neutral, and happy based on valence. These results suggest that the model is better at distinguishing emotional categories based on arousal than valence.
+
+It is important to note that the total data impacts the classification, as a lower number of files may make the classification easier. However, even with a large dataset such as \ac{iemo}, the performance of the model varied widely depending on the emotional categories and valence or arousal being classified. These results have implications for the development of affective computing systems, which must take into account the nuances of emotional categorization and valence/arousal classification in order to accurately interpret and respond to human affect.
+
+
+\section{Dimensional Emotions}
+
+In addition to the categorical classification discussed in the previous section, we also explored dimensional classification using the annotations of the dataset in terms of valence (ranging from unpleasant to pleasant), arousal (ranging from calm to excited), and dominance (ranging from submissive to dominant). These annotations are provided by human annotators who rate each recording on three continuous dimensions, on a scale from 1 to 5.
 
 
 
 \begin{table}[H]
-\small
-\caption{Juries arousal classification analysis}
-\label{tab:activation}
-\centering
-    \begin{tabular}{lrrrrrrrr}
-        \toprule
-        {} & \multicolumn{8}{c}{\textbf{Arousal}} \\ \cmidrule{2-9}
-        Emotion &    Count &      Mean &       Std &     min &       25\% &      50\% &       75\% &      max \\
-        \midrule
-        angry   &     1103 &  3.63 &  0.67 &  1.5 &  3.0 &  3.5 &  4.0 &  5.0\\         \addlinespace
-        excited &     1041 &  3.57 &  0.60 &  2.0 &  3.0 &  3.5 &  4.0 &  5.0\\         \addlinespace
-        happy   &      595 &  3.11 &  0.61 &  1.5 &  2.5 &  3.0 &  3.5 &  5.0\\         \addlinespace
-        neutral &     1708 &  2.72 &  0.54 &  1.0 &  2.5 &  2.6 &  3.0 &  5.0\\         \addlinespace
-        sad     &     1084 &  2.56 &  0.62 &  1.0 &  2.0 &  2.5 &  3.0 &  4.5\\         \addlinespace
-        \bottomrule
-    \end{tabular}
+	\centering
+	\caption{Discrete Emotions' Means of the Dimensional Annotations.}
+	\label{tab:dis_dim}
+	\begin{tabular}{lrrr}
+		\toprule
+		Emotion & Mean Activation &   Mean Valence & Mean Dominance \\
+		\midrule
+		Angry   &   3.636 &  1.906 &  3.949 \\
+		Happy   &   3.411 &  3.946 &  3.228 \\
+		Neutral &   2.726 &  2.971 &  2.831 \\
+		Sad     &   2.564 &  2.253 &  2.828 \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 
-\begin{table}[H]
-\small
-\caption{Juries valence classification analysis}
-\label{tab:valence}
-\centering
-    \begin{tabular}{lrrrrrrrr}
-        \toprule
-        {} & \multicolumn{8}{c}{\textbf{Valence}} \\ \cmidrule{2-9}
-        Emotion &    Count &      Mean &       Std &     min &       25\% &      50\% &       75\% &      max \\
-        \midrule
-        angry   &   1103 &  1.90 &  0.52 &  1.0 &  1.5 &  2.0 &  2.0 &  4.0\\         \addlinespace
-        excited &   1041 &  3.94 &  0.62 &  1.5 &  3.5 &  4.0 &  4.5 &  5.5\\         \addlinespace
-        happy   &    595 &  3.95 &  0.45 &  2.0 &  4.0 &  4.0 &  4.0 &  5.0\\         \addlinespace
-        neutral &   1708 &  2.97 &  0.51 &  1.5 &  2.5 &  3.0 &  3.0 &  5.0\\         \addlinespace
-        sad     &   1084 &  2.25 &  0.58 &  1.0 &  2.0 &  2.0 &  2.5 &  4.0\\         \addlinespace
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-\begin{table}[H]
-\small
-\caption{Juries dominance classification analysis}
-\label{tab:dominance}
-\centering
-    \begin{tabular}{lrrrrrrrr}
-        \toprule
-        {} & \multicolumn{8}{c}{\textbf{Dominance}} \\ \cmidrule{2-9}
-        Emotion &    Count &      Mean &       Std &     min &       25\% &      50\% &       75\% &      max \\
-        \midrule
-        angry   &    1103 &  3.94 &  0.64 &  1.0 &  3.5 &  4.0 &  4.5 &  5.0\\         \addlinespace
-        excited &    1041 &  3.40 &  0.76 &  1.0 &  3.0 &  3.5 &  4.0 &  5.0\\         \addlinespace
-        happy   &     595 &  2.92 &  0.65 &  1.5 &  2.5 &  3.0 &  3.5 &  5.0\\         \addlinespace
-        neutral &    1708 &  2.83 &  0.60 &  0.5 &  2.5 &  3.0 &  3.0 &  4.5\\         \addlinespace
-        sad     &    1084 &  2.82 &  0.81 &  1.0 &  2.3 &  3.0 &  3.5 &  5.0\\         \addlinespace
-        \bottomrule
-    \end{tabular}
-\end{table}
 
 
-\begin{table}[H]
-\small
-\caption{Juries dimensional emotion centroids classifications numeric visualization}
-\label{tab:dominance}
-\centering
-    \begin{tabular}{lrrr}
-        \toprule
-        {} & \multicolumn{3}{c}{\textbf{Centroids}} \\ \cmidrule{2-4}
-        Emotion &    Arousal &      Valence &       Dominance \\
-        \midrule
-        Angry   &    3.63 &  1.90 &  3.94 \\         \addlinespace
-        Happy+Excited &  3.40 & 3.94 & 3.23 \\   \addlinespace
-        Sad    &   2.56 & 2.25 & 2.82\\         \addlinespace
-        Neutral  &  2.72 & 2.97 & 2.83\\         \addlinespace
-        \bottomrule
-    \end{tabular}
-\end{table}
+Our results suggest that the valence and arousal dimensions are easier to classify than the dominance dimension. One possible reason for this is that dominance is a more complex and abstract concept that may be more difficult to recognize and classify in speech. Additionally, the annotations for dominance may be more subjective and varied among annotators than those for valence and arousal, leading to less reliable labels and lower classification performance.
+
+Overall, our results demonstrate the potential of using dimensional classification in speech emotion recognition. Future work could explore the use of more advanced machine learning models and feature extraction techniques to improve the performance of the model on the dominance dimension and to further investigate the relationship between acoustic features and the three dimensions of emotion.
+
+
 
 
 \begin{figure}[H]
@@ -282,5 +241,3 @@ TODO: NAO MOSTRAR OS CONFLITOS RETIRADOS MAS SIM MOSTRAR OS RANGES MANTIDOS
         \bottomrule
     \end{tabular}
 \end{table}
-
-TODO: UTILIZAR RANDOMS DADOS PARA CHEGAR AO MSM NUMERO DE DADOS (VARIAS VEZES) PARA VER SE A RAZAO DE MELHORAR DADOS É A QUANTIDADE DE DAODS OU MESMO A MA ANOTACAO

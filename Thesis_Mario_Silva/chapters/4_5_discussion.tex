@@ -1,27 +1,39 @@
 \section{Classifiers Results and Discussion}
 
+In this section, we present and analyze the results of the best candidate models obtained from both the traditional and deep learning approaches.
+
+The top-performing model from the traditional approach is an AdaBoost classifier with a Random Forest base estimator, utilizing 33 audio features as input. This model achieved an accuracy of 60.04\% after performing 5-fold cross-validation on the \ac{iemo} dataset.
+
+On the other hand, the final model obtained from the deep learning approach is a Resnet50 model, which uses Spectrogram images as input. This model achieved an accuracy of 58.24\%.
+
+Table \ref{final_models} shows the performance of final models that were trained using the entire \ac{iemo} dataset and then tested on three different datasets, namely eNTERFACE'05, EMO-DB, and CREMA-D.
+
+The traditional model achieved the highest accuracy on the CREMA-D dataset with 48.88\%, followed by the eNTERFACE'05 dataset with 46.03\%, and the EMO-DB dataset with 38.94\%. On the other hand, the deep learning model achieved the highest precision on the eNTERFACE'05 dataset with 52.13\%, followed by the CREMA-D dataset with 34.91\%, and the EMO-DB dataset with 12.78\%. However, the traditional model outperformed the deep learning model on all other metrics, including macro F1, recall, and \ac{mcc}.
+
+In terms of computation time, the traditional models were faster than the deep learning models, which is evident from the lower time values in the table. This is a crucial factor when employing these models for real-time emotion recognition systems.
+
+Moreover, in figure \ref{fig:final_cm} it is possible to observe that the final models output "angry" several times indicating that it has difficulty distinguishing anger and happiness on these datasets. It was also noted from the EMO-DB confusion matrix, that the language of the data used is a limitation of the models' capacity, as this dataset's audio files are spoken in German. This highlights the English language bias of our \ac{ser} models and suggests that the results for other spoken languages may not be satisfactory.
+
+Overall, these results indicate that the developed traditional model is more effective for the \ac{ser} task and can be applied in real-time systems. It is recommended to use these models for English audios, reducing the potential error caused by the language bias. However, it is essential to acknowledge that the deep learning models could have yielded better results with a deeper hyperparameter tuning, which demanded more computation time and power for their development and evaluation.
+
+
 \begin{table}[H]
 	\centering
-	\caption{}
-	\label{}
+	\caption{Final models trained on \ac{iemo} and evaluated on different datasets.}
+	\label{final_models}
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{llrrrrrr}
 			\toprule
 			Dataset & Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} & Time \\
 			\midrule
-			
 			eNTERFACE'05 & Traditional & 46.03 & 44.26 & 47.14 & 46.03 & 0.203 & 0.18 \\
-			
-			 & Deep Learning & 41.27 & 38.3 & 52.13 & 41.27 & 0.131 & 0.27 \\ \\
-			
+			 & Deep Learning & 41.27 & 38.30 & 52.13 & 41.27 & 0.131 & 0.27 \\
+			 \addlinespace
+ 			CREMA-D & Traditional & 48.88 & 37.41 & 40.01 & 47.13 & 0.370 &  0.11 \\
+			 & Deep Learning & 39.61 & 33.84 & 34.91 & 39.97 & 0.216 & 0.30 \\
+			\addlinespace
 			EMO-DB & Traditional & 38.94 & 17.52 & 25.75 & 26.81 & 0.088 & 0.11 \\
-			
-			 & Deep Learning & 37.76 & 14.56 & 12.78 & 25.35 & 0.039 & 0.20 \\ \\
-			
-			CREMA-D & Traditional & 48.88 & 37.41 & 40.01 & 47.13 & 0.370 &  0.11 \\
-			
-			 & Deep Learning & 39.61 & 33.84 & 34.91 & 39.97 & 0.216 & 0.3 \\
-			
+			 & Deep Learning & 37.76 & 14.56 & 12.78 & 25.35 & 0.039 & 0.20 \\ 
 			\bottomrule
 		\end{tabular}%
 	}
@@ -63,5 +75,6 @@
 		\caption{CREMA-D \ac{dl} Model Confusion Matrix.}
 	\end{subfigure}
 	\caption{Final Models Confusion Matrices on the eNTERFACE'05, EMO-DB and CREMA-D Datasets.}
+	\label{fig:final_cm}
 \end{figure}
 

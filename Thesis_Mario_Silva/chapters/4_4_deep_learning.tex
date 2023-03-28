@@ -52,11 +52,13 @@ Through the implementation of these pre-trained models with transfer learning, w
 
 \subsubsection{Results and Conclusions}
 
-Table \ref{tab:dl_models} displays the results obtained. The outcomes of the experiments illustrate the efficacy of employing transfer learning with pre-trained models for the task of \ac{ser}. While the spectrogram image feature attained the highest average accuracy when utilizing the Resnet50 model, the mel spectrogram feature achieved the best overall performance across all models. Furthermore, the image of the mel spectrogram obtained the second-highest accuracy with the Resnet50 model and displayed a smaller standard deviation, indicating that it performed comparably well in all cross-validation folds.
+Table \ref{tab:dl_models} displays the results obtained. The outcomes of the experiments illustrate the efficacy of employing transfer learning with pre-trained models for the task of \ac{ser}. While the spectrogram image feature attained the highest average accuracy when utilizing the Resnet50 model and weights, the mel spectrogram feature achieved the best overall performance across all models. Furthermore, the image of the mel spectrogram obtained the second-highest accuracy with the Resnet50 model and displayed a smaller standard deviation, indicating that it performed comparably well in all cross-validation folds.
+
+From these results we noted the Resnet50 model with Spectrogram Images as input as the best deep learning candidate as it obtained the highest values on all metrics.
 
 \begin{table}[H]
 	\centering
-	\caption{\ac{dl} Classification Models Performance on IEMOCAP.}
+	\caption{\ac{dl} Classification Models Performance on \ac{iemo}.}
 	\label{tab:dl_models}
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{llrrrrrr}
@@ -84,7 +86,7 @@ Table \ref{tab:dl_models} displays the results obtained. The outcomes of the exp
 			
 			Spectrogram & 2D-CNN & 50.12$\pm$0.91 & 50.04 & 52.98 & 49.65 & 0.320 & 3167.14 \\
 			
-			Mel Spectrogram & 2D-CNN \& LSTM & 48.02$\pm$1.14 & 47.93 & 48.6 & 48.47 & 0.298 & 1427.02 \\
+			Mel Spectrogram & 2D-CNN \& LSTM & 48.02$\pm$1.14 & 47.93 & 48.60 & 48.47 & 0.298 & 1427.02 \\
 			
 			MFCCs & 2D-CNN & 46.70$\pm$0.85 & 47.13 & 49.53 & 46.75 & 0.275 & 303.49 \\
 			
