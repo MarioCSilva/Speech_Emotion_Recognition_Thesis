@@ -4,6 +4,9 @@ iemocap/data/mel_spectrogram_images/*
 iemocap/data/mel_spectrogram_images_2/*
 iemocap/data/mel_spectrograms/*
 iemocap/model/spectrogram_cat_autokeras/*
+enterface05/final_data/deep_learning/*
+emodb/deep_learning/*
+cremad/deep_learning/*
 
 # MAC OS Files
 .DS_Store

@@ -14,9 +14,7 @@ To implement these noise reduction techniques, we recurred to the \textit{noiser
 
 \begin{listing}[H]
 	\begin{minted}{python}
-noisereduce.reduce_noise(
-	y=y, sr=16000, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1
-)
+noisereduce.reduce_noise(y=y, sr=16000, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1)
 	\end{minted}
 	\caption{Python code for applying noise reduction using the \textit{noisereduce} library.}
 	\label{nr:code}
@@ -41,7 +39,10 @@ The table \ref{trim_durations} shows the original and after trim durations for a
 		Metric & Original Duration & After Trim Duration \\
 		\midrule
 		Minimum  		&  0.585 	&  0.256 \\
+		25th Percentile &  2.324	&  1.952 \\
+		%50th Percentile	&  3.577	&  3.109 \\
 		Mean 			&  4.549  	&  4.065 \\
+		75th Percentile	&  5.773	&  5.248 \\
 		Maximum 		& 34.139   	& 33.184 \\
 		\bottomrule
 	\end{tabular}
@@ -51,7 +52,7 @@ The table \ref{trim_durations} shows the original and after trim durations for a
 
 \subsection{Conclusion}
 
-Figure \ref{fig:prep} compares the waveform, spectrogram, and power spectral density of the original and preprocessed audio file from the \ac{iemo} dataset. It can be observed the amplitudes of the preprocessed waveform are reduced and that there are more silent parts compared to the original. The preprocessed spectrogram shows a cleaner and clearer representation, with reduced dB values in some time frames. The preprocessed power spectral density contains lower values of dB/Hz compared to the original audio. In addition to these visual observations, we also listen to the resulting audio and manually denoted the noise reduction and clearer audio.
+Figure \ref{fig:prep} compares an original and preprocessed audio file from the \ac{iemo} dataset. We observed the amplitudes of the preprocessed waveform are reduced and that there are more silent parts compared to the original. The preprocessed spectrogram shows a cleaner representation and some reduction of decibels values. The preprocessed power spectral density also contains lower values of dB/Hz, and, for example, in frequencies around 1100 and 1900, an elimination of spike values is denoted. In addition to these visual observations, we also listen to the resulting audio and manually noticed noise reduction and clearer sound.
 
 \begin{figure}[H]
 	\centering
@@ -61,4 +62,4 @@ Figure \ref{fig:prep} compares the waveform, spectrogram, and power spectral den
 \end{figure}
 
 
-These results showed that these techniques effectively cleaned the audio data, resulting in shorter durations and reducing the amount of noise. However, it is important to note that in some cases, noise may be part of the signal of interest, and removing it may lead to misinterpretation. Overall, audio preprocessing is essential to ensure the quality and accuracy of audio data, but it requires a deep understanding of audio signals to create an effective audio preprocessing pipeline.
+These results demonstrate that the employed techniques effectively cleaned the audio data, resulting in shorter durations and less noise. Overall, audio preprocessing is essential to ensure the quality and accuracy of audio data, but it requires a deep understanding of audio signals to create an effective audio preprocessing pipeline, since in some cases, noise may be part of the signal of interest, and removing it may lead to misinterpretation.

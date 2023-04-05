@@ -3,7 +3,7 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Basic emotions spanned across different emotional models.\relax }}{6}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Basic emotions spanned across different emotional models.\relax }}{6}{figure.caption.10}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Frequency distribution of databases on reviewed articles from a \ac {sota} study \blx@tocontentsinit {0}\cite {Jahangir2021}.\relax }}{8}{figure.caption.12}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Average pitch comparison of male and female speakers’ \blx@tocontentsinit {0}\cite {ArputhaRathina2012}.\relax }}{9}{figure.caption.15}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Traditional machine learning flow vs. automatic feature extraction with \ac {dl} flow \blx@tocontentsinit {0}\cite {Khalil2019}.\relax }}{11}{figure.caption.24}%
@@ -25,9 +25,7 @@
 \contentsline {figure}{\numberline {4.11}{\ignorespaces Graphical representations of the features used as input for the \ac {dl} classifiers.\relax }}{37}{figure.caption.89}%
 \contentsline {figure}{\numberline {4.12}{\ignorespaces Final Models Confusion Matrices on the eNTERFACE'05, EMO-DB and CREMA-D Datasets.\relax }}{41}{figure.caption.96}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Juries dimensional emotion classifications 3D visualization\relax }}{46}{figure.caption.101}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Juries dimensional emotion classifications 2D visualization\relax }}{46}{figure.caption.102}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Data with and without conflicts between emotion's categories and primitives emotion centroids' 3D visualization\relax }}{47}{figure.caption.104}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Data with and without conflicts between emotion's categories and primitives emotion centroids' 2D visualization\relax }}{47}{figure.caption.105}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces 2D representation of \ac {iemo} dimensional emotions and the \ac {vad} model centroids.\relax }}{46}{figure.caption.102}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Data with and without conflicts between emotion's categories and primitives emotion centroids' 2D visualization\relax }}{47}{figure.caption.105}%
 \addvspace {10pt}
 \addvspace {10pt}

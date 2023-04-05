@@ -12,8 +12,8 @@
 \contentsline {table}{\numberline {4.1}{\ignorespaces Number of Audio Files Used per Emotion from the IEMOCAP dataset.\relax }}{24}{table.caption.51}%
 \contentsline {table}{\numberline {4.2}{\ignorespaces eNTERFACE'05 subjects nationalities\relax }}{24}{table.caption.53}%
 \contentsline {table}{\numberline {4.3}{\ignorespaces Number of Audio Files Used per Emotion from the eNTERFACE'05 dataset.\relax }}{25}{table.caption.54}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Number of Audio Files Used per Emotion from the CREMA-D dataset.\relax }}{25}{table.caption.56}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Number of Audio Files Used per Emotion from the EMO-DB dataset.\relax }}{25}{table.caption.58}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Number of Audio Files Used per Emotion from the EMO-DB dataset.\relax }}{25}{table.caption.56}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Number of Audio Files Used per Emotion from the CREMA-D dataset.\relax }}{25}{table.caption.58}%
 \contentsline {table}{\numberline {4.6}{\ignorespaces Audio Files' Original and After Trim Durations\relax }}{27}{table.caption.59}%
 \contentsline {table}{\numberline {4.7}{\ignorespaces Extracted Audio Features and Statistical Functions Applied to Them\relax }}{28}{table.caption.61}%
 \contentsline {table}{\numberline {4.8}{\ignorespaces Performance of various classifiers in 5-fold cross-validation using the features obtained after high correlation elimination.\relax }}{33}{table.caption.77}%
@@ -27,8 +27,12 @@
 \contentsline {table}{\numberline {5.1}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results Based on the Recordings Duration.\relax }}{43}{table.caption.97}%
 \contentsline {table}{\numberline {5.2}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results Based on Speaker Gender Recordings.\relax }}{44}{table.caption.98}%
 \contentsline {table}{\numberline {5.3}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results Based on the Discrete Emotions.\relax }}{45}{table.caption.99}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces Discrete Emotions' Means of the Dimensional Annotations.\relax }}{45}{table.caption.100}%
-\contentsline {table}{\numberline {5.5}{\ignorespaces Conflicts between emotion's categories and primitives\relax }}{47}{table.caption.103}%
-\contentsline {table}{\numberline {5.6}{\ignorespaces Results obtained after eliminating emotions based on VAD conflicts with the categorical annotations.\relax }}{48}{table.caption.106}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Random Forest Regressor 5-Fold Cross Validation using Dimensional Emotions as Labels.\relax }}{46}{table.caption.100}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Discrete Emotions' Means of the Dimensional Annotations and Comparison to the \ac {vad} model.\relax }}{46}{table.caption.101}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces Maintained Dimensional Annotations Range For Each Emotion Category.\relax }}{47}{table.caption.103}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces Discrete Emotions' Means of the Dimensional Annotations and Comparison to the \ac {vad} model after Conflicts Removal Process.\relax }}{47}{table.caption.104}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.\relax }}{47}{table.caption.106}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.\relax }}{48}{table.caption.107}%
+\contentsline {table}{\numberline {5.10}{\ignorespaces Final models trained on \ac {iemo} and evaluated on different datasets.\relax }}{49}{table.caption.108}%
 \addvspace {10pt}
 \addvspace {10pt}

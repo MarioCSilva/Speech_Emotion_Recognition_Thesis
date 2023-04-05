@@ -8,7 +8,7 @@ In order to better understand the properties of the data in the \ac{iemo} datase
 
 The duration of an audio recording can significantly impact the analysis and modeling of the data. Shorter recordings may not capture enough information to adequately represent the signal of interest, while longer recordings may contain irrelevant or redundant information.
 
-We stratified the dataset based on the duration of the recordings. The dataset contains recordings ranging from approximately 0.25 to 33 seconds in duration, and we divided the recordings into three groups: short, less than or equal to 2.5 seconds, medium, greater than 2.5 and less than or equal to 4.5 seconds, and long, greater than 4.5 seconds.
+We stratified the dataset based on the duration of the recordings. The dataset contains recordings ranging from approximately 0.25 to 34 seconds in duration, and we divided the recordings into three evenly balanced groups, in terms of number of recordings: short, less than or equal to  2.29 seconds, medium, greater than 2.29 and less than or equal to 4.38 seconds, and long, greater than 4.38 seconds.
 
 Table \ref{5:durations} presents the impact of the duration of the recordings on the performance of the chosen traditional AdaBoost model. The longest recordings have the highest performance, with an accuracy of 63.4\%, despite having more recordings than the medium duration data. 
 
@@ -20,14 +20,16 @@ Table \ref{5:durations} presents the impact of the duration of the recordings on
 		\toprule
 		Recordings Duration &   Total Data & Accuracy    &   Macro F1 &   Precision &   Recall &   MCC. \\
 		\midrule
-		Short ($]0, 2.5]$ s)	&         2103 & 56.54+-1.5  &      54.85 &       58.49 &    53.47 &   0.39 \\
-		Medium ($]2.5, 4.5]$ s)	& 		  1674 & 56.87+-0.82 &      57.17 &       57.79 &    57.09 &   0.42 \\
-		Long ($]4.5, 34]$ s)	&         1754 & 63.4+-2.28  &      63.77 &       64.25 &    63.67 &   0.51 \\
+		Short ($]0, 2.29]$ s)	 	&      1844 & 57.38+-1.15 &   55.48 &  59.51 &  53.88 &  0.40  \\
+		Medium ($]2.29, 4.38]$ s) 	&      1843 & 56.38+-1.26 &   56.81 &  57.34 &  56.73 &  0.41 \\
+		Long ($]4.38, 34]$ s) 		&      1844 & 62.91+-1.69 &   63.31 &  63.91 &  63.11 &  0.50  \\
+		
+		
 		\bottomrule
 	\end{tabular}
 \end{table}
 
-These results suggest that longer recordings provide more information and are easier for the model to classify accurately, which allows us to conclude that recordings' duration has a significant performance impact on the \ac{ser} task.
+The obtained classification results suggest that longer recordings are easier for the model to classify accurately, as they provide more information. This allows us to conclude that recordings' duration has a substantial performance impact on the \ac{ser} task and is a significant factor to consider when building classification models.
 
 \section{Speaker Gender}
 
@@ -53,8 +55,7 @@ To evaluate the performance of the model on different genders, we trained and te
 
 From the table, it can be observed that the model performed similarly on both genders, when the testing data for the model is of the training data, with accuracies close to 60\%. However, when testing with different speaker gender, the model's accuracy dropped significantly to 51.49\% and 51.45\% for female and male training data, respectively. The other metrics showed equivalent behavior, indicating difficulty in correctly identifying the emotion in mixed-gender contexts.
 
-These results suggest that the model's performance is affected by the gender of the speakers in the training data and that the model is biased toward it.
-
+These results suggest that the model's performance is affected by the gender of the speakers in the training data and therefore, it is important that the model is provided a gender-balanced set of training data to reduce gender bias.
 
 \section{Discrete Emotions}
 
@@ -84,18 +85,18 @@ Table \ref{tab:emo_cat} shows the traditional model 5-fold cross-validation resu
 		Angry, Neutral, Sad                 &         3895 & 74.02$\pm$1.14 &      74.16 &       75.61 &    73.2  &   0.6  \\
 		Sad, Neutral, Happy                 &         4428 & 65.4$\pm$1.12  &      65.59 &       65.75 &    65.54 &   0.47 \\
 		
-		Sad, Neutral, Happy+Angry (Arousal) &         5531 & 68.54$\pm$1.03 &      66    &       66.31 &    65.89 &   0.49 \\
+		Sad, Neutral, Happy+Angry (Arousal or Dominance) &         5531 & 68.54$\pm$1.03 &      66    &       66.31 &    65.89 &   0.49 \\
 		Angry+Sad, Neutral, Happy (Valence) &         5531 & 60.15$\pm$0.86 &      58.94 &       59.53 &    58.99 &   0.39 \\
     	\midrule
     	\multicolumn{7}{c}{Two Labels} \\
     	    	
     	Angry, Sad                          &         2187 & 91.4$\pm$1.46  &      91.4  &       91.46 &    91.39 &   0.83 \\
     	Angry, Neutral                      &         2811 & 84.13$\pm$0.88 &      82.98 &       84.03 &    82.34 &   0.66 \\
-    	Angry, Happy                    &         2739 & 74.66$\pm$2.01 &      73.1  &       73.84 &    72.72 &   0.47 \\
+    	Angry, Happy                    	&         2739 & 74.66$\pm$2.01 &      73.1  &       73.84 &    72.72 &   0.47 \\
     	Sad, Neutral                        &         2792 & 79.51$\pm$1.57 &      77.98 &       78.77 &    77.49 &   0.56 \\
     	Sad, Happy                          &         2720 & 83.6$\pm$1.41  &      82.87 &       82.93 &    82.82 &   0.66 \\
     	Neutral, Happy                      &         3344 & 72.58$\pm$2.38 &      72.43 &       72.81 &    72.45 &   0.45 \\
-    	Sad+Neutral, Happy+Angry (Arousal)  &         5531 & 77.2$\pm$1.29  &      77.18 &       77.25 &    77.18 &   0.54 \\
+    	Sad+Neutral, Happy+Angry (Arousal or Dominance)  &         5531 & 77.2$\pm$1.29  &      77.18 &       77.25 &    77.18 &   0.54 \\
     	Angry+Sad, Neutral+Happy (Valence)  &         5531 & 72.86$\pm$0.94 &      69.84 &       72.47 &    69.27 &   0.42 \\
     	\bottomrule
     \end{tabular}
@@ -110,98 +111,100 @@ It is important to note that the total data impacts the classification, as a low
 
 \section{Dimensional Emotions}
 
-In addition to the categorical classification discussed in the previous section, we also explored dimensional classification using the annotations of the dataset in terms of valence (ranging from unpleasant to pleasant), arousal (ranging from calm to excited), and dominance (ranging from submissive to dominant). These annotations are provided by human annotators who rate each recording on three continuous dimensions, on a scale from 1 to 5.
+In addition to the categorical classification, we also explored the dimensional annotations of the dataset in terms of valence (ranging from unpleasant to pleasant), arousal (ranging from calm to excited), and dominance (ranging from submissive to dominant). These dimensions were rated on a continuous scale of 1 to 5 by human judges.
 
+Initially, we aimed to investigate the level of difficulty associated with classifying each emotional dimension, so we utilized traditional approach features to assess the performance of a Random Forest Regressor model from sklearn for each dimension. Each dimension underwent 5-fold cross-validation. We used MAE, RMSE, and $R^2$ as evaluation metrics for the model.
+
+Table \ref{tab:dim_reg} shows the results of our experiments on the regression task. The arousal and dominance dimensions are easier to classify than valence. One possible reason for this is that valence is a more complex and abstract concept that may be more difficult to recognize and classify in speech. Additionally, the annotations for valence may be more subjective and varied among annotators than the others, leading to less reliable labels and lower classification performance.
 
 
 \begin{table}[H]
 	\centering
-	\caption{Discrete Emotions' Means of the Dimensional Annotations.}
+	\caption{Random Forest Regressor 5-Fold Cross Validation using Dimensional Emotions as Labels.}
+	\label{tab:dim_reg}
+	\begin{tabular}{lrrr}
+		\toprule
+		Regression Labels   &   MAE &  RMSE & $R^2$ \\
+		\midrule
+		Valence             & 0.700 & 0.859 & 0.182 \\
+		Arousal             & 0.414 & 0.522 & 0.520 \\
+		Dominance           & 0.534 & 0.657 & 0.362 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+We conducted a comparison between the discrete and dimensional annotations by calculating the means of each dimensional label based on the discrete one. These means, known as dimensional centroids, are presented in Table \ref{tab:dis_dim} and a in 2D plane \ref{fig:2dplane}. To determine if the centroids are accurate or too distant from the expected values, we compared them with the state-of-the-art Russell and Mehrabian's \ac{vad} model.
+
+\begin{table}[H]
+	\centering
+	\caption{Discrete Emotions' Means of the Dimensional Annotations and Comparison to the \ac{vad} model.}
 	\label{tab:dis_dim}
 	\begin{tabular}{lrrr}
 		\toprule
-		Emotion & Mean Activation &   Mean Valence & Mean Dominance \\
+		Emotion & Mean Arousal &   Mean Valence & Mean Dominance \\
 		\midrule
-		Angry   &   3.636 &  1.906 &  3.949 \\
-		Happy   &   3.411 &  3.946 &  3.228 \\
-		Neutral &   2.726 &  2.971 &  2.831 \\
-		Sad     &   2.564 &  2.253 &  2.828 \\
+		VAD Anger     & 4.34 & 2.14 & 3.68 \\
+		VAD Happiness & 3.96 & 4.52 & 3.70 \\
+		VAD Neutral   & 3.00 & 3.00 & 3.00 \\
+		VAD Sadness   & 3.54 & 1.74 & 2.34 \\
+		\addlinespace
+		Anger   	&   3.64 \textcolor{red}{$(-0.70)$} &  1.91 \textcolor{red}{$(-0.23)$} &  3.95 \textcolor{green}{$(+0.27)$} \\
+		Happiness   &   3.41 \textcolor{red}{$(-0.55)$} &  3.95 \textcolor{red}{$(-0.57)$} &  3.23 \textcolor{red}{$(-0.47)$} \\
+		Neutral 	&   2.73 \textcolor{red}{$(-0.27)$} &  2.97 \textcolor{red}{$(-0.03)$} &  2.83 \textcolor{red}{$(-0.17)$} \\
+		Sadness     &   2.56 \textcolor{red}{$(-0.98)$} &  2.25 \textcolor{green}{$(+0.51)$} &  2.83 \textcolor{green}{$(+0.49)$} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 
-
-
-Our results suggest that the valence and arousal dimensions are easier to classify than the dominance dimension. One possible reason for this is that dominance is a more complex and abstract concept that may be more difficult to recognize and classify in speech. Additionally, the annotations for dominance may be more subjective and varied among annotators than those for valence and arousal, leading to less reliable labels and lower classification performance.
-
-Overall, our results demonstrate the potential of using dimensional classification in speech emotion recognition. Future work could explore the use of more advanced machine learning models and feature extraction techniques to improve the performance of the model on the dominance dimension and to further investigate the relationship between acoustic features and the three dimensions of emotion.
-
-
-
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.9\linewidth]{figs/5_data_stratification/primitives_visualization.png}
-  \caption{Juries dimensional emotion classifications 3D visualization}
-  \label{fig:signalWP}
-\end{figure}
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=.9\linewidth]{figs/5_data_stratification/primitives_visualization_2d.png}
-  \caption{Juries dimensional emotion classifications 2D visualization}
-  \label{fig:signalWP}
+  \caption{2D representation of \ac{iemo} dimensional emotions and the \ac{vad} model centroids.}
+  \label{fig:2dplane}
 \end{figure}
 
+The results indicate that the centroids of each discrete emotion have some differences to the \ac{vad} model. For the arousal dimension, it was noted that all emotions have lower values, with sadness showing a greater deviation. In terms of valence, the annotations are more comparable to the \ac{vad} model, but sadness contradicts the lower trend of the other two emotions. The annotations on the dominance dimension also vary the deviations trends.
 
-CITE CONFLICTS FROM THIS https://ieeexplore.ieee.org/document/9746930:
-
-TODO: NAO MOSTRAR OS CONFLITOS RETIRADOS MAS SIM MOSTRAR OS RANGES MANTIDOS
+Based on this, we decided to remove any data that contains dimensional annotations far from the \ac{vad} model centroids for each discrete emotion. Table \ref{tab:conf} demonstrates this conflicts removal process between each emotion's categories and the respective dimensional annotations.
 
 \begin{table}[H]
-\caption{Conflicts between emotion's categories and primitives}
-\label{tab:dominance}
+\caption{Maintained Dimensional Annotations Range For Each Emotion Category.}
+\label{tab:conf}
 \centering
     \begin{tabular}{lrrr}
         \toprule
-        {} & \multicolumn{3}{c}{\textbf{Conflicts}} \\ \cmidrule{2-4}
+        {} & \multicolumn{3}{c}{Dimensions} \\ \cmidrule{2-4}
         Emotion Categories &    Arousal &      Valence &       Dominance \\
-        
-        \addlinespace
-        \hline
-        \multicolumn{4}{c}{\cellcolor{gray!15}{\textbf{Non-Strict Conflicts}}} \\
-        \hline
-        \addlinespace
-        
-        Angry   &    $[1, 2.5]$ & $]3.5, 5]$ & $[1, 2[$ \\         \addlinespace
-        Happy+Excited &  $[1, 3[$  & $[1, 3[$ & $[1, 2[$ \\   \addlinespace
-        Sad    &    $[3.5, 5]$ & $[3.5, 5]$ & None \\         \addlinespace
-        Neutral  &  $[1, 2[$ & $]4, 5]$ & $[1, 1.5[ \cup ]4.5, 5]$\\ 
-
-        \addlinespace
-        \hline
-        \multicolumn{4}{c}{\cellcolor{gray!15}{\textbf{Strict Conflicts}}} \\
-        \hline
-        \addlinespace
-
-        Angry   &    $[1, 3]$ &  $[3, 5]$ &  $[1, 2[$ \\         \addlinespace
-        Happy+Excited &  $[1, 3]$ & $[1, 3]$ & $[1, 2[$ \\   \addlinespace
-        Sad    &   $[4, 5]$ & $[4, 5]$ & None  \\         \addlinespace
-        Neutral  &  $[1, 2]$ & $[4, 5]$ & $[1, 2[ \cup ]4, 5]$ \\
-
+        \midrule
+        Angry   &   $]2, 5]$  	& $[1, 4.5]$ 	&  None 		\\
+        Happy 	&   $[2.5, 5]$  & $[3, 5[$ 		&  None 		\\
+        Sad    	&   $]2, 5]$ 	& $[1, 4]$ 		&  $[1, 4]$ 	\\
+        Neutral &   $]2, 4[$	& $[2, 4]$ 		&  $]2, 4[$		\\
         \bottomrule
     \end{tabular}
 \end{table}
 
 
+With this process, 1136 audio files were removed, having now 4395 audio files and the new centroids were calculated again, as table \ref{tab:new_c} shows.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.9\linewidth]{figs/5_data_stratification/strict_conflicts_centroids.png}
-  \caption{Data with and without conflicts between emotion's categories and primitives emotion centroids' 3D visualization}
-  \label{fig:signalWP}
-\end{figure}
+
+\begin{table}[H]
+	\centering
+	\caption{Discrete Emotions' Means of the Dimensional Annotations and Comparison to the \ac{vad} model after Conflicts Removal Process.}
+	\label{tab:new_c}
+	\begin{tabular}{lrrr}
+		\toprule
+		Emotion & Mean Arousal &   Mean Valence & Mean Dominance \\
+		\midrule
+		Anger   	&   3.66 \textcolor{red}{$(-0.68)$} &  1.91 \textcolor{red}{$(-0.23)$} &  3.95 \textcolor{green}{$(+0.27)$} \\
+		Happiness   &   3.47 \textcolor{red}{$(-0.49)$} &  4.02 \textcolor{red}{$(-0.50)$} &  3.26 \textcolor{red}{$(-0.44)$} \\
+		Neutral 	&   2.86 \textcolor{red}{$(-0.14)$} &  2.97 \textcolor{red}{$(-0.03)$} &  2.93 \textcolor{red}{$(-0.07)$} \\
+		Sadness     &   2.87 \textcolor{red}{$(-0.67)$} &  2.25 \textcolor{green}{$(+0.51)$} &  2.91 \textcolor{green}{$(+0.57)$} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
 
 \begin{figure}[H]
   \centering
@@ -213,31 +216,80 @@ TODO: NAO MOSTRAR OS CONFLITOS RETIRADOS MAS SIM MOSTRAR OS RANGES MANTIDOS
 
 
 \begin{table}[H]
-\small
-\caption{Results obtained after eliminating emotions based on VAD conflicts with the categorical annotations.}
-\label{tab:dominance}
-\centering
-    \begin{tabular}{lrr}
-        \toprule
-        Conflicts Removed &    Total Data &  Accuracy  \\
-        \midrule
-        None & 5531 & 60.26+-0.46 \\         \addlinespace
-        
-        \hline
-        \addlinespace
-        
-        Non-strict Arousal    &   4955 & 63.37+-1.09 \\         \addlinespace
-        Non-strict Valence    &  5382 &  60.46+-0.95 \\   \addlinespace
-        Non-strict Dominance   & 5491  & 60.5+-0.93 \\         \addlinespace
-        All Non-strict  &  4816 & 65.05+-0.85 \\         \addlinespace
-        
-        \hline
-        \addlinespace
-        
-        Strict Arousal    &  4222 & 66.79+-1.85 \\         \addlinespace
-        Strict Valence    &  5128 &  62.07+-1.77 \\   \addlinespace
-        Strict Dominance   & 5432  & 60.53+-1.34 \\         \addlinespace
-        All Strict  &  3911 & 69.09+-1.17 \\         \addlinespace
-        \bottomrule
-    \end{tabular}
+	\small
+	\centering
+	\caption{Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.}
+	\label{tab:emo_cat2}
+	\centering
+	\begin{tabular}{lrrrrr}
+		\toprule
+		Data   						 	& Accuracy    & Macro F1    & Precision   & Recall      & MCC.       \\
+		\midrule
+		All Data - 5531 Files		 	& 60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 \\
+		Conflict-Free Data - 4395 Files & 61.64$\pm$1.09 & 62.08 & 62.36 & 62.35 & 0.490 \\
+		\bottomrule
+	\end{tabular}
 \end{table}
+
+
+\subsection{Conclusion}
+
+The data stratification process enabled us to uncover the shortcomings of the \ac{iemo} dataset and the model we developed. Having obtained valuable insights from our observations and conclusions on the subsections about duration, gender, and dimensional annotations, we aim to utilize the training data in our model to enhance its reliability and performance. In light of this, we have made the decision to train both traditional and deep learning models on data that aligns with our objectives.
+
+To achieve this, to the conflict-free data obtained from the dimensional conflict removal process, we applied an additional file duration condition. Specifically, we only retained audio files with a duration exceeding 1 second, as it was necessary to ensure the presence of sufficient emotional data for the model to learn effectively. As a result of this process, we obtained a total of 4200 audio files, with a nearly balanced gender distribution, comprising 52.9\% male and 47.1\% female speakers.
+
+Table \ref{tab:emo_cat3} presents the 5-fold cross-validation results of the traditional model trained on the \ac{iemo} dataset with different sets of selected data. The first row shows the results obtained with all 5531 files of the dataset. The second row shows the results after applying the dimensional conflict removal process, resulting in 4395 files. The third row shows the results of the conflict-free data with the previous mentioned additional duration condition, resulting in 4200 audio files. The results demonstrate that the performance of the traditional model improves as the data selection process becomes more rigorous. The dimensional conflict removal process resulted in an increase in accuracy from 60.04\% to 61.64\%, while the additional duration condition further improved the accuracy to 62.17\%, the other metrics also have the same behavior, indicating that the model's classification ability improved with the use of cleaner and more reliable data.
+
+\begin{table}[H]
+	\small
+	\centering
+	\caption{Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.}
+	\label{tab:emo_cat3}
+	\centering
+	\begin{tabular}{lrrrrr}
+		\toprule
+		Data   						 	& Accuracy    & Macro F1    & Precision   & Recall      & MCC.       \\
+		\midrule
+		All		      & 60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 \\
+		Conflict-Free & 61.64$\pm$1.09 & 62.08 & 62.36 & 62.35 & 0.490 \\
+		Conflict-Free With Duration Condition & 62.17$\pm$0.60 & 62.59 & 62.84 & 62.81 & 0.500 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Removing conflicts from the dataset results in better performance metrics for our models, however, this approach comes reduces the amount of data which may be the reason for this improvements. To verify if the model does in fact improve, we decided to train and save both traditional and deep learning models with the data that met our set of conditions. These saved models are called stratified models. We then repeated the process made on the previous section and evaluated them on three different datasets, namely eNTERFACE'05, CREMA-D, and EMO-DB.
+
+As shown in Table \ref{strat_final_models}, the stratified models outperformed the previous models trained on all of the \ac{iemo} data on most metrics, which demonstrate that our stratification study resulted in improved cross-dataset performance of the models.
+
+\begin{table}[H]
+	\centering
+	\caption{Final models trained on \ac{iemo} and evaluated on different datasets.}
+	\label{strat_final_models}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{llrrrrrr}
+			\toprule
+			Dataset & Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} & Time \\
+			\midrule
+			
+			eNTERFACE'05 & Traditional & 29.37 & 18.61 & 17.85 & 22.02 & 0.064 & 0.14 \\
+			& Stratified Traditional & 29.68 & 18.82 & 40.7 & 22.26 & 0.025 & 0.14 \\
+			& Deep Learning & 36.67 & 22.91 & 44.36 & 27.50 & 0.087 & 0.25 \\
+			& Stratified Deep Learning & 37.14 & 22.39 & 43.51 & 27.86 & 0.073 & 0.24 \\
+
+			\addlinespace			
+			EMO-DB & Traditional & 38.94 & 17.36 & 25.75 & 26.72 & 0.087 & 0.11 \\
+			& Stratified Traditional & 40.41 & 20.24 & 31.93 & 28.61 & 0.126 & 0.12 \\
+			& Deep Learning & 38.35 & 15.79 & 37.78 & 25.99 & 0.066 & 0.18 \\
+			& Stratified Deep Learning & 38.05 & 15.22 & 34.71 & 25.63 & 0.052 & 0.20 \\
+			
+			\addlinespace
+			CREMA-D & Traditional & 44.41 & 35.45 & 63.18 & 46.12 & 0.335 &  0.11 \\
+			& Stratified Traditional & 45.12 & 37.50 & 36.46 & 46.54 & 0.323 & 0.10 \\
+			& Deep Learning & 54.14 & 47.71 & 51.68 & 52.98 & 0.407 & 0.20 \\
+			& Stratified Deep Learning & 55.29 & 50.06 & 54.11 & 54.05 & 0.417 & 0.19 \\
+
+			\bottomrule
+		\end{tabular}%
+	}
+\end{table}
+

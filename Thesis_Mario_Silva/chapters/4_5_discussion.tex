@@ -14,7 +14,7 @@ In terms of computation time, the traditional models were faster than the deep l
 
 Moreover, in figure \ref{fig:final_cm} it is possible to observe that the final models output "angry" several times indicating that it has difficulty distinguishing anger and happiness on these datasets. It was also noted from the EMO-DB confusion matrix, that the language of the data used is a limitation of the models' capacity, as this dataset's audio files are spoken in German. This highlights the English language bias of our \ac{ser} models and suggests that the results for other spoken languages may not be satisfactory.
 
-Overall, these results indicate that the developed traditional model is more effective for the \ac{ser} task and can be applied in real-time systems. It is recommended to use these models for English audios, reducing the potential error caused by the language bias. However, it is essential to acknowledge that the deep learning models could have yielded better results with a deeper hyperparameter tuning, which demanded more computation time and power for their development and evaluation.
+Overall, these results indicate that the Deep Learning model might be more effective for the \ac{ser} task on different datasets, due to its effective feature extraction and generalization capabilities. However, it is slower than the traditional models which can have a big impact when applied to real-time systems. We also recommend to use these models for English audios, reducing the potential error caused by the language bias, since the results on a German dataset, EMO-DB, and on a dataset with varied accents, eNTERFACE'05 the results are not as good. It is also essential to acknowledge that the deep learning models can yield even better results with a deeper hyperparameter tuning, which demands more computation time and power for their proper  development and evaluation.
 
 
 \begin{table}[H]
@@ -26,14 +26,19 @@ Overall, these results indicate that the developed traditional model is more eff
 			\toprule
 			Dataset & Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} & Time \\
 			\midrule
-			eNTERFACE'05 & Traditional & 46.03 & 44.26 & 47.14 & 46.03 & 0.203 & 0.18 \\
-			 & Deep Learning & 41.27 & 38.30 & 52.13 & 41.27 & 0.131 & 0.27 \\
-			 \addlinespace
- 			CREMA-D & Traditional & 48.88 & 37.41 & 40.01 & 47.13 & 0.370 &  0.11 \\
-			 & Deep Learning & 39.61 & 33.84 & 34.91 & 39.97 & 0.216 & 0.30 \\
+			
+			eNTERFACE'05 & Traditional & 29.37 & 18.61 & 17.85 & 22.02 & 0.064 & 0.18 \\
+			 & Deep Learning & 36.67 & 22.91 & 44.36 & 27.50 & 0.087 & 0.25 \\
+
 			\addlinespace
-			EMO-DB & Traditional & 38.94 & 17.52 & 25.75 & 26.81 & 0.088 & 0.11 \\
-			 & Deep Learning & 37.76 & 14.56 & 12.78 & 25.35 & 0.039 & 0.20 \\ 
+			
+			EMO-DB & Traditional & 38.94 & 17.36 & 25.75 & 26.72 & 0.087 & 0.11 \\
+			 & Deep Learning & 38.35 & 15.79 & 37.78 & 25.99 & 0.066 & 0.18 \\ 
+			 			 
+			 \addlinespace
+			 CREMA-D & Traditional & 44.41 & 35.45 & 63.18 & 46.12 & 0.335 &  0.11 \\
+			 & Deep Learning & 54.14 & 47.71 & 51.68 & 52.98 & 0.407 & 0.30 \\
+			 
 			\bottomrule
 		\end{tabular}%
 	}
