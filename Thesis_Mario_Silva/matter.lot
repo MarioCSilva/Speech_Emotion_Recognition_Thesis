@@ -28,11 +28,11 @@
 \contentsline {table}{\numberline {5.2}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results Based on Speaker Gender Recordings.\relax }}{44}{table.caption.98}%
 \contentsline {table}{\numberline {5.3}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results Based on the Discrete Emotions.\relax }}{45}{table.caption.99}%
 \contentsline {table}{\numberline {5.4}{\ignorespaces Random Forest Regressor 5-Fold Cross Validation using Dimensional Emotions as Labels.\relax }}{46}{table.caption.100}%
-\contentsline {table}{\numberline {5.5}{\ignorespaces Discrete Emotions' Means of the Dimensional Annotations and Comparison to the \ac {vad} model.\relax }}{46}{table.caption.101}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces \ac {iemo} Dimensional Centroids and Comparison to the \ac {vad} Model.\relax }}{46}{table.caption.101}%
 \contentsline {table}{\numberline {5.6}{\ignorespaces Maintained Dimensional Annotations Range For Each Emotion Category.\relax }}{47}{table.caption.103}%
-\contentsline {table}{\numberline {5.7}{\ignorespaces Discrete Emotions' Means of the Dimensional Annotations and Comparison to the \ac {vad} model after Conflicts Removal Process.\relax }}{47}{table.caption.104}%
-\contentsline {table}{\numberline {5.8}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.\relax }}{47}{table.caption.106}%
-\contentsline {table}{\numberline {5.9}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.\relax }}{48}{table.caption.107}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces \ac {iemo} Dimensional Centroids and Comparison to the \ac {vad} Model after the Conflicts Removal Process.\relax }}{47}{table.caption.104}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.\relax }}{48}{table.caption.106}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.\relax }}{49}{table.caption.107}%
 \contentsline {table}{\numberline {5.10}{\ignorespaces Final models trained on \ac {iemo} and evaluated on different datasets.\relax }}{49}{table.caption.108}%
 \addvspace {10pt}
 \addvspace {10pt}

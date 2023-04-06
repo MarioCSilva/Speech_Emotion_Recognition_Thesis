@@ -137,11 +137,12 @@ We conducted a comparison between the discrete and dimensional annotations by ca
 
 \begin{table}[H]
 	\centering
-	\caption{Discrete Emotions' Means of the Dimensional Annotations and Comparison to the \ac{vad} model.}
+	\caption{\ac{iemo} Dimensional Centroids and Comparison to the \ac{vad} Model.}
 	\label{tab:dis_dim}
 	\begin{tabular}{lrrr}
 		\toprule
-		Emotion & Mean Arousal &   Mean Valence & Mean Dominance \\
+     	{} & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
+		Emotion &  Arousal Centroid &   Valence Centroid & Dominance Centroid \\
 		\midrule
 		VAD Anger     & 4.34 & 2.14 & 3.68 \\
 		VAD Happiness & 3.96 & 4.52 & 3.70 \\
@@ -158,9 +159,9 @@ We conducted a comparison between the discrete and dimensional annotations by ca
 
 
 \begin{figure}[H]
-  \centeringS
+  \centering
   \includegraphics[width=.9\linewidth]{figs/5_data_stratification/primitives_visualization_2d.png}
-  \caption{2D representation of \ac{iemo} dimensional emotions and the \ac{vad} model centroids.}
+  \caption{2D representation of the \ac{iemo} and \ac{vad} model dimensional centroids.}
   \label{fig:2dplane}
 \end{figure}
 
@@ -174,7 +175,7 @@ Based on this, we decided to remove any data that contains dimensional annotatio
 \centering
     \begin{tabular}{lrrr}
         \toprule
-        {} & \multicolumn{3}{c}{Dimensions} \\ \cmidrule{2-4}
+        {} & \multicolumn{3}{c}{Ranges Maintained} \\ \cmidrule{2-4}
         Emotion Categories &    Arousal &      Valence &       Dominance \\
         \midrule
         Angry   &   $]2, 5]$  	& $[1, 4.5]$ 	&  None 		\\
@@ -185,17 +186,16 @@ Based on this, we decided to remove any data that contains dimensional annotatio
     \end{tabular}
 \end{table}
 
-
-With this process, 1136 audio files were removed, leaving 4395 audio files left. The new centroids were calculated and visualized, as table \ref{tab:new_c} and figure \ref{2dplane2} shows.
-
+With this process, 1136 audio files were removed, and 4395 audio files retained. The new \ac{vad} centroids calculated, as shown in table \ref{tab:new_c}, were closer to the numeric values of the \ac{vad} emotion centroids. Figure \ref{fig:2dplane2} depicts a 2D visualization of the centroids of the \ac{vad} model, along with the data with and without dimensional conflicts. The visualization indicates that the centroids are now closer to the \ac{vad} emotion centroids after the conflicts removal process, which is a possible indication that the conflict-free data is more suitable for the \ac{ser} task.
 
 \begin{table}[H]
 	\centering
-	\caption{Discrete Emotions' Means of the Dimensional Annotations and Comparison to the \ac{vad} model after Conflicts Removal Process.}
+	\caption{\ac{iemo} Dimensional Centroids and Comparison to the \ac{vad} Model after the Conflicts Removal Process.}
 	\label{tab:new_c}
 	\begin{tabular}{lrrr}
 		\toprule
-		Emotion & Mean Arousal &   Mean Valence & Mean Dominance \\
+       {} & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
+		Emotion &  Arousal  &   Valence  & Dominance \\
 		\midrule
 		Anger   	&   3.66 \textcolor{red}{$(-0.68)$} &  1.91 \textcolor{red}{$(-0.23)$} &  3.95 \textcolor{green}{$(+0.27)$} \\
 		Happiness   &   3.47 \textcolor{red}{$(-0.49)$} &  4.02 \textcolor{red}{$(-0.50)$} &  3.26 \textcolor{red}{$(-0.44)$} \\
@@ -206,15 +206,14 @@ With this process, 1136 audio files were removed, leaving 4395 audio files left.
 \end{table}
 
 
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=.9\linewidth]{figs/5_data_stratification/strict_conflicts_centroids_2d.png}
-  \caption{Data with and without conflicts between emotion's categories and primitives emotion centroids' 2D visualization}
+  \caption{2D visualization of the entire \ac{iemo} data, along with the conflict-free data and the \ac{vad} model's dimensional centroids.}
   \label{fig:2dplane2}
 \end{figure}
 
-
+To evaluate further if this removal of data does translates to a cleaner data and, therefore, to a more effective emotion recognition process, a 5-fold cross-validation was performed using that conflict-free data and compared against the results obtained using the complete dataset. The results are shown in Table \ref{tab:emo_cat2}, and they indicate that the conflict-free dataset outperforms the complete dataset in all metrics. While this outcome supports our hypothesis, the observed improvements are not significant enough to attribute them solely to the removal of data based on dimensional annotations. Other random variables, such as variations in emotion distributions across folds or the decrease in the total number of files, could also have contributed to the observed improvements. Hence, further investigation is required to establish the actual impact of this process.
 
 \begin{table}[H]
 	\small
