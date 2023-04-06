@@ -141,8 +141,8 @@ We conducted a comparison between the discrete and dimensional annotations by ca
 	\label{tab:dis_dim}
 	\begin{tabular}{lrrr}
 		\toprule
-     	{} & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
-		Emotion &  Arousal Centroid &   Valence Centroid & Dominance Centroid \\
+     	\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}}  & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
+		 &  Arousal &   Valence & Dominance \\
 		\midrule
 		VAD Anger     & 4.34 & 2.14 & 3.68 \\
 		VAD Happiness & 3.96 & 4.52 & 3.70 \\
@@ -175,8 +175,8 @@ Based on this, we decided to remove any data that contains dimensional annotatio
 \centering
     \begin{tabular}{lrrr}
         \toprule
-        {} & \multicolumn{3}{c}{Ranges Maintained} \\ \cmidrule{2-4}
-        Emotion Categories &    Arousal &      Valence &       Dominance \\
+        \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}} & \multicolumn{3}{c}{Ranges Maintained} \\ \cmidrule{2-4}
+         &    Arousal &      Valence &       Dominance \\
         \midrule
         Angry   &   $]2, 5]$  	& $[1, 4.5]$ 	&  None 		\\
         Happy 	&   $[2.5, 5]$  & $[3, 5[$ 		&  None 		\\
@@ -194,8 +194,8 @@ With this process, 1136 audio files were removed, and 4395 audio files retained.
 	\label{tab:new_c}
 	\begin{tabular}{lrrr}
 		\toprule
-       {} & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
-		Emotion &  Arousal  &   Valence  & Dominance \\
+		\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}} & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
+		 &  Arousal  &   Valence  & Dominance \\
 		\midrule
 		Anger   	&   3.66 \textcolor{red}{$(-0.68)$} &  1.91 \textcolor{red}{$(-0.23)$} &  3.95 \textcolor{green}{$(+0.27)$} \\
 		Happiness   &   3.47 \textcolor{red}{$(-0.49)$} &  4.02 \textcolor{red}{$(-0.50)$} &  3.26 \textcolor{red}{$(-0.44)$} \\
@@ -263,7 +263,7 @@ As shown in Table \ref{strat_final_models}, the stratified models outperformed t
 
 \begin{table}[H]
 	\centering
-	\caption{Final models trained on \ac{iemo} and evaluated on different datasets.}
+	\caption{Final Models Trained on \ac{iemo} and Evaluated on Different Datasets.}
 	\label{strat_final_models}
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{llrrrrrr}
