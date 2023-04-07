@@ -8,11 +8,13 @@ Audio preprocessing is an essential step that is performed on audio data before 
 One of the key techniques used in audio preprocessing is noise reduction. In audio data, noise can arise from a variety of sources, such as background noise, microphone interference, or electrical interference. The presence of noise in the audio data can significantly impact the performance of any audio classification system.
 
 One common strategy for denoising audio is spectral gating, which involves gating the signal only on high-level sounds. We recurred to the \textit{noisereduce} library to implement this noise reduction technique.
-This algorithm estimates a noise threshold for each frequency band of the signal. This threshold is used to compute a mask, which gates noise below the frequency-varying threshold. The Code Snippet \ref{nr:code} shows how we implemented the noise reduction technique.
+This algorithm estimates a noise threshold for each frequency band of the signal. This threshold is used to compute a mask, which gates noise below the frequency-varying threshold. The code snippet \ref{nr:code} shows how we implemented the noise reduction technique.
 
 \begin{listing}[H]
 	\begin{minted}{python}
-		noisereduce.reduce_noise(y=y, sr=16000, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1)
+noisereduce.reduce_noise(
+	y=y, sr=16000, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1
+)
 	\end{minted}
 	\caption{Python code for applying noise reduction using the \textit{noisereduce} library.}
 	\label{nr:code}
@@ -29,7 +31,7 @@ Table \ref{trim_durations} shows the original and after trim durations for all o
 
 \begin{table}[H]
 	\centering
-	\caption{Audio Files' Original and After Trim Durations}
+	\caption{Audio files' original and after trim durations.}
 	\label{trim_durations}
 	\begin{tabular}{lrr}
 		\toprule

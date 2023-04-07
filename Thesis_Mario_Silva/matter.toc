@@ -62,7 +62,7 @@
 \contentsline {section}{\numberline {4.2}Audio Preprocessing}{26}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Noise Reduction}{26}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Audio Trim}{26}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Conclusion}{27}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}Conclusion}{26}{subsection.4.2.3}%
 \contentsline {section}{\numberline {4.3}Traditional Feature-Based \ac {ser}}{28}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Feature Extraction}{28}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Feature Analysis}{28}{subsection.4.3.2}%

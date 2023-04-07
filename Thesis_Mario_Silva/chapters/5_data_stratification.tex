@@ -14,7 +14,7 @@ Table \ref{5:durations} presents the impact of the duration of the recordings on
 
 \begin{table}[H]
 	\centering
-	\caption{Traditional Model 5-Fold Cross-Validation Results Based on the Recordings Duration.}
+	\caption{Traditional model 5-fold cross validation results based on the recordings duration.}
 	\label{5:durations}
 	\begin{tabular}{lrlrrrr}
 		\toprule
@@ -39,7 +39,7 @@ To evaluate the performance of the model on different genders, we trained and te
 
 \begin{table}[H]
 	\centering
-	\caption{Traditional Model 5-Fold Cross-Validation Results Based on Speaker Gender Recordings.}
+	\caption{Traditional model 5-fold cross validation results based on speaker gender recordings.}
 	\label{5:gender}
 	\begin{tabular}{llrrrrr}
 		\toprule
@@ -68,7 +68,7 @@ Table \ref{tab:emo_cat} shows the traditional model 5-fold cross-validation resu
 \begin{table}[H]
 \small
 \centering
-\caption{Traditional Model 5-Fold Cross-Validation Results Based on the Discrete Emotions.}
+\caption{Traditional model 5-fold cross validation results based on the discrete emotions.}
 \label{tab:emo_cat}
     \centering
     \begin{tabular}{lrrrrrr}
@@ -120,7 +120,7 @@ Table \ref{tab:dim_reg} shows the results of our experiments on the regression t
 
 \begin{table}[H]
 	\centering
-	\caption{Random Forest Regressor 5-Fold Cross Validation using Dimensional Emotions as Labels.}
+	\caption{Random Forest Regressor 5-fold cross validation using dimensional emotions as labels.}
 	\label{tab:dim_reg}
 	\begin{tabular}{lrrr}
 		\toprule
@@ -137,7 +137,7 @@ We conducted a comparison between the discrete and dimensional annotations by ca
 
 \begin{table}[H]
 	\centering
-	\caption{\ac{iemo} Dimensional Centroids and Comparison to the \ac{vad} Model.}
+	\caption{\ac{iemo} dimensional centroids and comparison to the \ac{vad} model.}
 	\label{tab:dis_dim}
 	\begin{tabular}{lrrr}
 		\toprule
@@ -170,7 +170,7 @@ The results indicate that the centroids of each discrete emotion have some diffe
 Based on this, we decided to remove any data that contains dimensional annotations far from the \ac{vad} model centroids for each discrete emotion. Table \ref{tab:conf} demonstrates this conflicts removal process between each emotion's categories and the respective dimensional annotations.
 
 \begin{table}[H]
-\caption{Maintained Dimensional Annotations Range For Each Emotion Category.}
+\caption{Maintained dimensional annotations range for each emotion category.}
 \label{tab:conf}
 \centering
     \begin{tabular}{lrrr}
@@ -190,7 +190,7 @@ With this process, 1136 audio files were removed, and 4395 audio files retained.
 
 \begin{table}[H]
 	\centering
-	\caption{\ac{iemo} Dimensional Centroids and Comparison to the \ac{vad} Model after the Conflicts Removal Process.}
+	\caption{\ac{iemo} dimensional centroids and comparison to the \ac{vad} model after the conflicts removal process.}
 	\label{tab:new_c}
 	\begin{tabular}{lrrr}
 		\toprule
@@ -218,7 +218,7 @@ To evaluate further if this removal of data does translates to a cleaner data an
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.}
+	\caption{Traditional model 5-fold cross validation results with conflicts removal process.}
 	\label{tab:emo_cat2}
 	\centering
 	\begin{tabular}{lrrrrr}
@@ -243,7 +243,7 @@ Table \ref{tab:emo_cat3} presents the 5-fold cross-validation results of the tra
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Traditional Model 5-Fold Cross-Validation Results With Conflicts Removal Process.}
+	\caption{Traditional model 5-fold cross validation results with conflicts removal process.}
 	\label{tab:emo_cat3}
 	\centering
 	\begin{tabular}{lrrrrr}
@@ -263,7 +263,7 @@ As shown in Table \ref{strat_final_models}, the stratified models outperformed t
 
 \begin{table}[H]
 	\centering
-	\caption{Final Models Trained on \ac{iemo} and Evaluated on Different Datasets.}
+	\caption{Final models trained on \ac{iemo} and evaluated on different datasets.}
 	\label{strat_final_models}
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{llrrrrrr}

@@ -4,13 +4,13 @@
 
 \subsection{Feature Extraction}
 
-Feature extraction is an essential component in audio analysis tasks, as it allows the transformation of raw audio data into a set of informative features that can capture key characteristics of the signal.
+The first step in a traditional approach is feature extraction to transform raw audio data into a set of informative features that can capture key characteristics of the signal.
 
-In this regard, the widely-used Librosa toolkit was employed to extract various audio features, from the audio files of the \ac{iemo} dataset, which were subsequently processed using statistical metrics. The extracted features and associated metrics are summarized in Table \ref{table:extractedFeat}, having in total, extracted 327 features.
+In this regard, the widely-used Librosa toolkit was employed to extract various audio features, from the audio files of the \ac{iemo} dataset, and subsequently they were processed using statistical metrics. The extracted features and associated metrics are summarized in Table \ref{table:extractedFeat}, with a total of 327 extracted features.
 
 \begin{table}[h]
 	\centering
-	\caption{Extracted Audio Features and Statistical Functions Applied to Them}
+	\caption{Extracted audio features and the statistical functions applied.}
 	\label{table:extractedFeat}
 	
 	\begin{tabular}{@{}cc@{}}
@@ -30,7 +30,7 @@ In this regard, the widely-used Librosa toolkit was employed to extract various 
 		Zero-Crossing Rate & \\
 		& \\
 		\bottomrule
-		\multicolumn{2}{l}{\footnotemark[1]\footnotesize{Custom function detailed on the Feature Selection section.}} \\
+		\multicolumn{2}{l}{\footnotemark[1]\footnotesize{Custom function detailed on the feature selection subsection \ref{spikes:metric}.}} \\
 		\multicolumn{2}{l}{\footnotemark[2]\footnotesize{Only for the \acp{mfccs}.}} \\
 	\end{tabular}
 \end{table}
@@ -44,6 +44,7 @@ One important task following feature extraction is to analyze and interpret the 
 In this process, we visually analyzed and interpreted the features' data by graphically representing each feature from an audio segment. The figures in Section \ref{sec:App:1} of the appendix demonstrate some of the graphics we used to visualize the data.
 
 \subsubsection{Spikes Metric}
+\label{spikes:metric}
 
 Initially, wave plots were observed, and we noted consistency in the number of high values. For this reason, we created a custom metric that calculates those high values, which we called "spikes", from the features' data.
 
@@ -84,7 +85,7 @@ For example, figure \ref{fig:melBarPlot} shows clear differences in the mean val
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{figs/4_1_traditional/meanFeatBarPlot.png}
-	\caption{Bar plots mean for metrics used on the mel-scaled spectrogram feature}
+	\caption{Bar plots mean for metrics used on the mel-scaled spectrogram feature.}
 	\label{fig:melBarPlot}
 \end{figure}
 
@@ -124,7 +125,7 @@ Another graph made was a variation plot, to perceive the differences in the feat
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{figs/4_1_traditional/meanZCRVar.png}
-	\caption{Zero crossing rate mean values variation plot along 50 audios of speech utterances for all emotions}
+	\caption{Zero crossing rate mean values variation plot along 50 audios of speech utterances for all emotions.}
 	\label{fig:zcrMeanVar}
 \end{figure}
 
@@ -137,7 +138,7 @@ Finally, we employed box plots to visualize the distribution of the features on 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{figs/4_1_traditional/mean_zcr_box_plot.png}
-	\caption{Zero crossing rate mean values box plot for all emotions and different subjects}
+	\caption{Zero crossing rate mean values box plot for all emotions and different subjects.}
 	\label{fig:zcrMeanBoxPlot}
 \end{figure}
 
@@ -160,16 +161,16 @@ A high correlation elimination was performed by selecting every pair of features
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{figs/4_1_traditional/allCorrMatrix.png}
-		\caption{Correlation Matrix of all the Features.}
+		\caption{Correlation matrix of all the features.}
 		\label{fig:allAudioFeat}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{figs/4_1_traditional/highCorrMatrix.png}
-		\caption{Correlation Matrix after High Correlation Elimination.}
+		\caption{Correlation matrix after high correlation elimination.}
 		\label{fig:highAudioFeat}
 	\end{subfigure}
-	\caption{Audio Features' Pearson Correlation Matrices Before and After High Correlation Elimination.}
+	\caption{Audio features' correlation matrices before and after high correlation elimination.}
 \end{figure}
 
 
@@ -212,14 +213,14 @@ A method was then developed to select the furthest and highest accuracy. This me
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{figs/4_1_traditional/backProp1.png}
-	\caption{Sequential Feature Selection with Backward Propagation using the Mean Accuracy as the Selection Method.}
+	\caption{Sequential feature selection with backward propagation using the mean accuracy as the selection criteria.}
 	\label{fig:backProp1}
 \end{figure}
 
 This process led to the elimination of 65 features from the initial set of 98 obtained after the high correlation elimination, leaving a total of 33 features, as shown in Table \ref{tab:selectedFeat}.
 
 \begin{table}[H]
-	\caption{Selected features.}
+	\caption{Final set of the 33 selected features.}
 	\centering
 	\label{tab:selectedFeat}
 	\resizebox{\textwidth}{!}{%
@@ -249,7 +250,7 @@ This process led to the elimination of 65 features from the initial set of 98 ob
 To assess the feature selection quality on the development dataset, we trained and evaluated the predictions of a Random Forest Classifier model with different sets of features, using accuracy as the evaluation metrics. The results are presented in Table \ref{tab:acc}. Additionally, we plotted the confusion matrix of the predictions, which can be found in Appendix \ref{confusionMatrices}.
 
 \begin{table}[H]
-	\caption{Evaluation Metrics of Random Forest Predictions Using Different Sets of Features and 5-Fold Cross Validation.}
+	\caption{Random Forest 5-fold cross validation evaluation metrics using different sets of features.}
 	\centering
 	\label{tab:acc}
 	\begin{tabular}{lrrr}
@@ -297,7 +298,7 @@ The results obtained from the tested models were compiled and exhibited in Table
 
 \begin{table}[H]
 	\centering
-	\caption{Tested Classification Models 5-Fold Cross-Validation Performance on \ac{iemo}.}
+	\caption{Tested models' 5-fold cross validation performance on \ac{iemo}.}
 	\label{tab:models}
 	\resizebox{\textwidth}{!}{%
 	\begin{tabular}{lrrrrrr}
@@ -332,7 +333,7 @@ The results obtained from the tested models were compiled and exhibited in Table
 
 \begin{table}[H]
 	\centering
-	\caption{\ac{sota} Traditional Classification Models Performance on \ac{iemo}.}
+	\caption{\ac{sota} Traditional classification models performance on \ac{iemo}.}
 	\label{tab:modelssoa}
 	\begin{tabular}{lcr}
 		\toprule
