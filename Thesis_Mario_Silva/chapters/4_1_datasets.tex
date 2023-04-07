@@ -5,13 +5,13 @@
 
 In this section, we present a detailed account of the datasets employed in the development and evaluation of our \ac{ser} system.
 
-The first dataset was utilized to investigate and select the most optimal features, evaluate the performance of classification models, and identify effective classification strategies.
+The first dataset was utilized to investigate and select the most optimal features, evaluate the performance of classification models and effective classification strategies.
 
 \subsection{\ac{iemo}}
 
 The \ac{iemo} database \cite{Busso2008}, created in \citeyear{Busso2008}, is an acted and elicited multimodal and multi-speaker database. It consists of 12 hours of audiovisual data, including video, speech, motion capture of face, and text transcriptions.
 
-Sessions were manually segmented into utterances, spoken by 10 (5 female and 5 male) professional actors in fluent English. Each utterance was annotated by at least 3 human annotators in 9 categorical attributes, and, in addition, it was annotated with 3-dimensional attributes using the \ac{vad} emotion model. Similar to the development dataset, this data was collected using emotion elicitation techniques such as improvisations and scripts. Figure \ref{fig:bar_plots_distribution} from the research article \ref{Busso2008}, demonstrates that there is a similar amount of annotated labels on scripted and spontaneous sessions on this dataset.
+Sessions were manually segmented into utterances, spoken by 10 (5 female and 5 male) professional actors in fluent English. Each utterance was annotated by at least 3 human annotators in 9 categorical attributes, and, in addition, it was annotated with 3-dimensional attributes using the \ac{vad} emotion model. Similar to the development dataset, this data was collected using emotion elicitation techniques such as improvisations and scripts. Figure \ref{fig:bar_plots_distribution} from the research article \ref{Busso2008}, demonstrates a similar amount of annotated labels on scripted and spontaneous sessions on this dataset.
 
 \begin{figure}[H]
 	\centering
@@ -20,10 +20,9 @@ Sessions were manually segmented into utterances, spoken by 10 (5 female and 5 m
 	\label{fig:bar_plots_distribution}
 \end{figure}
 
+Overall, \ac{iemo} is a well-suited resource for our study, as the multimodal data, annotated using both discrete and dimensional models, allows us to perform a wide range of operations. Several Researchers have also noted the high quality of this dataset, being frequently used in the literature for evaluating emotion recognition models. This enables us to compare of our developed models effectivly, which is why we utilized it as a training and testing dataset for our \ac{ser} models and to explore classification strategies and its biases.
 
-Overall, \ac{iemo} is a well-suited resource for our study, as the multimodal data, annotated using both discrete and dimensional models, allows us to perform a wide range of operations, researchers have also noted the high quality of this dataset, being frequently used in the literature for evaluating emotion recognition models. This enables us to make better comparisons of our own developed models, which is why we utilized it as a training and testing dataset for our \ac{ser} models and to explore strategies and biases by stratifying the data.
-
-Most researchers when using this dataset perform 4 class emotion recognition, and also, consider the class \textit{excitement} as \textit{happiness}, due to their similarities and to even out the distribution of files per emotion. We decided to use the same data, as shown in the table \ref{tab:dataDist}, ending up with a total of 5531 audio files, each file recorded with a sample rate of 16000 Hertz.
+Most researchers when using this dataset perform 4 class emotion recognition, and also, consider the class \textit{excitement} as \textit{happiness}, due to their similarities and to even out the distribution of files per emotion. We decided to use the same data, as shown in the Table \ref{tab:dataDist}, ending up with a total of 5531 audio files recorded with a sample rate of 16000 Hertz.
 
 \begin{table}[H]
 	\centering
@@ -44,7 +43,7 @@ Most researchers when using this dataset perform 4 class emotion recognition, an
 
 \subsection{Testing Datasets}
 
-To evaluate the generalization ability of our final models trained on the IEMOCAP dataset, we tested them on three additional emotion datasets: eNTERFACE’05, CREMA-D, and EMO-DB. The inclusion of these datasets allows us to estimate the effectiveness and applicability of our proposed \ac{ser} system across diverse contexts.
+To evaluate the generalization ability of our final models trained on the IEMOCAP dataset, we tested them on three additional emotion datasets: eNTERFACE’05, CREMA-D, and EMO-DB. The inclusion of these datasets allows us to assess the efficacy and applicability of our proposed \ac{ser} system across diverse contexts and conditions.
 
 \subsubsection{eNTERFACE'05}
 
@@ -69,8 +68,7 @@ The eNTERFACE’05 emotion database \cite{Martin2006} was designed and collected
 	\end{tabular}
 \end{table}
 
-
-This dataset contains discrete annotated emotions, where each subject was asked to listen to six successive short stories, each eliciting a particular emotion. If two human experts judged the reaction expressing the emotion unambiguously, then the sample was added to the database.  From the dataset files, we only used those annotated with emotions present in the \ac{iemo} and ended up with the files presented in Table \ref{tab:ent_files}. The diversity of accents present in the dataset and its authenticity, due to the data being elicited, make it a suitable choice for testing the models' performance in different contexts.
+This dataset contains discrete annotated emotions, where each subject was asked to listen to six successive short stories, each eliciting a particular emotion. From the dataset files, we only used those annotated with emotions present in the \ac{iemo} and ended up with the files presented in Table \ref{tab:ent_files}. The diversity of accents present in the dataset and its authenticity (due to the data being elicited), make it a suitable choice for testing the models' performance with different factors than the \ac{iemo}.
 
 \begin{table}[H]
 	\centering
@@ -90,9 +88,9 @@ This dataset contains discrete annotated emotions, where each subject was asked 
 
 \subsubsection{EMO-DB}
 
-The EMO-DB database is a German emotional database created by the Institute of Communication Science, Technical University, Berlin, Germany. Ten professional speakers (five males and five females) participated in the data recording.
+The EMO-DB database is an acted German emotional database created by the Institute of Communication Science, Technical University, Berlin, Germany. Ten professional speakers (gender-balanced) participated in the data recording.
 
-Since this dataset contains German spoken utterances, it allows us to test more directly the models' limitations caused by the language bias present in training data.
+This dataset is composed of a total of 339 audio files annotated with the four emotions used in the \ac{iemo}, shown in Table \ref{tab:emo_files}, making it a small-sized dataset. However, it allows us to test more directly the models' limitations caused by the language bias present in training data. 
 
 \begin{table}[H]
 	\centering

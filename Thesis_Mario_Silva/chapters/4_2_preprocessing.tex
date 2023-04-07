@@ -1,20 +1,18 @@
 \section{Audio Preprocessing}
 
 
-Audio preprocessing is an essential step that is performed on audio data before it is fed into machine learning models. The objective of audio preprocessing is to clean the collected audio data, extract relevant features, and transform the data into a format that can be easily interpreted by the models. This section discusses important aspects of audio preprocessing, including noise reduction and audio trimming.
-
+Audio preprocessing is an essential step that is performed on audio data before it is fed into machine learning models. The objective of audio preprocessing is to clean the collected audio data, extract relevant features, and transform the data into a format that can be easily interpreted by the models. This section discusses important aspects of audio preprocessing, including noise reduction and audio trimming, and how we employed them.
 
 \subsection{Noise Reduction}
 
-One of the key techniques used in audio preprocessing is noise reduction. In audio data, noise can arise from a variety of sources, such as background noise, microphone interference, or electrical interference. The presence of noise in the audio data can significantly impact the performance of the system, therefore it is i
+One of the key techniques used in audio preprocessing is noise reduction. In audio data, noise can arise from a variety of sources, such as background noise, microphone interference, or electrical interference. The presence of noise in the audio data can significantly impact the performance of any audio classification system.
 
-One common strategy for denoising music is spectral gating, which involves gating the signal only on high-level sounds. Non-stationary noise reduction is an extension of stationary noise reduction that allows the noise gate to change over time. In this method, a spectrogram is calculated over the signal, and a time-smoothed version of the spectrogram is computed using an IIR filter applied forward and backward on each frequency channel. A mask is computed based on the time-smoothed spectrogram, which is then smoothed with a filter over frequency and time. The mask is applied to the spectrogram of the signal and then inverted.
-
-To implement these noise reduction techniques, we recurred to the \textit{noisereduce} library. This algorithm relies on the spectral gating method and estimates a noise threshold for each frequency band of the signal/noise. This threshold is used to compute a mask, which gates noise below the frequency-varying threshold. The Code Snippet \ref{nr:code} shows how we implemented the noise reduction technique.
+One common strategy for denoising audio is spectral gating, which involves gating the signal only on high-level sounds. We recurred to the \textit{noisereduce} library to implement this noise reduction technique.
+This algorithm estimates a noise threshold for each frequency band of the signal. This threshold is used to compute a mask, which gates noise below the frequency-varying threshold. The Code Snippet \ref{nr:code} shows how we implemented the noise reduction technique.
 
 \begin{listing}[H]
 	\begin{minted}{python}
-noisereduce.reduce_noise(y=y, sr=16000, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1)
+		noisereduce.reduce_noise(y=y, sr=16000, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1)
 	\end{minted}
 	\caption{Python code for applying noise reduction using the \textit{noisereduce} library.}
 	\label{nr:code}
@@ -23,12 +21,11 @@ noisereduce.reduce_noise(y=y, sr=16000, n_fft=2048, hop_length=512, prop_decreas
 
 \subsection{Audio Trim}
 
-Another important aspect of audio preprocessing is audio trimming. This technique involves removing unwanted portions of the audio signal that are not relevant to the machine-learning model. For instance, in speech recognition, it is common to trim the silence from the beginning and end of an audio clip. This not only reduces the computational overhead but also makes the data more manageable.
+Another important aspect of audio preprocessing is audio trimming. This technique involves removing unwanted portions of the audio signal that are not relevant. Trimming the silence from the beginning and end of an audio clip is a common technique in speech-based classifications. This reduces the computational overhead and also makes the data more manageable.
 
-We chose to define 30 decibels or lower as silence and removed any audio segments at the beginning and end of each audio file that fell below this threshold. This was done because 30 decibels is generally considered a very low level of noise, and is often used as a standard threshold for measuring background noise levels in quiet environments.
+We defined 30 decibels as the threshold for considering silence and removed any segments, at the beginning and end of the audio, that fell below this threshold. This was done because 30 decibels is generally considered a very low level of noise, and is often used as a standard threshold for measuring background noise levels in quiet environments.
 
-The table \ref{trim_durations} shows the original and after trim durations for all of the \ac{iemo} audio files. The table suggests the trimming process was effective in removing unwanted noise at the beginning and end of the audio files, which resulted in shorter durations overall. 
-
+Table \ref{trim_durations} shows the original and after trim durations for all of the \ac{iemo} audio files, and it is clear that this process of removing unwanted noise at the beginning and end of the audio files resulted in overall shorter audio durations.
 
 \begin{table}[H]
 	\centering
@@ -52,7 +49,7 @@ The table \ref{trim_durations} shows the original and after trim durations for a
 
 \subsection{Conclusion}
 
-Figure \ref{fig:prep} compares an original and preprocessed audio file from the \ac{iemo} dataset. We observed the amplitudes of the preprocessed waveform are reduced and that there are more silent parts compared to the original. The preprocessed spectrogram shows a cleaner representation and some reduction of decibels values. The preprocessed power spectral density also contains lower values of dB/Hz, and, for example, in frequencies around 1100 and 1900, an elimination of spike values is denoted. In addition to these visual observations, we also listen to the resulting audio and manually noticed noise reduction and clearer sound.
+Figure \ref{fig:prep} compares an original and preprocessed audio file from the \ac{iemo} dataset. We observed the amplitudes of the preprocessed waveform are reduced and that there are more silent parts compared to the original. The preprocessed spectrogram shows a cleaner representation and some reduction of decibels values. The preprocessed power spectral density also contains lower values of dB/Hz, and, for example, in frequencies around 1100 and 1900 Hz, the elimination of some spike values can be perceived. In addition to these observations, we also listen to the resulting audio and manually detected noise reduction and a clearer sound.
 
 \begin{figure}[H]
 	\centering
@@ -61,5 +58,4 @@ Figure \ref{fig:prep} compares an original and preprocessed audio file from the 
 	\label{fig:prep}
 \end{figure}
 
-
-These results demonstrate that the employed techniques effectively cleaned the audio data, resulting in shorter durations and less noise. Overall, audio preprocessing is essential to ensure the quality and accuracy of audio data, but it requires a deep understanding of audio signals to create an effective audio preprocessing pipeline, since in some cases, noise may be part of the signal of interest, and removing it may lead to misinterpretation.
+These results demonstrate that the employed techniques cleaned the audio data, resulting in shorter durations and less noise. Overall, this audio preprocessing is an essential step to ensure the quality of any type of audio classification, but it requires an in-depth comprehension of audio signals to create a successful preprocessing pipeline since it can cause a great drawback in some scenarios where noise may be part of the signal of interest, and removing it may lead to misinterpretation.
