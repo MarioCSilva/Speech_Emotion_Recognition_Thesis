@@ -1,43 +1,38 @@
 \chapter{Video Conference \acl{ser} Pipeline}
 \label{chapter:ser_conf}
 
-In this section, we present an audio pipeline for a \ac{ser} system on a video conference system. This pipeline includes several stages, each of which plays an essential role in identifying the emotional content from the audio.
+In this section, we present an audio pipeline for performing \ac{ser} on a video conference system. This pipeline can be used both in online and offline time, and includes several stages, each of which plays an essential role for properly identifying emotional content from the audio signal.
 
 \subsection{Preprocessing}
 
-The audio pipeline will consume binary audio data of a participant corresponding of half a second. The first step of the pipeline is to convert the binary data to an array of floats, afterwards it normalizes the audio signal so that the algorithms that follow can process it. With the Librosa tookkit, it  resamples the audio to a sampling rate of 16000 Hz and converts the audio signal to mono by averaging samples across the channels if the signal is stereo. These operations are necessary so that the audio can be accepted and interpreted by the machine learning models that will analyze it.
+The first step of the pipeline is to consume the binary audio data of a participant corresponding to one second. Then it converts this binary data to an array of floats, afterwards it normalizes the audio signal. The normalization consists of, when necessary, resampling the audio to a sampling rate of 16000 Hz and converting the signal to mono by averaging samples across the channels, recurring to the Librosa toolkit. These operations are necessary so that the audio can be accepted and interpreted by the machine learning models that will follow and analyze it.
 
 \subsection{\acl{vad*}}
 
-The second step of the pipeline is to detect the presence of voiced speech.
+The second step of the pipeline is to detect the presence of voiced speech, in the previous second of audio consumed, using a \ac{vad*} model.
 
-Say it was chosen the silero vad basicly.
+We chose the sileroVAD algorithm as it is fast and TODO....
 
-https://thegradient.pub/one-voice-detector-to-rule-them-all/
-
-https://github.com/snakers4/silero-vad
-
-https://github.com/wiseman/py-webrtcvad
-
-The detection of the presence of voiced speech among various unvoiced speech and silence is called endpoint detection, speech detection, or voice activity detection.
-
-The performance of the detection algorithm could affect the accuracy of the system. The goal is to detect silent and noisy frames that are potentially irrelevant in terms of \ac{ser}, this will also decrease the complexity and increase the accuracy of the model. The most widely used methods for voice activity detection are zero-crossing rate, short-time energy, and auto-correlation method.
-
-Zero crossing rate is the rate at which a signal changes its sign from positive to negative or vice versa within a given time frame.
-
-The voiced speech has high energy due to its periodicity, while low energy is observed in the unvoiced speech.
-
-The auto-correlation method provides a measure of similarity between a signal and itself as a function of delay. It is used to find repeating patterns. Because of its periodic nature, voiced signals can be detected using the auto-correlation method.
-
+This algorithm returns a confidence level associated with the detection of voiced speech, which allows us to fine-tune the minimum value of confidence to consider a voiced segment.
 
 \subsection{Speech Segmentation}
 
-Say the strategy to this segmentation, minimum more than a second of audio, as the data stratification models used. Then say the strategy after detecting voice in a segment.
+
+Emotions are usually short-lived, and the speech remains invariant for a brief period. Speech segmentation is the process in which the continuous speech signals are partitioned into segments with a short length suitable for being inputted to \ac{ser} models.
+
+Emotions are usually short-lived, and the speech remains invariant for a brief period. By segmenting a continuous speech, it is possible to obtain segments with a short range of length suitable for classifiers while maintaining the emotional information in a continuous speech.
+
+Each time the pipeline consumes a second of audio, it stores the segment if there is enough confidence that it detected voice activity, if it does not pass the threshold and it has previously saved any audio segment, it feeds it to a \ac{ser} model to return the recognized emotion.
+
+The strategy to this segmentation is to create voiced segments that have at a minimum one second of duration and at most 6 seconds, as utilized previously in the previous data stratification study.
 
 
-Speech segmentation, also known as framing, is the process in which continuous speech signals are partitioned into segments.
 
-As mentioned previously, emotions are usually short-lived, and the speech remains invariant for a brief period. By segmenting this data, it is possible to obtain local features of emotions, hence, frames with a short range of length are suitable for classifiers while maintaining the emotional information in a continuous speech.
+
+
+
+
+The pipeline is capable of detecting emotions in real-time by continuously processing audio segments as they arrive.
 
 
 

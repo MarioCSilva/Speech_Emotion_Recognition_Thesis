@@ -69,10 +69,10 @@
 \contentsline {subsubsection}{Audio Signal Study}{28}{section*.62}%
 \contentsline {subsubsection}{Spikes Metric}{28}{section*.63}%
 \contentsline {subsubsection}{Bar Plots}{29}{section*.65}%
-\contentsline {subsubsection}{Wave Plots with Surrounding Areas}{30}{section*.67}%
-\contentsline {subsubsection}{Variation Plots}{31}{section*.70}%
+\contentsline {subsubsection}{Wave Plots with Surrounding Areas}{29}{section*.67}%
+\contentsline {subsubsection}{Variation Plots}{30}{section*.70}%
 \contentsline {subsubsection}{Box Plots}{31}{section*.72}%
-\contentsline {subsection}{\numberline {4.3.3}Feature Selection}{32}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.3}Feature Selection}{31}{subsection.4.3.3}%
 \contentsline {subsubsection}{High Correlation Elimination}{32}{section*.74}%
 \contentsline {subsubsection}{Selecting an Initial Classifier}{33}{section*.76}%
 \contentsline {subsubsection}{Backwards Selection}{33}{section*.78}%
