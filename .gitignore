@@ -8,8 +8,11 @@ enterface05/final_data/deep_learning/*
 emodb/deep_learning/*
 cremad/deep_learning/*
 
+# TexStudio Files
+*.aux
+
 # MAC OS Files
-.DS_Store
+*.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
