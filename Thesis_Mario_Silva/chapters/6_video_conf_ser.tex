@@ -18,21 +18,12 @@ This algorithm returns a confidence level associated with the detection of voice
 \subsection{Speech Segmentation}
 
 
-Emotions are usually short-lived, and the speech remains invariant for a brief period. Speech segmentation is the process in which the continuous speech signals are partitioned into segments with a short length suitable for being inputted to \ac{ser} models.
-
-Emotions are usually short-lived, and the speech remains invariant for a brief period. By segmenting a continuous speech, it is possible to obtain segments with a short range of length suitable for classifiers while maintaining the emotional information in a continuous speech.
+Emotions are usually short-lived, and the speech remains invariant for a brief period. Speech segmentation is the process in which the continuous speech signals are partitioned into short-length segments while maintaining the emotional information suitable for being inputted to \ac{ser} models.
 
 Each time the pipeline consumes a second of audio, it stores the segment if there is enough confidence that it detected voice activity, if it does not pass the threshold and it has previously saved any audio segment, it feeds it to a \ac{ser} model to return the recognized emotion.
 
 The strategy to this segmentation is to create voiced segments that have at a minimum one second of duration and at most 6 seconds, as utilized previously in the previous data stratification study.
 
-
-
-
-
-
-
-The pipeline is capable of detecting emotions in real-time by continuously processing audio segments as they arrive.
 
 
 
@@ -43,6 +34,9 @@ Demonstrate the results for a file of the iemocap, the number of segments, and t
 
 
 A period pause is the pause at punctuation marks between sentences, like a period, or a question mark. The “Others” category in Table 1 are pauses mainly made for breathing. The mean pause duration for commas ranged from 0.51 to 0.78 s, while the mean pause duration for periods ranged from 1.40 to 1.43 s.
+
+
+The pipeline is capable of detecting emotions in real-time by continuously processing audio segments as they arrive.
 
 
 The audio pipeline for SER on a video conference system is designed to process audio data in real-time. The pipeline consists of several steps that aim to extract emotions from audio streams. The first step involves processing the raw audio data by converting it to a specified format, such as np.float32. Next, the audio is normalized, where the sample rate is set to 16000 Hz and the number of channels is reduced to one.
