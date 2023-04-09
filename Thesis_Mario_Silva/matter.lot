@@ -3,8 +3,8 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {table}{\numberline {2.1}{\ignorespaces Summary and description of emotion recognition datasets.\relax }}{7}{table.caption.11}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Overview on features commonly used for acoustic emotion recognition \blx@tocontentsinit {0}\cite {Schuller2011}.\relax }}{9}{table.caption.13}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Summary and description of emotion recognition datasets.\relax }}{7}{table.caption.13}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Overview on features commonly used for acoustic emotion recognition \blx@tocontentsinit {0}\cite {Schuller2011}.\relax }}{9}{table.caption.15}%
 \contentsline {table}{\numberline {2.3}{\ignorespaces Overview of audio classification articles with strategies.\relax }}{15}{table.caption.31}%
 \contentsline {table}{\numberline {2.4}{\ignorespaces Emotion recognition services for facial, textural, and speech contents \blx@tocontentsinit {0}\cite {Buitelaar2018}.\relax }}{17}{table.caption.33}%
 \addvspace {10pt}
@@ -34,5 +34,7 @@
 \contentsline {table}{\numberline {5.8}{\ignorespaces Traditional model 5-fold cross validation results with conflicts removal process.\relax }}{48}{table.caption.106}%
 \contentsline {table}{\numberline {5.9}{\ignorespaces Traditional model 5-fold cross validation results with conflicts removal process.\relax }}{48}{table.caption.107}%
 \contentsline {table}{\numberline {5.10}{\ignorespaces Final models trained on \ac {iemo} and evaluated on different datasets.\relax }}{49}{table.caption.108}%
+\addvspace {10pt}
+\addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}

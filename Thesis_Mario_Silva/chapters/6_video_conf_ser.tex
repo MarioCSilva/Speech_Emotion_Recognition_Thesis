@@ -1,20 +1,17 @@
-\chapter{\acl{ser} on a video conference system}
+\chapter{Video Conference \acl{ser} Pipeline}
 \label{chapter:ser_conf}
 
-\section{Audio Pipeline}
+In this section, we present an audio pipeline for a \ac{ser} system on a video conference system. This pipeline includes several stages, each of which plays an essential role in identifying the emotional content from the audio.
 
+\subsection{Preprocessing}
 
-
-\subsection{Noise reduction}
-
-TODO: TESTAR DIFERENTES RESULTADOS DE PARAMETROS QUE MANTENHAM O SOM MINIMANTE ALTO SO PARA TER A CERTEZA QUE N VALE A PENA
-
-https://pypi.org/project/noisereduce/
-
-In real life, the noise present in the environment is captured along with the speech signal. This affects the recognition rate, hence some noise reduction techniques must be used to eliminate or reduce the noise. Minimum mean square error and log-spectral amplitude MMSE (LogMMSE) estimators are the most successfully applied methods for noise reduction.
-
+The audio pipeline will consume binary audio data of a participant corresponding of half a second. The first step of the pipeline is to convert the binary data to an array of floats, afterwards it normalizes the audio signal so that the algorithms that follow can process it. With the Librosa tookkit, it  resamples the audio to a sampling rate of 16000 Hz and converts the audio signal to mono by averaging samples across the channels if the signal is stereo. These operations are necessary so that the audio can be accepted and interpreted by the machine learning models that will analyze it.
 
 \subsection{\acl{vad*}}
+
+The second step of the pipeline is to detect the presence of voiced speech.
+
+Say it was chosen the silero vad basicly.
 
 https://thegradient.pub/one-voice-detector-to-rule-them-all/
 
@@ -32,22 +29,31 @@ The voiced speech has high energy due to its periodicity, while low energy is ob
 
 The auto-correlation method provides a measure of similarity between a signal and itself as a function of delay. It is used to find repeating patterns. Because of its periodic nature, voiced signals can be detected using the auto-correlation method.
 
+
 \subsection{Speech Segmentation}
+
+Say the strategy to this segmentation, minimum more than a second of audio, as the data stratification models used. Then say the strategy after detecting voice in a segment.
+
 
 Speech segmentation, also known as framing, is the process in which continuous speech signals are partitioned into segments.
 
 As mentioned previously, emotions are usually short-lived, and the speech remains invariant for a brief period. By segmenting this data, it is possible to obtain local features of emotions, hence, frames with a short range of length are suitable for classifiers while maintaining the emotional information in a continuous speech.
 
-%\subsection{Windowing}
-%Windowing is a classical method in signal processing, and it refers to splitting the input signal into temporal segments. 
-%After framing the speech signal, a window function is generally applied to the segments, to reduce the effects of leakages that occur during the Fast Fourier Transform (FFT) of data caused by discontinuities at the edge of the signals.
-%Windowing functions are smooth functions that go to zero at the borders. By multiplying the input signal with a window function, the windowing function also goes to zero at the border such that the discontinuity at the edge becomes invisible. Windowing does thus change the signal, but the change is designed such that its effect on signal statistics is minimized \cite{backstrom2019}.
-%\subsection{Normalization}
-%Feature normalization is an important step used to reduce speaker and recording variability without losing the discriminative strength of the features. By using feature normalization, the generalization ability of features is increased. The most widely used normalization method is z-normalization (standard score).
 
 
 \section{Results and Discussion}
 
 
+Demonstrate the results for a file of the iemocap, the number of segments, and the emotions recognized... Maybe do for all files.
 
 
+A period pause is the pause at punctuation marks between sentences, like a period, or a question mark. The “Others” category in Table 1 are pauses mainly made for breathing. The mean pause duration for commas ranged from 0.51 to 0.78 s, while the mean pause duration for periods ranged from 1.40 to 1.43 s.
+
+
+The audio pipeline for SER on a video conference system is designed to process audio data in real-time. The pipeline consists of several steps that aim to extract emotions from audio streams. The first step involves processing the raw audio data by converting it to a specified format, such as np.float32. Next, the audio is normalized, where the sample rate is set to 16000 Hz and the number of channels is reduced to one.
+
+The normalized audio is then passed through a Voice Activity Detection (VAD) model, which detects speech segments with a minimum confidence level of 0.6. The detected segments are then fed to an emotion classifier model to predict the emotion in the segment.
+
+The pipeline is designed to process one second of audio data at a time. If a segment is less than one second, it is buffered until the next segment arrives, and if it is more than six seconds, it is split into multiple segments. The pipeline is capable of detecting emotions in real-time by continuously processing audio segments as they arrive.
+
+By integrating the SER pipeline into a video conference system, we can provide real-time feedback to the participants, enhance their emotional experience, and ultimately improve the quality of remote communication.
