@@ -61,7 +61,13 @@ class SERPipeline:
         """
         # Convert bytes to numpy array
         y = np.frombuffer(y, self.FORMAT)
-        if self.FORMAT != np.float32:
+        if self.FORMAT == np.int32:
+            abs_max = np.abs(y).max()
+            y = y.astype('float32')
+            if abs_max > 0:
+                y *= 1/abs_max
+            y = y.squeeze()
+        elif self.FORMAT != np.float32:
             y = y.astype('float32')
         return y
 
@@ -118,7 +124,7 @@ class SERPipeline:
                 self.current_y = np.append(self.current_y, y)
                 self.prev_end = end
                 # If current segment exceeds maximum duration, classify segment
-                if (end - self.prev_start) >= self.MAX_DURATION:
+                if (self.prev_end - self.prev_start) >= self.MAX_DURATION:
                     emotion_prob = self.classifier_model.predict_segment(
                         self.current_y,
                         return_proba=True
@@ -128,7 +134,7 @@ class SERPipeline:
             # If voiced speech stops and
             # the previous segment duration exceeds minimum duration,
             # classify the current segment
-            if (end - self.prev_start) > self.MIN_DURATION:
+            if (self.prev_end - self.prev_start) > self.MIN_DURATION:
                 emotion_prob = self.classifier_model.predict_segment(
                     self.current_y,
                     return_proba=True
