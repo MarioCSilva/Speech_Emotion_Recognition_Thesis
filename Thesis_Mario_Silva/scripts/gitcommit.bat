@@ -1,4 +1,4 @@
-cd ../
+cd C:\Users\Chico\Desktop\VADER\Audio_Sentiment_Analysis
 
 git add .
 
