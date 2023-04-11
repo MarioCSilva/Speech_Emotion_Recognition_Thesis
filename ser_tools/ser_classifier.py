@@ -1,21 +1,36 @@
+from xmlrpc.client import Boolean
+import librosa
+import io
 import numpy as np
+from PIL import Image
 from typing import List, Union
 from joblib import load
-import librosa
 import noisereduce as nr
 from scipy.stats import kurtosis
+import matplotlib.pyplot as plt
+from keras.utils import img_to_array
+import tensorflow as tf
 
 
 class SERClassifier:
-    def __init__(self, SER_CLASSIFIER_MODEL: str = 'traditional_model.pkl') -> None:
+    def __init__(self, traditional_ser: bool = True, stratified: bool = False) -> None:
         """
         Constructor for SERClassifier class.
         Load the SER classifier model from a file and initialize label dictionaries.
 
         Args:
-            SER_CLASSIFIER_MODEL (str): Path to the SER classifier model file.
+            traditional_ser (bool): Define the traditional model for classying segments
+                                    if True, or the deep learning model if False.
+            stratified (bool): Set to use the models resulting of the data stratification study.
         """
-        self.model = load(SER_CLASSIFIER_MODEL)
+        self.traditional_ser = traditional_ser
+        if traditional_ser:
+            self.model = load(
+                f"C:/Users/Chico/Desktop/VADER/Audio_Sentiment_Analysis/ser_tools/{'stratified_' if stratified else ''}traditional_model.pkl")
+        else:
+            self.model = tf.keras.models.load_model(
+                f"C:/Users/Chico/Desktop/VADER/Audio_Sentiment_Analysis/ser_tools/{'stratified_' if stratified else ''}dl_model.h5")
+
         self.labels = {"neutral": 0, "anger": 0, "happiness": 0, "sadness": 0}
         self.labels_id = {0: "anger", 1: "happiness",
                           2: "sadness", 3: "neutral"}
@@ -58,9 +73,9 @@ class SERClassifier:
         y, _ = librosa.effects.trim(y, top_db=30)
         return y
 
-    def extract_features(self, data: Union[str, np.ndarray], is_file_name: bool = True, sr: int = 16000) -> List:
+    def extract_trad_features(self, data: Union[str, np.ndarray], is_file_name: bool = True, sr: int = 16000) -> List:
         """
-        Extract the SER features from the given audio signal.
+        Extract the SER traditional features from the given audio file or signal.
 
         Args:
             data (Union[str, np.ndarray]): Audio file name or signal.
@@ -99,6 +114,44 @@ class SERClassifier:
                 mfcc[16]), kurtosis(mfcc[17]),
             self.spikes(mfcc[18]), np.mean(mfcc[18]), np.mean(mfcc[19])], np.float64).reshape(1, -1)
 
+    def extract_dl_features(self, data: Union[str, np.ndarray], is_file_name: bool = True, sr: int = 16000) -> List:
+        """
+        Extract the SER deep learning features from the given audio file or signal.
+
+        Args:
+            data (Union[str, np.ndarray]): Audio file name or signal.
+            is_file_name (bool): Whether the input data is a file name or signal.
+            sr (int): Sampling rate of the audio signal.
+
+        Returns:
+            List: Spectrogram image array with (1, 224, 224, 3) shape.
+        """
+        if is_file_name:
+            y, sr = librosa.load(data, sr=16000)
+        else:
+            y = data
+
+        y = self.preprocess_audio(y, sr)
+
+        fig = plt.figure(dpi=100)
+        ax = fig.add_subplot()
+        ax.axes.get_xaxis().set_visible(False)
+        ax.axes.get_yaxis().set_visible(False)
+        ax.set_frame_on(False)
+        spec = librosa.amplitude_to_db(
+            np.abs(librosa.stft(y,  n_fft=2048, hop_length=512)), ref=np.max)
+        librosa.display.specshow(
+            spec, sr=sr, hop_length=512, ax=ax, cmap="viridis_r")
+        buf = io.BytesIO()
+        fig.savefig(buf, bbox_inches='tight', pad_inches=0, dpi=100)
+        buf.seek(0)
+        fig.clf()
+        plt.close(fig)
+        img = Image.open(buf).convert('RGB').resize((224, 224), Image.NEAREST)
+
+        return tf.keras.applications.resnet50.preprocess_input(
+            img_to_array(img)).reshape((1, 224, 224, 3))
+
     def predict(self, audio_file):
         """
         Predicts the emotion label for a given audio file.
@@ -109,7 +162,7 @@ class SERClassifier:
         Returns:
             str: The predicted emotion label (one of "neutral", "anger", "happiness", "sadness").
         """
-        return self.labels_id[self.model.predict(self.extract_features(audio_file))[0]]
+        return self.labels_id[self.model.predict(self.extract_trad_features(audio_file))[0]]
 
     def predict_proba(self, audio_file):
         """
@@ -121,7 +174,8 @@ class SERClassifier:
         Returns:
             dict: A dictionary containing the predicted probabilities for each emotion label ("neutral", "anger", "happiness", "sadness").
         """
-        proba = self.model.predict_proba(self.extract_features(audio_file))[0]
+        proba = self.model.predict_proba(
+            self.extract_trad_features(audio_file))[0]
         return {"neutral": proba[3], "anger": proba[0], "happiness": proba[1], "sadness": proba[2]}
 
     def predict_segment(self, segment, return_proba=False):
@@ -136,10 +190,15 @@ class SERClassifier:
             str or dict: The predicted emotion label (one of "neutral", "anger", "happiness", "sadness") if `return_proba` is False, 
             otherwise a dictionary containing the predicted probabilities for each emotion label ("neutral", "anger", "happiness", "sadness").
         """
-        proba = self.model.predict_proba(
-            self.extract_features(segment, is_file_name=False))[0]
-        proba = {"neutral": proba[3], "anger": proba[0],
-                 "happiness": proba[1], "sadness": proba[2]}
+        if self.traditional_ser:
+            proba = self.model.predict_proba(
+                self.extract_trad_features(segment, is_file_name=False))[0]
+        else:
+            proba = self.model.predict(
+                self.extract_dl_features(segment, is_file_name=False), verbose=0)[0]
+
+        proba = {"anger": proba[0], "happiness": proba[1],
+                 "sadness": proba[2], "neutral": proba[3]}
 
         if return_proba:
             return proba

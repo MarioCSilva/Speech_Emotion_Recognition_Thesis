@@ -3,11 +3,11 @@
 
 In this section, we present an audio pipeline for performing \ac{ser} on a video conference system. This pipeline can be used both in online and offline time, and includes several stages, each of which plays an essential role for properly identifying emotional content from the audio signal.
 
-\subsection{Preprocessing}
+\section{Preprocessing}
 
 The first step of the pipeline is to consume the binary audio data of a participant corresponding to one second. Then it converts this binary data to an array of floats, afterwards it normalizes the audio signal. The normalization consists of, when necessary, resampling the audio to a sampling rate of 16000 Hz and converting the signal to mono by averaging samples across the channels, recurring to the Librosa toolkit. These operations are necessary so that the audio can be accepted and interpreted by the machine learning models that will follow and analyze it.
 
-\subsection{\acl{vad*}}
+\section{\acl{vad*}}
 
 The second step of the pipeline is to detect the presence of voiced speech, in the previous second of audio consumed, using a \ac{vad*} model.
 
@@ -15,7 +15,7 @@ We chose the sileroVAD algorithm as it is fast and TODO....
 
 This algorithm returns a confidence level associated with the detection of voiced speech, which allows us to fine-tune the minimum value of confidence to consider a voiced segment.
 
-\subsection{Speech Segmentation}
+\section{Speech Segmentation}
 
 
 Emotions are usually short-lived, and the speech remains invariant for a brief period. Speech segmentation is the process in which the continuous speech signals are partitioned into short-length segments while maintaining the emotional information suitable for being inputted to \ac{ser} models.

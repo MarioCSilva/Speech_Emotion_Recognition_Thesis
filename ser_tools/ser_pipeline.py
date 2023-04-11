@@ -1,11 +1,7 @@
-from Audio_Sentiment_Analysis.ser_tools.ser_classifier import SERClassifier
 import torch
 import numpy as np
 import librosa
-import sys
-import os
-sys.path.append(os.path.abspath('./../../../'))
-
+from Audio_Sentiment_Analysis.ser_tools.ser_classifier import SERClassifier
 
 class SERPipeline:
     def __init__(
@@ -15,7 +11,9 @@ class SERPipeline:
         NO_CHANNELS=1,  # Number of audio channels (1 for mono, 2 for stereo)
         MIN_CONFIDENCE=0.6,  # Minimum confidence level for voice activity detection
         MIN_DURATION=1,  # Minimum duration of speech segments (in seconds)
-        MAX_DURATION=6  # Maximum duration of speech segments (in seconds)
+        MAX_DURATION=6,  # Maximum duration of speech segments (in seconds)
+        traditional_ser=True, # Type of SER model to utilize
+        stratified: bool = False # Wheter to use SER models resulting of the stratification study
     ):
         """
         Initializes an instance of SERPipeline.
@@ -41,13 +39,13 @@ class SERPipeline:
         self.current_y, self.prev_start, self.prev_end = None, None, None
         self.start = 0
 
-        # Load models
+        # Load VAD and SER models
         self.vad_model, _ = torch.hub.load(
             repo_or_dir='snakers4/silero-vad',
             model='silero_vad',
             force_reload=False
         )
-        self.classifier_model = SERClassifier()
+        self.classifier_model = SERClassifier(traditional_ser, stratified)
 
     def process_bytes(self, y):
         """
@@ -86,7 +84,7 @@ class SERPipeline:
             y = librosa.resample(y, self.SAMPLE_RATE, 16000)
         if self.NO_CHANNELS != 1:
             y = librosa.to_mono(y)
-        return y
+        return torch.from_numpy(y)
 
     def consume(self, binary_audio):
         """
@@ -111,9 +109,18 @@ class SERPipeline:
         # Normalize audio
         y = self.normalize_audio(y)
 
-        # Perform voice activity detection
-        confidence = self.vad_model(
-            torch.from_numpy(y), self.SAMPLE_RATE).item()
+        # Input audio chunk is too short
+        if self.SAMPLE_RATE / y.shape[0] > 31.25:
+            if (self.prev_end - self.prev_start) >= self.MIN_DURATION:
+                emotion_prob = self.classifier_model.predict_segment(
+                    self.current_y,
+                    return_proba=True
+                )
+            self.prev_start, self.prev_end, self.current_y = None, None, None
+            return emotion_prob
+
+        # Perform voice activity detection with SileroVAD model
+        confidence = self.vad_model(y, self.SAMPLE_RATE).item()
 
         if confidence >= self.MIN_CONFIDENCE:
             # If confident voiced speech detected, add to current segment
@@ -123,7 +130,8 @@ class SERPipeline:
             else:
                 self.current_y = np.append(self.current_y, y)
                 self.prev_end = end
-                # If current segment exceeds maximum duration, classify segment
+                # If current segment exceeds or equals the maximum duration,
+                # classify it
                 if (self.prev_end - self.prev_start) >= self.MAX_DURATION:
                     emotion_prob = self.classifier_model.predict_segment(
                         self.current_y,
@@ -132,9 +140,9 @@ class SERPipeline:
                     self.prev_start, self.prev_end, self.current_y = None, None, None
         elif self.prev_end:
             # If voiced speech stops and
-            # the previous segment duration exceeds minimum duration,
+            # the previous segment duration exceeds or equals minimum duration,
             # classify the current segment
-            if (self.prev_end - self.prev_start) > self.MIN_DURATION:
+            if (self.prev_end - self.prev_start) >= self.MIN_DURATION:
                 emotion_prob = self.classifier_model.predict_segment(
                     self.current_y,
                     return_proba=True
