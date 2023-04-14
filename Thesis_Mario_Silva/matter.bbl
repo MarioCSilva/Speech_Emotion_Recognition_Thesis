@@ -868,9 +868,6 @@
            given={M.G.J.},
            giveni={M\bibinitperiod}}}%
       }
-      \list{language}{1}{%
-        {English}%
-      }
       \list{publisher}{1}{%
         {ISCA}%
       }
@@ -3289,7 +3286,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Applied Artificial Intelligence}
-      \field{month}{11}
+      \field{month}{10}
       \field{number}{1}
       \field{title}{Multimodal Sentiment Analysis Using Multi-tensor Fusion Network with Cross-modal Modeling}
       \field{volume}{36}
@@ -4557,7 +4554,7 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{librosa/librosa: 0.9.2}
+      \field{title}{Librosa}
       \field{year}{2022}
       \verb{doi}
       \verb 10.5281/ZENODO.6759664
@@ -5059,8 +5056,78 @@
       \verb https://doi.org/10.3389/fcomp.2022.837269
       \endverb
     \endentry
+    \entry{Liu2022}{article}{}
+      \name{author}{7}{}{%
+        {{hash=a804820c7d7c277033c2ebcc05f55995}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Shimeng},
+           giveni={S\bibinitperiod}}}%
+        {{hash=41b73d690d652fbcb2033057cd3a52b5}{%
+           family={Nakajima},
+           familyi={N\bibinitperiod},
+           given={Yoshitaka},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=b0ed137559266f648b313a23ddb32ce7}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Lihan},
+           giveni={L\bibinitperiod}}}%
+        {{hash=6c1a47af57f2b1dd4fa9b930641453dc}{%
+           family={Arndt},
+           familyi={A\bibinitperiod},
+           given={Sophia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fa1170fbbc42f3a2105c2917190f326c}{%
+           family={Kakizoe},
+           familyi={K\bibinitperiod},
+           given={Maki},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cb19bca13b069ebcda9476ec04274022}{%
+           family={Elliott},
+           familyi={E\bibinitperiod},
+           given={Mark\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=4013ea62ac5dd4ab0083f30c41dce48e}{%
+           family={Remijn},
+           familyi={R\bibinitperiod},
+           given={Gerard\bibnamedelima B.},
+           giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Frontiers Media {SA}}%
+      }
+      \strng{namehash}{65b22373b08846f22e1b7b6374a4daa8}
+      \strng{fullhash}{1e5fc8a159b2ca5eab3328d28ed36dd0}
+      \strng{bibnamehash}{65b22373b08846f22e1b7b6374a4daa8}
+      \strng{authorbibnamehash}{65b22373b08846f22e1b7b6374a4daa8}
+      \strng{authornamehash}{65b22373b08846f22e1b7b6374a4daa8}
+      \strng{authorfullhash}{1e5fc8a159b2ca5eab3328d28ed36dd0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Psychology}
+      \field{month}{2}
+      \field{title}{How Pause Duration Influences Impressions of English Speech: Comparison Between Native and Non-native Speakers}
+      \field{volume}{13}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.3389/fpsyg.2022.778018
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3389/fpsyg.2022.778018
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3389/fpsyg.2022.778018
+      \endverb
+    \endentry
   \enddatalist
-  \missing{scikit-learn}
+  \missing{Issa_2020}
+  \missing{Li_2019}
+  \missing{Lu_2020}
+  \missing{feurerneurips15a}
+  \missing{jin2019auto}
 \endrefsection
 \endinput
 

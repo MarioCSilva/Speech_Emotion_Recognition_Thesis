@@ -35,6 +35,7 @@
 \contentsline {table}{\numberline {5.9}{\ignorespaces Traditional model 5-fold cross validation results with conflicts removal process.\relax }}{48}{table.caption.107}%
 \contentsline {table}{\numberline {5.10}{\ignorespaces Final models trained on \ac {iemo} and evaluated on different datasets.\relax }}{49}{table.caption.108}%
 \addvspace {10pt}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Annotated emotions of the \ac {iemo} dataset and the pipeline predicted segments.\relax }}{53}{table.caption.110}%
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
