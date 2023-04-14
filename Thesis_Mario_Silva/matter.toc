@@ -101,7 +101,10 @@
 \contentsline {section}{\numberline {6.3}\acl {vad*}}{51}{section.6.3}%
 \contentsline {section}{\numberline {6.4}Speech Segmentation}{52}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Results and Discussion}{52}{section.6.5}%
-\contentsline {chapter}{\chapternumberline {7}Conclusions}{55}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {7}Discussion and Conclusions}{55}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Contributions/Developed Tools}{55}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Future Work}{55}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Conclusion}{55}{section.7.3}%
 \contentsline {chapter}{\chapternumberline {8}Appendix}{57}{chapter.8}%
 \contentsline {section}{\numberline {.1}Audio and Descriptive Features Study}{57}{section.Alph0.1}%
 \contentsline {section}{\numberline {.2}Features Mean Values Overview}{61}{section.Alph0.2}%
