@@ -31,9 +31,7 @@ The main objective of this dissertation is to research and develop a \ac{ser} sy
 
 To achieve this, we will conduct a thorough examination of speech features and evaluate various machine-learning models to determine the most suitable approach. The goal is to develop a unique set of audio features and achieve accuracy levels of emotion recognition that are comparable to or exceed current \ac{sota} methods.
 
-An additional objective is to create a system that can perform emotional analysis both offline and in real-time, which may involve designing separate audio stream processing pipelines for each mode.
-
-Finally, we will also investigate the potential benefits of combining the speech model with a given facial emotion recognition model. The goal is to explore how multimodality fusion techniques can improve the overall performance of the system.
+An additional objective is to create a system that can perform emotional analysis both offline and in real-time, which requires designing an audio stream processing pipeline for processing the audio.
 
 
 \section{Challenges}
@@ -44,11 +42,11 @@ The most natural form of human communication is considered to be speech \cite{De
 
 Although speech is a valuable input signal for emotion recognition, it is generally considered to be more effective to use multiple modalities. This is because distinct emotions can be expressed differently depending on the modality. For example, while happiness and excitement may be expressed through smiling, laughing, and high-pitched speech, sadness may be expressed through crying, a low-pitched voice, and a slumped posture. It can also make the system more robust to noisy information from some modalities, e.g., background noises, light, blur, etc. Consequently, building multimodal systems introduces additional complexities, such as fusing different modalities and understanding how each source affects the output, including dealing with noisy or even faulty data. In addition, each input source, brings its own biases and covariates, for example, the speech modality has biases toward gender, age, and language. Previous studies have also shown that facial emotion recognition programs fail the racial bias test and have trouble reading faces with darker skin tones \cite{hagerty2021}.
 
-More challenges arise when building an emotion recognizer to be used on a video conference system. It requires sophisticated algorithms that can deal with spontaneous and dynamic interactions, as well as potential privacy concerns. Analyzing these systems at different times, in real-time or offline, can provide useful insights. Real-time analysis can be useful in specific contexts, but achieving high accuracy is more demanding. Another option is to process data in specific timed intervals.
+More challenges arise when building an emotion recognizer to be used on a video conference system. It requires sophisticated algorithms that can deal with spontaneous and dynamic interactions, as well as handle potential privacy concerns. Analyzing these systems at different times, in real-time or offline, can provide useful insights. Real-time analysis can be useful in specific contexts, but achieving high accuracy is more demanding. Another option is to process data in specific timed intervals.
 
 \section{Organization}
 
-This document is composed of three chapters.
+This document is composed of seven chapters.
 
 The introduction chapter \ref{chapter:introduction} begins by briefly presenting the emotion recognition area and explaining the main objectives and challenges of this dissertation.
 
@@ -56,10 +54,10 @@ The \ac{sota} chapter \ref{chapter:soa} describes previous work in the area of e
 
 The proposal chapter \ref{chapter:prop} outlines the workflow, schedule, and methodology that will be followed during the development of the research.
 
-%Chapter \ref{chapter:strat} presents the developed emotion recognition strategies and describes their process. This chapter also evaluates different models and compares their performance.
+Chapter \ref{chapter:strat} presents the emotion recognition strategies and describes their process. This chapter also evaluates different classification models and compares their performance.
 
-%Based on the previously settled models, in chapter \ref{chapter:data_study} we will analyze potential data biases, such as gender, and explore the quality of the used data.
+Based on the previously settled models, in chapter \ref{chapter:data_study} we will stratify the training data, to analyze potential data biases, such as gender, and to explore the quality of the used data.
 
-%The sixth chapter presents a \ac{ser} model applied in a video conference system, detailing its implementation and results. The next chapter \ref{chapter:fusion} details the fusion model using the audio and visual modalities, studying the significance of prioritizing one over the other in different contexts.
+The sixth chapter presents a \ac{ser} pipeline that can be applied in a video conference system, detailing its implementation and results.
 
-%The discussion chapter, discusses the accomplishment of the objectives, with remarks regarding the development process, obtained results, and suggestions for the utilized dataset(s).
+The discussion chapter, discusses the accomplishment of the objectives, with remarks regarding the development process, obtained results, and limitations of the utilized dataset, and future work.
