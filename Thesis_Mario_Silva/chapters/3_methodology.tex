@@ -82,20 +82,12 @@ After we have chosen the relevant features through the feature selection process
 
 Data stratification refers to a process of dividing a dataset into subgroups, based on certain properties. We will test different ways of grouping the labeled data and interpret their effects on the models' predictions, for example, by relabeling the angry and sadness samples as \textit{negative} samples. By doing this, it allows discovering potential biases in both the classifiers and the dataset(s), such as the individual's age, gender, and even the evaluation of the samples given by juries.
 
-\subsubsection{Multimodal Classifier}
-
-After selecting the most suitable models, a fusion model will be developed by combining it with a facial emotion recognition model. This fusion can improve the accuracy of emotion predictions by leveraging information from both modalities. It can be trained to weight the contributions of each modality differently or to use a weighted combination of the outputs from the individual models based on external factors such as brightness for video and noise for audio.
-
 
 \subsection{Deployment}
 
-\subsubsection{Real-Time Processing Pipeline Creation}
+\subsubsection{Processing Pipeline}
 
 The most suitable model for offline and online scenarios will be analyzed and tested in a real-time scenario using an audio segmentation pipeline with \ac{vad*}.
-
-\subsubsection{System and Strategy Evaluation}
-
-We will evaluate the performance of the fusion model and compare it to the performance of the individual models to determine the potential improvement in emotion prediction.
 
 \subsection{Dissertation Writing}
 

@@ -2558,6 +2558,7 @@
     <bcf:citekey order="205" intorder="1">Liu2022</bcf:citekey>
     <bcf:citekey order="206" intorder="1">Librosa</bcf:citekey>
     <bcf:citekey order="207" intorder="1">SileroVAD</bcf:citekey>
+    <bcf:citekey order="208" intorder="1">Mario_Silva_Speech_Emotion_Recognition_2023</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

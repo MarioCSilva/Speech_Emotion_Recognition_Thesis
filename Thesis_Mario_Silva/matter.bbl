@@ -5056,78 +5056,143 @@
       \verb https://doi.org/10.3389/fcomp.2022.837269
       \endverb
     \endentry
-    \entry{Liu2022}{article}{}
-      \name{author}{7}{}{%
-        {{hash=a804820c7d7c277033c2ebcc05f55995}{%
-           family={Liu},
-           familyi={L\bibinitperiod},
-           given={Shimeng},
-           giveni={S\bibinitperiod}}}%
-        {{hash=41b73d690d652fbcb2033057cd3a52b5}{%
-           family={Nakajima},
-           familyi={N\bibinitperiod},
-           given={Yoshitaka},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=b0ed137559266f648b313a23ddb32ce7}{%
-           family={Chen},
-           familyi={C\bibinitperiod},
-           given={Lihan},
-           giveni={L\bibinitperiod}}}%
-        {{hash=6c1a47af57f2b1dd4fa9b930641453dc}{%
-           family={Arndt},
-           familyi={A\bibinitperiod},
-           given={Sophia},
-           giveni={S\bibinitperiod}}}%
-        {{hash=fa1170fbbc42f3a2105c2917190f326c}{%
-           family={Kakizoe},
-           familyi={K\bibinitperiod},
-           given={Maki},
+    \entry{feurerneurips15a}{proceedings}{}
+      \name{author}{6}{}{%
+        {{hash=2661e0a744cd67c731851c7f1c80d2e2}{%
+           family={Feurer},
+           familyi={F\bibinitperiod},
+           given={Matthias},
            giveni={M\bibinitperiod}}}%
-        {{hash=cb19bca13b069ebcda9476ec04274022}{%
-           family={Elliott},
+        {{hash=6717e0ebad097567de5d341f2cabf54e}{%
+           family={Klein},
+           familyi={K\bibinitperiod},
+           given={Aaron},
+           giveni={A\bibinitperiod}}}%
+        {{hash=554f094deca53cbf5f3f77a28bbb493e}{%
+           family={Eggensperger},
            familyi={E\bibinitperiod},
-           given={Mark\bibnamedelima A.},
-           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=4013ea62ac5dd4ab0083f30c41dce48e}{%
-           family={Remijn},
-           familyi={R\bibinitperiod},
-           given={Gerard\bibnamedelima B.},
-           giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+           given={Katharina},
+           giveni={K\bibinitperiod}}}%
+        {{hash=13c80e6543d905e137aa570a77e85edc}{%
+           family={Jost},
+           familyi={J\bibinitperiod},
+           given={Springenberg},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ea191b50b7572e828f57b12b7013a3bf}{%
+           family={Manuel},
+           familyi={M\bibinitperiod},
+           given={Blum},
+           giveni={B\bibinitperiod}}}%
+        {{hash=528d4af87fd2ecf5fb8a22db913ce088}{%
+           family={Hutter},
+           familyi={H\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+      }
+      \name{editor}{5}{}{%
+        {{hash=c294bbcb0687bdb5113cc4c4cd6ebad3}{%
+           family={Cortes},
+           familyi={C\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=5fa5574879f8e77bee73db4442b005f7}{%
+           family={Lawrence},
+           familyi={L\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=98056d9ddecda0076a31a183e3e69326}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0ef91066dee98e654f9aebd57da00647}{%
+           family={Sugiyama},
+           familyi={S\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=36b98b7ab533936cf1b5716148de704f}{%
+           family={Garnett},
+           familyi={G\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Frontiers Media {SA}}%
+        {Curran Associates, Inc.}%
       }
-      \strng{namehash}{65b22373b08846f22e1b7b6374a4daa8}
-      \strng{fullhash}{1e5fc8a159b2ca5eab3328d28ed36dd0}
-      \strng{bibnamehash}{65b22373b08846f22e1b7b6374a4daa8}
-      \strng{authorbibnamehash}{65b22373b08846f22e1b7b6374a4daa8}
-      \strng{authornamehash}{65b22373b08846f22e1b7b6374a4daa8}
-      \strng{authorfullhash}{1e5fc8a159b2ca5eab3328d28ed36dd0}
+      \strng{namehash}{19ba64287edb6f61d7837d23c756f5dd}
+      \strng{fullhash}{14af15fb4c4ddf504f285b5d0755a488}
+      \strng{bibnamehash}{14af15fb4c4ddf504f285b5d0755a488}
+      \strng{authorbibnamehash}{14af15fb4c4ddf504f285b5d0755a488}
+      \strng{authornamehash}{19ba64287edb6f61d7837d23c756f5dd}
+      \strng{authorfullhash}{14af15fb4c4ddf504f285b5d0755a488}
+      \strng{editorbibnamehash}{95e40444732d7905041fa015b18cfa44}
+      \strng{editornamehash}{793fcba69f8992e9ba3eee3158927ba8}
+      \strng{editorfullhash}{95e40444732d7905041fa015b18cfa44}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Nerual Infromation Processing Systems 28 (2015)}
+      \field{title}{{Efficient and Robust Automated Machine Learning}}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://papers.neurips.cc/paper/5872-efficient-and-robust-automated-machine-learning.pdf
+      \endverb
+      \verb{url}
+      \verb https://papers.neurips.cc/paper/5872-efficient-and-robust-automated-machine-learning.pdf
+      \endverb
+    \endentry
+    \entry{jin2019auto}{article}{}
+      \name{author}{4}{}{%
+        {{hash=465459752a6f89d3d9009969610972ab}{%
+           family={Jin},
+           familyi={J\bibinitperiod},
+           given={Haifeng},
+           giveni={H\bibinitperiod}}}%
+        {{hash=14134a39113404b1f80969c9ccc1f71e}{%
+           family={Chollet},
+           familyi={C\bibinitperiod},
+           given={François},
+           giveni={F\bibinitperiod}}}%
+        {{hash=b60db8a626952bfe266a9ebf34098591}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Qingquan},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=13be76d254e7c2f65cfc92bc75bb18fd}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Xia},
+           giveni={X\bibinitperiod}}}%
+      }
+      \strng{namehash}{9cfa7b5858e7a618e6b0353f57e1491e}
+      \strng{fullhash}{a0d9c9a16fe91f3e795453fd8dde79c2}
+      \strng{bibnamehash}{a0d9c9a16fe91f3e795453fd8dde79c2}
+      \strng{authorbibnamehash}{a0d9c9a16fe91f3e795453fd8dde79c2}
+      \strng{authornamehash}{9cfa7b5858e7a618e6b0353f57e1491e}
+      \strng{authorfullhash}{a0d9c9a16fe91f3e795453fd8dde79c2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Frontiers in Psychology}
-      \field{month}{2}
-      \field{title}{How Pause Duration Influences Impressions of English Speech: Comparison Between Native and Non-native Speakers}
-      \field{volume}{13}
-      \field{year}{2022}
-      \verb{doi}
-      \verb 10.3389/fpsyg.2022.778018
-      \endverb
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{6}
+      \field{title}{AutoKeras: An AutoML Library for Deep Learning}
+      \field{volume}{24}
+      \field{year}{2023}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
       \verb{urlraw}
-      \verb https://doi.org/10.3389/fpsyg.2022.778018
+      \verb http://jmlr.org/papers/v24/20-1355.html
       \endverb
       \verb{url}
-      \verb https://doi.org/10.3389/fpsyg.2022.778018
+      \verb http://jmlr.org/papers/v24/20-1355.html
       \endverb
     \endentry
   \enddatalist
   \missing{Issa_2020}
   \missing{Li_2019}
   \missing{Lu_2020}
-  \missing{feurerneurips15a}
-  \missing{jin2019auto}
 \endrefsection
 \endinput
 

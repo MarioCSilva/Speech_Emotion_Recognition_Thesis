@@ -52,17 +52,17 @@ In Figure \ref{fig:zcrSpikes}, it is possible to visualize the zero crossing rat
 
 \begin{listing}[H]
 	\begin{minted}{python}
-def spikes(data):
-	num_spikes = 0
-	mean = np.mean(data)
-	std = np.std(data)
-	
-	threshold = mean + np.abs(std) * 2 / 100
-	for value in data:
+		def spikes(data):
+		num_spikes = 0
+		mean = np.mean(data)
+		std = np.std(data)
+		
+		threshold = mean + np.abs(std) * 2 / 100
+		for value in data:
 		if value >= threshold:
-			num_spikes += 1
-
-	return num_spikes / len(data)
+		num_spikes += 1
+		
+		return num_spikes / len(data)
 	\end{minted}
 	\caption{Python code for calculating the spikes metric.}
 	\label{spikes:code}
@@ -152,12 +152,11 @@ The objective is to choose a smaller set of features that retain enough informat
 
 \subsubsection{High Correlation Elimination}
 
-Correlation among our extracted features is common since many of them use the same audio descriptor but with a different metric applied to them. Therefore, a correlation matrix for all 327 extracted features was calculated using the Pearson method, presented in figure \ref{allAudioFeat}.
+Correlation among our extracted features is common since many of them use the same audio descriptor but with a different metric applied to them. Therefore, a correlation matrix for all 327 extracted features was calculated using the Pearson method, presented in figure \ref{fig:allAudioFeat}.
 
 A high correlation elimination was performed by selecting every pair of features with a Pearson correlation coefficient absolute value of 0.6 or above, then it was removed the feature with the highest average correlation value with all the other features. This process resulted in the elimination of 229 features, leaving 98 features for subsequent analysis. The correlation matrix after the feature selection process is presented in figure \ref{fig:highAudioFeat}.
 
 \begin{figure}
-	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{figs/4_1_traditional/allCorrMatrix.png}
@@ -190,7 +189,7 @@ To this end, we conducted 5-fold cross-validation and compared the mean and stan
 		Classifiers &  Accuracy & Training Time (s) \\
 		\midrule
 		XGBoost                &        0.617$\pm$0.013  & 17.628 \\
-		Random Forest          &        0.578$\pm$0.010  &  7.451 \\
+		\ac{rf}                &        0.578$\pm$0.010  &  7.451 \\
 		Ridge                  &        0.565$\pm$0.014  &  0.078 \\
 		Extra Trees            &        0.561$\pm$0.005  &  1.831  \\
 		AdaBoost               &        0.520$\pm$0.008  & 12.205  \\
@@ -201,12 +200,12 @@ To this end, we conducted 5-fold cross-validation and compared the mean and stan
 	\end{tabular}
 \end{table}
 
-Based on the evaluation results, the Random Forest classifier was chosen for further analysis. This model exhibited the second best average accuracy across the 5 folds, however it was more than twice as fast the XGBoost that had highest average accuracy. Therefore, it was deemed suitable for performing computationally expensive feature selection methods.
+Based on the evaluation results, the \ac{rf} classifier was chosen for further analysis. This model exhibited the second best average accuracy across the 5 folds, however it was more than twice as fast the XGBoost that had highest average accuracy. Therefore, it was deemed suitable for performing computationally expensive feature selection methods.
 
 
 \subsubsection{Backwards Selection}
 
-In the pursuit of completing the feature selection process, a sequential feature selection with backward propagation was employed. This method involves performing a 5-fold cross-validation with the previously selected Random Forest classifier, using all features except one, and then removing one feature based on the lowest mean accuracy of the 5 folds. This iterative process continues until only one feature remains.
+In the pursuit of completing the feature selection process, a sequential feature selection with backward propagation was employed. This method involves performing a 5-fold cross-validation with the previously selected \ac{rf} classifier, using all features except one, and then removing one feature based on the lowest mean accuracy of the 5 folds. This iterative process continues until only one feature remains.
 
 A method was then developed to select the furthest and highest accuracy. This method resembles the standard maximum, but it multiplies the maximum value by a threshold value of $0.99$, so that it can find close to the maximum values that have more features removed, creating a balance between accuracy and number of features. Figure \ref{fig:backProp1} displays the mean accuracies obtained at each step and the chosen furthest highest accuracy.
 
@@ -247,10 +246,10 @@ This process led to the elimination of 65 features from the initial set of 98 ob
 
 \subsubsection{Feature Selection Evaluation}
 
-To assess the feature selection quality on the development dataset, we trained and evaluated the predictions of a Random Forest Classifier model with different sets of features, using accuracy as the evaluation metrics. The results are presented in Table \ref{tab:acc}. Additionally, we plotted the confusion matrix of the predictions, which can be found in Appendix \ref{confusionMatrices}.
+To assess the feature selection quality on the development dataset, we trained and evaluated the predictions of a \ac{rf} Classifier model with different sets of features, using accuracy as the evaluation metrics. The results are presented in Table \ref{tab:acc}. Additionally, we plotted the confusion matrix of the predictions, which can be found in Appendix \ref{confusionMatrices}.
 
 \begin{table}[H]
-	\caption{Random Forest 5-fold cross validation evaluation metrics using different sets of features.}
+	\caption{\ac{rf} 5-fold cross validation evaluation metrics using different sets of features.}
 	\centering
 	\label{tab:acc}
 	\begin{tabular}{lrrr}
@@ -275,61 +274,110 @@ By using these feature selection techniques, we managed to remove redundant and 
 
 Evaluating a model is an essential step, since a wrongful evaluation may lead to deception in terms of the results obtained. It should be uniform for every model, and, it should be as meaningful as possible to the classification objective.
 
-For the reasons above, it was decided to utilize 5-fold cross-validation, and, in terms of metrics, we decided to calculate 5 folds averages accuracy, macro-f1 score, precision, recall, and \ac{mcc}.
+For the reasons above and because it was the most recurred method in the \ac{sota} research, it was decided to utilize 5-fold cross-validation, which provides more fairness to model comparisons. In terms of metrics, we decided to calculate the testing folds averages accuracy, macro-f1 score, precision, recall, and \ac{mcc}.
 
 Accuracy is a basic metric to evaluate the model's performance that measures the proportion of correctly classified samples. Precision measures the proportion of true positives among all samples predicted as positive by the model. Recall indicates how many of the actual positive samples are correctly identified by the model. Macro-f1 score takes into account both precision and recall to provide a more balanced measure of performance for imbalanced datasets. It calculates the harmonic mean of precision and recall. \ac{mcc} is a correlation coefficient between the true labels and the predicted labels, taking into account all four classes in the confusion matrix. It provides a measure of how well the model's predictions match the true labels, and ranges from -1 (perfect disagreement) to +1 (perfect agreement), 0 being no agreement at all, which means the predictions were random.
 
-
 A confusion matrix of the predicted and real labels was also plotted, since it provides helpful insights, not only into the errors being made by the classifier but also, the types of errors occurring.
-
-These were also the most recurred methods in state-of-the-art research, which provides more fairness to model comparisons.
 
 \subsubsection{Classifiers Exploration}
 
-An Automatic Machine Learning technique, namely Auto-SKLearn ensemble model \cite{feurerneurips15a}, was employed to search for the best models and ensembles by exploring a vast space of possible algorithms and hyperparameters using a meta-learning approach.
+To develop the most effective speech emotion recognition model, a variety of automatic machine learning techniques were employed in the study. Two different \ac{aml} techniques were employed to search for the best models. One such technique was the Auto-SKLearn ensemble \cite{feurerneurips15a}. This technique searches for the best models and ensembles by exploring a vast space of possible algorithms and hyperparameters using a meta-learning approach. After training and obtaining the ensemble model, the most influential classifiers of the ensemble were identified and taken into account for further exploration individually.
 
-After training the Auto-SKLearn model, the most influential classifiers of the ensemble were identified, resulting in an ensemble with 9 classifiers, including Random Forests with different hyperparameters, Linear Discriminant Analysis, Histogram-Based Gradient Boosting, Multilayer Perceptron, and Linear Passive Aggressive. Each model present in the ensemble was then tested and explored.
+Another \ac{aml} technique, AutoKeras \cite{jin2019auto}, was applied to create a \ac{cnn} model, which we also used to create another model by combining it with an \ac{lstm}. So, in addition to the previous classifiers, two deep learning models were also evaluated.
 
-Next, a simple Convolutional Neural Network was tested, and another AutoML technique, AutoKeras \cite{jin2019auto}, was applied to create an optimized deep-learning model.
+Based on this, we explored multiple classifiers for \ac{ser}, and, we also tested several hyperparameters for each model to find the most optimal results, including:
+
+\begin{enumerate}[resume]
+	\item \ac{rf}: A decision tree-based ensemble method that trains a multitude of decision trees on various sub-samples of the dataset and outputs the mode class predicted by the trees.
+	
+	\item Balanced \ac{rf}: A variant of the \ac{rf} that addresses class imbalance by undersampling the sub-samples provided to train each tree.
+	
+	\item \ac{xgb}: A gradient boosting model that uses decision trees as base learners, with each tree trained using the negative gradient of the loss function with respect to the prediction of the previous iteration.
+	
+	\item AdaBoost: Another boosting algorithm that combines multiple weak classifiers into a strong classifier by iteratively adjusting the weights of incorrectly classified instances.
+	
+	\item Histogram Gradient Boosting: An ensemble mode that combines two techniques, gradient boosting and histogram-based approximation of decision trees to improve performance on large datasets. Instead of splitting the features to create a decision tree, this algorithm splits the data into histograms based on their values, allowing it to handle large and high-dimensional datasets more efficiently.
+	
+	\item \ac{svm}: .
+	
+	\item Ridge: A linear model with L2 regularization that aims to minimize the sum of squared residuals between the predicted and actual values.
+	
+	\item Linear Discriminant Analysis: A statistical approach for finding a linear combination of features that maximizes the separation between classes by modeling the distribution of the data in each class.
+	
+	\item \ac{cnn}: A type of neural network that is commonly used for image classification tasks. It is inspired by the way the human visual cortex processes visual information. The input is fed through a series of convolutional layers, which apply filters to the image to extract different features. These features are then passed through a series of pooling layers to reduce the dimensionality of the data. Finally, the output is flattened and passed through a fully connected layer, which produces the final classification output. The advantage of using a CNN is that it automatically learns the relevant features from the input data without the need for manual feature extraction.
+	
+	\item \ac{cnn} + \ac{lstm}: A hybrid deep learning architecture that combines the strengths of convolutional and recurrent neural networks, allowing for both local and temporal feature extraction from audio data.
+	
+\end{enumerate}
+
+
 
 \subsubsection{Results and Conclusions}
 
-The results obtained from the tested models were compiled and exhibited in Table \ref{tab:models}. The highest-ranked Random Forest from the Auto-SKLearn ensemble model achieved the best results, leading to its selection as the base estimator of an AdaBoost classifier, improving slightly the overall Random Forest results.
+The results obtained from the tested models were compiled and exhibited in Table \ref{tab:models}. Upon analyzing these results, \ac{xgb} is the best candidate, reaching an average accuracy of 60.69\% while utilizing only 33 audio features which makes it a relatively simple model, and, it is even one of the fastest at making predictions, which is an important factor for real-time classification. The Python code for the model was implemented using the SK-Learn library, version 1.2.1, and is presented on the following  Code Snippet \ref{tra:code}.
 
 \begin{table}[H]
 	\centering
 	\caption{Tested models' 5-fold cross validation performance on \ac{iemo}.}
 	\label{tab:models}
 	\resizebox{\textwidth}{!}{%
-	\begin{tabular}{lrrrrrr}
-		\toprule
-		Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} & Training Time \\
-		\midrule
-		
-		AdaBoost & 60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 & 8.45  \\
-		
-		Random Forest & 59.77$\pm$0.72 & 60.43 & 60.97 & 60.30 & 0.456 & 50.62 \\
-		
-		Histogram Gradient Boosting & 59.25$\pm$1.53 & 59.80 & 60.34 & 59.47 & 0.450 & 133.31  \\
-		
-		XGBoost & 58.09$\pm$1.34 & 58.74 & 59.30 & 58.44 & 0.431 & 7.37 \\
-				
-		Balanced Random Forest & 56.92$\pm$0.83 & 57.31 & 56.90 & 59.84 & 0.432 & 11.29  \\
-		
-		Ridge & 53.28$\pm$0.98 & 54.14 & 53.94 & 54.44 & 0.369 & 0.02 \\
-				
-		Linear Discriminant Analysis & 54.04$\pm$1.38 & 55.06 & 55.01 & 55.23 & 0.379 & 0.06 \\
-		
-		\ac{lstm} & 51.0$\pm$0.54 & 51.42 & 51.35 & 51.87 & 0.339 & 775.95 \\
-		
-		\ac{cnn} & 50.41$\pm$0.95 & 51.25 & 51.61 & 52.69 & 0.340 & 340.74  \\
-		
-		\bottomrule
-	\end{tabular}%
+		\begin{tabular}{lrrrrrr}
+			\toprule
+			Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} & Prediction Time \\
+			\midrule
+			
+			\ac{xgb} & 60.69$\pm$1.17 & 61.32 & 61.66 & 61.19 & 0.468 & 0.07 \\
+			
+			AdaBoost & 60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 & 0.41  \\
+			
+			Balanced \ac{rf} & 59.99$\pm$0.5 & 60.87 & 61.41 & 60.57 & 0.458 & 0.62 \\
+			
+			\ac{rf} & 59.77$\pm$0.72 & 60.43 & 60.97 & 60.30 & 0.456 & 0.38 \\
+
+			Histogram Gradient Boosting & 59.25$\pm$1.53 & 59.80 & 60.34 & 59.47 & 0.450 & 0.55  \\
+			
+			\ac{svm} &   54.28$\pm$0.57 & 54.96 & 55.51 & 54.78 & 0.380 & 1.27 \\
+			
+			Linear Discriminant Analysis & 54.04$\pm$1.38 & 55.06 & 55.01 & 55.23 & 0.379 & 0.01 \\
+			
+			Ridge & 53.28$\pm$0.98 & 54.14 & 53.94 & 54.44 & 0.369 & 0.01 \\
+			
+			\ac{lstm} &  51.96$\pm$1.02 & 52.87 & 54.0 & 52.54 & 0.349 & 1.18 \\
+			
+			\ac{cnn} & 50.41$\pm$0.95 & 51.25 & 51.61 & 52.69 & 0.340 & 0.81 \\
+			
+			\bottomrule
+		\end{tabular}%
 	}
 \end{table}
 
 
+\begin{listing}[H]
+	\begin{minted}{python}
+XGBClassifier(
+	colsample_bytree=0.8, colsample_bylevel=0.8, subsample=0.9,
+	n_estimators=512, max_depth=8, learning_rate=0.1, n_jobs=-1
+)
+	\end{minted}
+	\caption{Python code for the selected \ac{xgb} classifier using the traditional-based \ac{ser} approach.}
+	\label{tra:code}
+\end{listing}
+
+Overall, the \ac{xgb} provides a powerful model that have several advantages:
+
+\begin{itemize}
+	\item Regularization: Standard gradient boosting models don't have regularization, which helps to reduce overfitting.
+	
+	\item Parallel Processing: It implements parallel processing and is blazingly fast.
+
+	\item Handling Missing Values: It has an in-built routine to handle missing values. \ac{xgb} tries different things as it encounters a missing value on each node and learns which path to take for missing values in the future.
+	
+	\item Probabilistic Predictions: Since this is a decision tree based model, it is able to output the probabilities for each class, calculated as the fraction of trees that vote for each class. This provides more information than just the final predicted class, which allows to perform probability calibration, by tuning a threshold for classification, which can lead to improved performance on certain tasks.
+	
+\end{itemize}
+
+The state-of-the-art results presented in Table \ref{tab:modelssoa} are not directly comparable, as authors use different data and evaluation methodologies. Additionally, some authors do not consider the emotion of excitement as happiness or perform different validation methods such as 10-fold cross-validation.
 
 \begin{table}[H]
 	\centering
@@ -349,16 +397,3 @@ The results obtained from the tested models were compiled and exhibited in Table
 		\bottomrule
 	\end{tabular}
 \end{table}
-
-
-The state-of-the-art results presented in Table \ref{tab:modelssoa} are not directly comparable, as authors use different data and evaluation methodologies. Additionally, some authors do not consider the emotion of excitement as happiness or perform different validation methods such as 10-fold cross-validation.
-
-Upon analyzing the explored classifiers results, AdaBoost with Random Forest as the base estimator is the best candidate, reaching an average accuracy of 60.04\% while utilizing only 33 audio features which makes it a model that is relatively simple, fast to train and make predictions, while also being generalized to different datasets due to the preprocessing techniques applied. The Python code for the model was implemented using the SK-Learn library, version 1.2.1, and is presented on the following  Code Snippet \ref{tra:code}.
-
-\begin{listing}[H]
-	\begin{minted}{python}
-AdaBoostClassifier(estimator=RandomForestClassifier(n_estimators=512))
-	\end{minted}
-	\caption{Python code for the selected AdaBoost classifier using the traditional-based \ac{ser} approach.}
-	\label{tra:code}
-\end{listing}
