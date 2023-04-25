@@ -10,6 +10,16 @@ cremad/deep_learning/*
 
 # TexStudio Files
 *.aux
+*.synctex.gz
+*.blg
+*.idx
+*.bbl
+*.bcf
+*.lof
+*.lot
+*.run.xml
+*.synctex.gz
+*.toc
 
 # MAC OS Files
 *.DS_Store
