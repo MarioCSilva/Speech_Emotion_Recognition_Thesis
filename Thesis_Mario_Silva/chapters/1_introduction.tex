@@ -2,7 +2,7 @@
 \label{chapter:introduction}
 
 \begin{introduction}
-“By humanizing technology, we have this golden opportunity to reimagine how we connect with machines, and therefore, how we, as human beings, connect with one another.”\\- Rana el Kaliouby \cite{ranaTedTalk}
+	“By humanizing technology, we have this golden opportunity to reimagine how we connect with machines, and therefore, how we, as human beings, connect with one another.”\\- Rana el Kaliouby \cite{ranaTedTalk}
 \end{introduction}
 
 \section{Motivation}
@@ -15,11 +15,11 @@ A quote by MIT Sloan professor Erik Brynjolfsson highlights the importance of em
 
 For example, in several contexts of a video conversation, detecting emotions could affect the dialog strategies:
 \begin{itemize}
-    \item In teaching lectures, whether the teacher is a human or an intelligent spoken tutoring system, extracting and analyzing information about student's emotional state is a very important part of teaching because it allows the teacher to adapt \cite{teachexample};
-    \item In call centers, it helps to detect potential problems that arise from an unsatisfactory course of interaction \cite{ccexample1, ccexample2, ccexample3}. Calls can be evaluated regarding customer satisfaction and the evolution of states throughout the call;
-    \item In interviews, for example, it can serve as an aid to analyze suspects' behavior during police questioning;
-    \item For product reviews it can be used to evaluate the customer's level of satisfaction while using or reviewing the product;
-    \item In Human-Robotic interfaces, such as a robotic pet, it allows it to detect and manage tension in human interactions by reading the emotional state of its human commander, for example, \citeauthor{Kanda2005} constructed a robot that focused more on detecting tensions \cite{Kanda2005};
+	\item In teaching lectures, whether the teacher is a human or an intelligent spoken tutoring system, extracting and analyzing information about student's emotional state is a very important part of teaching because it allows the teacher to adapt \cite{teachexample};
+	\item In call centers, it helps to detect potential problems that arise from an unsatisfactory course of interaction \cite{ccexample1, ccexample2, ccexample3}. Calls can be evaluated regarding customer satisfaction and the evolution of states throughout the call;
+	\item In interviews, for example, it can serve as an aid to analyze suspects' behavior during police questioning;
+	\item For product reviews it can be used to evaluate the customer's level of satisfaction while using or reviewing the product;
+	\item In Human-Robotic interfaces, such as a robotic pet, it allows it to detect and manage tension in human interactions by reading the emotional state of its human commander, for example, \citeauthor{Kanda2005} constructed a robot that focused more on detecting tensions \cite{Kanda2005};
 \end{itemize}
 
 For these reasons, multimodal affective computing in which a variety of data sources, including voice, facial expression, gestures, and linguistic content are employed \cite{BALAZS201695}, is a very challenging and promising research area.
@@ -36,11 +36,11 @@ An additional objective is to create a system that can perform emotional analysi
 
 \section{Challenges}
 
-The ability to detect emotions is a difficult task for computers and even humans. One of the main challenges in the field of emotional analysis is the lack of datasets with authentic interactions that include information from various channels. Many existing data sets rely on subjects being asked to “act” or “simulate” emotions while being recorded, which can provide a controlled and simplified data collection process, but may not accurately represent real-life emotions. As a result, the performance of emotion recognition can suffer when models developed from these datasets are used in real-world situations where a mix of emotions is present. Another issue with existing data is that they often consist of isolated utterances or short dialogues, which do not consider the role of context in emotion perception and expression. Additionally, current emotional datasets are typically limited in size and in the number of subjects. The labeling of these datasets is prone to errors due to subjectivity in the evaluation, which implies the need for several evaluators, and the decision being made by majority vote.
+The ability to detect emotions is a difficult task for computers and even humans. One of the main challenges in the field of emotional analysis is the lack of datasets with authentic interactions that include information from various channels. Many existing data sets rely on subjects being asked to “act” or “simulate” emotions while being recorded, which can provide a controlled and simplified data collection process, but may not accurately represent real-life emotions. As a result, the performance of emotion recognition can suffer when models developed from these datasets are used in real-world situations where a mix of emotions is present. Another issue with existing data is that they often consist of isolated utterances or short dialogues, which do not consider the role of context in emotion perception and expression. Additionally, current emotional datasets are typically limited in size and the number of subjects. The labeling of these datasets is prone to errors due to subjectivity in the evaluation, which implies the need for several evaluators, and the decision being made by majority vote.
 
 The most natural form of human communication is considered to be speech \cite{Deng2006}, consequently, recognizing emotions from speech is extremely useful, as the way we speak can convey a lot of information about our emotional state. A lot of research has been conducted in order to understand and extract low-level audio features that are good descriptors of the actual affective state, also known as feature engineering. It demands a deep understanding of the data, as it can cause loss of information from the original audio signal due to the fact it selects the most representative of the data.
 
-Although speech is a valuable input signal for emotion recognition, it is generally considered to be more effective to use multiple modalities. This is because distinct emotions can be expressed differently depending on the modality. For example, while happiness and excitement may be expressed through smiling, laughing, and high-pitched speech, sadness may be expressed through crying, a low-pitched voice, and a slumped posture. It can also make the system more robust to noisy information from some modalities, e.g., background noises, light, blur, etc. Consequently, building multimodal systems introduces additional complexities, such as fusing different modalities and understanding how each source affects the output, including dealing with noisy or even faulty data. In addition, each input source, brings its own biases and covariates, for example, the speech modality has biases toward gender, age, and language. Previous studies have also shown that facial emotion recognition programs fail the racial bias test and have trouble reading faces with darker skin tones \cite{hagerty2021}.
+Although speech is a valuable input signal for emotion recognition, it is generally considered to be more effective to use multiple modalities. This is because distinct emotions can be expressed differently depending on the modality. For example, while happiness and excitement may be expressed through smiling, laughing, and high-pitched speech, sadness may be expressed through crying, a low-pitched voice, and a slumped posture. It can also make the system more robust to noisy information from some modalities, e.g., background noises, light, blur, etc. Consequently, building multimodal systems introduces additional complexities, such as fusing different modalities and understanding how each source affects the output, including dealing with noisy or even faulty data. In addition, each input source brings its own biases and covariates, for example, the speech modality has biases toward gender, age, and language. Previous studies have also shown that facial emotion recognition programs fail the racial bias test and have trouble reading faces with darker skin tones \cite{hagerty2021}.
 
 More challenges arise when building an emotion recognizer to be used on a video conference system. It requires sophisticated algorithms that can deal with spontaneous and dynamic interactions, as well as handle potential privacy concerns. Analyzing these systems at different times, in real-time or offline, can provide useful insights. Real-time analysis can be useful in specific contexts, but achieving high accuracy is more demanding. Another option is to process data in specific timed intervals.
 
@@ -50,7 +50,7 @@ This document is composed of seven chapters.
 
 The introduction chapter \ref{chapter:introduction} begins by briefly presenting the emotion recognition area and explaining the main objectives and challenges of this dissertation.
 
-The \ac{sota} chapter \ref{chapter:soa} describes previous work in the area of emotion recognition and speech analysis, providing background information and discusses related concepts, including emotion, emotional datasets, speech, and its audio features, \ac{ser} strategies and applications, software tools, etc.
+The \ac{sota} chapter \ref{chapter:soa} describes previous work in the area of emotion recognition and speech analysis, providing background information and discusses related concepts, including emotion, emotional datasets, speech, and its audio features, \ac{ser} strategies, and applications, software tools, etc.
 
 The proposal chapter \ref{chapter:prop} outlines the workflow, schedule, and methodology that will be followed during the development of the research.
 
@@ -60,4 +60,4 @@ Based on the previously settled models, in chapter \ref{chapter:data_study} we w
 
 The sixth chapter presents a \ac{ser} pipeline that can be applied in a video conference system, detailing its implementation and results.
 
-The discussion chapter, discusses the accomplishment of the objectives, with remarks regarding the development process, obtained results, and limitations of the utilized dataset, and future work.
+The discussion chapter, discusses the accomplishment of the objectives, with remarks regarding the development process, obtained results, limitations of the utilized dataset, and future work.

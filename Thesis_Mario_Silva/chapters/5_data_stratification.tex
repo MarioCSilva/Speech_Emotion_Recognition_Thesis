@@ -2,19 +2,19 @@
 \label{chapter:data_stratification}
 
 
-In order to better understand the properties of the data in the \ac{iemo} dataset, we performed stratification based on several attributes of the dataset. The aim of this stratification was to group similar data together and investigate their common properties, and, discover limitations that these properties pose to the machine learning model in the \ac{ser} area.
+In order to better understand the properties of the data in the \ac{iemo} dataset, we performed stratification based on several attributes of the dataset. This stratification aimed to group similar data together and investigate their common properties, and, discover limitations that these properties pose to the machine learning model in the \ac{ser} area.
 
 \section{Recordings Durations}
 
 The duration of an audio recording can significantly impact the analysis and modeling of the data. Shorter recordings may not capture enough information to adequately represent the signal of interest, while longer recordings may contain irrelevant or redundant information.
 
-We stratified the dataset based on the duration of the recordings. The dataset contains recordings ranging from approximately 0.25 to 34 seconds in duration, and we divided the recordings into three evenly balanced groups, in terms of number of recordings: short, less than or equal to  2.29 seconds, medium, greater than 2.29 and less than or equal to 4.38 seconds, and long, greater than 4.38 seconds.
+We stratified the dataset based on the duration of the recordings. The dataset contains recordings ranging from approximately 0.25 to 34 seconds in duration, and we divided the recordings into three evenly balanced groups, in terms of the number of recordings: short, less than or equal to  2.29 seconds, medium, greater than 2.29 and less than or equal to 4.38 seconds, and long, greater than 4.38 seconds.
 
 Table \ref{5:durations} presents the impact of the duration of the recordings on the performance of the chosen traditional AdaBoost model. The longest recordings have the highest performance, with an accuracy of 63.4\%, despite having more recordings than the medium duration data. 
 
 \begin{table}[H]
 	\centering
-	\caption{Traditional model 5-fold cross validation results based on the recordings duration.}
+	\caption{Traditional model 5-fold cross-validation results based on the recordings' duration.}
 	\label{5:durations}
 	\begin{tabular}{lrlrrrr}
 		\toprule
@@ -39,7 +39,7 @@ To evaluate the performance of the model on different genders, we trained and te
 
 \begin{table}[H]
 	\centering
-	\caption{Traditional model 5-fold cross validation results based on speaker gender recordings.}
+	\caption{Traditional model 5-fold cross-validation results based on speaker gender recordings.}
 	\label{5:gender}
 	\begin{tabular}{llrrrrr}
 		\toprule
@@ -55,31 +55,31 @@ To evaluate the performance of the model on different genders, we trained and te
 
 From the table, it can be observed that the model performed similarly on both genders, when the testing data for the model is of the training data, with accuracies close to 60\%. However, when testing with different speaker gender, the model's accuracy dropped significantly to 51.49\% and 51.45\% for female and male training data, respectively. The other metrics showed equivalent behavior, indicating difficulty in correctly identifying the emotion in mixed-gender contexts.
 
-These results suggest that the model's performance is affected by the gender of the speakers in the training data and therefore, it is important that the model is provided a gender-balanced set of training data to reduce gender bias.
+These results suggest that the model's performance is affected by the gender of the speakers in the training data and therefore, it is important that the model is provided with a gender-balanced set of training data to reduce gender bias.
 
 \section{Discrete Emotions}
 
-The \ac{iemo} dataset contains four emotional categories: anger, happiness, sadness, and neutral. We stratified the data based on these labels and obtained 15 groups of data. In this section, we discuss the differences in classification performance between these emotional categories, as well as differences in valence and emotional plane.
+The \ac{iemo} dataset contains four emotional categories: anger, happiness, sadness, and neutral. We stratified the data based on these labels and obtained 15 groups of data. In this section, we discuss the differences in classification performance between these emotional categories, as well as differences in valence and emotional planes.
 
 
 Table \ref{tab:emo_cat} shows the traditional model 5-fold cross-validation results based on the discrete emotions. In the four-label case, which includes all four emotional categories, the model achieved an accuracy of 60.04\% with a macro F1 score of 60.76. The best performance was achieved when classifying between anger, happiness, and sadness, with an accuracy of 70.36\% and a macro F1 score of 70.73. The worst performance was achieved when classifying between angry, neutral, and happy, with an accuracy of 64.4\% and a macro F1 score of 63.8.
 
 
 \begin{table}[H]
-\small
-\centering
-\caption{Traditional model 5-fold cross validation results based on the discrete emotions.}
-\label{tab:emo_cat}
-    \centering
-    \begin{tabular}{lrrrrrr}
-    	\toprule
-    	Labels                      &   Total Data & Accuracy    & Macro F1    & Precision   & Recall      & MCC.       \\
-    	\midrule
- 	    \multicolumn{7}{c}{Four Labels} \\
-    	Angry, Happy, Sad, Neutral             &         5531 &  60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 \\
-    	\midrule
-    	\multicolumn{7}{c}{Three Labels} \\
-    	
+	\small
+	\centering
+	\caption{Traditional model 5-fold cross-validation results based on the discrete emotions.}
+	\label{tab:emo_cat}
+	\centering
+	\begin{tabular}{lrrrrrr}
+		\toprule
+		Labels                      &   Total Data & Accuracy    & Macro F1    & Precision   & Recall      & MCC.       \\
+		\midrule
+		\multicolumn{7}{c}{Four Labels} \\
+		Angry, Happy, Sad, Neutral             &         5531 &  60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 \\
+		\midrule
+		\multicolumn{7}{c}{Three Labels} \\
+		
 		Angry, Happy, Sad                   &         3823 & 70.36$\pm$1.09 &      70.73 &       71.36 &    70.35 &   0.54 \\
 		Angry, Neutral, Happy               &         4447 & 64.4$\pm$0.95  &      63.8  &       64.48 &    63.84 &   0.46 \\
 		Angry, Neutral, Sad                 &         3895 & 74.02$\pm$1.14 &      74.16 &       75.61 &    73.2  &   0.6  \\
@@ -87,26 +87,26 @@ Table \ref{tab:emo_cat} shows the traditional model 5-fold cross-validation resu
 		
 		Sad, Neutral, Happy+Angry (Arousal or Dominance) &         5531 & 68.54$\pm$1.03 &      66    &       66.31 &    65.89 &   0.49 \\
 		Angry+Sad, Neutral, Happy (Valence) &         5531 & 60.15$\pm$0.86 &      58.94 &       59.53 &    58.99 &   0.39 \\
-    	\midrule
-    	\multicolumn{7}{c}{Two Labels} \\
-    	    	
-    	Angry, Sad                          &         2187 & 91.4$\pm$1.46  &      91.4  &       91.46 &    91.39 &   0.83 \\
-    	Angry, Neutral                      &         2811 & 84.13$\pm$0.88 &      82.98 &       84.03 &    82.34 &   0.66 \\
-    	Angry, Happy                    	&         2739 & 74.66$\pm$2.01 &      73.1  &       73.84 &    72.72 &   0.47 \\
-    	Sad, Neutral                        &         2792 & 79.51$\pm$1.57 &      77.98 &       78.77 &    77.49 &   0.56 \\
-    	Sad, Happy                          &         2720 & 83.6$\pm$1.41  &      82.87 &       82.93 &    82.82 &   0.66 \\
-    	Neutral, Happy                      &         3344 & 72.58$\pm$2.38 &      72.43 &       72.81 &    72.45 &   0.45 \\
-    	Sad+Neutral, Happy+Angry (Arousal or Dominance)  &         5531 & 77.2$\pm$1.29  &      77.18 &       77.25 &    77.18 &   0.54 \\
-    	Angry+Sad, Neutral+Happy (Valence)  &         5531 & 72.86$\pm$0.94 &      69.84 &       72.47 &    69.27 &   0.42 \\
-    	\bottomrule
-    \end{tabular}
+		\midrule
+		\multicolumn{7}{c}{Two Labels} \\
+		
+		Angry, Sad                          &         2187 & 91.4$\pm$1.46  &      91.4  &       91.46 &    91.39 &   0.83 \\
+		Angry, Neutral                      &         2811 & 84.13$\pm$0.88 &      82.98 &       84.03 &    82.34 &   0.66 \\
+		Angry, Happy                    	&         2739 & 74.66$\pm$2.01 &      73.1  &       73.84 &    72.72 &   0.47 \\
+		Sad, Neutral                        &         2792 & 79.51$\pm$1.57 &      77.98 &       78.77 &    77.49 &   0.56 \\
+		Sad, Happy                          &         2720 & 83.6$\pm$1.41  &      82.87 &       82.93 &    82.82 &   0.66 \\
+		Neutral, Happy                      &         3344 & 72.58$\pm$2.38 &      72.43 &       72.81 &    72.45 &   0.45 \\
+		Sad+Neutral, Happy+Angry (Arousal or Dominance)  &         5531 & 77.2$\pm$1.29  &      77.18 &       77.25 &    77.18 &   0.54 \\
+		Angry+Sad, Neutral+Happy (Valence)  &         5531 & 72.86$\pm$0.94 &      69.84 &       72.47 &    69.27 &   0.42 \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 In the two-label case, where the emotional categories were paired, the best performance was achieved when classifying between angry and sad, with an accuracy of 91.4\% and a macro F1 score of 91.4. The worst performance was achieved when classifying between angry+sad and neutral+happy based on valence, with an accuracy of 72.86\% and a macro F1 score of 69.84.
 
 In terms of valence and emotional plane, the model achieved its highest accuracy (68.54\%) when classifying between sad, neutral, and happy+angry based on arousal, and its lowest accuracy (60.15\%) when classifying between angry+sad, neutral, and happy based on valence. These results suggest that the model is better at distinguishing emotional categories based on arousal than valence.
 
-It is important to note that the total data impacts the classification, as a lower number of files may make the classification easier. However, even with a large dataset such as \ac{iemo}, the performance of the model varied widely depending on the emotional categories and valence or arousal being classified. These results have implications for the development of affective computing systems, which must take into account the nuances of emotional categorization and valence/arousal classification in order to accurately interpret and respond to human affect.
+It is important to note that the total data impacts the classification, as a lower number of files may make the classification easier. However, even with a large dataset such as \ac{iemo}, the performance of the model varied widely depending on the emotional categories and valence or arousal being classified. These results have implications for the development of affective computing systems, which must take into account the nuances of emotional categorization and valence/arousal classification to accurately interpret and respond to human affection.
 
 
 \section{Dimensional Emotions}
@@ -120,7 +120,7 @@ Table \ref{tab:dim_reg} shows the results of our experiments on the regression t
 
 \begin{table}[H]
 	\centering
-	\caption{Random Forest Regressor 5-fold cross validation using dimensional emotions as labels.}
+	\caption{Random Forest Regressor 5-fold cross-validation using dimensional emotions as labels.}
 	\label{tab:dim_reg}
 	\begin{tabular}{lrrr}
 		\toprule
@@ -133,7 +133,7 @@ Table \ref{tab:dim_reg} shows the results of our experiments on the regression t
 	\end{tabular}
 \end{table}
 
-We conducted a comparison between the discrete and dimensional annotations by calculating the means of each dimensional label based on the discrete one. These means, known as dimensional centroids, are presented in Table \ref{tab:dis_dim} and a in 2D plane \ref{fig:2dplane}. To determine if the centroids are accurate or too distant from the expected values, we compared them with the state-of-the-art Russell and Mehrabian's \ac{vad} model.
+We conducted a comparison between the discrete and dimensional annotations by calculating the means of each dimensional label based on the discrete one. These means, known as dimensional centroids, are presented in Table \ref{tab:dis_dim} and in a 2D plane \ref{fig:2dplane}. To determine if the centroids are accurate or too distant from the expected values, we compared them with the state-of-the-art Russell and Mehrabian's \ac{vad} model.
 
 \begin{table}[H]
 	\centering
@@ -141,8 +141,8 @@ We conducted a comparison between the discrete and dimensional annotations by ca
 	\label{tab:dis_dim}
 	\begin{tabular}{lrrr}
 		\toprule
-     	\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}}  & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
-		 &  Arousal &   Valence & Dominance \\
+		\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}}  & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
+		&  Arousal &   Valence & Dominance \\
 		\midrule
 		VAD Anger     & 4.34 & 2.14 & 3.68 \\
 		VAD Happiness & 3.96 & 4.52 & 3.70 \\
@@ -159,34 +159,34 @@ We conducted a comparison between the discrete and dimensional annotations by ca
 
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=.9\linewidth]{figs/5_data_stratification/primitives_visualization_2d.png}
-  \caption{2D representation of the \ac{iemo} and \ac{vad} model dimensional centroids.}
-  \label{fig:2dplane}
+	\centering
+	\includegraphics[width=.9\linewidth]{figs/5_data_stratification/primitives_visualization_2d.png}
+	\caption{2D representation of the \ac{iemo} and \ac{vad} model dimensional centroids.}
+	\label{fig:2dplane}
 \end{figure}
 
-The results indicate that the centroids of each discrete emotion have some differences to the \ac{vad} model. For the arousal dimension, it was noted that all emotions have lower values, with sadness showing a greater deviation. In terms of valence, the annotations are more comparable to the \ac{vad} model, but sadness contradicts the lower trend of the other two emotions. The annotations on the dominance dimension also vary the deviations trends.
+The results indicate that the centroids of each discrete emotion have some differences to the \ac{vad} model. For the arousal dimension, it was noted that all emotions have lower values, with sadness showing a greater deviation. In terms of valence, the annotations are more comparable to the \ac{vad} model, but sadness contradicts the lower trend of the other two emotions. The annotations on the dominance dimension also vary the deviation trends.
 
 Based on this, we decided to remove any data that contains dimensional annotations far from the \ac{vad} model centroids for each discrete emotion. Table \ref{tab:conf} demonstrates this conflicts removal process between each emotion's categories and the respective dimensional annotations.
 
 \begin{table}[H]
-\caption{Maintained dimensional annotations range for each emotion category.}
-\label{tab:conf}
-\centering
-    \begin{tabular}{lrrr}
-        \toprule
-        \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}} & \multicolumn{3}{c}{Ranges Maintained} \\ \cmidrule{2-4}
-         &    Arousal &      Valence &       Dominance \\
-        \midrule
-        Angry   &   $]2, 5]$  	& $[1, 4.5]$ 	&  None 		\\
-        Happy 	&   $[2.5, 5]$  & $[3, 5[$ 		&  None 		\\
-        Sad    	&   $]2, 5]$ 	& $[1, 4]$ 		&  $[1, 4]$ 	\\
-        Neutral &   $]2, 4[$	& $[2, 4]$ 		&  $]2, 4[$		\\
-        \bottomrule
-    \end{tabular}
+	\caption{Maintained dimensional annotations range for each emotion category.}
+	\label{tab:conf}
+	\centering
+	\begin{tabular}{lrrr}
+		\toprule
+		\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}} & \multicolumn{3}{c}{Ranges Maintained} \\ \cmidrule{2-4}
+		&    Arousal &      Valence &       Dominance \\
+		\midrule
+		Angry   &   $]2, 5]$  	& $[1, 4.5]$ 	&  None 		\\
+		Happy 	&   $[2.5, 5]$  & $[3, 5[$ 		&  None 		\\
+		Sad    	&   $]2, 5]$ 	& $[1, 4]$ 		&  $[1, 4]$ 	\\
+		Neutral &   $]2, 4[$	& $[2, 4]$ 		&  $]2, 4[$		\\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-With this process, 1136 audio files were removed, and 4395 audio files retained. The new \ac{vad} centroids calculated, as shown in table \ref{tab:new_c}, were closer to the numeric values of the \ac{vad} emotion centroids. Figure \ref{fig:2dplane2} depicts a 2D visualization of the centroids of the \ac{vad} model, along with the data with and without dimensional conflicts. The visualization indicates that the centroids are now closer to the \ac{vad} emotion centroids after the conflicts removal process, which is a possible indication that the conflict-free data is more suitable for the \ac{ser} task.
+With this process, 1136 audio files were removed, and 4395 audio files were retained. The new \ac{vad} centroids calculated, as shown in table \ref{tab:new_c}, were closer to the numeric values of the \ac{vad} emotion centroids. Figure \ref{fig:2dplane2} depicts a 2D visualization of the centroids of the \ac{vad} model, along with the data with and without dimensional conflicts. The visualization indicates that the centroids are now closer to the \ac{vad} emotion centroids after the conflicts removal process, which is a possible indication that the conflict-free data is more suitable for the \ac{ser} task.
 
 \begin{table}[H]
 	\centering
@@ -195,7 +195,7 @@ With this process, 1136 audio files were removed, and 4395 audio files retained.
 	\begin{tabular}{lrrr}
 		\toprule
 		\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}} & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
-		 &  Arousal  &   Valence  & Dominance \\
+		&  Arousal  &   Valence  & Dominance \\
 		\midrule
 		Anger   	&   3.66 \textcolor{red}{$(-0.68)$} &  1.91 \textcolor{red}{$(-0.23)$} &  3.95 \textcolor{green}{$(+0.27)$} \\
 		Happiness   &   3.47 \textcolor{red}{$(-0.49)$} &  4.02 \textcolor{red}{$(-0.50)$} &  3.26 \textcolor{red}{$(-0.44)$} \\
@@ -207,18 +207,18 @@ With this process, 1136 audio files were removed, and 4395 audio files retained.
 
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=.9\linewidth]{figs/5_data_stratification/strict_conflicts_centroids_2d.png}
-  \caption{2D visualization of the entire \ac{iemo} data, along with the conflict-free data and the \ac{vad} model's dimensional centroids.}
-  \label{fig:2dplane2}
+	\centering
+	\includegraphics[width=.9\linewidth]{figs/5_data_stratification/strict_conflicts_centroids_2d.png}
+	\caption{2D visualization of the entire \ac{iemo} data, along with the conflict-free data and the \ac{vad} model's dimensional centroids.}
+	\label{fig:2dplane2}
 \end{figure}
 
-To evaluate further if this removal of data does translates to a cleaner data and, therefore, to a more effective emotion recognition process, a 5-fold cross-validation was performed using that conflict-free data and compared against the results obtained using the complete dataset. The results are shown in Table \ref{tab:emo_cat2}, and they indicate that the conflict-free dataset outperforms the complete dataset in all metrics. While this outcome supports our hypothesis, the observed improvements are not significant enough to attribute them solely to the removal of data based on dimensional annotations. Other random variables, such as variations in emotion distributions across folds or the decrease in the total number of files, could also have contributed to the observed improvements. Hence, further investigation is required to establish the actual impact of this process.
+To evaluate further if this removal of data translates to cleaner data and, therefore, to a more effective emotion recognition process, a 5-fold cross-validation was performed using that conflict-free data and compared against the results obtained using the complete dataset. The results are shown in Table \ref{tab:emo_cat2}, and they indicate that the conflict-free dataset outperforms the complete dataset in all metrics. While this outcome supports our hypothesis, the observed improvements are not significant enough to attribute them solely to the removal of data based on dimensional annotations. Other random variables, such as variations in emotion distributions across folds or the decrease in the total number of files, could also have contributed to the observed improvements. Hence, further investigation is required to establish the actual impact of this process.
 
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Traditional model 5-fold cross validation results with conflicts removal process.}
+	\caption{Traditional model 5-fold cross-validation results with the conflicts removal process.}
 	\label{tab:emo_cat2}
 	\centering
 	\begin{tabular}{lrrrrr}
@@ -234,16 +234,16 @@ To evaluate further if this removal of data does translates to a cleaner data an
 
 \subsection{Conclusion}
 
-The data stratification process enabled us to uncover the shortcomings of the \ac{iemo} dataset and the model we developed. Having obtained valuable insights from our observations and conclusions on the subsections about duration, gender, and dimensional annotations, we aim to utilize the training data in our model to enhance its reliability and performance. In light of this, we have made the decision to train both traditional and deep learning models on data that aligns with our objectives.
+The data stratification process enabled us to uncover the shortcomings of the \ac{iemo} dataset and the model we developed. Having obtained valuable insights from our observations and conclusions on the subsections about duration, gender, and dimensional annotations, we aim to utilize the training data in our model to enhance its reliability and performance. In light of this, we have decided to train both traditional and \ac{dl} models on data that aligns with our objectives.
 
 To achieve this, to the conflict-free data obtained from the dimensional conflict removal process, we applied an additional file duration condition. Specifically, we only retained audio files with a duration exceeding 1 second, as it was necessary to ensure the presence of sufficient emotional data for the model to learn effectively. As a result of this process, we obtained a total of 4200 audio files, with a nearly balanced gender distribution, comprising 52.9\% male and 47.1\% female speakers.
 
-Table \ref{tab:emo_cat3} presents the 5-fold cross-validation results of the traditional model trained on the \ac{iemo} dataset with different sets of selected data. The first row shows the results obtained with all 5531 files of the dataset. The second row shows the results after applying the dimensional conflict removal process, resulting in 4395 files. The third row shows the results of the conflict-free data with the previous mentioned additional duration condition, resulting in 4200 audio files. The results demonstrate that the performance of the traditional model improves as the data selection process becomes more rigorous. The dimensional conflict removal process resulted in an increase in accuracy from 60.04\% to 61.64\%, while the additional duration condition further improved the accuracy to 62.17\%, the other metrics also have the same behavior, indicating that the model's classification ability improved with the use of cleaner and more reliable data.
+Table \ref{tab:emo_cat3} presents the 5-fold cross-validation results of the traditional model trained on the \ac{iemo} dataset with different sets of selected data. The first row shows the results obtained with all 5531 files of the dataset. The second row shows the results after applying the dimensional conflict removal process, resulting in 4395 files. The third row shows the results of the conflict-free data with the previously mentioned additional duration condition, resulting in 4200 audio files. The results demonstrate that the performance of the traditional model improves as the data selection process becomes more rigorous. The dimensional conflict removal process resulted in an increase in accuracy from 60.04\% to 61.64\%, while the additional duration condition further improved the accuracy to 62.17\%, the other metrics also have the same behavior, indicating that the model's classification ability improved with the use of cleaner and more reliable data.
 
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Traditional model 5-fold cross validation results with conflicts removal process.}
+	\caption{Traditional model 5-fold cross-validation results with the conflicts removal process.}
 	\label{tab:emo_cat3}
 	\centering
 	\begin{tabular}{lrrrrr}
@@ -257,38 +257,43 @@ Table \ref{tab:emo_cat3} presents the 5-fold cross-validation results of the tra
 	\end{tabular}
 \end{table}
 
-Removing conflicts from the dataset results in better performance metrics for our models, however, this approach comes reduces the amount of data which may be the reason for this improvements. To verify if the model does in fact improve, we decided to train and save both traditional and deep learning models with the data that met our set of conditions. These saved models are called stratified models. We then repeated the process made on the previous section and evaluated them on three different datasets, namely eNTERFACE'05, CREMA-D, and EMO-DB.
+Removing conflicts from the dataset results in better performance metrics for our models, however, this approach comes reduces the amount of data which may be the reason for these improvements. To verify if the model does improve, we decided to train and save both traditional and \ac{dl} models with the data that met our set of conditions. These saved models are called stratified models. We then repeated the process made in the previous section and evaluated them on three different datasets, namely eNTERFACE'05, CREMA-D, and EMO-DB.
 
-As shown in Table \ref{strat_final_models}, the stratified models outperformed the previous models trained on all of the \ac{iemo} data on most metrics, which demonstrate that our stratification study resulted in improved cross-dataset performance of the models.
+As shown in Table \ref{strat_final_models}, the stratified models outperformed the previous models trained on all of the \ac{iemo} data on most metrics, which demonstrates that our stratification study resulted in an improved cross-dataset performance of the models.
 
 \begin{table}[H]
 	\centering
 	\caption{Final models trained on \ac{iemo} and evaluated on different datasets.}
 	\label{strat_final_models}
 	\resizebox{\textwidth}{!}{%
+		\rowcolors{2}{gray!25}{white}
 		\begin{tabular}{llrrrrrr}
 			\toprule
 			Dataset & Model & Accuracy & Macro F1 & Precision & Recall & \ac{mcc} & Time \\
 			\midrule
+			\addlinespace[1mm]
 			
 			eNTERFACE'05 & Traditional & 29.37 & 18.61 & 17.85 & 22.02 & 0.064 & 0.14 \\
 			& Stratified Traditional & 29.68 & 18.82 & 40.7 & 22.26 & 0.025 & 0.14 \\
-			& Deep Learning & 36.67 & 22.91 & 44.36 & 27.50 & 0.087 & 0.25 \\
-			& Stratified Deep Learning & 37.14 & 22.39 & 43.51 & 27.86 & 0.073 & 0.24 \\
-
-			\addlinespace			
+			& \ac{dl} & 36.67 & 22.91 & 44.36 & 27.50 & 0.087 & 0.25 \\
+			& Stratified \ac{dl} & 37.14 & 22.39 & 43.51 & 27.86 & 0.073 & 0.24 \\
+			
+			\midrulec
+			\addlinespace[1mm]
+			
 			EMO-DB & Traditional & 38.94 & 17.36 & 25.75 & 26.72 & 0.087 & 0.11 \\
 			& Stratified Traditional & 40.41 & 20.24 & 31.93 & 28.61 & 0.126 & 0.12 \\
-			& Deep Learning & 38.35 & 15.79 & 37.78 & 25.99 & 0.066 & 0.18 \\
-			& Stratified Deep Learning & 38.05 & 15.22 & 34.71 & 25.63 & 0.052 & 0.20 \\
+			& \ac{dl} & 38.35 & 15.79 & 37.78 & 25.99 & 0.066 & 0.18 \\
+			& Stratified \ac{dl} & 38.05 & 15.22 & 34.71 & 25.63 & 0.052 & 0.20 \\
 			
-			\addlinespace
+			\midrulec
+			\addlinespace[1mm]
+			
 			CREMA-D & Traditional & 44.41 & 35.45 & 63.18 & 46.12 & 0.335 &  0.11 \\
 			& Stratified Traditional & 45.12 & 37.50 & 36.46 & 46.54 & 0.323 & 0.10 \\
-			& Deep Learning & 54.14 & 47.71 & 51.68 & 52.98 & 0.407 & 0.20 \\
-			& Stratified Deep Learning & 55.29 & 50.06 & 54.11 & 54.05 & 0.417 & 0.19 \\
-
-			\bottomrule
+			& \ac{dl} & 54.14 & 47.71 & 51.68 & 52.98 & 0.407 & 0.20 \\
+			& Stratified \ac{dl} & 55.29 & 50.06 & 54.11 & 54.05 & 0.417 & 0.19 \\
+			\bottomrulec
 		\end{tabular}%
 	}
 \end{table}

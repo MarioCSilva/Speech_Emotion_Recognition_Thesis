@@ -1,13 +1,13 @@
 \chapter{\acl{ser} Pipeline}
 \label{chapter:ser_conf}
 
-In this section, we present an audio pipeline for performing \ac{ser} on a video conference system. This pipeline can be used both in online and offline time, and includes several stages, each of which plays an essential role for properly identifying emotional content from the audio signal.
+In this section, we present an audio pipeline for performing \ac{ser} on a video conference system. This pipeline can be used both online and offline time and includes several stages, each of which plays an essential role in properly identifying emotional content from the audio signal.
 
 \section{Data Consumption}
 
-The first step of the pipeline is to continuously consume binary audio data of a video conference participant.
+The first step of the pipeline is to continuously consume the binary audio data of a video conference participant.
 
-According to a \citeyear{Liu2022} article on pause duration of English speech \cite{Liu2022}, the mean pause duration for commas ranged from 0.51 to 0.78 seconds, while the mean pause duration for periods ranged from 1.40 to 1.43 seconds. Since we want to capture sentences/utterances, we decided to feed the pipeline with audio data corresponding to a second, which allows for smaller pauses such as breathing or for commas during a segment and at the same time, separates sentences.
+According to a \citeyear{Liu2022} article on pause duration of English speech \cite{Liu2022}, the mean pause duration for commas ranged from 0.51 to 0.78 seconds, while the mean pause duration for periods ranged from 1.40 to 1.43 seconds. Since we want to capture sentences/utterances, we decided to feed the pipeline with audio data corresponding to a second, which allows for smaller pauses such as breathing or commas during a segment and at the same time, separates sentences.
 
 \section{Normalization}
 
@@ -17,7 +17,7 @@ The next step is converting the consumed binary data to an array of floats, and 
 
 The third step of the pipeline is to detect voiced speech of the previously consumed second of audio, using a \ac{vad*} model.
 
-We chose the sileroVAD tool \cite{SileroVAD}, as it is an open-source algorithm that provides accurate results in real-time. It is specifically designed for low-resource environments and can work efficiently on devices with limited processing power.
+We chose the sileroVAD tool \cite{SileroVAD}, as it is an open-source algorithm that provides accurate results in real time. It is specifically designed for low-resource environments and can work efficiently on devices with limited processing power.
 
 SileroVAD is based on a deep learning model trained on a large corpus of audio data. This means that it can detect voice activity even in noisy environments or when the speaker's voice is weak. This is crucial for our pipeline, since preprocessing, such as noise reduction or trimming, on unvoiced data would be a waste of resources. This allows us to only do that audio preprocessing before an audio segment is detected to be classified.
 
@@ -27,14 +27,14 @@ This \ac{vad*} algorithm also returns a confidence level associated with the det
 
 Emotions are usually short-lived, and the speech remains invariant for a brief period. Speech segmentation is the process in which the continuous speech signals are partitioned into short-length segments while maintaining the emotional information suitable for being inputted to \ac{ser} models.
 
-The strategy to our segmentation is to create voiced segments with a minimum one second of duration and at most 6 seconds, as utilized previously in the previous data stratification study. The pipeline consumes a second of audio, it stores the segment if there is enough confidence that it detected voice activity, if it does not pass the threshold and it has previously saved any audio segment, it feeds it to a \ac{ser} model to predict the emotion in the segment. When the saved segment reaches the limit of 6 seconds, it is also performs the classification.
+The strategy for our segmentation is to create voiced segments with a minimum of one second of duration and at most 8 seconds, which provides a way to detect emotions in real time as a person speaks one or more complete sentences. The pipeline consumes a second of audio, it stores the segment if there is enough confidence that it detected voice activity, if it does not pass the threshold and it has previously saved any audio segment, it feeds it to a \ac{ser} model to predict the emotion in the segment. When the saved segment reaches the limit of 8 seconds, it also performs the classification.
 
 
 \section{Results and Discussion}
 
-To evaluate the effectiveness of our proposed pipeline, we conducted tests using the \ac{iemo} session files. These files involve two speakers, one female and one male, interacting with each other in scripted and improvised scenarios to elicit emotions.
+To evaluate the effectiveness of our proposed pipeline, we conducted tests using the \ac{iemo} session files. These files involve two speakers, one female, and one male, interacting with each other in scripted and improvised scenarios to elicit emotions.
 
-Figure \ref{fig:iemo_pipeline} depicts an audio signal from a session that was manually annotated to label the frames with emotions for both genders, and for the combination of both speakers. Additionally, the figure displays the voiced segments that our pipeline detected and performed \ac{ser}.
+Figure \ref{fig:iemo_pipeline} depicts an audio signal from a session that was manually annotated to label the frames with emotions for both genders and the combination of both speakers. Additionally, the figure displays the voiced segments that our pipeline detected and performed \ac{ser}.
 
 \begin{figure}[H]
 	\centering
@@ -45,7 +45,7 @@ Figure \ref{fig:iemo_pipeline} depicts an audio signal from a session that was m
 
 The efficacy of the pipeline was confirmed by its ability to detect voiced segments in the same intervals as those of the combined segments. To further test the pipeline, we passed all 11 hours of IEMOCAP audio data through it and compared the predicted emotions with the dataset annotations. The traditional model trained with the conditioned data from the data stratification study was used for this test.
 
-Table \ref{table:iemo_pipeline} shows the emotions annotated in the \ac{iemo} dataset, along with the predicted emotions resulting from our pipeline. The pipeline was capable of processing the entire 11-hour audio data in just 18 minutes using an AMD Ryzen 5 5600X 6-core processor, demonstrating its capability to detect emotions in real-time by continuously processing audio segments as they arrive.
+Table \ref{table:iemo_pipeline} shows the emotions annotated in the \ac{iemo} dataset, along with the predicted emotions resulting from our pipeline. The pipeline was capable of processing the entire 11-hour audio data in just 18 minutes using an AMD Ryzen 5 5600X 6-core processor, demonstrating its capability to detect emotions in real time by continuously processing audio segments as they arrive.
 
 \begin{table}[H]
 	\centering
@@ -56,7 +56,7 @@ Table \ref{table:iemo_pipeline} shows the emotions annotated in the \ac{iemo} da
 		Emotions & Dataset Labeled Segments & Pipeline Predicted Segments \\
 		\midrule
 		Neutral & 1708 & 1292 \\
-		Happinness & 1636 & 2930 \\
+		Happiness & 1636 & 2930 \\
 		Angry & 1103 & 2144 \\
 		Sadness & 1084 & 1332 \\
 		Non-Identified & 2510 & - \\
@@ -68,8 +68,8 @@ Table \ref{table:iemo_pipeline} shows the emotions annotated in the \ac{iemo} da
 	\end{tabular}
 \end{table}
 
-In total, the dataset comprises of 10,039 annotated segments, out of which the pipeline was able to detect 7,698 segments. This is in line with our expectations, as we only consider segments with at least 1 second of audio data. As for the distribution of predicted emotions, we anticipated that each emotion would have a similar number of detections, given that our \ac{ser} model was trained using the same data.
+In total, the dataset comprises 10,039 annotated segments, out of which the pipeline was able to detect 7,698 segments. This is in line with our expectations, as we only consider segments with at least 1 second of audio data. As for the distribution of predicted emotions, we anticipated that each emotion would have a similar number of detections, given that our \ac{ser} model was trained using the same data.
 
-The development of the pipeline represents a significant step forward in improving the user experience in video conference systems. With the pipeline integrated into the system, participants will have access to real-time emotional feedback. This feedback can help participants understand their emotional states, identify potential areas of conflict or misunderstanding, and make more informed decisions about how to interact with others in the conference. 
+The development of the pipeline represents a significant step forward in improving the user experience in video conference systems. With the pipeline integrated into the system, participants will have access to real-time emotional feedback. This feedback can help participants understand their emotional states, identify potential areas of conflict or misunderstanding, and make more informed decisions about how to interact with others at the conference. It is also important to note that certain configuration values may need adjustments on different use case scenarios, such as the minimum and maximum duration of the segments, the voiced speech confidence level, and also, since the classifiers can return the probabilities of each emotion, a minimum level of confidence for the segment's predicted emotion.
 
-In conclusion, the integration of the pipeline into video conference systems has the potential to revolutionize the communications in virtual environments, and to create more positive and productive interactions between people.
+In conclusion, the integration of the pipeline into video conference systems has the potential to revolutionize communications in virtual environments and to create more positive and productive interactions between people.

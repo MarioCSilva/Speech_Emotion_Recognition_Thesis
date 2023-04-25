@@ -267,6 +267,22 @@
 % Default is veelo
 \chapterstyle{veelo}
 \makeoddfoot{plain}{}{\thepage}{} % Added by André Zúquete to fix a page numbering issue on the veelo chapter style
+\definecolor{LightCornflowerBlue}{RGB}{65, 190, 228}
+
+\newcommand{\bottomrulec}{
+	\arrayrulecolor{gray!25}\specialrule{\belowrulesep}{0pt}{0pt}
+	\arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{0pt}
+	\arrayrulecolor{black}
+}
+\newcommand{\midrulec}{%
+	\arrayrulecolor{gray!25}\specialrule{\aboverulesep}{0pt}{0pt}
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{\belowrulesep}
+}
+\newcommand{\midrulecb}{%
+	\arrayrulecolor{black}\specialrule{\heavyrulewidth}{\aboverulesep}{0pt}
+	\arrayrulecolor{LightCornflowerBlue}\specialrule{\belowrulesep}{0pt}{0pt}
+	\arrayrulecolor{black}
+}
 
 
 % If you feel adventurous you can also define all aspects of your theme

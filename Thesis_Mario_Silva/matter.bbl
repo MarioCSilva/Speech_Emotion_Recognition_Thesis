@@ -2447,6 +2447,54 @@
       \endverb
       \keyw{Machine Learning (cs.LG),Computation and Language (cs.CL),Machine Learning (stat.ML),FOS: Computer and information sciences,FOS: Computer and information sciences}
     \endentry
+    \entry{Issa2020}{article}{}
+      \name{author}{3}{}{%
+        {{hash=91d7b679f1bc38dc311addb57823d8d5}{%
+           family={Issa},
+           familyi={I\bibinitperiod},
+           given={Dias},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b1dddd37d4206daa5f54e167209ac400}{%
+           family={Demirci},
+           familyi={D\bibinitperiod},
+           given={M.\bibnamedelimi Fatih},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=0f61fd52fbf15fec9ebc96c021746497}{%
+           family={Yazici},
+           familyi={Y\bibinitperiod},
+           given={Adnan},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier {BV}}%
+      }
+      \strng{namehash}{b33f34dda283408779e65d357482c1c9}
+      \strng{fullhash}{b33f34dda283408779e65d357482c1c9}
+      \strng{bibnamehash}{b33f34dda283408779e65d357482c1c9}
+      \strng{authorbibnamehash}{b33f34dda283408779e65d357482c1c9}
+      \strng{authornamehash}{b33f34dda283408779e65d357482c1c9}
+      \strng{authorfullhash}{b33f34dda283408779e65d357482c1c9}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biomedical Signal Processing and Control}
+      \field{month}{5}
+      \field{title}{Speech emotion recognition with deep convolutional neural networks}
+      \field{volume}{59}
+      \field{year}{2020}
+      \field{pages}{101894}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.bspc.2020.101894
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.bspc.2020.101894
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.bspc.2020.101894
+      \endverb
+    \endentry
     \entry{8759878}{article}{}
       \name{author}{4}{}{%
         {{hash=f2de7a9af84491a6708e9b40b3cd9248}{%
@@ -2518,8 +2566,8 @@
       \strng{authorbibnamehash}{7e4c8a22f0a7c127ae428df33f02ff5a}
       \strng{authornamehash}{7e4c8a22f0a7c127ae428df33f02ff5a}
       \strng{authorfullhash}{7e4c8a22f0a7c127ae428df33f02ff5a}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{{BMC} Medical Informatics and Decision Making}
@@ -2536,54 +2584,6 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1186/s12911-022-01942-2
-      \endverb
-    \endentry
-    \entry{Issa2020}{article}{}
-      \name{author}{3}{}{%
-        {{hash=91d7b679f1bc38dc311addb57823d8d5}{%
-           family={Issa},
-           familyi={I\bibinitperiod},
-           given={Dias},
-           giveni={D\bibinitperiod}}}%
-        {{hash=b1dddd37d4206daa5f54e167209ac400}{%
-           family={Demirci},
-           familyi={D\bibinitperiod},
-           given={M.\bibnamedelimi Fatih},
-           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=0f61fd52fbf15fec9ebc96c021746497}{%
-           family={Yazici},
-           familyi={Y\bibinitperiod},
-           given={Adnan},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier {BV}}%
-      }
-      \strng{namehash}{b33f34dda283408779e65d357482c1c9}
-      \strng{fullhash}{b33f34dda283408779e65d357482c1c9}
-      \strng{bibnamehash}{b33f34dda283408779e65d357482c1c9}
-      \strng{authorbibnamehash}{b33f34dda283408779e65d357482c1c9}
-      \strng{authornamehash}{b33f34dda283408779e65d357482c1c9}
-      \strng{authorfullhash}{b33f34dda283408779e65d357482c1c9}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Biomedical Signal Processing and Control}
-      \field{month}{5}
-      \field{title}{Speech emotion recognition with deep convolutional neural networks}
-      \field{volume}{59}
-      \field{year}{2020}
-      \field{pages}{101894}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1016/j.bspc.2020.101894
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/j.bspc.2020.101894
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/j.bspc.2020.101894
       \endverb
     \endentry
     \entry{GARCIAORDAS2021102946}{article}{}
@@ -5189,10 +5189,149 @@
       \verb http://jmlr.org/papers/v24/20-1355.html
       \endverb
     \endentry
+    \entry{xgboostchen}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=48461ccdf50ba5a54e29a354aa734c0b}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Tianqi},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c9ab8ac486d7f85ac914b1a8e51e512b}{%
+           family={Guestrin},
+           familyi={G\bibinitperiod},
+           given={Carlos},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {San Francisco, California, USA}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{fullhash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{bibnamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authorbibnamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authornamehash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \strng{authorfullhash}{f79ceb030bcf791e5521f87ac6ada03b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}
+      \field{isbn}{978-1-4503-4232-2}
+      \field{series}{KDD '16}
+      \field{title}{{XGBoost}: A Scalable Tree Boosting System}
+      \field{year}{2016}
+      \field{pages}{785\bibrangedash 794}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/2939672.2939785
+      \endverb
+      \verb{urlraw}
+      \verb http://doi.acm.org/10.1145/2939672.2939785
+      \endverb
+      \verb{url}
+      \verb http://doi.acm.org/10.1145/2939672.2939785
+      \endverb
+      \keyw{large-scale machine learning}
+    \endentry
+    \entry{Liu2022}{article}{}
+      \name{author}{7}{}{%
+        {{hash=a804820c7d7c277033c2ebcc05f55995}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Shimeng},
+           giveni={S\bibinitperiod}}}%
+        {{hash=41b73d690d652fbcb2033057cd3a52b5}{%
+           family={Nakajima},
+           familyi={N\bibinitperiod},
+           given={Yoshitaka},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=b0ed137559266f648b313a23ddb32ce7}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Lihan},
+           giveni={L\bibinitperiod}}}%
+        {{hash=6c1a47af57f2b1dd4fa9b930641453dc}{%
+           family={Arndt},
+           familyi={A\bibinitperiod},
+           given={Sophia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fa1170fbbc42f3a2105c2917190f326c}{%
+           family={Kakizoe},
+           familyi={K\bibinitperiod},
+           given={Maki},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cb19bca13b069ebcda9476ec04274022}{%
+           family={Elliott},
+           familyi={E\bibinitperiod},
+           given={Mark\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=4013ea62ac5dd4ab0083f30c41dce48e}{%
+           family={Remijn},
+           familyi={R\bibinitperiod},
+           given={Gerard\bibnamedelima B.},
+           giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Frontiers Media {SA}}%
+      }
+      \strng{namehash}{65b22373b08846f22e1b7b6374a4daa8}
+      \strng{fullhash}{1e5fc8a159b2ca5eab3328d28ed36dd0}
+      \strng{bibnamehash}{65b22373b08846f22e1b7b6374a4daa8}
+      \strng{authorbibnamehash}{65b22373b08846f22e1b7b6374a4daa8}
+      \strng{authornamehash}{65b22373b08846f22e1b7b6374a4daa8}
+      \strng{authorfullhash}{1e5fc8a159b2ca5eab3328d28ed36dd0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Psychology}
+      \field{month}{2}
+      \field{title}{How Pause Duration Influences Impressions of English Speech: Comparison Between Native and Non-native Speakers}
+      \field{volume}{13}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.3389/fpsyg.2022.778018
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3389/fpsyg.2022.778018
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3389/fpsyg.2022.778018
+      \endverb
+    \endentry
+    \entry{Mario_Silva_Speech_Emotion_Recognition_2023}{software}{}
+      \name{author}{1}{}{%
+        {{hash=a592670b78bec80a2cdbdf5791bb56fa}{%
+           family={Mário\bibnamedelima Silva},
+           familyi={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Mário},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{a592670b78bec80a2cdbdf5791bb56fa}
+      \strng{fullhash}{a592670b78bec80a2cdbdf5791bb56fa}
+      \strng{bibnamehash}{a592670b78bec80a2cdbdf5791bb56fa}
+      \strng{authorbibnamehash}{a592670b78bec80a2cdbdf5791bb56fa}
+      \strng{authornamehash}{a592670b78bec80a2cdbdf5791bb56fa}
+      \strng{authorfullhash}{a592670b78bec80a2cdbdf5791bb56fa}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{4}
+      \field{title}{{Speech Emotion Recognition Classifiers and Pipeline}}
+      \field{version}{0.1}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://github.com/VADER-PROJ/SER_Tools
+      \endverb
+      \verb{url}
+      \verb https://github.com/VADER-PROJ/SER_Tools
+      \endverb
+    \endentry
   \enddatalist
-  \missing{Issa_2020}
-  \missing{Li_2019}
-  \missing{Lu_2020}
 \endrefsection
 \endinput
 

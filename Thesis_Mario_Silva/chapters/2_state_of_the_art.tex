@@ -21,20 +21,20 @@ The dimensional emotional model uses dimensions such as valence, arousal, contro
 
 
 \begin{figure}
-\centering
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.75\linewidth]{figs/2_state_of_the_art/emoValAro.png}
-  \caption{The 2D Valence-Arousal model \cite{10.1007/11573548_51}.}
-  \label{fig:emoValAro}
-\end{subfigure}%
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{figs/2_state_of_the_art/VAD_Emotions.jpg}
-  \caption{The 3D \acl{vad} model \cite{VAD_Emotions_article}.}
-  \label{fig:emoVAD}
-\end{subfigure}
-\caption{Basic emotions spanned across different emotional models.}
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.75\linewidth]{figs/2_state_of_the_art/emoValAro.png}
+		\caption{The 2D Valence-Arousal model \cite{10.1007/11573548_51}.}
+		\label{fig:emoValAro}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figs/2_state_of_the_art/VAD_Emotions.jpg}
+		\caption{The 3D \acl{vad} model \cite{VAD_Emotions_article}.}
+		\label{fig:emoVAD}
+	\end{subfigure}
+	\caption{Basic emotions spanned across different emotional models.}
 \end{figure}
 
 
@@ -57,9 +57,9 @@ There are various databases containing emotional expressions in different langua
 
 Databases for emotion recognition that can be used have three types:
 \begin{itemize}
-    \item \textbf{Acted}: recorded by professional or semi-professional actors in sound-proof studios;
-    \item \textbf{Elicited}: created by, for example, placing speakers in a simulated emotional situation that can stimulate various emotions;
-    \item \textbf{Natural}: mostly obtained from talk shows, call-center recordings, radio talks, and similar sources. Sometimes, these real-world speeches are referred to as spontaneous speech.
+	\item \textbf{Acted}: recorded by professional or semi-professional actors in sound-proof studios;
+	\item \textbf{Elicited}: created by, for example, placing speakers in a simulated emotional situation that can stimulate various emotions;
+	\item \textbf{Natural}: mostly obtained from talk shows, call-center recordings, radio talks, and similar sources. Sometimes, these real-world speeches are referred to as spontaneous speech.
 \end{itemize}
 
 In video conferencing applications, the conversations take place in natural contexts, which is a fundamental factor to consider when choosing a dataset. Research has demonstrated that there are differences in the characteristics and accuracy of acted and genuine emotions \cite{Vogt}. Some studies have also suggested that simulated emotional speech may not be fully genuine and may be perceived more intensely than genuine emotional speech \cite{2041ade4b5294db59df9f67e9c854632}. Therefore, the studies on emotion recognition have shifted from focusing on induced expressions to spontaneous ones, but data on audiovisual expressions in natural contexts is still limited. Emotion expressions are infrequent, fleeting, and associated with complex contextual structures, making it difficult to collect a large amount of spontaneous data, as shown in a survey on audiovisual emotion recognition \cite{Wu2014}. Ostensibly, different types of databases are suitable for different purposes. For example, a database designed for mainly theoretical research may be more suitable in certain cases rather than one that is intended for use in a real-life industry application.
@@ -67,111 +67,111 @@ In video conferencing applications, the conversations take place in natural cont
 A summary of prominent datasets and their description is provided in the table \ref{datasets_overview}.
 
 \begin{table}[h]
-\caption{Summary and description of emotion recognition datasets.}
-\centering
-\label{datasets_overview}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}lcccccc@{}}
-\toprule
-\multicolumn{1}{c}{Dataset} & Format & Language & Content & Emotions & Type\\
-\midrule
-
-\begin{tabular}[c]{@{}c@{}}EMO-DB \cite{Burkhardt2005}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}German\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}800 recording spoken\\by 10 actors (5 males\\and 5 females).\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}7 emotions: anger, neutral,\\fear, boredom, happiness,\\sadness, disgust.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}eNTERFACE’05 \cite{Martin2006}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Videos by 42 subjects,\\coming from 14\\different nationalities.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}6 emotions: anger, fear,\\surprise, happiness,\\sadness and disgust.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Elicited\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}\acs{iemo} \cite{Busso2008}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Conversations among\\pairs of 10
-speakers\\(gender balanced)\\spanning 12 hours.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}10 categorical emotions\\\&  \acs{vad}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Acted \&\\Elicited\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}MOUD \cite{moud}\end{tabular} & 
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Spanish\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}80 product reviews\\YouTube videos.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Positive, negative, or neutral\\sentiment.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Natural\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}CREMA-D \cite{Cao2014}\end{tabular} & 
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}7442 clips of 12\\sentences spoken by 91\\actors (gender balanced).\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}6 emotions: angry,\\disgusted, fearful, happy,\\neutral, and sad.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
-  
-\begin{tabular}[c]{@{}c@{}}CMU-MOSI \cite{cmu-mosi}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}2199 movie reviews\\with annotated sentiment.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Very negative to very positive\\in seven Likert steps.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Natural\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}MSP-Improv \cite{Busso2017}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}8438 recordings by\\12 actors.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}4 emotions: angry, sad,\\happy, neutral.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Elicited\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}CMU-MOSEI \cite{cmu-mosei}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}65 hours of YouTube videos\\from more than 1000\\speakers (gender balanced)\\and 250 topics.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}6 emotions: happiness,\\ sadness, anger, fear,\\disgust, surprise. Polarity\\in Likert scale.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Natural\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}MELD \cite{meld}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}1400 dialogues and 14000\\utterances from Friends\\TV series by multiple\\ speakers.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}7 emotions: Anger, disgust,\\sadness, joy, neutral, surprise\\and fear. Also positive,\\negative and neutral.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
-  
-\begin{tabular}[c]{@{}c@{}}RAVDESS \cite{ravdess}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\\Video\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}7356 recordings\\by 24 actors with\\2 statements only.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}7 emotions: calm, happy,\\sad, angry, fearful,\\surprise, and disgust.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}MSP-Podcast \cite{Lotfian2019}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}100 hours by\\over 100 speakers\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Activation, dominance and\\valence and 9\\categorical labels\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Natural\end{tabular}\\
-
-\begin{tabular}[c]{@{}c@{}}TESS \cite{tess}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Audio\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}English\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}2800 recording by\\2 actresses.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}7 emotions: anger, disgust,\\fear, happiness, pleasant\\surprise, sadness, and neutral.\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
-  
-\bottomrule
-\end{tabular}%
+	\caption{Summary and description of emotion recognition datasets.}
+	\centering
+	\label{datasets_overview}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{@{}lcccccc@{}}
+			\toprule
+			\multicolumn{1}{c}{Dataset} & Format & Language & Content & Emotions & Type\\
+			\midrule
+			
+			\begin{tabular}[c]{@{}c@{}}EMO-DB \cite{Burkhardt2005}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}German\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}800 recording spoken\\by 10 actors (5 males\\and 5 females).\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}7 emotions: anger, neutral,\\fear, boredom, happiness,\\sadness, disgust.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}eNTERFACE’05 \cite{Martin2006}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Videos by 42 subjects,\\coming from 14\\different nationalities.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}6 emotions: anger, fear,\\surprise, happiness,\\sadness and disgust.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Elicited\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}\acs{iemo} \cite{Busso2008}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Conversations among\\pairs of 10
+				speakers\\(gender balanced)\\spanning 12 hours.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}10 categorical emotions\\\&  \acs{vad}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Acted \&\\Elicited\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}MOUD \cite{moud}\end{tabular} & 
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Spanish\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}80 product reviews\\YouTube videos.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Positive, negative, or neutral\\sentiment.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Natural\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}CREMA-D \cite{Cao2014}\end{tabular} & 
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}7442 clips of 12\\sentences spoken by 91\\actors (gender balanced).\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}6 emotions: angry,\\disgusted, fearful, happy,\\neutral, and sad.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}CMU-MOSI \cite{cmu-mosi}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}2199 movie reviews\\with annotated sentiment.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Very negative to very positive\\in seven Likert steps.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Natural\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}MSP-Improv \cite{Busso2017}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}8438 recordings by\\12 actors.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}4 emotions: angry, sad,\\happy, neutral.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Elicited\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}CMU-MOSEI \cite{cmu-mosei}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}65 hours of YouTube videos\\from more than 1000\\speakers (gender balanced)\\and 250 topics.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}6 emotions: happiness,\\ sadness, anger, fear,\\disgust, surprise. Polarity\\in Likert scale.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Natural\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}MELD \cite{meld}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\\Text\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}1400 dialogues and 14000\\utterances from Friends\\TV series by multiple\\ speakers.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}7 emotions: Anger, disgust,\\sadness, joy, neutral, surprise\\and fear. Also positive,\\negative and neutral.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}RAVDESS \cite{ravdess}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\\Video\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}7356 recordings\\by 24 actors with\\2 statements only.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}7 emotions: calm, happy,\\sad, angry, fearful,\\surprise, and disgust.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}MSP-Podcast \cite{Lotfian2019}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}100 hours by\\over 100 speakers\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Activation, dominance and\\valence and 9\\categorical labels\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Natural\end{tabular}\\
+			
+			\begin{tabular}[c]{@{}c@{}}TESS \cite{tess}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Audio\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}English\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}2800 recording by\\2 actresses.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}7 emotions: anger, disgust,\\fear, happiness, pleasant\\surprise, sadness, and neutral.\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Acted\end{tabular}\\
+			
+			\bottomrule
+		\end{tabular}%
 } \end{table}
 
 In a \citeyear{Jahangir2021} \ac{ser} \ac{sota} review article, \citeauthor{Jahangir2021} exhibited the most commonly used databases in their selected studies, figure \ref{fig:databases} \cite{Jahangir2021}. They realized the most popular ones had a gender-balanced number of speakers with high-quality recordings.
 
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{figs/2_state_of_the_art/sota.png}
-  \caption{Frequency distribution of databases on reviewed articles from a \ac{sota} study \cite{Jahangir2021}.}
-  \label{fig:databases}
+	\centering
+	\includegraphics[width=\linewidth]{figs/2_state_of_the_art/sota.png}
+	\caption{Frequency distribution of databases on reviewed articles from a \ac{sota} study \cite{Jahangir2021}.}
+	\label{fig:databases}
 \end{figure}
 
 \section{\acl{ser}}
@@ -184,11 +184,11 @@ Words alone do not always transmit sufficient emotion, for instance, text messag
 
 \subsection{Speech Features}
 
-Speech features are characteristics of an audio signal that can be extracted and analyzed to understand its properties. These features are commonly categorized in the following three classes:
+Speech features are characteristics of an audio signal that can be extracted and analyzed to understand its properties. These features are commonly categorized into the following three classes:
 \begin{itemize}
-    \item \textbf{Prosodic Features};
-    \item \textbf{Spectral Features};
-    \item \textbf{Voice Quality Features}.
+	\item \textbf{Prosodic Features};
+	\item \textbf{Spectral Features};
+	\item \textbf{Voice Quality Features}.
 \end{itemize}
 
 Prosodic and spectral features are commonly employed in various fields, as they have been shown to effectively improve outcomes. By combining these features, it is possible to further optimize their usefulness and attain even better results.
@@ -197,78 +197,78 @@ Currently, there are a wide variety of acoustic properties that can be used to e
 
 
 \begin{table}[h]
-\centering
-\caption{Overview on features commonly used for acoustic emotion recognition \cite{Schuller2011}.}
-\label{tab:features}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lllllll}
-\hline
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Intonation}\\ (F0 or pitch modelling)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Extremes}\\ (min, max, range, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Intensity}\\ (energy, Teager, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Mean}\\ (arithmetic, absolute, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Linear Prediction}\\ (LPCC, PLP, ...)\end{tabular}} & \multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Deriving}\\ (raw LLD, \\ deltas, \\ regression \\ coefficients, \\ LDA, \\ PCA, ...)\end{tabular}}} &
-  \multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Filtering}\\ (smoothing,\\ normalizing,\\ ...)\end{tabular}}} &
-  \multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Chunking}\\ (absolute,\\ relative,\\ ...)\end{tabular}}} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Percentiles}\\ (quartiles, ranges, ...)\end{tabular}} & \multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Deriving}\\ (raw LLD, \\ deltas, \\ regression \\ coefficients, \\ LDA, \\ PCA, ...)\end{tabular}}} &
-  \multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Filtering}\\ (smoothing,\\ normalizing,\\ ...)\end{tabular}}} \\ \cline{1-1} \cline{5-5}
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Cepstral Coefficients}\\ (MFCC, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Higher Moments}\\ (std. dev., kurtosis, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Formants}\\ (amplitude, position, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Peaks}\\ (number, distances, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Spectrum}\\ (MFB, NMF, roll-off, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Segments}\\ (number, duration, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{TF-Transformation}\\ (Wavelets, Gabor, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Regression}\\ (coefficients, error, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Harmonicity}\\ (HNR, spectral tilt, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Spectral}\\ (DCT coefficients, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
-\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Perturbation}\\ (jitter, shimmer, ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Temporal}\\ (durations, positions,  ...)\end{tabular}} &
-  \multicolumn{1}{l|}{} &
-  \multicolumn{1}{l|}{} \\ \hline
-  \\
-\multicolumn{4}{l}{\textbf{Low-Level-Descriptors}} &
-  \multicolumn{3}{l}{\textbf{Functionals}}
-\end{tabular}%
-}
+	\centering
+	\caption{Overview on features commonly used for acoustic emotion recognition \cite{Schuller2011}.}
+	\label{tab:features}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{lllllll}
+			\hline
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Intonation}\\ (F0 or pitch modelling)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Extremes}\\ (min, max, range, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Intensity}\\ (energy, Teager, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Mean}\\ (arithmetic, absolute, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Linear Prediction}\\ (LPCC, PLP, ...)\end{tabular}} & \multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Deriving}\\ (raw LLD, \\ deltas, \\ regression \\ coefficients, \\ LDA, \\ PCA, ...)\end{tabular}}} &
+			\multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Filtering}\\ (smoothing,\\ normalizing,\\ ...)\end{tabular}}} &
+			\multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Chunking}\\ (absolute,\\ relative,\\ ...)\end{tabular}}} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Percentiles}\\ (quartiles, ranges, ...)\end{tabular}} & \multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Deriving}\\ (raw LLD, \\ deltas, \\ regression \\ coefficients, \\ LDA, \\ PCA, ...)\end{tabular}}} &
+			\multicolumn{1}{l|}{\multirow{9}{*}{\begin{tabular}[c]{@{}l@{}}\textbf{Filtering}\\ (smoothing,\\ normalizing,\\ ...)\end{tabular}}} \\ \cline{1-1} \cline{5-5}
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Cepstral Coefficients}\\ (MFCC, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Higher Moments}\\ (std. dev., kurtosis, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Formants}\\ (amplitude, position, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Peaks}\\ (number, distances, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Spectrum}\\ (MFB, NMF, roll-off, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Segments}\\ (number, duration, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{TF-Transformation}\\ (Wavelets, Gabor, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Regression}\\ (coefficients, error, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Harmonicity}\\ (HNR, spectral tilt, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Spectral}\\ (DCT coefficients, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} \\ \cline{1-1} \cline{5-5}
+			\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Perturbation}\\ (jitter, shimmer, ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\textbf{Temporal}\\ (durations, positions,  ...)\end{tabular}} &
+			\multicolumn{1}{l|}{} &
+			\multicolumn{1}{l|}{} \\ \hline
+			\\
+			\multicolumn{4}{l}{\textbf{Low-Level-Descriptors}} &
+			\multicolumn{3}{l}{\textbf{Functionals}}
+		\end{tabular}%
+	}
 \end{table}
 
 
@@ -279,10 +279,10 @@ Prosodic features are those that can be perceived by humans, such as intonation,
 Pitch, also known as the fundamental frequency or F0, refers to the lowest frequency of a periodic waveform. It is often used to convey emotion because it is influenced by the tension in the vocal folds and the sub-glottal air pressure. Studies have shown that the average pitch for males is typically about an octave lower than that of females, with an average pitch of 120 Hertz for males, 229 Hertz for females, and 155–185 Hertz for those with ambiguous gender. According to the study conducted by \citeauthor{ArputhaRathina2012} in \citeyear{ArputhaRathina2012}, there are clear differences in the pitch of the female and male genders when expressing different emotions. These differences may present a challenge for a gender-independent emotion classifier that relies solely on pitch \cite{ArputhaRathina2012}.
 
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=.8\linewidth]{figs/2_state_of_the_art/Average-Pitch-Comparison-of-Male-and-Female-speak-ers.png}
-  \caption{Average pitch comparison of male and female speakers’ \cite{ArputhaRathina2012}.}
-  \label{fig:avgpitch}
+	\centering
+	\includegraphics[width=.8\linewidth]{figs/2_state_of_the_art/Average-Pitch-Comparison-of-Male-and-Female-speak-ers.png}
+	\caption{Average pitch comparison of male and female speakers’ \cite{ArputhaRathina2012}.}
+	\label{fig:avgpitch}
 \end{figure}
 
 Prosodic features have been indicated as the most distinctive properties of emotional content for speech emotion recognition \cite{ZhihongZeng2009}.
@@ -300,7 +300,7 @@ Another spectral feature is the gammatone frequency cepstral coefficient, which 
 
 Voice quality is the set of characteristics that distinguish one person's voice from another. Some common methods for analyzing voice quality involve examining the physical properties of the vocal tract, such as jitter, shimmer, and the harmonics-to-noise ratio.
 
-These properties may change involuntarily and can be used to differentiate emotions in the speech signal. Jitter refers to the variability in the period, or the time between successive peaks, of the fundamental frequency, whereas shimmer refers to the variability in the amplitude. Harmonics-to-noise ratio is a measure of the relative strength of the harmonics in a speech signal compared to the noise.
+These properties may change involuntarily and can be used to differentiate emotions in the speech signal. Jitter refers to the variability in the period, or the time between successive peaks, of the fundamental frequency, whereas shimmer refers to the variability in the amplitude. The harmonics-to-noise ratio is a measure of the relative strength of the harmonics in a speech signal compared to the noise.
 
 These three measures are often used together to assess the quality of a person's voice and can be useful in several tasks, e.g., treatment of voice disorders, age detection, speaker or emotion recognition, etc.
 
@@ -312,19 +312,19 @@ A \ac{ser} system requires a large and diverse dataset of speech samples, as wel
 
 Currently, there are two main types of implementations \cite{Zhao2018}:
 \begin{itemize}
-    \item \textbf{The traditional feature-based \ac{ser}}: hand-crafted features are extracted by applying a series of statistical aggregation functions to acoustic features of the audio signal, which are then passed on to a classifier;
-    \item \textbf{Automatic feature extraction-based \ac{ser}}: avoids manual feature engineering and leverages the abilities of \ac{dl} techniques. This method typically involves using raw speech signals, Mel spectrograms, or \ac{mfccs} as input for a \ac{dnn} model.
+	\item \textbf{The traditional feature-based \ac{ser}}: hand-crafted features are extracted by applying a series of statistical aggregation functions to acoustic features of the audio signal, which are then passed on to a classifier;
+	\item \textbf{Automatic feature extraction-based \ac{ser}}: avoids manual feature engineering and leverages the abilities of \ac{dl} techniques. This method typically involves using raw speech signals, Mel spectrograms, or \ac{mfccs} as input for a \ac{dnn} model.
 \end{itemize}
 
 
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{figs/2_state_of_the_art/methods.png}
-  \caption{Traditional machine learning flow vs. automatic feature extraction with \ac{dl} flow \cite{Khalil2019}.}
-  \label{fig:methods}
+	\centering
+	\includegraphics[width=\linewidth]{figs/2_state_of_the_art/methods.png}
+	\caption{Traditional machine learning flow vs. automatic feature extraction with \ac{dl} flow \cite{Khalil2019}.}
+	\label{fig:methods}
 \end{figure}
 
-Figure \ref{fig:methods}, displays the main difference between the methods, the traditional implementation has more steps, because it mainly depends on the feature extraction and selection processes. The \ac{dl} approaches avoid feature engineering and tend to improve recognition efficiency, however, it significantly increases complexity and the computational cost, which has a negative effect on \ac{ser} systems used in real-time scenarios.
+Figure \ref{fig:methods}, displays the main difference between the methods, the traditional implementation has more steps because it mainly depends on the feature extraction and selection processes. The \ac{dl} approaches avoid feature engineering and tend to improve recognition efficiency, however, it significantly increases complexity and the computational cost, which has a negative effect on \ac{ser} systems used in real-time scenarios.
 
 \subsection{Traditional Feature-Based \ac{ser}}
 
@@ -348,25 +348,21 @@ In \citeyear{Gosztolya2015}, \citeauthor{Gosztolya2015} demonstrated that classi
 
 The \ac{gemaps} is a set of features used in speech emotion recognition developed by researchers at the University of Geneva \cite{Eyben2016}. It is designed to be a compact and efficient feature set for automatic emotion recognition from speech. It includes a range of prosodic and acoustic features that are relevant to emotion recognition, such as pitch, intensity, spectral properties, and temporal features. \ac{gemaps} feature set has been utilized in several studies on speech emotion recognition, e.g., \cite{Tarantino2019}, as well as in applications such as affective computing, virtual assistants, and human-computer interaction.
 
-Many of the early researchers used traditional machine learning classification techniques such as Linear Discriminant Analysis, Regular Discriminant Analysis, \ac{svm}, K-Nearest Neighbors, Random Forests, and Gaussian Mixture Models \cite{Kuchibhotla2014}. Moreover, ensemble learning has also been employed by researchers to combine the predictions of multiple individual classifiers to improve performance.
+Many of the early researchers used traditional machine learning classification techniques such as Linear Discriminant Analysis, Regular Discriminant Analysis, \ac{svm}, K-Nearest Neighbors, \acp{random forest}, and Gaussian Mixture Models \cite{Kuchibhotla2014}. Moreover, ensemble learning has also been employed by researchers to combine the predictions of multiple individual classifiers to improve performance.
 
 \citeauthor{Albornoz2011} built a hierarchical classifier with two stages, on each stage they predicted different emotions using a different set of features and classifiers \cite{Albornoz2011}. They showed that 12 mean \ac{mfccs} features, deltas, and acceleration coefficients are the best features for the first stage with a \ac{hmm} with 30 Gaussians in the mixture classifier. For the second stage with a \ac{hmm}, they obtained as the best features, 12 means \acp{mfccs}, 30 means log-spectrum, and mean and standard deviation pitch. Using the EMO-DB corpus, they achieved an accuracy of 71.75\%.
 
 In a study, \citeauthor{Lee2011} (\citeyear{Lee2011}) used a traditional strategy to extract 16 low-level descriptors from audio data, including zero crossing rate, root-mean-square energy, pitch, harmonics-to-noise ratio, and 12 \ac{mfccs} and deltas. They then applied 12 different statistical functions, resulting in a set of 384 acoustic features per utterance. The researchers used a multi-level binary decision tree structure with different classifiers at each level to classify the data by dividing the problem into sub-problems. For example, at the first level, they compared the "neutral" label to all other labels. This approach resulted in an \ac{uar} of 41.57\% on the AIBO dataset and 58.46\% on the \ac{iemo} dataset \cite{Lee2011}, with 5 and 4 classes respectively.
 
-In \citeyear{HandCraftedSahu}, \citeauthor{HandCraftedSahu} developed a set of hand-crafted features for an audio signal using the \ac{iemo} dataset. The authors obtained an eight-dimensional vector by applying statistical functions 
- to acoustic features such as pitch, harmonics, and pause \cite{HandCraftedSahu}. They also found that ensembling models improved performance, and they achieved a maximum accuracy of 56.6\% with a model that combined random forest, extreme gradient boosting, and a multilayer perceptron.
+In \citeyear{HandCraftedSahu}, \citeauthor{HandCraftedSahu} developed a set of hand-crafted features for an audio signal using the \ac{iemo} dataset. The authors obtained an eight-dimensional vector by applying statistical functions to acoustic features such as pitch, harmonics, and pause \cite{HandCraftedSahu}. They also found that ensembling models improved performance, and they achieved a maximum accuracy of 56.6\% with a model that combined \ac{rf}, \ac{xgb}, and a multilayer perceptron.
 
+A new architecture was introduced in \citeyear{Issa2020} by \citeauthor{Issa2020}, for identifying emotions in sound files using a one-dimensional \ac{cnn}, which is not typically considered a traditional model, however the extraction of features was still performed manually. They obtain a one-dimensional array by taking mean values along the time axis of 193 features, including \ac{mfccs}, chromagram, Mel spectrogram, Tonnetz representation, and spectral contrast, from the sound files and use them as inputs for the \ac{cnn}. The proposed framework was evaluated using samples from the RAVDESS, EMO-DB, and \ac{iemo} datasets. The framework achieved accuracies of 71.61\% for RAVDESS (with 8 emotions), 86.1\% for EMO-DB (with 7 emotions), 95.71\% for EMO-DB (with 7 emotions), and 64.3\% for \ac{iemo} (with 4 emotions) in speaker-independent audio classification tasks \cite{Issa2020}.
 
 \subsection{\acl{dl}-Based \ac{ser}}
 
 As \ac{dl} technology has advanced, automatic feature learning algorithms have become increasingly popular for \ac{ser}, and even in other areas, for example, in cardiac spectrogram analysis, it is one of the state-of-art approaches, \cite{8759878} and \cite{Zhou2022}, in which the spectrogram of the audio from the heartbeat is used to evaluate the cardiac activity. These algorithms are effective at learning task-specific features without the need for extensive manual feature engineering.
 
-\ac{dnn} techniques for \ac{ser} are primarily trained using raw signals, spectrograms, low-level descriptors, and \ac{mfccs}, which have been shown to produce satisfactory results. Various \ac{dnn} architectures including \ac{rnn}, \ac{lstm}, and attention-based convolution \ac{rnn} have been designed for \ac{ser}, each with its strengths and weaknesses. \acp{cnn} and their variations are the most common, as they are known for their ability to extract a large number of hidden features from signals and images.
-
-A new architecture was introduced in \citeyear{Issa2020} by \citeauthor{Issa2020}, for identifying emotions in sound files using a one-dimensional \ac{cnn}. They obtain a one-dimensional array by taking mean values along the time axis of various features, including \ac{mfccs}, chromagram, Mel spectrogram, Tonnetz representation, and spectral contrast, from the sound files and use them as inputs for the \ac{cnn}. The proposed framework was evaluated using samples from the RAVDESS, EMO-DB, and \ac{iemo} datasets. The framework achieved accuracies of 71.61\% for RAVDESS (with 8 emotions), 86.1\% for EMO-DB (with 7 emotions), 95.71\% for EMO-DB (with 7 emotions), and 64.3\% for \ac{iemo} (with 4 emotions) in speaker-independent audio classification tasks \cite{Issa2020}.
-
-It is important to note that the way the information contained in an audio spectrogram is used can be different, as some authors use three channels of the spectrogram, such as the RGB of the plotted image, or even using the static, delta, and delta-deltas of it, essentially having a 3-D tensor, while other authors use a 2-D tensor with the spectrogram values.
+\ac{dnn} techniques for \ac{ser} are primarily trained using raw signals, spectrograms, low-level descriptors, and \ac{mfccs}, which have been shown to produce satisfactory results. Various \ac{dnn} architectures including \ac{rnn}, \ac{lstm}, and attention-based convolution \ac{rnn} have been designed for \ac{ser}, each with its strengths and weaknesses. \acp{cnn} and their variations are the most common, as they are known for their ability to extract a large number of hidden features from signals and images. It is also important to note that the way the information contained in an audio spectrogram is used can be different, as some authors use three channels of the spectrogram, such as the RGB of the plotted image, or even using the static, delta, and delta-deltas of it, essentially having a 3-D tensor, while other authors use a 2-D tensor with the numeric spectrogram values.
 
 In a paper published in \citeyear{GARCIAORDAS2021102946}, \citeauthor{GARCIAORDAS2021102946} proposed a fully \ac{cnn} that can process variable input lengths for near real-time sentiment analysis \cite{GARCIAORDAS2021102946}. The use of \acp{mfccs} made it easier to identify emotions in audio signals. The model achieved superior performance compared to other machine learning models on the EmoDB, RAVDESS, and TESS datasets, with accuracies of 75.28\%, 92.71\%, and 99.03\%, respectively.
 
@@ -374,7 +370,7 @@ The use of \acp{cnn} and \acp{rnn} increased in recent years, driven by their su
 
 \citeauthor{Luo2018} in \citeyear{Luo2018}, proposed a model for audio sentiment analysis that combines multiple traditional acoustic features and spectrum graphs. The authors analyze the \ac{mfccs}, spectral centroid, chroma-short-time \ac{ft}, and spectral contrast. The best model used is a combination of a \ac{lstm} network and a \ac{cnn}. The model was tested on the CMU-MOSI and MOUD datasets, achieving accuracies of 68.74\% and 69.64\% for 4 and 2 emotion classes, respectively.
 
-In \citeyear{8421023}, \citeauthor{8421023} proposed a 3-D attention-based convolutional \ac{rnn}, which learns discriminative features from the input data. The input to the model is a Mel spectrogram with static, deltas, and delta-deltas, which is processed by a 3-D \ac{cnn} and then combined with a \ac{lstm} for high-level feature extraction. To address silent and emotion-irrelevant frames, an additional attention model is used to focus on emotion-relevant frames and produce discriminative utterance-level features. Their proposed method achieved \ac{sota} performance on the \ac{iemo} and Emo-DB corpora, with \acp{uar} of 64.74±5.44\% and 82.82±4.99\% \cite{8421023}, using a 10-fold cross-validation technique.
+In \citeyear{8421023}, \citeauthor{8421023} proposed a 3-D attention-based convolutional \ac{rnn}, which learns discriminative features from the input data. The input to the model is a Mel spectrogram with static, deltas, and delta-deltas, which is processed by a 3-D \ac{cnn} and then combined with a \ac{lstm} for high-level feature extraction. To address silent and emotion-irrelevant frames, an additional attention model is used to focus on emotion-relevant frames and produce discriminative utterance-level features. Their proposed method achieved \ac{sota} performance on the \ac{iemo} and Emo-DB corpora, with \acp{uar} of 64.74±5.44\% and 82.82±4.99\% \cite{8421023}.
 
 In a paper published by \citeauthor{Muppidi2021}, the authors proposed one of the first quaternion-based \ac{cnn} for \ac{ser}. Their model is significantly smaller than other \ac{dl} models and achieved \ac{sota} results in terms of accuracy on several datasets, including RAVDESS (77.67\% accuracy with 8 emotions), \ac{iemo} (70.46\% accuracy with 4 emotions), and EMO-DB (88.78\% accuracy with 7 emotions) \cite{Muppidi2021}.
 
@@ -392,91 +388,121 @@ It is also common to extract features from the spectrogram images using pre-trai
 In table \ref{tab:article_overview} we provide a list of our reviewed articles for both strategies commonly used in audio classification tasks, and, subsequently, \ac{ser} tasks.
 
 \begin{table}[h]
-\centering
-\caption{Overview of audio classification articles with strategies.}
-\label{tab:article_overview}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}lcccc@{}}
-\toprule
-  Paper Title (Publication Date) &
-  Audio Features &
-  Classifier &
-  \begin{tabular}[c]{@{}c@{}}Datasets (N\textsuperscript{\underline{o}} of Labels)\\\& Accuracies (\%)\end{tabular}\\ 
-  
-  \midrule
-  \multicolumn{4}{c}{Traditional Feature-Based Approaches} \\
-  \midrule
-
-  \begin{tabular}[c]{@{}c@{}}Spoken emotion recognition\\using hierarchical\\classifiers (\citedate{Albornoz2011}) \cite{Albornoz2011}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}\ac{mfccs}\\Log-spectrum\\Pitch\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}\ac{hmm}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}EMO-DB (7): 71.75\end{tabular} \\
-    
-  \begin{tabular}[c]{@{}c@{}}Emotion recognition\\using a hierarchical\\binary decision\\tree approach\\(\citedate{Lee2011}) \cite{Lee2011}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Zero crossing rate\\Root-mean-square energy\\Pitch\\\ac{mfccs}\\Harmonics-to-noise ratio\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Multi-level binary\\decision trees\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}(\acp{uar})\\AIBO (5): 41.57\\\ac{iemo} (4): 58.46\end{tabular} \\
-
-  \begin{tabular}[c]{@{}c@{}}Multimodal \ac{ser}\\and Ambiguity\\Resolution (\citedate{HandCraftedSahu}) \cite{HandCraftedSahu}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Pitch\\Harmonics\\Pause\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Random forest, extreme\\gradient boosting and\\multilayer perceptron\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}\ac{iemo} (4): 56.6\end{tabular} \\
-
-  \midrule
-  \multicolumn{4}{c}{\acl{dl}-Based Approaches} \\
-  \midrule
-
-  \begin{tabular}[c]{@{}c@{}}\ac{ser} with deep \acp{cnn}\\(\citedate{Issa2020}) \cite{Issa2020}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}\ac{mfccs}\\Chromagram\\Mel spectrogram\\Spectral contrast\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}One-dimensional\\\ac{cnn}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}RAVDESS (8): 71.61\\ \ac{iemo} (4): 64.30\\ EMO-DB (7): 86.10\end{tabular} \\
-
- \begin{tabular}[c]{@{}c@{}}Sentiment analysis in\\non-fixed length audios\\using a Fully \ac{cnn} (\citedate{GARCIAORDAS2021102946}) \cite{GARCIAORDAS2021102946}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Mel-Spectrogram\\\ac{mfccs}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Fully \ac{cnn}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}RAVDESS (8): 75.28\\EMO-DB (7): 92.71\\TESS: 99.03\end{tabular} \\
-
-  \begin{tabular}[c]{@{}c@{}}Emotion Recognition from\\Variable-Length Speech\\Segments Using \ac{dl}\\on Spectrograms (\citedate{ma18b_interspeech}) \cite{ma18b_interspeech}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Log-Spectrograms\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}\ac{cnn} and \ac{rnn}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}\ac{iemo} (4): 64.22\end{tabular} \\
-
-  \begin{tabular}[c]{@{}c@{}}Exploring Deep\\Spectrum Representations\\via
-Attention-Based \ac{rnn}\\and \ac{cnn} for \ac{ser}\\(\citedate{Zhao2019}) \cite{Zhao2019} \end{tabular}&
-  \begin{tabular}[c]{@{}c@{}}Mel-Spectrogram\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Attention-based\\bidirectional \ac{lstm}\\and fully \ac{cnn}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}\ac{iemo} (4): 67.0\end{tabular} \\
-  
-  \begin{tabular}[c]{@{}c@{}}Audio Sentiment Analysis\\by Heterogeneous Signal\\Features Learned from\\Utterance-Based Parallel\\Neural Network (\citeyear{Luo2018}) \cite{Luo2018}\end{tabular}&
-  \begin{tabular}[c]{@{}c@{}}\ac{mfccs}\\Spectral centroid\\Spectral contrast\\Chromagram \end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}\ac{lstm} and \ac{cnn}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}MOSI (4): 68.74\\MOUD (2): 69.64\end{tabular} \\
-  
-  \begin{tabular}[c]{@{}c@{}}3-D Convolutional\\\ac{rnn} With Attention\\Model for \ac{ser} (\citedate{8421023}) \cite{8421023}\end{tabular}&
-  \begin{tabular}[c]{@{}c@{}}Mel spectrogram\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}3-D attention-based\\convolutional \ac{rnn}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}(\acp{uar})\\\ac{iemo} (4): 64.74\\EMO-DB (7): 82.82\end{tabular} \\
- 
-\begin{tabular}[c]{@{}c@{}}\ac{ser} Using\\Quaternion \ac{cnn}\\
-(\citedate{Muppidi2021}) \cite{Muppidi2021}\end{tabular}&
-  \begin{tabular}[c]{@{}c@{}}Mel spectrogram\\ encoded in an RGB\\quaternion domain\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Quaternion \ac{cnn}\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}RAVDESS (8): 77.87\\ \ac{iemo} (4): 70.46\\ EMO-DB (7): 88.78\end{tabular} \\
-
-  \begin{tabular}[c]{@{}c@{}}Rethinking \ac{cnn}\\Models for Audio\\Classification (\citedate{rethinkPalanisamy}) \cite{rethinkPalanisamy}\end{tabular}&
-  \begin{tabular}[c]{@{}c@{}}Mel spectrogram\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Ensemble of\\ImageNet pre-trained\\DenseNets\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}ESC-50 (50): 92.89\\UrbanSound8K (10):  87.42\end{tabular} \\
-
-  \begin{tabular}[c]{@{}c@{}}\ac{ser} Using Deep \ac{cnn}\\and Discriminant\\
-Temporal Pyramid\\Matching (\citedate{8085174}) \cite{8085174} \end{tabular}&
-  \begin{tabular}[c]{@{}c@{}}Mel spectrogram\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}Deep \ac{cnn}\\(Fine-tuned the\\AlexNet pre-trained\\on ImageNet)\end{tabular} &
-  \begin{tabular}[c]{@{}c@{}}EMO-DB (7): 87.31\\RML (6): 69.70\\eNTERFACE05 (6): 76.56\\BAUM-1s (6): 44.61\end{tabular} \\
-
-\bottomrule
-\end{tabular}%
-}
+	\centering
+	\caption{Overview of audio classification articles with strategies.}
+	\label{tab:article_overview}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{@{}lccc@{}}
+			\toprule
+			Paper Title (Publication Date) &
+			Audio Features &
+			Classifier &
+			\begin{tabular}[c]{@{}c@{}}Datasets (N\textsuperscript{\underline{o}} of Labels)\\\& Accuracies (\%)\end{tabular}\\ 
+			
+			\midrule
+			\addlinespace[2mm]
+			\multicolumn{4}{c}{Traditional Feature-Based Approaches} \\
+			\midrule
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Spoken emotion recognition\\using hierarchical\\classifiers (\citeyear{Albornoz2011}) \cite{Albornoz2011}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}\ac{mfccs}\\Log-spectrum\\Pitch\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}\ac{hmm}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}EMO-DB (7): 71.75\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Emotion recognition\\using a hierarchical\\binary decision\\tree approach\\(\citeyear{Lee2011}) \cite{Lee2011}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Zero crossing rate\\Root-mean-square energy\\Pitch\\\ac{mfccs}\\Harmonics-to-noise ratio\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Multi-level binary\\decision trees\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}(\acp{uar})\\AIBO (5): 41.57\\\ac{iemo} (4): 58.46\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Multimodal \ac{ser}\\and Ambiguity\\Resolution (\citeyear{HandCraftedSahu}) \cite{HandCraftedSahu}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Pitch\\Harmonics\\Pause\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Random forest, extreme\\gradient boosting and\\multilayer perceptron\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}\ac{iemo} (4): 56.6\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}\ac{ser} with deep \acp{cnn}\\(\citeyear{Issa2020}) \cite{Issa2020}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}\ac{mfccs}\\Chromagram\\Mel spectrogram\\Spectral contrast\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}One-dimensional\\\ac{cnn}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}RAVDESS (8): 71.61\\ \ac{iemo} (4): 64.30\\ EMO-DB (7): 86.10\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\midrule
+			\addlinespace[2mm]
+			\multicolumn{4}{c}{\acl{dl}-Based Approaches} \\
+			\midrule
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Sentiment analysis in\\non-fixed length audios\\using a Fully \ac{cnn} (\citeyear{GARCIAORDAS2021102946}) \cite{GARCIAORDAS2021102946}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Mel-Spectrogram\\\ac{mfccs}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Fully \ac{cnn}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}RAVDESS (8): 75.28\\EMO-DB (7): 92.71\\TESS: 99.03\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Emotion Recognition from\\Variable-Length Speech\\Segments Using \ac{dl}\\on Spectrograms (\citeyear{ma18b_interspeech}) \cite{ma18b_interspeech}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Log-Spectrograms\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}\ac{cnn} and \ac{rnn}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}\ac{iemo} (4): 64.22\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Exploring Deep\\Spectrum Representations\\via
+				Attention-Based \ac{rnn}\\and \ac{cnn} for \ac{ser}\\(\citeyear{Zhao2019}) \cite{Zhao2019} \end{tabular}&
+			\begin{tabular}[c]{@{}c@{}}Mel-Spectrogram\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Attention-based\\bidirectional \ac{lstm}\\and fully \ac{cnn}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}\ac{iemo} (4): 67.0\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Audio Sentiment Analysis\\by Heterogeneous Signal\\Features Learned from\\Utterance-Based Parallel\\Neural Network (\citeyear{Luo2018}) \cite{Luo2018}\end{tabular}&
+			\begin{tabular}[c]{@{}c@{}}\ac{mfccs}\\Spectral centroid\\Spectral contrast\\Chromagram \end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}\ac{lstm} and \ac{cnn}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}MOSI (4): 68.74\\MOUD (2): 69.64\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}3-D Convolutional\\\ac{rnn} With Attention\\Model for \ac{ser} (\citeyear{8421023}) \cite{8421023}\end{tabular}&
+			\begin{tabular}[c]{@{}c@{}}Mel spectrogram\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}3-D attention-based\\convolutional \ac{rnn}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}(\acp{uar})\\\ac{iemo} (4): 64.74\\EMO-DB (7): 82.82\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}\ac{ser} Using\\Quaternion \ac{cnn}\\
+				(\citeyear{Muppidi2021}) \cite{Muppidi2021}\end{tabular}&
+			\begin{tabular}[c]{@{}c@{}}Mel spectrogram\\ encoded in an RGB\\quaternion domain\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Quaternion \ac{cnn}\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}RAVDESS (8): 77.87\\ \ac{iemo} (4): 70.46\\ EMO-DB (7): 88.78\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Rethinking \ac{cnn}\\Models for Audio\\Classification (\citeyear{rethinkPalanisamy}) \cite{rethinkPalanisamy}\end{tabular}&
+			\begin{tabular}[c]{@{}c@{}}Mel spectrogram\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Ensemble of\\ImageNet pre-trained\\DenseNets\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}ESC-50 (50): 92.89\\UrbanSound8K (10):  87.42\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\begin{tabular}[l]{@{}l@{}}\ac{ser} Using Deep \ac{cnn}\\and Discriminant\\
+				Temporal Pyramid\\Matching (\citeyear{8085174}) \cite{8085174} \end{tabular}&
+			\begin{tabular}[c]{@{}c@{}}Mel spectrogram\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}Deep \ac{cnn}\\(Fine-tuned the\\AlexNet pre-trained\\on ImageNet)\end{tabular} &
+			\begin{tabular}[c]{@{}c@{}}EMO-DB (7): 87.31\\RML (6): 69.70\\eNTERFACE05 (6): 76.56\\BAUM-1s (6): 44.61\end{tabular} \\
+			
+			\addlinespace[2mm]
+			
+			\bottomrule
+		\end{tabular}%
+	}
 \end{table}
 
 
@@ -487,22 +513,22 @@ There are several strategies to capture features for recognizing emotions. Multi
 While we will not be implementing multimodality in our work, it is an important concept to consider for future developments in emotion recognition systems. The use of multiple modalities could potentially enhance the accuracy and reliability of emotion recognition models and contribute to the development of emotionally intelligent systems.
 
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=.8\linewidth]{figs/2_state_of_the_art/multimodality.png}
-  \caption{Multimodal emotion recognition illustration.}
-  \label{fig:multimodal}
+	\centering
+	\includegraphics[width=.8\linewidth]{figs/2_state_of_the_art/multimodality.png}
+	\caption{Multimodal emotion recognition illustration.}
+	\label{fig:multimodal}
 \end{figure}
 
 Four main methods of fusion can be used in multimodal systems:
 \begin{itemize}
-\item \textbf{Feature level}: This involves combining the features of different modalities and creating a new, high-dimensional feature set.
-
-\item \textbf{Decision level}: Each feature set from different modalities is given as input to different classifiers, and then the prediction results are combined.
-
-\item \textbf{Model level}: The goal of this method is to build a model that captures the complex relationships among the different modalities.
-
-\item \textbf{Hybrid}: This approach combines and takes advantage of the different fusion methods.
-
+	\item \textbf{Feature level}: This involves combining the features of different modalities and creating a new, high-dimensional feature set.
+	
+	\item \textbf{Decision level}: Each feature set from different modalities is given as input to different classifiers, and then the prediction results are combined.
+	
+	\item \textbf{Model level}: The goal of this method is to build a model that captures the complex relationships among the different modalities.
+	
+	\item \textbf{Hybrid}: This approach combines and takes advantage of the different fusion methods.
+	
 \end{itemize}
 
 One of the strategies is to use speech transcriptions to understand the context of the utterances correctly and predict their intent. Human oral communication consists of both linguistic and acoustic content, any subtle change in these cues can alter the significance of an expression. However, this approach alone tends to fail, word meanings are very ambiguous, and it fails to capture some low-level features of the speech itself, therefore not achieving the best results. Thus, emotion and sentiment recognition could benefit from considering both linguistic and acoustic features. \citeauthor{BHASKAR2015635} evidenced this improvement by using a hybrid approach based on text and speech mining \cite{BHASKAR2015635}. Similarly, \citeauthor{ser_strategies} also corroborated this idea by using a model that fuses \ac{mfccs} indicators with text transcriptions to predict emotions \cite{ser_strategies}.
@@ -522,36 +548,36 @@ In the customer service industry, video conferencing has become very popular, bu
 \citeauthor{Buitelaar2018} in \citeyear{Buitelaar2018} summarized some other known emotion recognition services, that are helping to advance the field, along with their characteristics, displayed below in the table \ref{table:emoServices}. It is visible that most of the services at the time of this study are paid and not open-source \cite{Buitelaar2018}.
 
 \begin{table}[h]
-\centering
-\caption{Emotion recognition services for facial, textural, and speech contents \cite{Buitelaar2018}.}
-\label{table:emoServices}
-\resizebox{.85\textwidth}{!}{%
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Service & Modality & Open-Source & Free\\
-\midrule
-
-\begin{tabular}{@{}l@{}}IBM Watson Alchemy Language \cite{ibmwatson}\\Bitext \cite{bitext2022}\end{tabular} & Text & No & No \\
-
-\begin{tabular}{@{}l@{}}Synesketch \cite{Krcadinac2016}\end{tabular} & Text & Yes & Yes \\
-
-\begin{tabular}{@{}l@{}}Microsoft Cognitive Services \cite{microsoftservice}\\IMOTIONS \cite{kristensen2022}\end{tabular} & Facial & No & No \\
-
-\begin{tabular}{@{}l@{}}Affectiva Emotion API \cite{affectiva}\end{tabular} & Facial & No & Free/Enterprise Editions \\
-
-\begin{tabular}{@{}l@{}}EmoVu \cite{emovuservice}\end{tabular} & Facial & No & No \\
-
-\begin{tabular}{@{}l@{}}Nviso \cite{humanbeaviourservice}\\SkyBiometry \cite{skybiometry2022}\end{tabular} & Facial & No & Limited/Non-Free Editions \\
-
-\begin{tabular}{@{}l@{}}audEERING SensAI \cite{audeering2022}\end{tabular} & Speech & Yes & Free Research Edition \\
-
-\begin{tabular}{@{}l@{}}Good Vibrations \cite{goodvibrations}\end{tabular} & Speech & No & No \\
-
-\begin{tabular}{@{}l@{}}Vokaturi \cite{Vokaturi}\end{tabular} & Speech & No & Limited/Enterprise Editions \\
-  
-\bottomrule
-\end{tabular}%
-}
+	\centering
+	\caption{Emotion recognition services for facial, textural, and speech contents \cite{Buitelaar2018}.}
+	\label{table:emoServices}
+	\resizebox{.85\textwidth}{!}{%
+		\begin{tabular}{@{}lccc@{}}
+			\toprule
+			Service & Modality & Open-Source & Free\\
+			\midrule
+			
+			\begin{tabular}{@{}l@{}}IBM Watson Alchemy Language \cite{ibmwatson}\\Bitext \cite{bitext2022}\end{tabular} & Text & No & No \\
+			
+			\begin{tabular}{@{}l@{}}Synesketch \cite{Krcadinac2016}\end{tabular} & Text & Yes & Yes \\
+			
+			\begin{tabular}{@{}l@{}}Microsoft Cognitive Services \cite{microsoftservice}\\IMOTIONS \cite{kristensen2022}\end{tabular} & Facial & No & No \\
+			
+			\begin{tabular}{@{}l@{}}Affectiva Emotion API \cite{affectiva}\end{tabular} & Facial & No & Free/Enterprise Editions \\
+			
+			\begin{tabular}{@{}l@{}}EmoVu \cite{emovuservice}\end{tabular} & Facial & No & No \\
+			
+			\begin{tabular}{@{}l@{}}Nviso \cite{humanbeaviourservice}\\SkyBiometry \cite{skybiometry2022}\end{tabular} & Facial & No & Limited/Non-Free Editions \\
+			
+			\begin{tabular}{@{}l@{}}audEERING SensAI \cite{audeering2022}\end{tabular} & Speech & Yes & Free Research Edition \\
+			
+			\begin{tabular}{@{}l@{}}Good Vibrations \cite{goodvibrations}\end{tabular} & Speech & No & No \\
+			
+			\begin{tabular}{@{}l@{}}Vokaturi \cite{Vokaturi}\end{tabular} & Speech & No & Limited/Enterprise Editions \\
+			
+			\bottomrule
+		\end{tabular}%
+	}
 \end{table}
 
 
@@ -564,20 +590,20 @@ For working and manipulating speech data and also machine learning techniques, d
 
 For extracting and processing speech, there are several tools available in Python, such as:
 \begin{itemize}
-    \item \textbf{Librosa} \cite{Librosa}: provides tools for music and audio analysis. It helps to visualize audio signals and extract features using signal processing techniques;
-    \item \textbf{OpenSmile} \cite{Eyben2010}: open-source toolkit for audio analysis, processing, and classification that focuses on speech and music applications;
-    \item \textbf{COVAREP} \cite{Degottex2014}: an open-source repository of advanced speech processing algorithms that are useful for tasks such as speech analysis, synthesis, and conversion;
-    \item \textbf{Spafe} \cite{spafe}: simplifies the process of extracting features from mono audio files and includes various filter bank modules and other spectral statistics;
-    \item \textbf{Pydiogment} \cite{ayoubmalek2020}: makes it easy to augment audio files by generating multiple versions with different speeds, tones, and other modifications;
-    \item \textbf{Noise Reduce} \cite{tim_sainburg_2019_3243139,sainburg2020finding}: helps to remove noise from time-based signals such as speech.
+	\item \textbf{Librosa} \cite{Librosa}: provides tools for music and audio analysis. It helps to visualize audio signals and extract features using signal processing techniques;
+	\item \textbf{OpenSmile} \cite{Eyben2010}: open-source toolkit for audio analysis, processing, and classification that focuses on speech and music applications;
+	\item \textbf{COVAREP} \cite{Degottex2014}: an open-source repository of advanced speech processing algorithms that are useful for tasks such as speech analysis, synthesis, and conversion;
+	\item \textbf{Spafe} \cite{spafe}: simplifies the process of extracting features from mono audio files and includes various filter bank modules and other spectral statistics;
+	\item \textbf{Pydiogment} \cite{ayoubmalek2020}: makes it easy to augment audio files by generating multiple versions with different speeds, tones, and other modifications;
+	\item \textbf{Noise Reduce} \cite{tim_sainburg_2019_3243139,sainburg2020finding}: helps to remove noise from time-based signals such as speech.
 \end{itemize}
 
 Frequently, \ac{vad*} algorithms are employed in speech processing systems. These algorithms are designed to be highly accurate and efficient in detecting when a user is speaking and filtering out background noise and other non-speech signals. Examples of \ac{vad*} toolkits are:
 
 \begin{itemize}
-    \item \textbf{Silero} \cite{SileroVAD}: intended to be used in real-time speech processing applications, it is optimized for performance on a wide range of devices, including mobile phones and other embedded systems;
-
-    \item \textbf{Py-webrtcvad} \cite{WebRTCVad}: python interface to the Google's WebRTC \ac{vad*} project, which is an open-source project that provides web browsers and mobile applications with real-time communication capabilities.
+	\item \textbf{Silero} \cite{SileroVAD}: intended to be used in real-time speech processing applications, it is optimized for performance on a wide range of devices, including mobile phones and other embedded systems;
+	
+	\item \textbf{Py-webrtcvad} \cite{WebRTCVad}: python interface to the Google's WebRTC \ac{vad*} project, which is an open-source project that provides web browsers and mobile applications with real-time communication capabilities.
 \end{itemize}
 
 
@@ -586,18 +612,18 @@ Frequently, \ac{vad*} algorithms are employed in speech processing systems. Thes
 Through the \ac{sota} research, it is possible to state the significant progress over time of not only \ac{ser}, but emotion recognition systems in general. Here are a few key takeaways that emerged from it:
 
 \begin{itemize}
-    \item Due to the subjectivity of emotions, the lack of consensus on how to label them, and the need for a large and diverse emotional corpus (e.g. different contexts, genders, languages, etc.), makes the whole process of creating and evaluating an emotion recognition system a very challenging task.
-
-    \item Audio feature engineering is a critical aspect of \ac{ser} due to the large variety of features available and the need to carefully select them, including prosodic, spectral, and voice quality features.
-
-    \item Traditional feature-based approaches use more classical models and focus mainly on feature selection methods.
-
-    \item \ac{dl} strategies with automatic feature extraction capabilities have, in general, outperformed the traditional acoustic feature extraction approach. The most popular models for this are \ac{cnn}, \ac{rnn} (\ac{lstm}), and hybrid \ac{cnn}-\ac{rnn} architectures, with Mel spectrogram as input for them.
-
-    \item The field of affective computing, which originally focused mainly on using facial cues to recognize emotions, has seen success in using multiple channels of information (multimodality). This shift has allowed for more accurate emotion recognition, and many current solutions in the market are taking advantage of this approach.
-
-    \item There are still areas in which emotion recognition systems need to be improved, such as being able to handle a wider range of input signals and increase reliability. For example, most systems overlook the case of input channels with noise, where the system should weigh each differently, and also, research for online classification contexts is still underdeveloped.
-
+	\item Due to the subjectivity of emotions, the lack of consensus on how to label them, and the need for a large and diverse emotional corpus (e.g. different contexts, genders, languages, etc.), makes the whole process of creating and evaluating an emotion recognition system a very challenging task.
+	
+	\item Audio feature engineering is a critical aspect of \ac{ser} due to the large variety of features available and the need to carefully select them, including prosodic, spectral, and voice quality features.
+	
+	\item Traditional feature-based approaches use more classical models and focus mainly on feature selection methods.
+	
+	\item \ac{dl} strategies with automatic feature extraction capabilities have, in general, outperformed the traditional acoustic feature extraction approach. The most popular models for this are \ac{cnn}, \ac{rnn} (\ac{lstm}), and hybrid \ac{cnn}-\ac{rnn} architectures, with Mel spectrogram as input for them.
+	
+	\item The field of affective computing, which originally focused mainly on using facial cues to recognize emotions, has seen success in using multiple channels of information (multimodality). This shift has allowed for more accurate emotion recognition, and many current solutions in the market are taking advantage of this approach.
+	
+	\item There are still areas in which emotion recognition systems need to be improved, such as being able to handle a wider range of input signals and increase reliability. For example, most systems overlook the case of input channels with noise, where the system should weigh each differently, and also, research for online classification contexts is still underdeveloped.
+	
 \end{itemize}
 
 Overall, there is a significant amount of ongoing research and development that is taking place on emotion recognition systems and has successfully advanced further their capability and reliability, however, there remain a lot of limitations to overcome and areas to improve.

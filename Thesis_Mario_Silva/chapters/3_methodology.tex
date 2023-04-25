@@ -6,10 +6,10 @@
 In this chapter, we propose our plan and schedule to achieve the goals of building a \ac{ser} system, integrating another modality, and evaluating its effectiveness in a video conference context. Figure \ref{fig:gantt} illustrates our research plan and schedule through a Gantt chart.
 
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{figs/3_methodology/gantt_chart.png}
-  \caption{Gantt chart with the proposed work plan for this research.}
-  \label{fig:gantt}
+	\centering
+	\includegraphics[width=\linewidth]{figs/3_methodology/gantt_chart.png}
+	\caption{Gantt chart with the proposed work plan for this research.}
+	\label{fig:gantt}
 \end{figure}
 
 \subsection{Requirements Gathering}
@@ -43,7 +43,7 @@ Noise can have a significant negative impact on the quality of an audio signal b
 
 \paragraph{Normalization}
 
-Scale differences in features' values may affect the models' performance, especially those based on distance metrics to parameter's estimation. So, it is advised to normalize features to prevent this effect. This can lead to more accurate and consistent results when applying the model to new data. The most widely used normalization techniques are z-normalization (also known as standardization) and min-max normalization \cite{Akay2020}.
+Scale differences in features' values may affect the models' performance, especially those based on distance metrics to parameter estimation. So, it is advised to normalize features to prevent this effect. This can lead to more accurate and consistent results when applying the model to new data. The most widely used normalization techniques are z-normalization (also known as standardization) and min-max normalization \cite{Akay2020}.
 
 \paragraph{\acl{vad*}}
 
@@ -52,10 +52,10 @@ Scale differences in features' values may affect the models' performance, especi
 Figure \ref{fig:vad} demonstrates an instance where a \ac{vad*} system is applied to a speech signal, in this case, it is processing chunks with a duration of 1 second. It reduces the original signal of 10 seconds by half by identifying 5 voiced segments that are then fed to a \ac{ser} model \cite{Milling2022}.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=.8\linewidth]{figs/3_methodology/speech_activity_detection.png}
-  \caption{\acl{vad*} employment on an audio signal \cite{Milling2022}.}
-  \label{fig:vad}
+	\centering
+	\includegraphics[width=.8\linewidth]{figs/3_methodology/speech_activity_detection.png}
+	\caption{\acl{vad*} employment on an audio signal \cite{Milling2022}.}
+	\label{fig:vad}
 \end{figure}
 
 
@@ -80,7 +80,7 @@ After we have chosen the relevant features through the feature selection process
 
 \subsection{Data Stratification}
 
-Data stratification refers to a process of dividing a dataset into subgroups, based on certain properties. We will test different ways of grouping the labeled data and interpret their effects on the models' predictions, for example, by relabeling the angry and sadness samples as \textit{negative} samples. By doing this, it allows discovering potential biases in both the classifiers and the dataset(s), such as the individual's age, gender, and even the evaluation of the samples given by juries.
+Data stratification refers to a process of dividing a dataset into subgroups, based on certain properties. We will test different ways of grouping the labeled data and interpreting their effects on the model's predictions, for example, by relabeling the angry and sadness samples as \textit{negative} samples. By doing this, we can discover potential biases in both the classifiers and the dataset(s), such as the individual's age, gender, and even the evaluation of the samples given by juries.
 
 
 \subsection{Deployment}
@@ -99,7 +99,7 @@ There are several ethical concerns when building emotion recognition systems, an
 
 Another concern is that these systems may be used to monitor or control persons without their consent. Our models will only be in use on individuals that fully consented to submit their data for emotional evaluation purposes.
 
-Additionally, there may be privacy concerns about personal data collected by these systems being vulnerable to hacks or used for unintended purposes. Our processing pipelines will only utilize the participant's streaming data for the \ac{ser} models input, and, will not store or use the sensitive data for any other purposes than the emotional analysis. We also decided to not use speech transcriptions, as it raises even greater privacy issues, due to capturing the actual words spoken, and can reveal confidential data such as personal, financial, or business information.
+Additionally, there may be privacy concerns about personal data collected by these systems being vulnerable to hacks or used for unintended purposes. Our processing pipelines will only utilize the participant's streaming data for the \ac{ser} models input, and, will not store or use the sensitive data for any other purposes than the emotional analysis. We also decided to not use speech transcriptions, as it raises even greater privacy issues, due to capturing the actual words spoken and can reveal confidential data such as personal, financial, or business information.
 
 In summary, we intend to be transparent about the system's capabilities and limitations and obtain informed consent before collecting and using any personal data.
 
