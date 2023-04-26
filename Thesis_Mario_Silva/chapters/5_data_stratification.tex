@@ -10,7 +10,7 @@ The duration of an audio recording can significantly impact the analysis and mod
 
 We stratified the dataset based on the duration of the recordings. The dataset contains recordings ranging from approximately 0.25 to 34 seconds in duration, and we divided the recordings into three evenly balanced groups, in terms of the number of recordings: short, less than or equal to  2.29 seconds, medium, greater than 2.29 and less than or equal to 4.38 seconds, and long, greater than 4.38 seconds.
 
-Table \ref{5:durations} presents the impact of the duration of the recordings on the performance of the chosen traditional AdaBoost model. The longest recordings have the highest performance, with an accuracy of 63.4\%, despite having more recordings than the medium duration data. 
+Table \ref{5:durations} presents the impact of the duration of the recordings on the performance of the chosen traditional \ac{xgb} model. The longest recordings have the highest performance, with an accuracy of 63.4\%, despite having more recordings than the medium duration data. 
 
 \begin{table}[H]
 	\centering
@@ -18,13 +18,11 @@ Table \ref{5:durations} presents the impact of the duration of the recordings on
 	\label{5:durations}
 	\begin{tabular}{lrlrrrr}
 		\toprule
-		Recordings Duration &   Total Data & Accuracy    &   Macro F1 &   Precision &   Recall &   MCC. \\
+		Recordings Duration &   Total Data & Accuracy    &   Macro F1 &   Precision &   Recall &   \ac{mcc} \\
 		\midrule
-		Short ($]0, 2.29]$ s)	 	&      1844 & 57.38+-1.15 &   55.48 &  59.51 &  53.88 &  0.40  \\
-		Medium ($]2.29, 4.38]$ s) 	&      1843 & 56.38+-1.26 &   56.81 &  57.34 &  56.73 &  0.41 \\
-		Long ($]4.38, 34]$ s) 		&      1844 & 62.91+-1.69 &   63.31 &  63.91 &  63.11 &  0.50  \\
-		
-		
+		Short ($]0, 2.29]$ s)	 	&      1844 & 55.69$\pm$1.15 &   54.64 &  56.59 &  53.54 &  0.38  \\
+		Medium ($]2.29, 4.38]$ s) 	&      1843 & 56.65$\pm$2.28 &   57.16 &  57.25 &  57.26 &  0.41 \\
+		Long ($]4.38, 34]$ s) 		&      1844 & 63.77$\pm$0.87 &   64.16 &  64.32 &  64.17 &  0.51  \\	
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -43,17 +41,20 @@ To evaluate the performance of the model on different genders, we trained and te
 	\label{5:gender}
 	\begin{tabular}{llrrrrr}
 		\toprule
-		Training Gender & Testing Gender & Accuracy    &   Macro F1 &   Precision &   Recall &   MCC. \\
+		Training Gender & Testing Gender & Accuracy    &   Macro F1 &   Precision &   Recall &   \ac{mcc} \\
 		\midrule
-		Female	& Female & 59.87+-1.03 & 60.45 & 60.55 & 60.77 & 0.46 \\
-		Male 	& Male	 & 59.92+-1.33 & 60.43 & 61.66 & 59.72 & 0.45 \\
-		Female  & Male	 & 51.49+-1.38 & 51.55 & 53.67 & 51.52 & 0.33 \\
-		Male    & Female & 51.45+-1.76 & 52.01 & 55.35 & 51.23 & 0.35 \\
+		Female 	& Female & 59.95$\pm$1.45 & 60.47 &       60.4  &    60.77 &   0.46 \\
+		Male 	& Male   & 59.99$\pm$1.28 & 60.67 &       61.38 &    60.2  &   0.45 \\
+		
+		\addlinespace
+
+		Female  & Male	 & 50.28$\pm$0.64 &  50.57 &       50.36 &    51.1  &   0.32 \\
+		Male    & Female & 49.41$\pm$1.43 &  50.26 &       53.37 &    49.24 &   0.32 \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
-From the table, it can be observed that the model performed similarly on both genders, when the testing data for the model is of the training data, with accuracies close to 60\%. However, when testing with different speaker gender, the model's accuracy dropped significantly to 51.49\% and 51.45\% for female and male training data, respectively. The other metrics showed equivalent behavior, indicating difficulty in correctly identifying the emotion in mixed-gender contexts.
+From the table, it can be observed that the model performed similarly on both genders, when the testing data's gender is equal of the training data's gender, with accuracies close to 60\%. However, when testing on the opposite gender of the training, the model's accuracy dropped significantly to 50.28\% and 49.41\% for female and male trained models, respectively. The other metrics showed equivalent behavior, indicating difficulty in correctly identifying the emotion in mixed-gender contexts.
 
 These results suggest that the model's performance is affected by the gender of the speakers in the training data and therefore, it is important that the model is provided with a gender-balanced set of training data to reduce gender bias.
 
@@ -62,47 +63,67 @@ These results suggest that the model's performance is affected by the gender of 
 The \ac{iemo} dataset contains four emotional categories: anger, happiness, sadness, and neutral. We stratified the data based on these labels and obtained 15 groups of data. In this section, we discuss the differences in classification performance between these emotional categories, as well as differences in valence and emotional planes.
 
 
-Table \ref{tab:emo_cat} shows the traditional model 5-fold cross-validation results based on the discrete emotions. In the four-label case, which includes all four emotional categories, the model achieved an accuracy of 60.04\% with a macro F1 score of 60.76. The best performance was achieved when classifying between anger, happiness, and sadness, with an accuracy of 70.36\% and a macro F1 score of 70.73. The worst performance was achieved when classifying between angry, neutral, and happy, with an accuracy of 64.4\% and a macro F1 score of 63.8.
+Table \ref{tab:emo_cat} shows the traditional model 5-fold cross-validation results based on the discrete emotions. For the three labels case, the best performance was achieved when classifying between anger, neutral, and sadness, with an accuracy of 75.17\% and a macro F1 score of 75.3. In the two-label case, where the emotional categories were paired, the best performance was achieved when classifying between angry and sad, with an accuracy of 92\% and a macro F1 score of 92. The worst performance was achieved when classifying between neutral and happy based, with an accuracy of 73.24\% and a macro F1 score of 73.15.
 
 
 \begin{table}[H]
-	\small
 	\centering
 	\caption{Traditional model 5-fold cross-validation results based on the discrete emotions.}
 	\label{tab:emo_cat}
-	\centering
+	\resizebox{\textwidth}{!}{%
 	\begin{tabular}{lrrrrrr}
 		\toprule
-		Labels                      &   Total Data & Accuracy    & Macro F1    & Precision   & Recall      & MCC.       \\
-		\midrule
+		Labels                      &   Total Data & Accuracy    & Macro F1    & Precision   & Recall      & \ac{mcc}       \\
+		
+		\toprulec
+		\rowcolor{gray!25}
 		\multicolumn{7}{c}{Four Labels} \\
-		Angry, Happy, Sad, Neutral             &         5531 &  60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 \\
-		\midrule
+		\midrulec
+		
+		Angry, Happy, Sad, Neutral             &         5531 &  60.69$\pm$1.37	& 61.32	& 61.66	& 61.19	& 0.47 \\
+		
+		\toprulec
+		\rowcolor{gray!25}
 		\multicolumn{7}{c}{Three Labels} \\
+		\midrulec
 		
-		Angry, Happy, Sad                   &         3823 & 70.36$\pm$1.09 &      70.73 &       71.36 &    70.35 &   0.54 \\
-		Angry, Neutral, Happy               &         4447 & 64.4$\pm$0.95  &      63.8  &       64.48 &    63.84 &   0.46 \\
-		Angry, Neutral, Sad                 &         3895 & 74.02$\pm$1.14 &      74.16 &       75.61 &    73.2  &   0.6  \\
-		Sad, Neutral, Happy                 &         4428 & 65.4$\pm$1.12  &      65.59 &       65.75 &    65.54 &   0.47 \\
+		Angry, Happy, Sad                   &         3823 & 70.99$\pm$1.55		&71.37	& 71.38	& 71.42	& 0.56 \\
+		Angry, Neutral, Happy               &         4447 & 64.29$\pm$1.13		&63.81	& 64.41	& 63.6	& 0.45 \\
+		Angry, Neutral, Sad                 &         3895 & 75.17$\pm$0.99	&	75.3	& 76.21	& 74.62	& 0.62 \\
+		Sad, Neutral, Happy                 &         4428 & 65.74$\pm$1.85	&	65.85	& 65.94	& 65.86	& 0.48 \\
 		
-		Sad, Neutral, Happy+Angry (Arousal or Dominance) &         5531 & 68.54$\pm$1.03 &      66    &       66.31 &    65.89 &   0.49 \\
-		Angry+Sad, Neutral, Happy (Valence) &         5531 & 60.15$\pm$0.86 &      58.94 &       59.53 &    58.99 &   0.39 \\
-		\midrule
+		\toprulec
+		\rowcolor{gray!25}
 		\multicolumn{7}{c}{Two Labels} \\
+		\midrulec
 		
-		Angry, Sad                          &         2187 & 91.4$\pm$1.46  &      91.4  &       91.46 &    91.39 &   0.83 \\
-		Angry, Neutral                      &         2811 & 84.13$\pm$0.88 &      82.98 &       84.03 &    82.34 &   0.66 \\
-		Angry, Happy                    	&         2739 & 74.66$\pm$2.01 &      73.1  &       73.84 &    72.72 &   0.47 \\
-		Sad, Neutral                        &         2792 & 79.51$\pm$1.57 &      77.98 &       78.77 &    77.49 &   0.56 \\
-		Sad, Happy                          &         2720 & 83.6$\pm$1.41  &      82.87 &       82.93 &    82.82 &   0.66 \\
-		Neutral, Happy                      &         3344 & 72.58$\pm$2.38 &      72.43 &       72.81 &    72.45 &   0.45 \\
-		Sad+Neutral, Happy+Angry (Arousal or Dominance)  &         5531 & 77.2$\pm$1.29  &      77.18 &       77.25 &    77.18 &   0.54 \\
-		Angry+Sad, Neutral+Happy (Valence)  &         5531 & 72.86$\pm$0.94 &      69.84 &       72.47 &    69.27 &   0.42 \\
+		Angry, Sad                          &         2187 & 92.0$\pm$1.3 & 	92	&  92& 	92& 	0.84 \\
+		Angry, Neutral                      &         2811 & 84.53$\pm$1.26	83.49& 	84.25& 	82.98& 	0.67 \\
+		Angry, Happy                    	&         2739 & 75.58$\pm$0.93 &      74.15 &       74.78 &    73.79 &   0.49 \\
+		Sad, Neutral                        &         2792 & 81.02$\pm$1.16 &      79.7  &       80.29 &    79.29 &   0.6  \\
+		Sad, Happy                          &         2720 & 83.79$\pm$0.85 &      83.1  &       83.08 &    83.11 &   0.66 \\
+		Neutral, Happy                      &         3344 & 73.24$\pm$1.06 &      73.15 &       73.34 &    73.15 &   0.46 \\
+		
+		\toprulec
+		\rowcolor{gray!25}
+		\multicolumn{7}{c}{Labels Grouped By Arousal or Dominance Planes} \\
+		\midrulec
+		
+		Sad, Neutral, Happy+Angry &         5531 & 69.32$\pm$1.24 &      67.29 &       67.44 &    67.2  &   0.5  \\
+		Sad+Neutral, Happy+Angry  &         5531 & 77.24$\pm$1.04& 	77.21& 	77.31	77.21& 	0.55 \\
+		
+		\toprulec
+		\rowcolor{gray!25}
+		\multicolumn{7}{c}{Labels Grouped By Valence Plane} \\
+		\midrulec
+		
+		Angry+Sad, Neutral, Happy &         5531 & 60.64$\pm$1.36 &      59.72 &       60.03 &    59.73 &   0.4  \\
+		Angry+Sad, Neutral+Happy  &         5531 & 73.82$\pm$0.77	71.7& 	72.9& 	71.21& 	0.44 \\
 		\bottomrule
-	\end{tabular}
+	\end{tabular}%
+	}
 \end{table}
 
-In the two-label case, where the emotional categories were paired, the best performance was achieved when classifying between angry and sad, with an accuracy of 91.4\% and a macro F1 score of 91.4. The worst performance was achieved when classifying between angry+sad and neutral+happy based on valence, with an accuracy of 72.86\% and a macro F1 score of 69.84.
 
 In terms of valence and emotional plane, the model achieved its highest accuracy (68.54\%) when classifying between sad, neutral, and happy+angry based on arousal, and its lowest accuracy (60.15\%) when classifying between angry+sad, neutral, and happy based on valence. These results suggest that the model is better at distinguishing emotional categories based on arousal than valence.
 
@@ -113,18 +134,18 @@ It is important to note that the total data impacts the classification, as a low
 
 In addition to the categorical classification, we also explored the dimensional annotations of the dataset in terms of valence (ranging from unpleasant to pleasant), arousal (ranging from calm to excited), and dominance (ranging from submissive to dominant). These dimensions were rated on a continuous scale of 1 to 5 by human judges.
 
-Initially, we aimed to investigate the level of difficulty associated with classifying each emotional dimension, so we utilized traditional approach features to assess the performance of a Random Forest Regressor model from sklearn for each dimension. Each dimension underwent 5-fold cross-validation. We used MAE, RMSE, and $R^2$ as evaluation metrics for the model.
+Initially, we aimed to investigate the level of difficulty associated with classifying each emotional dimension, so we utilized traditional approach features to assess the performance of a \ac{rf} Regressor model from sklearn for each dimension. Each dimension underwent 5-fold cross-validation. We used \ac{mae}, \ac{rmse}, and $R^2$ as evaluation metrics for the model.
 
 Table \ref{tab:dim_reg} shows the results of our experiments on the regression task. The arousal and dominance dimensions are easier to classify than valence. One possible reason for this is that valence is a more complex and abstract concept that may be more difficult to recognize and classify in speech. Additionally, the annotations for valence may be more subjective and varied among annotators than the others, leading to less reliable labels and lower classification performance.
 
 
 \begin{table}[H]
 	\centering
-	\caption{Random Forest Regressor 5-fold cross-validation using dimensional emotions as labels.}
+	\caption{\ac{rf} Regressor 5-fold cross-validation using dimensional emotions as labels.}
 	\label{tab:dim_reg}
 	\begin{tabular}{lrrr}
 		\toprule
-		Regression Labels   &   MAE &  RMSE & $R^2$ \\
+		Regression Labels   &   \ac{mae} &  \ac{rmse} & $R^2$ \\
 		\midrule
 		Valence             & 0.700 & 0.859 & 0.182 \\
 		Arousal             & 0.414 & 0.522 & 0.520 \\
@@ -197,10 +218,10 @@ With this process, 1136 audio files were removed, and 4395 audio files were reta
 		\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Emotion\end{tabular}} & \multicolumn{3}{c}{Centroids} \\ \cmidrule{2-4}
 		&  Arousal  &   Valence  & Dominance \\
 		\midrule
-		Anger   	&   3.66 \textcolor{red}{$(-0.68)$} &  1.91 \textcolor{red}{$(-0.23)$} &  3.95 \textcolor{green}{$(+0.27)$} \\
-		Happiness   &   3.47 \textcolor{red}{$(-0.49)$} &  4.02 \textcolor{red}{$(-0.50)$} &  3.26 \textcolor{red}{$(-0.44)$} \\
-		Neutral 	&   2.86 \textcolor{red}{$(-0.14)$} &  2.97 \textcolor{red}{$(-0.03)$} &  2.93 \textcolor{red}{$(-0.07)$} \\
-		Sadness     &   2.87 \textcolor{red}{$(-0.67)$} &  2.25 \textcolor{green}{$(+0.51)$} &  2.91 \textcolor{green}{$(+0.57)$} \\
+		Anger   	&   3.78 \textcolor{red}{$(-0.56)$} &  1.86 \textcolor{red}{$(-0.28)$} &  4.02 \textcolor{green}{$(+0.34)$} \\
+		Happiness   &   3.49 \textcolor{red}{$(-0.47)$} &  4.00 \textcolor{red}{$(-0.52)$} &  3.39 \textcolor{red}{$(-0.31)$} \\
+		Neutral 	&   2.75 \textcolor{red}{$(-0.25)$} &  3.03 \textcolor{red}{$(-0.03)$} &  2.96 \textcolor{red}{$(-0.04)$} \\
+		Sadness     &   2.47 \textcolor{red}{$(-1.07)$} &  2.05 \textcolor{green}{$(+0.31)$} &  2.61 \textcolor{green}{$(+0.27)$} \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -221,12 +242,12 @@ To evaluate further if this removal of data translates to cleaner data and, ther
 	\caption{Traditional model 5-fold cross-validation results with the conflicts removal process.}
 	\label{tab:emo_cat2}
 	\centering
-	\begin{tabular}{lrrrrr}
+	\begin{tabular}{lrrrrrr}
 		\toprule
-		Data   						 	& Accuracy    & Macro F1    & Precision   & Recall      & MCC.       \\
+		Data   & Total Data						 	& Accuracy    & Macro F1    & Precision   & Recall      & \ac{mcc}       \\
 		\midrule
-		All Data - 5531 Files		 	& 60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 \\
-		Conflict-Free Data - 4395 Files & 61.64$\pm$1.09 & 62.08 & 62.36 & 62.35 & 0.490 \\
+		All Data & 5531 & 60.69$\pm$1.37 & 61.32 & 61.66 & 61.19 & 0.470 \\
+		Conflict-Free Data & 4456 & 62.01$\pm$1.74 & 63.00 & 63.36 & 62.76 & 0.480 \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -238,21 +259,21 @@ The data stratification process enabled us to uncover the shortcomings of the \a
 
 To achieve this, to the conflict-free data obtained from the dimensional conflict removal process, we applied an additional file duration condition. Specifically, we only retained audio files with a duration exceeding 1 second, as it was necessary to ensure the presence of sufficient emotional data for the model to learn effectively. As a result of this process, we obtained a total of 4200 audio files, with a nearly balanced gender distribution, comprising 52.9\% male and 47.1\% female speakers.
 
-Table \ref{tab:emo_cat3} presents the 5-fold cross-validation results of the traditional model trained on the \ac{iemo} dataset with different sets of selected data. The first row shows the results obtained with all 5531 files of the dataset. The second row shows the results after applying the dimensional conflict removal process, resulting in 4395 files. The third row shows the results of the conflict-free data with the previously mentioned additional duration condition, resulting in 4200 audio files. The results demonstrate that the performance of the traditional model improves as the data selection process becomes more rigorous. The dimensional conflict removal process resulted in an increase in accuracy from 60.04\% to 61.64\%, while the additional duration condition further improved the accuracy to 62.17\%, the other metrics also have the same behavior, indicating that the model's classification ability improved with the use of cleaner and more reliable data.
+Table \ref{tab:emo_cat3} presents the 5-fold cross-validation results of the traditional model trained on the \ac{iemo} dataset with different sets of selected data. The first row shows the results obtained with all 5531 files of the dataset. The second row shows the results after applying the dimensional conflict removal process, resulting in 4395 files. The third row shows the results of the conflict-free data with the previously mentioned additional duration condition, resulting in 4200 audio files. The results demonstrate that the performance of the traditional model improves as the data selection process becomes more rigorous. The dimensional conflict removal process resulted in an increase in accuracy from 60.69\% to 62.01\%, while the additional duration condition further improved the accuracy to 62.89\%, the other metrics exhibit similar improvements, indicating that the model's classification ability improved with the use of cleaner and more reliable data.
 
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Traditional model 5-fold cross-validation results with the conflicts removal process.}
+	\caption{Traditional model 5-fold cross-validation results different sets of data.}
 	\label{tab:emo_cat3}
 	\centering
-	\begin{tabular}{lrrrrr}
+	\begin{tabular}{lrrrrrr}
 		\toprule
-		Data   						 	& Accuracy    & Macro F1    & Precision   & Recall      & MCC.       \\
+		Data   	&	Total Data &	Accuracy    & Macro F1    & Precision   & Recall      & \ac{mcc}       \\
 		\midrule
-		All		      & 60.04$\pm$0.95 & 60.76 & 61.29 & 60.59 & 0.459 \\
-		Conflict-Free & 61.64$\pm$1.09 & 62.08 & 62.36 & 62.35 & 0.490 \\
-		Conflict-Free With Duration Condition & 62.17$\pm$0.60 & 62.59 & 62.84 & 62.81 & 0.500 \\
+		All		      & 5531 & 60.69$\pm$1.37 & 61.32 & 61.66 & 61.19 & 0.470 \\
+		Conflict-Free & 4456 & 62.01$\pm$1.74 & 63.00 & 63.36 & 62.76 & 0.480 \\
+		\begin{tabular}[l]{@{}l@{}}Conflict-Free With\\Duration Condition\end{tabular} & 3347 & 62.89$\pm$0.67 & 63.76 & 63.66 & 63.90 & 0.500 \\
 		\bottomrule
 	\end{tabular}
 \end{table}
