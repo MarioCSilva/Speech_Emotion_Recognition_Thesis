@@ -35,6 +35,7 @@ The EMO-DB database is an acted German emotional database created by the Institu
 The CREMA-D dataset includes clips from 91 actors spoken in English. These clips are from 48 male and 43 female actors between the ages of 20 and 74 coming from a variety of races and ethnicities (African American, Asian, Caucasian, Hispanic, and Unspecified). It provides a variety of data which is ideal to test a model's generalization ability across new datasets. The sentences were presented using one of six different emotions, but as mentioned before, we selected only the emotions present in the \ac{iemo}, resulting in 4898 audio files \ref{tab:all_datasets}. 
 
 
+
 \begin{table}[H]
 	\centering
 	\caption{Number of audio files per emotion from the described datasets.}
@@ -42,6 +43,7 @@ The CREMA-D dataset includes clips from 91 actors spoken in English. These clips
 	\begin{tabular}{lrrrr}
 		\toprule
 		& \multicolumn{4}{c}{Number of Files} \\
+		\cmidrule{2-5}
 		Emotion     &   \ac{iemo} & eNTERFACE'05 & EMO-DB & CREMA-D \\
 		\midrule
 		Anger   	&         1103 &  210 & 127 & 1271 \\

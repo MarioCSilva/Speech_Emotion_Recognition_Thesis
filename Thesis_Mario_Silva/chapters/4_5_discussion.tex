@@ -117,11 +117,10 @@ Among the \ac{dl}-based approaches, our Resnet50 model achieved an accuracy of 5
 	\begin{tabular}{lccr}
 		\toprule
 		Model                      & Input & Evaluation Strategy & Accuracy (\%) \\
-		\midrule
-		\addlinespace[1mm]
-		
+		\toprulec
+		\rowcolor{gray!25}
 		\multicolumn{4}{c}{Traditional Feature-Based \ac{ser} Approaches} \\
-		\midrule
+		\midrulec
 		
 		\begin{tabular}[l]{@{}l@{}}Ensemble of \ac{rf}, \ac{xgb}\\and Multilayer Perceptron\end{tabular} \cite{HandCraftedSahu} & \begin{tabular}[c]{@{}c@{}}8-dimensional audio\\features vector\end{tabular} & \begin{tabular}[c]{@{}c@{}}1 random 80:20\\train-test split\end{tabular} & 56.00 \\
 		\addlinespace[1mm]
@@ -136,8 +135,8 @@ Among the \ac{dl}-based approaches, our Resnet50 model achieved an accuracy of 5
 		\ac{cnn} \cite{Issa2020}  & 193 audio features vector & 5-fold \ac{cv} & 64.30 \\
 		\addlinespace[1mm]
 		
-		\midrule
-		\addlinespace[1mm]
+		\toprulec
+		\rowcolor{gray!25}
 		\multicolumn{4}{c}{\acl{dl}-Based \ac{ser} Approaches} \\
 		\midrulecb
 		
