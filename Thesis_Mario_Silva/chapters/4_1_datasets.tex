@@ -20,114 +20,34 @@ Sessions were manually segmented into utterances, spoken by 10 (5 female and 5 m
 	\label{fig:bar_plots_distribution}
 \end{figure}
 
+Most researchers when using this dataset perform 4 class emotion recognition, and also, consider the emotion excitement as happiness, due to their similarities and to even out the distribution of files per emotion. We decided to use the same data, as shown in Table \ref{tab:all_datasets}, ending up with a total of 5531 audio files recorded with a sample rate of 16000 Hertz.
+
 Overall, \ac{iemo} is a well-suited resource for our study, as the multimodal data, annotated using both discrete and dimensional models, allows us to perform a wide range of operations. Several Researchers have also noted the high quality of this dataset, being frequently used in the literature for evaluating emotion recognition models. This enables us to compare our developed models effectively, which is why we utilized it as a training and testing dataset for our \ac{ser} models and to explore classification strategies and their biases.
-
-Most researchers when using this dataset perform 4 class emotion recognition, and also, consider the class \textit{excitement} as \textit{happiness}, due to their similarities and to even out the distribution of files per emotion. We decided to use the same data, as shown in Table \ref{tab:dataDist}, ending up with a total of 5531 audio files recorded with a sample rate of 16000 Hertz.
-
-\begin{table}[H]
-	\centering
-	\caption{Number of audio files per emotion from the IEMOCAP dataset.}
-	\label{tab:dataDist}
-	\begin{tabular}{cc}
-		\toprule
-		Emotion & Number of Audio Files \\
-		\midrule
-		Anger 		&  1103\\
-		Happiness 	&  1636\\
-		Neutral	 	&  1708\\
-		Sadness 	&  1084\\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
 
 \subsection{Testing Datasets}
 
-To evaluate the generalization ability of our final models trained on the IEMOCAP dataset, we tested them on three additional emotion datasets: eNTERFACE’05, CREMA-D, and EMO-DB. The inclusion of these datasets allows us to assess the efficacy and applicability of our proposed \ac{ser} system across diverse contexts and conditions.
+To evaluate the generalization ability of our final models trained on the IEMOCAP dataset, we tested them on three additional emotion datasets: eNTERFACE’05, CREMA-D, and EMO-DB. The inclusion of these datasets allows us to assess the efficacy and applicability of our proposed \ac{ser} system across diverse contexts and conditions. For all three testing datasets, we only used the set of 4 emotions present in the \ac{iemo}.
 
-\subsubsection{eNTERFACE'05}
+The eNTERFACE’05 emotion database \cite{Martin2006} was designed and collected during the eNTERFACE’05 workshop. This dataset contains discrete annotated emotions, where each subject was asked to listen to six successive short stories, each eliciting a particular emotion. The dataset contains audio and visual data from 42 subjects, coming from 14 different nationalities. Among the subjects, a percentage of 35 are men, while the remaining 7 are women, and, all the experiments were driven in English. The diversity of accents present in the dataset and its authenticity (due to the data being elicited), make it a suitable choice for testing the models' performance with different factors than the \ac{iemo}. The number of used files per emotion is presented in Table \ref{tab:all_datasets}.
 
-The eNTERFACE’05 emotion database \cite{Martin2006} was designed and collected during the eNTERFACE’05 workshop in \citeyear{Martin2006}. The dataset contains audio and visual data from 42 subjects, coming from 14 different nationalities, as shown in Table \ref{tab:enterfaceDiversity}. Among the subjects, a percentage of 35 are men, while the remaining 7 are women, and, all the experiments were driven in English.
+The EMO-DB database is an acted German emotional database created by the Institute of Communication Science, Technical University, Berlin, Germany. Ten professional speakers (gender-balanced) participated in the data recording. This dataset is composed of a total of 339 audio files annotated with the four emotions used in the \ac{iemo}, shown in table \ref{tab:all_datasets}, making it a small-sized dataset. However, it allows us to test more directly the models' limitations, mostly the language bias since it provides files in a different spoken language than the training dataset. 
+
+The CREMA-D dataset includes clips from 91 actors spoken in English. These clips are from 48 male and 43 female actors between the ages of 20 and 74 coming from a variety of races and ethnicities (African American, Asian, Caucasian, Hispanic, and Unspecified). It provides a variety of data which is ideal to test a model's generalization ability across new datasets. The sentences were presented using one of six different emotions, but as mentioned before, we selected only the emotions present in the \ac{iemo}, resulting in 4898 audio files \ref{tab:all_datasets}. 
+
 
 \begin{table}[H]
 	\centering
-	\caption{eNTERFACE'05 diversity of subjects' nationalities.}
-	\label{tab:enterfaceDiversity}
-	\begin{tabular}{lc|lc}
+	\caption{Number of audio files per emotion from the described datasets.}
+	\label{tab:all_datasets}
+	\begin{tabular}{lrrrr}
 		\toprule
-		Country &Number of Subjects &Country &Number of Subjects\\
+		& \multicolumn{4}{c}{Number of Files} \\
+		Emotion     &   \ac{iemo} & eNTERFACE'05 & EMO-DB & CREMA-D \\
 		\midrule
-		Belgium & 9 & Cuba     & 1\\
-		Turkey  & 7 & Slovakia & 1\\
-		France  & 7 & Brazil   & 1\\
-		Spain   & 6 & U.S.A.   & 1\\
-		Greece  & 4 & Croatia  & 1\\
-		Italy   & 1 & Canada   & 1\\
-		Austria & 1 & Russia   & 1\\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
-This dataset contains discrete annotated emotions, where each subject was asked to listen to six successive short stories, each eliciting a particular emotion. From the dataset files, we only used those annotated with emotions present in the \ac{iemo} and ended up with the files presented in table \ref{tab:ent_files}. The diversity of accents present in the dataset and its authenticity (due to the data being elicited), make it a suitable choice for testing the models' performance with different factors than the \ac{iemo}.
-
-\begin{table}[H]
-	\centering
-	\caption{Number of audio files per emotion from the eNTERFACE'05 dataset.}
-	\label{tab:ent_files}
-	\begin{tabular}{lr}
-		\toprule
-		Emotion     &   Number of Files \\
-		\midrule
-		Anger      	&               210 \\
-		Happiness 	&               210 \\
-		Sadness    	&               210 \\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
-
-\subsubsection{EMO-DB}
-
-The EMO-DB database is an acted German emotional database created by the Institute of Communication Science, Technical University, Berlin, Germany. Ten professional speakers (gender-balanced) participated in the data recording.
-
-This dataset is composed of a total of 339 audio files annotated with the four emotions used in the \ac{iemo}, shown in table \ref{tab:emo_files}, making it a small-sized dataset. However, it allows us to test more directly the models' limitations caused by the language bias present in training data. 
-
-\begin{table}[H]
-	\centering
-	\caption{Number of audio files per emotion from the EMO-DB dataset.}
-	\label{tab:emo_files}
-	\begin{tabular}{lr}
-		\toprule
-		Emotion     &   Number of Files \\
-		\midrule
-		Anger   	&               127 \\
-		Happiness   &                71 \\
-		Neutral		&                79 \\
-		Sadness     &                62 \\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
-
-\subsubsection{CREMA-D}
-
-
-The CREMA-D dataset includes clips from 91 actors spoken in English. These clips are from 48 male and 43 female actors between the ages of 20 and 74 coming from a variety of races and ethnicities (African American, Asian, Caucasian, Hispanic, and Unspecified).
-
-This dataset provides a variety of data which is ideal to test a model's generalization ability across new datasets. The sentences were presented using one of six different emotions, but as mentioned before, we selected only the emotions present in the \ac{iemo}, resulting in 4898 audio files \ref{tab:crema_files}. 
-
-\begin{table}[H]
-	\centering
-	\caption{Number of audio files per emotion from the CREMA-D dataset.}
-	\label{tab:crema_files}
-	\begin{tabular}{lr}
-		\toprule
-		Emotion     &   Number of Files \\
-		\midrule
-		Anger   	&              1271 \\
-		Happiness   &              1271 \\
-		Neutral 	&              1087 \\
-		Sadness     &              1269 \\
+		Anger   	&         1103 &  210 & 127 & 1271 \\
+		Happiness   &         1636 &  210 &  71 & 1271 \\
+		Neutral		&         1708 &    0 &  79 & 1087 \\
+		Sadness     &         1084 &  210 &  62 & 1269 \\
 		\bottomrule
 	\end{tabular}
 \end{table}

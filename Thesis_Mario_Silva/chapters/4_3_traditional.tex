@@ -50,30 +50,29 @@ Initially, wave plots were observed, and we noted consistency in the number of h
 
 In Figure \ref{fig:zcrSpikes}, it is possible to visualize the zero crossing rates' wave plots in different emotions. The horizontal line represents the threshold that we considered, any value above was considered to be a spike, which is annotated with red dots in the graphic. The threshold used was manually tested and obtained decent consistency of the number of spikes, within an emotion, by using the mean value of the feature plus 2\% of the standard deviation. To account for different-length audio signals, it was also divided the number of spikes to the total length of the data, as the Code Snippet \ref{spikes:code} demonstrates. Consequently, this metric was also tested and applied to every other audio feature.
 
-\begin{listing}[H]
-	\begin{minted}{python}
-		def spikes(data):
-		num_spikes = 0
-		mean = np.mean(data)
-		std = np.std(data)
-		
-		threshold = mean + np.abs(std) * 2 / 100
-		for value in data:
-		if value >= threshold:
-		num_spikes += 1
-		
-		return num_spikes / len(data)
-	\end{minted}
-	\caption{Python code for calculating the spikes metric.}
-	\label{spikes:code}
-\end{listing}
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.7\textwidth]{figs/4_1_traditional/zcr_waveplot_spikes.png}
 	\caption{Zero crossing rate wave plot annotated with spikes.}
 	\label{fig:zcrSpikes}
 \end{figure}
+
+\begin{listing}[H]
+	\begin{minted}{python}
+		def spikes(data):
+		mean = np.mean(data)
+		std = np.std(data)
+		threshold = mean + np.abs(std) * 2 / 100
+		num_spikes = 0
+		for value in data:
+		if value >= threshold:
+		num_spikes += 1
+		return num_spikes / len(data)
+	\end{minted}
+	\caption{Python code for calculating the spikes metric.}
+	\label{spikes:code}
+\end{listing}
+
 
 
 \subsubsection{Bar Plots}
@@ -178,7 +177,7 @@ A \ac{cfs} was performed by selecting every pair of features with a Pearson corr
 
 Along this process, it became necessary to choose a model to be used in computationally expensive feature selection methods. Consequently, several estimators were tested for their performance in classifying emotions.
 
-To this end, we conducted 5-fold \ac{cv} and compared the mean and standard deviation accuracies of all folds, as well as the total execution time for various classifiers using default parameters from the scikit-learn library \cite{pedregosa2011scikit}. The input given to the models are the features obtained after \ac{cfs}, as shown in Table \ref{tab:modelsPerformance}.
+To this end, we conducted 5-fold \ac{cv} and compared the mean and standard deviation accuracies of all folds, as well as the total execution time for various classifiers using default parameters from the scikit-learn library \cite{pedregosa2011scikit}. The input given to the models is the set of features obtained after \ac{cfs}, as shown in Table \ref{tab:modelsPerformance}.
 
 \begin{table}[H]
 	\caption{Performance of various classifiers in 5-fold \ac{cv} using the features obtained after \ac{cfs}.}
@@ -188,7 +187,7 @@ To this end, we conducted 5-fold \ac{cv} and compared the mean and standard devi
 		\toprule
 		Classifiers &  Accuracy & Training Time (s) \\
 		\midrule
-		XGBoost                &        0.617$\pm$0.013  & 17.628 \\
+		\ac{xgb}                &        0.617$\pm$0.013  & 17.628 \\
 		\ac{rf}                &        0.578$\pm$0.010  &  7.451 \\
 		Ridge                  &        0.565$\pm$0.014  &  0.078 \\
 		Extra Trees            &        0.561$\pm$0.005  &  1.831  \\
@@ -274,7 +273,7 @@ By using these feature selection techniques, we managed to remove redundant and 
 
 Evaluating a model is an essential step, since a wrongful evaluation may lead to deception in terms of the results obtained. It should be uniform for every model, and, it should be as meaningful as possible to the classification objective.
 
-For the reasons above and because it was the most recurred method in the \ac{sota} research, it was decided to utilize 5-fold \ac{cv} with a 80-20 train-test split, which provides more fairness to model comparisons. In terms of metrics, we decided to calculate the testing folds averages accuracy, macro-f1 score, precision, recall, and \ac{mcc}.
+For the reasons above and because it was the most recurred method in the \ac{sota} research, it was decided to utilize 5-fold stratified \ac{cv} with an 80-20 train-test split, which provides more fairness to model comparisons. In terms of metrics, we decided to calculate the testing folds averages accuracy, macro-f1 score, precision, recall, and \ac{mcc}.
 
 Accuracy is a basic metric to evaluate the model's performance that measures the proportion of correctly classified samples. Precision measures the proportion of true positives among all samples predicted as positive by the model. Recall indicates how many of the actual positive samples are correctly identified by the model. The macro-f1 score takes into account both precision and recall to provide a more balanced measure of performance for imbalanced datasets. It calculates the harmonic mean of precision and recall. \ac{mcc} is a correlation coefficient between the true labels and the predicted labels, taking into account all four classes in the confusion matrix. It provides a measure of how well the model's predictions match the true labels, and ranges from -1 (perfect disagreement) to +1 (perfect agreement), 0 being no agreement at all, which means the predictions were random. A confusion matrix of the predicted and real labels was also plotted, since it provides helpful insights, not only into the errors being made by the classifier but also, the types of errors occurring.
 
@@ -284,9 +283,9 @@ To develop the most effective speech emotion recognition model, a variety of aut
 
 Another \ac{aml} technique, AutoKeras \cite{jin2019auto}, was applied to create a \ac{cnn} model, which we also used to create another model by combining it with an \ac{lstm}. So, in addition to the previous classifiers, two deep-learning models were also evaluated.
 
-Based on this, we explored multiple classifiers for \ac{ser} and matested several hyperparameters for each model to find the most optimal results, including:
+Based on this, we explored multiple classifiers for \ac{ser} and tested several hyperparameters for each model to find the most optimal results, including:
 
-\begin{enumerate}[resume]
+\begin{enumerate}
 	\item \ac{rf}: A popular decision tree-based ensemble method that trains multiple decision trees on different subsets of the dataset and outputs the mode class predicted by the trees.
 	
 	\item Balanced \ac{rf}: A variant of the \ac{rf} that addresses class imbalance by undersampling the subsets provided to train each tree.
@@ -295,7 +294,7 @@ Based on this, we explored multiple classifiers for \ac{ser} and matested severa
 	
 	\item AdaBoost: Short for Adaptive Boosting, it is a boosting algorithm that combines multiple weak classifiers into a strong classifier by iteratively adjusting the weights of incorrectly classified instances. At each iteration, a new weak classifier is trained, and its weight is added to the ensemble based on its accuracy. The final prediction is then made by summing the weighted predictions of all the weak classifiers.
 	
-	\item Histogram Gradient Boosting: An ensemble model that combines gradient boosting with histogram-based approximation of decision trees, which improves performance on large datasets. It splits data into histograms based on their values instead of splitting features to create decision trees.
+	\item Histogram Gradient Boosting: An ensemble model that combines gradient boosting with a histogram-based approximation of decision trees, which improves performance on large datasets. It splits data into histograms based on their values instead of splitting features to create decision trees.
 	
 	\item \ac{svm}: A linear or nonlinear model that finds the best boundary separating data into different classes by maximizing the margin between the classes.
 	
@@ -312,11 +311,11 @@ Based on this, we explored multiple classifiers for \ac{ser} and matested severa
 
 \subsubsection{Results and Conclusions}
 
-Having chosen a set of classifiers, we then applied our evaluation strategy on the \ac{iemo} dataset. The results obtained from the tested models were compiled and exhibited in Table \ref{tab:models}. Upon analyzing these results, \ac{xgb} is the best candidate, reaching an average accuracy of 60.69\% while utilizing only 33 audio features, making it a relatively simple model. It is also one of the fastest at making predictions, which is an essencial factor for real-time classification.
+Having chosen a set of classifiers, we then applied our evaluation strategy on the \ac{iemo} dataset. The results obtained from the tested models were compiled and exhibited in Table \ref{tab:models}. Upon analyzing these results, \ac{xgb} is the best candidate, reaching an average accuracy of 60.69\% while utilizing only 33 audio features, making it a relatively simple model. It also obtained the highest values for macro F1 score, precision, and \ac{mcc}. In terms of prediction time, it is only slower than the linear models, being the third fastest at making predictions, which is an essential factor for real-time scenarios.
 
 \begin{table}[H]
 	\centering
-	\caption{Tested models' 5-fold cross validation performance on \ac{iemo}.}
+	\caption{Tested models' 5-fold stratified \ac{cv} performance on \ac{iemo}.}
 	\label{tab:models}
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{lrrrrrr}
@@ -349,19 +348,17 @@ Having chosen a set of classifiers, we then applied our evaluation strategy on t
 	}
 \end{table}
 
+\paragraph{Chosen Model: \acl{xgb}}
 
-\paragraph{Chosen Model: \ac{xgb}}
+The \ac{xgb} is a machine-learning model that uses gradient-boosted decision tree ensembles to achieve high accuracy. It is an improvement on the Gradient Boosting Machine algorithm, with the main difference being that it uses a more regularized model, which helps to prevent overfitting. Unlike other ensemble algorithms such as \ac{rf}, \ac{xgb} builds decision trees sequentially, with each tree attempting to correct the errors made by the previous tree. The algorithm uses a gradient descent optimization technique to minimize the loss function, which measures the difference between the predicted and actual values.
 
-The \ac{xgb} is a gradient-boosted decision tree ensemble machine learning model. Ensemble algorithms combine multiple machine learning algorithms to obtain a better model, similar to \ac{rf}, the difference is in how the trees are built and combined.
+Boosting techniques, such as \ac{xgb}, construct decision trees sequentially on subsets of the data, where each iteration assigns higher weights to misclassified data points to prioritize them in the next iteration. This process allows the model to focus on hard-to-classify data points and gradually improve its accuracy over time. Boosting techniques are effective at reducing bias.
 
-Random forest uses a technique called bagging to build full decision trees in parallel from random bootstrap samples of the data set. The final prediction is an average of all of the decision tree predictions.
+In contrast, bagging techniques like Random Forests build independent decision trees in parallel on random subsets of the data and average their predictions to form the final output. Each decision tree has an equal weight, and the goal is to reduce variance and increase model stability. Unlike boosting, bagging does not assign higher weights to misclassified data points, and each decision tree is independent of the others.
 
-XGBoost is a scalable and highly accurate implementation of gradient boosting that pushes the limits of computing power for boosted tree algorithms, being built largely for energizing machine learning model performance and computational speed. With XGBoost, trees are built in parallel, instead of sequentially. It follows a level-wise strategy, scanning across gradient values and using these partial sums to evaluate the quality of splits at every possible split in the training set. 
+\paragraph{\acl{xgb} Implementation}
 
----------
-
-The Python code for the model was implemented using the XGBoost library \cite{xgboostchen}, and is presented on the Code Snippet \ref{tra:code}. To obtain the parameters for the model, we used a Grid Search hyperparameter optimizer function, which performs an exhaustive search over every combination of a specified set of parameter.
-
+The Python code for the model was implemented using the \ac{xgb} library \cite{xgboostchen}, and is presented on the Code Snippet \ref{tra:code}. To obtain the parameters for the model, we used a Grid Search hyperparameter optimizer function, which performs an exhaustive search over every combination of a specified set of parameters.
 
 \begin{listing}[H]
 	\begin{minted}{python}
@@ -373,27 +370,46 @@ XGBClassifier(
 	colsample_bytree=0.8,
 	colsample_bylevel=0.8,
 	n_jobs=-1
-)
+	)
 	\end{minted}
 	\caption{Python code for the selected \ac{xgb} classifier using the traditional-based \ac{ser} approach.}
 	\label{tra:code}
 \end{listing}
 
+XGBoost has a number of parameters that can be tuned to improve the performance of the algorithm. The most important parameters are:
 
-The \textit{max\_depth} parameter sets the maximum depth per decision tree. A deeper tree might increase the performance, but also the complexity and chances to overfit. The \textit{learning\_rate} determines the step size at each iteration that the model optimizes toward its objective. The \textit{n\_estimators} sets the number of trees to be boosted in the ensemble. \textit{subsample} is the ratio of the training instances to be sampled for each tree. The \textit{colsample\_bytree} and \textit{colsample\_bylevel} are a family of parameters for specifying the subsampling method of columns of the trees.
+\begin{enumerate}
+	\item \textit{max\_depth}: the maximum depth per decision tree. A deeper tree might increase the performance, but also the complexity and chances to overfit.
+	
+	\item \textit{learning\_rate}: determines the step size at each iteration that the model optimizes toward its objective.
+	
+	\item \textit{n\_estimators}: the number of trees to be boosted in the ensemble.
+	
+	\item \textit{subsample}: the ratio of the training instances to be sampled for each tree.
+	
+	\item \textit{colsample\_bytree} and \textit{colsample\_bylevel}: a family of parameters for specifying the subsampling method of columns of the trees.
+\end{enumerate}
 
-Overall, the \ac{xgb} provides a powerful model that has several advantages:
+
+\paragraph{\acl{xgb} Advantages}
+
+Overall, the \ac{xgb} is a versatile and powerful algorithm that can be applied to a wide range of machine-learning problems and provides several advantages:
 
 \begin{itemize}
 	\item Speed: \ac{xgb} is faster than many other popular machine learning algorithms, especially when compared to traditional gradient boosting implementations.
 	
-	\item Scalability: \ac{xgb} supports parallel processing, which makes it possible to build models quickly on large datasets.
+	\item Performance: it has a strong track record of producing high-quality results in various machine-learning tasks.
+	
+	\item Scalability: \ac{xgb} supports parallel processing, which makes it possible to train models quickly on large datasets.
 	
 	\item Handling Missing Values: It has an in-built routine to handle missing values. \ac{xgb} tries different things as it encounters a missing value on each node and learns which path to take for missing values in the future.
 	
 	\item Regularization: The algorithm includes L1 and L2 regularization that helps to avoid overfitting and improve the generalization ability of the model.
 	
-	\item Probabilistic Predictions: Since this is a decision tree-based model, it can output the probabilities for each class, calculated as the fraction of trees that vote for each class. This provides more information than just the final predicted class, which allows performance probability calibration, by tuning a threshold for classification, which can lead to improved performance on certain tasks.
+	\item Probabilistic Predictions: Since this is a decision tree-based model, it can output the probabilities for each class, calculated as the fraction of trees that vote for each class. This provides more information than just the final predicted class, which allows tuning a threshold value for classification.
 	
-	\item Feature Importance: TODO:
+	\item Interpretability: \ac{xgb} provides feature importances, allowing for a better understanding of which variables are most important in making predictions.
+	
+	\item Customizability: \ac{xgb} has a wide range of hyperparameters that can be adjusted to optimize performance, making it highly customizable.
 \end{itemize}
+

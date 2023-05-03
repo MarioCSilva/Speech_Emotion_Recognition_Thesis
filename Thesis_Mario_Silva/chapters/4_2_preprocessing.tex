@@ -8,18 +8,15 @@ Audio preprocessing is an essential step that is performed on audio data before 
 One of the key techniques used in audio preprocessing is noise reduction. In audio data, noise can arise from a variety of sources, such as background noise, microphone interference, or electrical interference. The presence of noise in the audio data can significantly impact the performance of any audio classification system.
 
 One common strategy for denoising audio is spectral gating, which involves gating the signal only on high-level sounds. We recurred to the \textit{noisereduce} library to implement this noise reduction technique.
-This algorithm estimates a noise threshold for each frequency band of the signal. This threshold is used to compute a mask, which gates noise below the frequency-varying threshold. The code snippet \ref{nr:code} shows how we implemented the noise reduction technique.
+This algorithm estimates a noise threshold for each frequency band of the signal. This threshold is used to compute a mask, which gates noise below the frequency-varying threshold. The code snippet \ref{nr:code} shows how we implemented the noise reduction technique. Parameter "y" is the audio signal, and "sr" specifies its sampling rate in Hz. "n\_fft" sets the number of points for each Fourier transform, while "hop\_length" sets the number of samples between each frame. "prop\_decrease" adjusts noise reduction strength, and "time\_constant\_s" sets the length of the filter. The function returns a new audio signal with noise removed, for use in downstream processing steps like feature extraction and classification.
 
 \begin{listing}[H]
 	\begin{minted}{python}
-noisereduce.reduce_noise(
-	y=y, sr=16000, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1
-)
+noisereduce.reduce_noise(y=y, sr=sr, n_fft=2048, hop_length=512, prop_decrease=.75, time_constant_s=1)
 	\end{minted}
 	\caption{Python code for applying noise reduction using the \textit{noisereduce} library.}
 	\label{nr:code}
 \end{listing}
-
 
 \subsection{Audio Trim}
 

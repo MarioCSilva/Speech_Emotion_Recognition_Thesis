@@ -45,12 +45,12 @@ Figure \ref{fig:iemo_pipeline} depicts an audio signal from a session that was m
 
 The efficacy of the pipeline was confirmed by its ability to detect voiced segments in the same intervals as those of the combined segments. To further test the pipeline, we passed all 11 hours of IEMOCAP audio data through it and compared the predicted emotions with the dataset annotations. The traditional model trained with the conditioned data from the data stratification study was used for this test.
 
-Table \ref{table:iemo_pipeline} shows the emotions annotated in the \ac{iemo} dataset, along with the predicted emotions resulting from our pipeline. The pipeline was capable of processing the entire 11-hour audio data in just 18 minutes using an AMD Ryzen 5 5600X 6-core processor, demonstrating its capability to detect emotions in real time by continuously processing audio segments as they arrive.
+Table \ref{tab:iemopipeline} shows the emotions annotated in the \ac{iemo} dataset, along with the predicted emotions resulting from our pipeline. The pipeline was capable of processing the entire 11-hour audio data in just 18 minutes using an AMD Ryzen 5 5600X 6-core processor, demonstrating its capability to detect emotions in real time by continuously processing audio segments as they arrive.
 
 \begin{table}[H]
 	\centering
-	\label{table:iemo_pipeline}
-	\caption{Annotated emotions of the \ac{iemo} dataset and the pipeline predicted segments.}
+	\caption{Annotated emotions of the \ac{iemo} dataset and the pipeline's predicted segments.}
+	\label{tab:iemopipeline}
 	\begin{tabular}{lrr}
 		\toprule
 		Emotions & Dataset Labeled Segments & Pipeline Predicted Segments \\
@@ -68,8 +68,8 @@ Table \ref{table:iemo_pipeline} shows the emotions annotated in the \ac{iemo} da
 	\end{tabular}
 \end{table}
 
-In total, the dataset comprises 10,039 annotated segments, out of which the pipeline was able to detect 7,698 segments. This is in line with our expectations, as we only consider segments with at least 1 second of audio data. As for the distribution of predicted emotions, we anticipated that each emotion would have a similar number of detections, given that our \ac{ser} model was trained using the same data.
+In total, the dataset comprises 10,039 annotated segments, out of which the pipeline was able to detect 7,698 segments. This is in line with our expectations, as we only consider segments with at least 1 second of audio data. As for the distribution of predicted emotions, we anticipated that each emotion would have a similar number of predictions, given that our \ac{ser} model was trained using the same data.
 
 The development of the pipeline represents a significant step forward in improving the user experience in video conference systems. With the pipeline integrated into the system, participants will have access to real-time emotional feedback. This feedback can help participants understand their emotional states, identify potential areas of conflict or misunderstanding, and make more informed decisions about how to interact with others at the conference. It is also important to note that certain configuration values may need adjustments on different use case scenarios, such as the minimum and maximum duration of the segments, the voiced speech confidence level, and also, since the classifiers can return the probabilities of each emotion, a minimum level of confidence for the segment's predicted emotion.
 
-In conclusion, the integration of the pipeline into video conference systems has the potential to revolutionize communications in virtual environments and to create more positive and productive interactions between people.
+In conclusion, the integration of the pipeline into video conference systems, when employed with an efficient \ac{ser} classifier, has the potential to revolutionize communications in virtual environments, and, to can create more positive and productive interactions between people.
