@@ -7,7 +7,7 @@ In this section, we present an audio pipeline for performing \ac{ser} on a video
 
 The first step of the pipeline is to continuously consume the binary audio data of a video conference participant.
 
-According to a \citeyear{Liu2022} article on pause duration of English speech \cite{Liu2022}, the mean pause duration for commas ranged from 0.51 to 0.78 seconds, while the mean pause duration for periods ranged from 1.40 to 1.43 seconds. Since we want to capture sentences/utterances, we decided to feed the pipeline with audio data corresponding to a second, which allows for smaller pauses such as breathing or commas during a segment and at the same time, separates sentences.
+According to a \citeyear{Liu2022} article on pause duration of English speech \cite{Liu2022}, the mean pause duration for commas ranged from 0.51 to 0.78 seconds, while the mean pause duration for periods ranged from 1.40 to 1.43 seconds. Since we want to capture sentences/utterances, we decided to feed the pipeline with audio data corresponding to 1 second, which allows for smaller pauses such as breathing or commas during a segment and at the same time, separates sentences.
 
 \section{Normalization}
 
@@ -27,7 +27,7 @@ This \ac{vad*} algorithm also returns a confidence level associated with the det
 
 Emotions are usually short-lived, and the speech remains invariant for a brief period. Speech segmentation is the process in which the continuous speech signals are partitioned into short-length segments while maintaining the emotional information suitable for being inputted to \ac{ser} models.
 
-The strategy for our segmentation is to create voiced segments with a minimum of one second of duration and at most 8 seconds, which provides a way to detect emotions in real time as a person speaks one or more complete sentences. The pipeline consumes a second of audio, it stores the segment if there is enough confidence that it detected voice activity, if it does not pass the threshold and it has previously saved any audio segment, it feeds it to a \ac{ser} model to predict the emotion in the segment. When the saved segment reaches the limit of 8 seconds, it also performs the classification.
+The strategy for our segmentation is to create voiced segments with a minimum of 1 second of duration and at most 8 seconds, which provides a way to detect emotions in real time as a person speaks one or more complete sentences. The pipeline consumes 1 second of audio, it stores the segment if there is enough confidence that it detected voice activity, if it does not pass the threshold and it has previously saved any audio segment, it feeds it to a \ac{ser} model. When the saved segment reaches a maximum of 8 seconds, it also performs the classification. It is important to note that these minimum and maximum duration values can be altered to fit different situations and needs, and also, the audio preprocessing techniques (noise reduce and trimming) is done by the \ac{ser} models.
 
 
 \section{Results and Discussion}
