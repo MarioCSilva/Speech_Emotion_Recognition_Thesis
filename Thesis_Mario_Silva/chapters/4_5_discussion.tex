@@ -114,50 +114,50 @@ Among the \ac{dl}-based approaches, our Resnet50 model achieved an accuracy of 5
 	\caption{\ac{sota} \ac{ser} classification models performance on \ac{iemo}.}
 	\label{tab:modelssoa}
 	\resizebox{\textwidth}{!}{%
-	\begin{tabular}{lccr}
-		\toprule
-		Model                      & Input & Evaluation Strategy & Accuracy (\%) \\
-		\toprulec
-		\rowcolor{gray!25}
-		\multicolumn{4}{c}{Traditional Feature-Based \ac{ser} Approaches} \\
-		\midrulec
-		
-		\begin{tabular}[l]{@{}l@{}}Ensemble of \ac{rf}, \ac{xgb}\\and Multilayer Perceptron\end{tabular} \cite{HandCraftedSahu} & \begin{tabular}[c]{@{}c@{}}8-dimensional audio\\features vector\end{tabular} & \begin{tabular}[c]{@{}c@{}}1 random 80:20\\train-test split\end{tabular} & 56.00 \\
-		\addlinespace[1mm]
-		
-		\begin{tabular}[l]{@{}l@{}}Multi-level binary\\decision trees \cite{Lee2011}\end{tabular} & 384 audio features vector & 10 fold \ac{cv} & 58.46 \\
-		\addlinespace[1mm]
-		
-		\rowcolor{LightCornflowerBlue}
-		\ac{xgb} [Ours] & 33 audio features vector & 5-fold \ac{cv} & 60.69 \\
-		\addlinespace[1mm]
-		
-		\ac{cnn} \cite{Issa2020}  & 193 audio features vector & 5-fold \ac{cv} & 64.30 \\
-		\addlinespace[1mm]
-		
-		\toprulec
-		\rowcolor{gray!25}
-		\multicolumn{4}{c}{\acl{dl}-Based \ac{ser} Approaches} \\
-		\midrulecb
-		
-		\rowcolor{LightCornflowerBlue}
-		Resnet50 [Ours] & 3-D Spectrogram Image & 5-fold \ac{cv} & 58.24 \\
-		\addlinespace[1mm]
-		
-		\ac{cnn} and \ac{rnn} \cite{ma18b_interspeech} & Log-Spectrogram & 5-fold \ac{cv} & 64.22 \\
-		\addlinespace[1mm]
-		
-		\begin{tabular}[l]{@{}l@{}}3-D attention-based\\convolutional \ac{rnn} \cite{8421023}\end{tabular} & 3-D Mel-Spectrogram Image & 10-fold \ac{cv} & 64.7 \\
-		\addlinespace[1mm]
-		
-		\begin{tabular}[l]{@{}l@{}}\ac{cnn} and \ac{lstm}\\with attention \cite{Zhao2019}\end{tabular} & Mel-Spectrogram & 5-fold \ac{cv} & 67.0 \\
-		\addlinespace[1mm]
-		
-		Quaternion \ac{cnn} \cite{Muppidi2021} & \begin{tabular}[c]{@{}c@{}}Mel spectrogram\\ encoded in an RGB\\quaternion domain\end{tabular} & 5-fold \ac{cv} & 70.46 \\
-		\addlinespace[1mm]
-		
-		\bottomrule
-	\end{tabular}%
+		\begin{tabular}{lccr}
+			\toprule
+			Model                      & Input & Evaluation Strategy & Accuracy (\%) \\
+			\toprulec
+			\rowcolor{gray!25}
+			\multicolumn{4}{c}{Traditional Feature-Based \ac{ser} Approaches} \\
+			\midrulec
+			
+			\begin{tabular}[l]{@{}l@{}}Ensemble of \ac{rf}, \ac{xgb}\\and Multilayer Perceptron\end{tabular} \cite{HandCraftedSahu} & \begin{tabular}[c]{@{}c@{}}8-dimensional audio\\features vector\end{tabular} & \begin{tabular}[c]{@{}c@{}}1 random 80:20\\train-test split\end{tabular} & 56.00 \\
+			\addlinespace[1mm]
+			
+			\begin{tabular}[l]{@{}l@{}}Multi-level binary\\decision trees \cite{Lee2011}\end{tabular} & 384 audio features vector & 10 fold \ac{cv} & 58.46 \\
+			\addlinespace[1mm]
+			
+			\rowcolor{LightCornflowerBlue}
+			\ac{xgb} [Ours] & 33 audio features vector & 5-fold \ac{cv} & 60.69 \\
+			\addlinespace[1mm]
+			
+			\ac{cnn} \cite{Issa2020}  & 193 audio features vector & 5-fold \ac{cv} & 64.30 \\
+			\addlinespace[1mm]
+			
+			\toprulec
+			\rowcolor{gray!25}
+			\multicolumn{4}{c}{\acl{dl}-Based \ac{ser} Approaches} \\
+			\midrulecb
+			
+			\rowcolor{LightCornflowerBlue}
+			Resnet50 [Ours] & 3-D Spectrogram Image & 5-fold \ac{cv} & 58.24 \\
+			\addlinespace[1mm]
+			
+			\ac{cnn} and \ac{rnn} \cite{ma18b_interspeech} & Log-Spectrogram & 5-fold \ac{cv} & 64.22 \\
+			\addlinespace[1mm]
+			
+			\begin{tabular}[l]{@{}l@{}}3-D attention-based\\convolutional \ac{rnn} \cite{8421023}\end{tabular} & 3-D Mel-Spectrogram Image & 10-fold \ac{cv} & 64.7 \\
+			\addlinespace[1mm]
+			
+			\begin{tabular}[l]{@{}l@{}}\ac{cnn} and \ac{lstm}\\with attention \cite{Zhao2019}\end{tabular} & Mel-Spectrogram & 5-fold \ac{cv} & 67.0 \\
+			\addlinespace[1mm]
+			
+			Quaternion \ac{cnn} \cite{Muppidi2021} & \begin{tabular}[c]{@{}c@{}}Mel spectrogram\\ encoded in an RGB\\quaternion domain\end{tabular} & 5-fold \ac{cv} & 70.46 \\
+			\addlinespace[1mm]
+			
+			\bottomrule
+		\end{tabular}%
 	}
 \end{table}
 
@@ -165,6 +165,6 @@ Among the \ac{dl}-based approaches, our Resnet50 model achieved an accuracy of 5
 
 Our findings support the idea that the \ac{dl} model is better suited for \ac{ser} tasks on diverse datasets, due to its improved feature extraction and generalization capabilities of data under different factors. We believe this is mainly because the traditional approach relies on a feature input vector derived from the training dataset, limiting its applicability to other datasets. However, the traditional model is more suitable for real-time applications as it has a faster processing speed than the \ac{dl} model.
 
-It is worth noting that our \ac{xgb} model achieved competitive results compared to the \ac{sota} approaches presented in the table, despite using only a 1-dimensional 33 audio feature vector. This makes it more computationally efficient than other traditional approaches that require a much larger number of features. Nonetheless, both of our models still have potential for improvement, especially in the \ac{dl} approach where fine-tuning was limited due to its computational expense. We also recommend using our models for English-spoken audio recordings with less prominent accents to mitigate language bias since the training dataset contains English audios.
+It is worth noting that our \ac{xgb} model achieved competitive results compared to the \ac{sota} approaches presented in the table, despite using only a 1-dimensional 33 audio feature vector. This makes it more computationally efficient than other traditional approaches that require a much larger number of features. Nonetheless, both of our models still have the potential for improvement, especially in the \ac{dl} approach where fine-tuning was limited due to its computational expense. We also recommend using our models for English-spoken audio recordings with less prominent accents to mitigate language bias since the training dataset contains English audio.
 
-Overall, this section of our study offers a comprehensive implementation and thought process, along with conclusions and interpretations of the obtained results, laying a solid foundation for future research in developing more robust and accurate \ac{ser} models. It highlights the importance of considering the impact of different validation methodologies used in \ac{ser} research to ensure the models' robustness and applicability to diverse datasets. Our findings contribute to the growing body of research on \ac{ser} and provide valuable insights for researchers and practitioners in the field.
+Overall, this chapter offers a comprehensive implementation and thought process, along with conclusions and interpretations of the obtained results, laying a solid foundation for future research in developing more robust and accurate \ac{ser} models. It highlights the importance of considering the impact of different validation methodologies used in \ac{ser} research to ensure the models' robustness and applicability to diverse datasets. These findings contribute to the growing body of research on \ac{ser} and provide valuable insights for researchers and practitioners in the field.
