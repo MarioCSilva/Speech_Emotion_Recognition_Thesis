@@ -1,4 +1,4 @@
-\section{Classifiers Results and Discussion}
+\section{Classifiers Results}
 
 In this section, we present and analyze the results of the best candidate models obtained from both the traditional and \ac{dl}-based \ac{ser} approaches.
 
@@ -161,10 +161,14 @@ Among the \ac{dl}-based approaches, our Resnet50 model achieved an accuracy of 5
 	}
 \end{table}
 
-\subsection{Discussion}
+\section{Discussion}
 
-Our findings support the idea that the \ac{dl} model is better suited for \ac{ser} tasks on diverse datasets, due to its improved feature extraction and generalization capabilities of data under different factors. We believe this is mainly because the traditional approach relies on a feature input vector derived from the training dataset, limiting its applicability to other datasets. However, the traditional model is more suitable for real-time applications as it has a faster processing speed than the \ac{dl} model.
+In this chapter, we selected the \ac{iemo} dataset for training and testing our models. The dataset contains emotional speech data from 10 actors performing scripted and improvised scenarios, with each recording labeled with four different emotions: anger, happiness, sadness, and neutral. We chose this dataset because of its high-quality recordings, its availability, and its popularity in the \ac{sota}. To evaluate the generalization capability of our models, we also selected three additional datasets to perform cross-dataset evaluation: eNTERFACE'05, EMO-DB, and CREMA-D. These datasets provide a diverse set of challenges for our models, including variations in speech content, recording conditions, and emotional expressions, making them suitable for evaluating the robustness of our models to different scenarios.
 
-It is worth noting that our \ac{xgb} model achieved competitive results compared to the \ac{sota} approaches presented in the table, despite using only a 1-dimensional 33 audio feature vector. This makes it more computationally efficient than other traditional approaches that require a much larger number of features. Nonetheless, both of our models still have the potential for improvement, especially in the \ac{dl} approach where fine-tuning was limited due to its computational expense. We also recommend using our models for English-spoken audio recordings with less prominent accents to mitigate language bias since the training dataset contains English audio.
+Afterwards, we applied a set of audio preprocessing techniques to the audio data, and reached a simple strategy that reduces background noises and trims the silence in the beginning and ending of the audios. This preprocessing step showed that it helps removing irrelevant information and reduce noise. However, the choice of preprocessing techniques may depend on the specific dataset and recording conditions, so we recommended researchers to experiment several preprocessing strategies to determine the most effective approach.
+
+Our findings on the cross-dataset validation support the idea that the \ac{dl} model is better suited for \ac{ser} tasks on diverse datasets, due to its improved feature extraction and generalization capabilities of data under different factors. We believe this is mainly because the traditional approach relies on a feature input vector derived from the training dataset, limiting its applicability to other datasets. However, the traditional model is more suitable for real-time applications as it has a faster processing speed than the \ac{dl} model.
+
+In addition, our \ac{xgb} model achieved competitive results compared to the \ac{sota} approaches presented in the table, despite using only a 1-dimensional 33 audio feature vector. This makes it more computationally efficient than other traditional approaches that require a much larger number of features. Nonetheless, both of our models still have the potential for improvement, especially in the \ac{dl} approach where fine-tuning was limited due to its computational expense. We also recommend using our models for English-spoken audio recordings with less prominent accents to mitigate language bias since the training dataset contains English audio.
 
 Overall, this chapter offers a comprehensive implementation and thought process, along with conclusions and interpretations of the obtained results, laying a solid foundation for future research in developing more robust and accurate \ac{ser} models. It highlights the importance of considering the impact of different validation methodologies used in \ac{ser} research to ensure the models' robustness and applicability to diverse datasets. These findings contribute to the growing body of research on \ac{ser} and provide valuable insights for researchers and practitioners in the field.
