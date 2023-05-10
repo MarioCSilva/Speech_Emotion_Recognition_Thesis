@@ -39,9 +39,9 @@ In this regard, the widely-used Librosa toolkit was employed to extract various 
 
 An important task following feature extraction is analyzing and interpreting the extracted data to gain a deeper understanding of the audio signals and the features that describe them.
 
-\subsubsection{Audio Signal Study}
+\subsubsection{Audio Features Visualization}
 
-In this process, we visually analyzed and interpreted the features' data by graphically representing each feature from an audio segment. The figures in Section \ref{sec:App:1} of the appendix demonstrate some of the graphics we used to visualize the data.
+In this process, we visually analyzed and interpreted the features' data by graphically representing each feature from an audio segment. The figures in Section \ref{sec:App:1} of the appendix demonstrate some of the graphics we used to visualize the features.
 
 \subsubsection{Spikes Metric}
 \label{spikes:metric}
@@ -59,15 +59,15 @@ In Figure \ref{fig:zcrSpikes}, it is possible to visualize the zero crossing rat
 
 \begin{listing}[H]
 	\begin{minted}{python}
-		def spikes(data):
-		mean = np.mean(data)
-		std = np.std(data)
-		threshold = mean + np.abs(std) * 2 / 100
-		num_spikes = 0
-		for value in data:
+def spikes(data):
+	mean = np.mean(data)
+	std = np.std(data)
+	threshold = mean + np.abs(std) * 2 / 100
+	num_spikes = 0
+	for value in data:
 		if value >= threshold:
-		num_spikes += 1
-		return num_spikes / len(data)
+			num_spikes += 1
+	return num_spikes / len(data)
 	\end{minted}
 	\caption{Python code for calculating the spikes metric.}
 	\label{spikes:code}
@@ -79,7 +79,7 @@ In Figure \ref{fig:zcrSpikes}, it is possible to visualize the zero crossing rat
 
 Furthermore, bar plots were useful for viewing the overall extracted features' data plainly and quickly, and to understand the numeric values of each feature and metric used on it.
 
-For example, figure \ref{fig:melBarPlot} shows clear differences in the mean values for some metrics used on the Mel Spectrogram.
+For example, figure \ref{fig:melBarPlot} shows clear differences in the mean values for some metrics used on the Mel Spectrogram. Other bar plots are presented in the appendix \ref{app:2}.
 
 \begin{figure}[H]
 	\centering
@@ -93,7 +93,7 @@ For example, figure \ref{fig:melBarPlot} shows clear differences in the mean val
 
 During the feature study process, it was observed the wave plots of some features surrounded by a small area above and below the original wave (defined through a selected threshold). This was done to corroborate how well the feature describes different emotions. A high degree of overlap between surrounding areas of a feature on a given emotion for different subjects could indicate that the feature is relevant for representing that emotion.
 
-Figure \ref{fig:zcrAreaOnly1} is an excerpt of the figure \ref{fig:zcrArea} in the appendix, and it demonstrates an example of this analysis for the zero crossing rate with 5 different subjects on the same sentence for the anger emotions.
+Figure \ref{fig:zcrAreaOnly1} is an excerpt of the figure \ref{fig:zcrArea} in the appendix \ref{app:3}, and it demonstrates an example of this analysis for the zero crossing rate with 5 different subjects on the same sentence for the anger emotions.
 
 From this graphic, it was observed that there is a sufficient amount of overlap between the surrounding areas for each emotion to conclude that the feature has some utility for describing each emotion. However, due to the different lengths of each audio segment, it is ambitious to guarantee this conclusion.
 
@@ -119,7 +119,7 @@ Overall, this approach of surrounding wave plots with areas provided us valuable
 
 \subsubsection{Variation Plots}
 
-Another graph made was a variation plot, to perceive the differences in the features' values, across several audios for the same emotion. Figure \ref{fig:zcrMeanVar} shows an example of this type of plot for the mean zero crossing rate value across 50 speech utterances for all emotions.
+Another graph made was a variation plot, to perceive the differences in the features' values, across several audios for the same emotion. Figure \ref{fig:zcrMeanVar} shows an example of this type of plot for the mean zero crossing rate value across 50 speech utterances for all emotions. Other examples of this type of graphic are also in the appendix \ref{app:4}.
 
 \begin{figure}[H]
 	\centering
@@ -245,7 +245,7 @@ This process led to the elimination of 65 features from the initial set of 98 ob
 
 \subsubsection{Feature Selection Evaluation}
 
-To assess the feature selection quality on the development dataset, we trained and evaluated the predictions of a \ac{rf} Classifier model with different sets of features, using accuracy as the evaluation metrics. The results are presented in Table \ref{tab:acc}. Additionally, we plotted the confusion matrix of the predictions, which can be found in Appendix \ref{confusionMatrices}.
+To assess the feature selection quality on the development dataset, we trained and evaluated the predictions of a \ac{rf} Classifier model with different sets of features, using accuracy as the evaluation metrics. The results are presented in Table \ref{tab:acc}. Additionally, we plotted the confusion matrices of the predictions, which can be found in the appendix \ref{confusionMatrices}.
 
 \begin{table}[H]
 	\caption{\ac{rf} 5-fold \ac{cv} evaluation metrics using different sets of features.}
@@ -256,8 +256,8 @@ To assess the feature selection quality on the development dataset, we trained a
 		Feature Selection Method & N.º of Features & Accuracy & Training Time (s)\\
 		\midrule
 		None & 327 & 59.14$\pm$0.68 & 15.34 \\
-		\acl{cfs} & 98 & 57.87$\pm$1.07 & 7.89 \\
-		\begin{tabular}{@{}l@{}}\acl{cfs} \&\\Backward selection\end{tabular} & 33 & 59.12$\pm$1.05 & 4.29\\
+		\ac{cfs} & 98 & 57.87$\pm$1.07 & 7.89 \\
+		\ac{cfs} \& Backward Selection & 33 & 59.12$\pm$1.05 & 4.29\\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -275,7 +275,7 @@ Evaluating a model is an essential step, since a wrongful evaluation may lead to
 
 For the reasons above and because it was the most recurred method in the \ac{sota} research, it was decided to utilize 5-fold stratified \ac{cv} with an 80-20 train-test split, which provides more fairness to model comparisons. In terms of metrics, we decided to calculate the testing folds averages accuracy, macro-f1 score, precision, recall, and \ac{mcc}.
 
-Accuracy is a basic metric to evaluate the model's performance that measures the proportion of correctly classified samples. Precision measures the proportion of true positives among all samples predicted as positive by the model. Recall indicates how many of the actual positive samples are correctly identified by the model. The macro-f1 score takes into account both precision and recall to provide a more balanced measure of performance for imbalanced datasets. It calculates the harmonic mean of precision and recall. \ac{mcc} is a correlation coefficient between the true labels and the predicted labels, taking into account all four classes in the confusion matrix. It provides a measure of how well the model's predictions match the true labels, and ranges from -1 (perfect disagreement) to +1 (perfect agreement), 0 being no agreement at all, which means the predictions were random. A confusion matrix of the predicted and real labels was also plotted, since it provides helpful insights, not only into the errors being made by the classifier but also, the types of errors occurring.
+Accuracy is a basic metric to evaluate the model's performance that measures the proportion of correctly classified samples. Precision measures the proportion of true positives among all samples predicted as positive by the model. Recall indicates how many of the actual positive samples are correctly identified by the model. The macro-f1 score takes into account both precision and recall to provide a more balanced measure of performance for imbalanced datasets. It calculates the harmonic mean of precision and recall. \ac{mcc} is a correlation coefficient between the true labels and the predicted labels. It measures how well the model's predictions match the true labels, and ranges from -1 (perfect disagreement) to +1 (perfect agreement), 0 being no agreement at all, which means the predictions were random. A \ac{cm} of the predicted and real labels was also plotted, since it provides helpful insights, not only into the errors being made by the classifier but also, the types of errors occurring.
 
 \subsubsection{Machine Learning Models}
 
@@ -311,7 +311,7 @@ Based on this, we explored multiple classifiers for \ac{ser} and tested several 
 
 \subsubsection{Results and Conclusions}
 
-Having chosen a set of classifiers, we then applied our evaluation strategy on the \ac{iemo} dataset. The results obtained from the tested models were compiled and exhibited in Table \ref{tab:models}. Upon analyzing these results, \ac{xgb} is the best candidate, reaching an average accuracy of 60.69\% while utilizing only 33 audio features, making it a relatively simple model. It also obtained the highest values for macro F1 score, precision, and \ac{mcc}. In terms of prediction time, it is only slower than the linear models, being the third fastest at making predictions, which is an essential factor for real-time scenarios.
+Having chosen a set of classifiers, we then applied our evaluation strategy on the \ac{iemo} dataset. The results obtained from the tested models were compiled and exhibited in Table \ref{tab:models}, and the confusion matrices of each model are in the appendix \ref{app:5}. Upon analyzing these results, \ac{xgb} is the best candidate, reaching an average accuracy of 60.69\% while utilizing only 33 audio features, making it a relatively simple model. It also obtained the highest values for macro F1 score, precision, and \ac{mcc}. In terms of prediction time, it is only slower than the linear models, being the third fastest at making predictions, which is an essential factor for real-time scenarios.
 
 \begin{table}[H]
 	\centering

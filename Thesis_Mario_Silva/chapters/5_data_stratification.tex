@@ -148,7 +148,7 @@ Table \ref{tab:dim_reg} shows the results of our experiments on the regression t
 	\end{tabular}
 \end{table}
 
-We conducted a comparison between the discrete and dimensional annotations by calculating the means of each dimensional label based on the discrete one. These means, known as dimensional centroids, are presented in Table \ref{tab:dis_dim} and in a 2D plane \ref{fig:2dplane}. To determine if the centroids are accurate or too distant from the expected values, we compared them with the state-of-the-art Russell and Mehrabian's \ac{vad} model.
+We conducted a comparison between the discrete and dimensional annotations by calculating the means of each dimensional label based on the discrete one. These means, known as dimensional centroids, are presented in Table \ref{tab:dis_dim} and in a 2D plane \ref{fig:2dplane}. To determine if the centroids are accurate or too distant from the expected values, we compared them with the \ac{sota} Russell and Mehrabian's \ac{vad} model \cite{RUSSELL1977273}. 
 
 \begin{table}[H]
 	\centering
@@ -182,7 +182,7 @@ We conducted a comparison between the discrete and dimensional annotations by ca
 
 The results indicate that the centroids of each discrete emotion have some differences to the \ac{vad} model. For the arousal dimension, it was noted that all emotions have lower values, with sadness showing a greater deviation. In terms of valence, the annotations are more comparable to the \ac{vad} model, but sadness contradicts the lower trend of the other two emotions. The annotations on the dominance dimension also vary the deviation trends.
 
-Based on this, we decided to remove any data that contains dimensional annotations far from the \ac{vad} model centroids for each discrete emotion. Table \ref{tab:conf} demonstrates this conflicts removal process between each emotion's categories and the respective dimensional annotations.
+Based on this, we decided to remove any data that contains dimensional annotations far from the \ac{vad} model centroids for each discrete emotion. Moreover, to complement our numerical observations, we employed scatter and violin plots to explore potential restrictions that could enhance the separation and distinction of emotions along different dimensions. The visualizations generated from this analysis can be found in Section \ref{app:7} of the appendix. Table \ref{tab:conf} demonstrates this conflicts removal process between each emotion's categories and the respective dimensional annotations.
 
 \begin{table}[H]
 	\caption{Maintained dimensional annotations range for each emotion category.}

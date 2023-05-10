@@ -32,7 +32,7 @@ These three used features are displayed in figure \ref{fig:dl_features}.
 
 To evaluate the performance of the classifiers, 5-fold \ac{cv} was performed using the stratified K-fold strategy to preserve the percentage of samples for each class, following the same strategy for the traditional approach. The models were trained for 80 epochs, with a batch size of 128 and a learning rate decay of 10\% every 10 epochs. The Adam optimizer was used for all models with a learning rate of 0.001.
 
-The evaluation of the classifiers was done based on various metrics including accuracy, precision, recall, and macro F1-score. The training time was also annotated and the corresponding confusion matrices were also plotted, present in the appendix \ref{TODO}. These metrics were computed using the unweighted average across the 5 folds, to give an overall performance overview of the classifier.
+The evaluation of the classifiers was done based on various metrics including accuracy, precision, recall, and macro F1-score. The training time was also annotated and the corresponding confusion matrices were also plotted, present in the appendix \ref{app:6}. These metrics were computed using the unweighted average across the 5 folds, to give an overall performance overview of the classifier.
 
 \subsubsection{Classification of Numeric Data}
 
@@ -83,29 +83,29 @@ Therefore, based on the results obtained, we conclude that the Resnet50 model wi
 			
 			Mel Spectrogram Image & Resnet50 & 57.95$\pm$1.36 & 58.71 & 59.27 & 58.49 & 0.430 & 20.92 \\
 			
-			MFCCs Image & Resnet50 & 56.59$\pm$0.45 & 57.29 & 58.59 & 56.67 & 0.410 & 23.19 \\
+			\ac{mfccs} Image & Resnet50 & 56.59$\pm$0.45 & 57.29 & 58.59 & 56.67 & 0.410 & 23.19 \\
 			
 			Mel Spectrogram Image & VGG16 & 55.07$\pm$2.23 & 55.82 & 56.77 & 55.29 & 0.389 & 12.04 \\
 			
-			MFCCs Image & VGG16 & 54.73$\pm$1.47 & 55.51 & 56.32 & 55.14 & 0.386 & 10.89 \\
+			\ac{mfccs} Image & VGG16 & 54.73$\pm$1.47 & 55.51 & 56.32 & 55.14 & 0.386 & 10.89 \\
 			
 			Spectrogram Image & VGG16 & 54.28$\pm$0.90 & 55.21 & 55.85 & 54.87 & 0.379 & 12.16 \\
 			
 			Mel Spectrogram Image & Xception & 53.10$\pm$1.42 & 53.84 & 54.27 & 53.68 & 0.364 & 19.06 \\
 			
-			MFCCs Image & Xception & 52.78$\pm$0.96 & 53.47 & 54.10 & 53.22 & 0.359 & 18.33 \\
+			\ac{mfccs} Image & Xception & 52.78$\pm$0.96 & 53.47 & 54.10 & 53.22 & 0.359 & 18.33 \\
 			
 			Spectrogram Image & Xception & 52.78$\pm$1.54 & 53.51 & 53.48 & 53.62 & 0.361 & 19.55 \\
 			
 			Spectrogram &  2D-\ac{cnn} & 50.12$\pm$0.91 & 50.04 & 52.98 & 49.65 & 0.320 & 21.2 \\
 			
-			Mel Spectrogram & 2D-CNN \& \ac{rnn} & 48.02$\pm$1.14 & 47.93 & 48.60 & 48.47 & 0.298 & 20.05 \\
+			Mel Spectrogram & 2D-\ac{cnn} \& \ac{rnn} & 48.02$\pm$1.14 & 47.93 & 48.60 & 48.47 & 0.298 & 20.05 \\
 			
-			MFCCs &  2D-\ac{cnn} & 46.70$\pm$0.85 & 47.13 & 49.53 & 46.75 & 0.275 & 5.18 \\
+			\ac{mfccs} &  2D-\ac{cnn} & 46.70$\pm$0.85 & 47.13 & 49.53 & 46.75 & 0.275 & 5.18 \\
 			
-			Spectrogram & 2D-CNN \& \ac{rnn} & 46.01$\pm$1.77 & 47.09 & 47.37 & 46.87 & 0.269 & 32.07 \\
+			Spectrogram & 2D-\ac{cnn} \& \ac{rnn} & 46.01$\pm$1.77 & 47.09 & 47.37 & 46.87 & 0.269 & 32.07 \\
 			
-			MFCCs & 2D-CNN \& \ac{rnn} & 45.56$\pm$1.15 & 46.26 & 46.29 & 46.25 & 0.263 & 12.29 \\
+			\ac{mfccs} & 2D-\ac{cnn} \& \ac{rnn} & 45.56$\pm$1.15 & 46.26 & 46.29 & 46.25 & 0.263 & 12.29 \\
 			
 			Mel Spectrogram &  2D-\ac{cnn} & 32.51$\pm$1.13 & 21.34 & 20.38 & 30.26 & 0.102 & 9.21 \\
 			
