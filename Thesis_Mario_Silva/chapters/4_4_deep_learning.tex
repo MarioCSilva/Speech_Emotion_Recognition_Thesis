@@ -1,19 +1,18 @@
-
 \section{\acl{dl}-Based \ac{ser}}
 
 This section presents the exploration of using deep learning classifiers for audio-based emotion recognition, focusing on the use of various features for the classification task.
 
 \subsection{\acl{dl} Features}
 
-Initially, three different features were extracted from the raw audio signals, using the Librosa library. The numeric values of the extracted features were saved into a Pickle file, while the visual representation of the feature was saved as a Portable Network Graphic (PNG) file. The PNG file was generated using a Matplotlib figure with 100 dots per inch, without the axis and the frame. The color map used was \textit{viridis\_r}.
+Initially, three different features were extracted from the raw audio signals, using the Librosa library. The numeric values of the extracted features were saved into a Pickle file, while the visual representation of the feature was saved as a \ac{png} file. The \ac{png} file was generated using a Matplotlib figure with 100 dots per inch, without the axis and the frame. The color map used was \textit{viridis\_r}.
 
-The 2D deep learning models employed in this study required the input data to possess consistent dimensions. To this end, the numeric data of every feature used only the first 6 seconds of every audio file, with shorter audio signals padded with trailing zeros to achieve the required length. For the 3D models that performed classification based on the PNG images, the full signal is utilized.
+The 2D deep learning models employed in this study required the input data to possess consistent dimensions. To this end, the numeric data of every feature used only the first 6 seconds of every audio file, with shorter audio signals padded with trailing zeros to achieve the required length. For the 3D models that performed classification based on the \ac{png} images, the full signal is utilized.
 
-The first feature explored was the spectrogram. The Short-time Fourier transform was used to calculate the spectrogram, using a windowed signal length of 2048, after padding with zeros. This resulted in matrices with a dimension of $1025x188$. The amplitude spectrogram was converted to a dB-scaled spectrogram, which was then used for the PNG file.
+The first feature explored was the spectrogram. The Short-time Fourier transform was used to calculate the spectrogram, using a windowed signal length of 2048, after padding with zeros. This resulted in matrices with a dimension of 1025x188. The amplitude spectrogram was converted to a dB-scaled spectrogram, which was then used for the \ac{png} file.
 
-Another feature explored was the Mel Spectrogram. For this, the previously calculated spectrogram was mapped onto the mel scale, using 256 Mel bands. This resulted in matrices with a dimension of $256x188$. The dB-scaled Mel Spectrogram was also used for the PNG file.
+Another feature explored was the Mel Spectrogram. For this, the previously calculated spectrogram was mapped onto the mel scale, using 256 Mel bands. This resulted in matrices with a dimension of 256x188. The dB-scaled Mel Spectrogram was also used for the \ac{png} file.
 
-The third feature explored was the \ac{mfccs} as they are commonly used for audio signal processing tasks due to their ability to capture the spectral characteristics of audio signals. 40 \ac{mfccs} were extracted from the previously calculated Mel Spectrogram, resulting in matrices with a dimension of $40x188$.
+The third feature explored was the \ac{mfccs} as they are commonly used for audio signal processing tasks due to their ability to capture the spectral characteristics of audio signals. 40 \ac{mfccs} were extracted from the previously calculated Mel Spectrogram, resulting in matrices with a dimension of 40x188.
 
 These three used features are displayed in figure \ref{fig:dl_features}.
 
@@ -50,7 +49,7 @@ In our study of deep learning-based \ac{ser} using images, we utilized transfer 
 
 ResNet50, VGG16, and Xception are popular deep \ac{cnn} that have shown outstanding performance in various computer vision tasks, including image classification. We used the pre-trained versions of them on the large-scale ImageNet dataset, which contains millions of labeled images belonging to thousands of different classes. This means their weights and biases have already been adjusted for the ImageNet dataset, and they have learned how to extract meaningful features from images, which helps improve the accuracy and generalization ability of the models, as it allows them to recognize patterns and shapes that are common across a wide range of images.
 
-To prepare the data for these models, we loaded the images with a dimension of $224x224x3$ using the TensorFlow Keras \textit{load\_img} function from the \textit{preprocessing.image} module. The images were then converted into arrays using the \textit{img\_to\_array} function from the same module. In addition, before inputting the data into the models, we applied the respective preprocessing technique for each classifier. For example, we used the \textit{preprocess\_input} function from the Tensorflow  Keras \textit{applications.resnet50} module for the ResNet50 classifier.
+To prepare the data for these models, we loaded the images with a dimension of 224x224x3 using the TensorFlow Keras \textit{load\_img} function from the \textit{preprocessing.image} module. The images were then converted into arrays using the \textit{img\_to\_array} function from the same module. In addition, before inputting the data into the models, we applied the respective preprocessing technique for each classifier. For example, we used the \textit{preprocess\_input} function from the Tensorflow  Keras \textit{applications.resnet50} module for the ResNet50 classifier.
 
 To apply the transfer learning technique, all layers of the chosen model were frozen, and a new Dense layer with 64 units with \textit{relu} activation was added to the model. A Dropout layer with a 0.5 rate was then included to avoid overfitting, followed by a Dense layer with 4 units with \textit{softmax} activation to output the predicted emotion.
 

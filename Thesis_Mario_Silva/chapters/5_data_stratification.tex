@@ -126,7 +126,7 @@ Based on our analysis, we suggest that the subjectivity of emotions, along with 
 
 \section{Dimensional Emotions}
 
-In addition to the categorical classification, we also explored the dimensional annotations of the dataset in terms of valence (ranging from unpleasant to pleasant), arousal (ranging from calm to excited), and dominance (ranging from submissive to dominant). These dimensions were rated on a continuous scale of 1 to 5 by human judges.
+In addition to the categorical classification, we also explored the dimensional annotations of the dataset in terms of valence (ranging from unpleasant to pleasant), arousal (ranging from calm to excited), and dominance (ranging from submissive to dominant). These dimensions were rated on an integer scale from 1 to 5 by human judges.
 
 Initially, we aimed to investigate the level of difficulty associated with classifying each emotional dimension, so we utilized traditional approach features to assess the performance of a \ac{rf} Regressor model from sklearn for each dimension. Each dimension underwent 5-fold cross-validation. We used \ac{mae}, \ac{rmse}, and $R^2$ as evaluation metrics for the model.
 
@@ -272,7 +272,7 @@ Table \ref{tab:emo_cat3} presents the 5-fold cross-validation results of the tra
 	\end{tabular}
 \end{table}
 
-Removing conflicts from the dataset results in better performance metrics for our models, however, this approach comes reduces the amount of data which may be the reason for these improvements. To verify if the model does improve, we decided to train and save both traditional and \ac{dl} models with the data that met our set of conditions. These saved models are called stratified models. We then repeated the process made in the previous section and evaluated them on three different datasets, namely eNTERFACE'05, CREMA-D, and EMO-DB.
+Removing conflicts from the dataset results in better performance metrics for our models, however, this approach reduces the amount of data which may be the reason for these improvements through an overfit in a small train dataset. To verify if the model does improve, we decided to train and save both traditional and \ac{dl} models with the data that met our set of conditions. These saved models are called stratified models. We then repeated the process made in the previous section and evaluated them on three different datasets, namely eNTERFACE'05, CREMA-D, and EMO-DB.
 
 As shown in Table \ref{strat_final_models}, the stratified models outperformed the previous models trained on all of the \ac{iemo} data on most metrics, which demonstrates that our stratification study resulted in improved cross-dataset performance of the models.
 

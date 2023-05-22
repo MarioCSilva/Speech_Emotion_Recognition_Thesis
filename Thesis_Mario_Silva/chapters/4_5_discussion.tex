@@ -2,7 +2,7 @@
 
 In this section, we present and analyze the results of the best candidate models obtained from both the traditional and \ac{dl}-based \ac{ser} approaches.
 
-The top-performing model from the traditional approach is an \ac{xgb} classifier, utilizing 33 audio features as input. This model achieved an accuracy of 60.69\% after performing 5-fold \ac{cv} on the \ac{iemo} dataset. On the other hand, the final model obtained from the \ac{dl} approach is a Resnet50 model, which uses audio spectrogram images as input. This model achieved an accuracy of 58.24\% using the same evaluation strategy and dataset.
+The top-performing model from the traditional approach is a \ac{xgb} classifier, utilizing 33 audio features as input. This model achieved an accuracy of 60.69\% after performing 5-fold \ac{cv} on the \ac{iemo} dataset. On the other hand, the final model obtained from the \ac{dl} approach is a Resnet50 model, which uses audio spectrogram images as input. This model achieved an accuracy of 58.24\% using the same evaluation strategy and dataset.
 
 
 \subsection{Models Cross-Dataset Validation}
@@ -58,7 +58,7 @@ Moreover, the traditional model had difficulty recognizing the happiness emotion
 
 Finally, it is worth noting that the traditional models were faster than the \ac{dl} models, with lower time values in the table, which is critical when implementing these models for real-time \ac{ser} systems.
 
-In conclusion, the results suggest that the \ac{dl} model may be more suitable for the \ac{ser} task on diverse datasets, owing to its improved feature extraction and generalization abilities. However, the \ac{dl} model is slower compared to the traditional models, which can significantly impact real-time applications. Furthermore, we recommend that these models should be utilized for English-spoken audio recordings and preferably with less prominent accents, to minimize any language bias-induced errors.
+In conclusion, the results suggest that the \ac{dl} model may be more suitable for the \ac{ser} task on diverse datasets, owing to its improved feature extraction and generalization abilities. However, the \ac{dl} model is slower compared to the traditional models, which can significantly impact real-time applications.
 
 
 \begin{figure}[H]
@@ -105,7 +105,7 @@ In Table \ref{tab:modelssoa}, we summarize the performance of various classifica
 
 It is important to note that the \ac{sota} results are not always directly comparable, as different authors may use different subsets of data and evaluation methodologies. For instance, some authors may not consider the emotion of excitement as happiness, others may only use improvised data and not scripted, or even perform different validation methods such as 10-fold \ac{cv}. Additionally, the random seeds for the k-fold splits may also impact the final classification performance.
 
-Our proposed model, an \ac{xgb} classifier utilizing 33 audio features, achieved an accuracy of 60.69\% on 5-fold \ac{cv}, outperforming the traditional approaches presented in the first three rows. Another model from the traditional approach, that outperformed ours, utilized a \ac{cnn} for its feature extraction capabilities; however, we still consider it traditional as the authors still performed feature extraction to obtain the 193-dimensional feature vector for the model's input.
+Our proposed model, a \ac{xgb} classifier utilizing 33 audio features, achieved an accuracy of 60.69\% on 5-fold \ac{cv}, outperforming the traditional approaches presented in the first three rows. Another model from the traditional approach, that outperformed ours, utilized a \ac{cnn} for its feature extraction capabilities; however, we still consider it traditional as the authors still performed feature extraction to obtain the 193-dimensional feature vector for the model's input.
 
 Among the \ac{dl}-based approaches, our Resnet50 model achieved an accuracy of 58.24\%, which is lower than the other \ac{sota} results. The Quaternion \ac{cnn} achieved the highest accuracy of 70.46\%, utilizing a unique approach of encoding the Mel spectrogram in an RGB quaternion domain, which may have contributed to its higher accuracy.
 
