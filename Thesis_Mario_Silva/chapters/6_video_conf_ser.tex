@@ -19,7 +19,7 @@ The third step of the pipeline is to detect voiced speech of the previously cons
 
 We chose the sileroVAD tool \cite{SileroVAD}, as it is an open-source algorithm that provides accurate results in real-time. It is specifically designed for low-resource environments and can work efficiently on devices with limited processing power.
 
-SileroVAD is based on a deep learning model trained on a large corpus of audio data. This means that it can detect voice activity even in noisy environments or when the speaker's voice is weak. This is crucial for our pipeline, since preprocessing, such as noise reduction or trimming, on unvoiced data would be a waste of resources. This allows us to only do that audio preprocessing before an audio segment is detected to be classified.
+SileroVAD is based on a deep learning model trained on a large corpus of audio data. This means that it can detect voice activity even in noisy environments or when the speaker's voice is weak. This is crucial for our pipeline, since preprocessing on unvoiced data would be a waste of resources, as that segment will be discarded due to not having enough speech content for emotional classification. This allows us to only do that audio preprocessing before a spoken audio segment is detected to be classified.
 
 This \ac{vad*} algorithm also returns a confidence level associated with the detection of voiced speech, which allows us to fine-tune the minimum value of confidence to consider a voiced segment.
 
