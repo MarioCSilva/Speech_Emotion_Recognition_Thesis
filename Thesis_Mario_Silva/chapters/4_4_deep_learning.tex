@@ -1,12 +1,12 @@
 \section{\acl{dl}-Based \ac{ser}}
 
-This section presents the exploration of using deep learning classifiers for audio-based emotion recognition, focusing on the use of various features for the classification task.
+This section presents the exploration of using \ac{dl} classifiers for audio-based emotion recognition, focusing on the use of various features for the classification task.
 
 \subsection{\acl{dl} Features}
 
 Initially, three different features were extracted from the raw audio signals, using the Librosa library. The numeric values of the extracted features were saved into a Pickle file, while the visual representation of the feature was saved as a \ac{png} file. The \ac{png} file was generated using a Matplotlib figure with 100 dots per inch, without the axis and the frame. The color map used was \textit{viridis\_r}.
 
-The 2D deep learning models employed in this study required the input data to possess consistent dimensions. To this end, the numeric data of every feature used only the first 6 seconds of every audio file, with shorter audio signals padded with trailing zeros to achieve the required length. For the 3D models that performed classification based on the \ac{png} images, the full signal is utilized.
+The 2D \ac{dl} models employed in this study required the input data to possess consistent dimensions. To this end, the numeric data of every feature used only the first 6 seconds of every audio file, with shorter audio signals padded with trailing zeros to achieve the required length. For the 3D models that performed classification based on the \ac{png} images, the full signal is utilized.
 
 The first feature explored was the spectrogram. The Short-time Fourier transform was used to calculate the spectrogram, using a windowed signal length of 2048, after padding with zeros. This resulted in matrices with a dimension of 1025x188. The amplitude spectrogram was converted to a dB-scaled spectrogram, which was then used for the \ac{png} file.
 
@@ -35,7 +35,7 @@ The evaluation of the classifiers was done based on various metrics including ac
 
 \subsubsection{Classification of Numeric Data}
 
-In order to classify the numeric data, we employed two deep learning models that take as input the 2D matrices with the corresponding dimensions of the features previously described.
+In order to classify the numeric data, we employed two \ac{dl} models that take as input the 2D matrices with the corresponding dimensions of the features previously described.
 
 The first model is a deep \ac{cnn} based on the architecture proposed by \citeauthor{Mustaqeem2019} \cite{Mustaqeem2019}. It comprises 7 convolutional layers followed by 2 fully connected layers to perform the classification task. To prevent overfitting, the model includes regularization techniques such as batch normalization after each convolutional layer and a total of three dropout layers. The authors used spectrograms as input for the model and achieved an unweighted average accuracy of 72\% by performing 5-fold \ac{cv} on the \ac{iemo} dataset.
 
@@ -45,7 +45,7 @@ Both models utilize an Adam optimizer with a learning rate of 0.001, a sparse ca
 
 \subsubsection{Image Classification}
 
-In our study of deep learning-based \ac{ser} using images, we utilized transfer learning techniques with three different pre-trained models: ResNet50, VGG16, and Xception.
+In our study of \ac{dl}-based \ac{ser} using images, we utilized transfer learning techniques with three different pre-trained models: ResNet50, VGG16, and Xception.
 
 ResNet50, VGG16, and Xception are popular deep \ac{cnn} that have shown outstanding performance in various computer vision tasks, including image classification. We used the pre-trained versions of them on the large-scale ImageNet dataset, which contains millions of labeled images belonging to thousands of different classes. This means their weights and biases have already been adjusted for the ImageNet dataset, and they have learned how to extract meaningful features from images, which helps improve the accuracy and generalization ability of the models, as it allows them to recognize patterns and shapes that are common across a wide range of images.
 
@@ -115,11 +115,11 @@ Therefore, based on the results obtained, we conclude that the Resnet50 model wi
 
 \paragraph{Chosen Model: ResNet50}
 
-ResNet50 is a deep neural network model used for image classification tasks. It is based on a residual network architecture that allows for the training of very deep neural networks. The model consists of 50 convolutional layers and uses skip connections to facilitate the flow of information directly from one layer to another, enabling the network to learn more complex representations of the input data. This helps to overcome the problem of vanishing gradients and enables the network to be trained deeper.
+ResNet50 is a powerful deep neural network model primarily used for image classification tasks. It is based on a residual network architecture that allows for training very deep neural networks by addressing the vanishing gradient problem. With 50 convolutional layers, ResNet50 leverages skip connections to enable the direct flow of information between layers, enabling the network to learn more complex representations of the input data.
 
-ResNet50 has achieved \ac{sota} performance on a range of image classification tasks, such as object recognition and image segmentation. It is a popular choice for transfer learning, where pre-trained models can be fine-tuned for specific tasks with smaller datasets.
+ResNet50 has achieved \ac{sota} performance in various image classification tasks, demonstrating its effectiveness in tasks such as object recognition and image segmentation. One of its key advantages is its suitability for transfer learning, where pre-trained models on large datasets can be fine-tuned for specific tasks using smaller datasets.
 
-Despite its high accuracy, the ResNet50 model has a large number of parameters and requires significant computational resources to train. However, pre-trained models on different datasets are widely available in \ac{dl} frameworks like TensorFlow and PyTorch. These pre-trained models can be used as starting points for specific image classification tasks and fine-tuned with smaller datasets, reducing the time and computational resources required for training.
+While ResNet50 exhibits high accuracy, it should be noted that training this model requires significant computational resources due to its large number of parameters. However, pre-trained ResNet50 models are readily available in popular \ac{dl} frameworks such as TensorFlow and PyTorch. These pre-trained models can serve as starting points for specific image classification tasks and be fine-tuned using smaller datasets, reducing both training time and computational requirements.
 
 \paragraph{ResNet50 Implementation}
 

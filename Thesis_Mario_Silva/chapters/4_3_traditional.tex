@@ -344,11 +344,11 @@ Having chosen a set of classifiers, we then applied our evaluation strategy on t
 
 \paragraph{Chosen Model: \acl{xgb}}
 
-The \ac{xgb} is a machine-learning model that uses gradient-boosted decision tree ensembles to achieve high accuracy. It is an improvement on the Gradient Boosting Machine algorithm, with the main difference being that it uses a more regularized model, which helps to prevent overfitting. Unlike other ensemble algorithms such as \ac{rf}, \ac{xgb} builds decision trees sequentially, with each tree attempting to correct the errors made by the previous tree. The algorithm uses a gradient descent optimization technique to minimize the loss function, which measures the difference between the predicted and actual values.
+The chosen model for our study is \ac{xgb}, a highly accurate machine learning model renowned for its utilization of gradient-boosted decision tree ensembles. As an improvement over the Gradient Boosting Machine algorithm, XGBoost incorporates regularization techniques, specifically a combination of L1 and L2 regularization, to mitigate the risk of overfitting.
 
-Boosting techniques, such as \ac{xgb}, construct decision trees sequentially on subsets of the data, where each iteration assigns higher weights to misclassified data points to prioritize them in the next iteration. This process allows the model to focus on hard-to-classify data points and gradually improve its accuracy over time. Boosting techniques are effective at reducing bias.
+In the \ac{xgb} model, decision trees are sequentially built using a boosting technique. Each subsequent tree aims to rectify the errors made by the previous tree, with a particular emphasis on addressing misclassified data points. This iterative process assigns higher weights to misclassified points to prioritize their correct classification in subsequent iterations. The model optimizes its performance through gradient descent, which minimizes a loss function measuring the discrepancy between predicted and actual values.
 
-In contrast, bagging techniques like Random Forests build independent decision trees in parallel on random subsets of the data and average their predictions to form the final output. Each decision tree has an equal weight, and the goal is to reduce variance and increase model stability. Unlike boosting, bagging does not assign higher weights to misclassified data points, and each decision tree is independent of the others.
+By amalgamating multiple decision trees in an ensemble, leveraging boosting, and employing regularization techniques, \ac{xgb} effectively harnesses the collective knowledge of individual trees, resulting in highly accurate predictions.
 
 \paragraph{\acl{xgb} Implementation}
 
